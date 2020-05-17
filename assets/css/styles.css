@@ -6,11 +6,11 @@
 }
 
 html {
-  overflow: hidden;
+	
 }
 
 
-#main:before {
+nav:before {
   content: "";
   position: fixed;
   top: -5%;
@@ -30,12 +30,12 @@ html {
   /* -o-filter: blur(5px); */
   /* -ms-filter: blur(5px); */
   /* filter: blur(5px); */
-  filter: contrast(60%) brightness(75%);
+  filter: contrast(40%) brightness(50%);
 }
 
 
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Lexend Deca';
   background-size: cover;
   background-color: #F5F0F95B;
   background-repeat: no-repeat;
@@ -58,12 +58,101 @@ body {
 	color:white;
 }
 
-#main h1{
+.container h1{
+	color: white;
 	font-size: 128px;	
 }
-#main h2{
-	font-size: 56px;
+.container h2{
+	color: white;
+	font-size: 4vh;
 	font-weight: 300;	
+}
+
+.form-control-borderless {
+    border: none;
+}
+
+.form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+.theme-main{
+	color:white;
+	background-color: #6E62F9;
+}
+.white-text{
+	color:white;
+}
+
+.card{
+	padding:0px;
+}
+.shadow .category-card-body{
+  width: 164px;
+  height: 164px;
+  padding: 6px;
+  align-items: center;
+  text-align: left;
+  font-size: 27px;
+  color: white;
+}
+
+.card-columns {
+    column-count: 6;
+}
+
+.cat-sports{
+  background: linear-gradient(180deg, #3B9A5F 25%, rgba(166, 95, 172, 0) 100%, rgba(166, 95, 172, 0) 100%), url('../img/categories/sports.jpg');
+box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.cat-av{
+  background: linear-gradient(180deg, #3B9A5F 25%, rgba(166, 95, 172, 0) 100%, rgba(166, 95, 172, 0) 100%), url('../img/categories/av.jpg');
+box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.cat-books{
+  background: linear-gradient(180deg, #3B9A5F 25%, rgba(166, 95, 172, 0) 100%, rgba(166, 95, 172, 0) 100%), url('../img/categories/books.jpg');
+box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.cat-decor{
+  background: linear-gradient(180deg, #3B9A5F 25%, rgba(166, 95, 172, 0) 100%, rgba(166, 95, 172, 0) 100%), url('../img/categories/decors.jpg');
+box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.cat-households{
+  background: linear-gradient(180deg, #3B9A5F 25%, rgba(166, 95, 172, 0) 100%, rgba(166, 95, 172, 0) 100%), url('../img/categories/household.jpg');
+box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.cat-fashion{
+  background: linear-gradient(180deg, #3B9A5F 25%, rgba(166, 95, 172, 0) 100%, rgba(166, 95, 172, 0) 100%), url('../img/categories/fashion.jpg');
+box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.cat-electronics{
+  background: linear-gradient(180deg, #3B9A5F 25%, rgba(166, 95, 172, 0) 100%, rgba(166, 95, 172, 0) 100%), url('../img/categories/electronics.jpg');
+box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.cat-instruments{
+  background: linear-gradient(180deg, #3B9A5F 25%, rgba(166, 95, 172, 0) 100%, rgba(166, 95, 172, 0) 100%), url('../img/categories/instruments.jpg');
+box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.cat-tools{
+  background: linear-gradient(180deg, #3B9A5F 25%, rgba(166, 95, 172, 0) 100%, rgba(166, 95, 172, 0) 100%), url('../img/categories/tools.jpg');
+box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.cat-services{
+  background: linear-gradient(180deg, #3B9A5F 25%, rgba(166, 95, 172, 0) 100%, rgba(166, 95, 172, 0) 100%), url('../img/categories/services.jpg');
+box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.shadow .category-card-body.cat-all{
+  height: 355px;
+  background: #5A5AAF ;
+box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.shadow .category-card-body.cat-all p{
+	text-align: center;
+	padding-top:75%;
 }
 
 footer{

@@ -5,16 +5,155 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TUDO - Đồ gì cũng có</title>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/fonts.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet" >
+    <link href="css/all.css" rel="stylesheet" >
     <script defer src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script defer src="js/index_script.js"></script>
 </head>
 
 <body>
-<div id="main">
-	<h1>TUDO</h1>
-	<h2>Cần gì thuê đó</h2>
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <img src="img/logo.png" width="140" height="36" alt="">
+  </a>
+  <div class="navbar-brand" href="#">
+	  <a class="navbar-brand" href="#">
+		Cho thuê đồ
+	  </a>
+	  <a class="navbar-brand" href="#">
+		Tìm hiểu thêm
+	  </a>
+	  <a class="navbar-brand" href="#">
+		Đăng ký
+	  </a>
+	  <a class="navbar-brand" href="#">
+		Đăng nhập
+	  </a>
+	  <a class="navbar-brand" href="#">
+			<img src="img/no_user.png" width="36" height="36" alt="">
+	  </a>
+  </div>
+</nav>
+<div class="container"><br/>
+	<div class="container">
+		<br/>
+		<div class="row justify-content-center">
+			<div class="col-12 col-md-10 col-lg-8">
+				<div class="white-text">
+					<h3>Thuê đồ không giới hạn. Tìm món đồ cần thuê ngay!</h3>
+				</div>
+				<form class="card card-sm">
+					<div class="card-body row no-gutters align-items-center">
+						<div class="col-auto">
+							<i class="fas fa-search h4 text-body"></i>
+						</div>
+						<!--end of col-->
+						<div class="col">
+							<input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Tên đồ vật, danh mục đồ vật, ...">
+						</div>
+						<!--end of col-->
+						<div class="col-auto">
+							<button class="btn btn-lg theme-main" type="submit">Tìm kiếm</button>
+						</div>
+						<!--end of col-->
+					</div>
+				</form>
+			</div>
+			<!--end of col-->
+		</div>
+	</div>
+	<br/><br/>
+	<div class="container">
+		<br/>
+		<div class="row justify-content-left">
+			<div class="col-12 col-md-10 col-lg-12">
+				<h2>Khám phá các danh mục:</h2>
+			</div>
+		</div>
+		<div class="container">
+            <div class="card-columns">
+                <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2 p-2">
+                    <div class="card shadow text-center border-0">
+                        <div class="category-card-body cat-sports">
+							Thể thao <br/>& dã ngoại
+						</div>
+                    </div>
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2 p-2">
+                    <div class="card shadow text-center border-0">
+                        <div class="category-card-body cat-av">
+							Âm thanh <br/>& ánh sáng
+						</div>
+                    </div>
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2 p-2">
+                    <div class="card shadow text-center border-0">
+                        <div class="category-card-body cat-books">
+							Sách <br/>& tài liệu
+						</div>
+                    </div>
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2 p-2">
+                    <div class="card shadow text-center border-0">
+                        <div class="category-card-body cat-decor">
+							Nội thất <br/>& trang trí
+						</div>
+                    </div>
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2 p-2">
+                    <div class="card shadow text-center border-0">
+                        <div class="category-card-body cat-households">
+							Thiết bị <br/>gia dụng
+						</div>
+                    </div>
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2 p-2">
+                    <div class="card shadow text-center border-0">
+                        <div class="category-card-body cat-fashion">
+							Thời trang
+						</div>
+                    </div>
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2 p-2">
+                    <div class="card shadow text-center border-0">
+                        <div class="category-card-body cat-electronics">
+							Đồ điện tử
+						</div>
+                    </div>
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2 p-2">
+                    <div class="card shadow text-center border-0">
+                        <div class="category-card-body cat-instruments">
+							Nhạc cụ
+						</div>
+                    </div>
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2 p-2">
+                    <div class="card shadow text-center border-0">
+                        <div class="category-card-body cat-tools">
+							Dụng cụ
+						</div>
+                    </div>
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2 p-2">
+                    <div class="card shadow text-center border-0">
+                        <div class="category-card-body cat-services">
+							Dịch vụ
+						</div>
+                    </div>
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2 p-2">
+                    <div class="card shadow text-center border-0">
+                        <div class="category-card-body cat-all">
+							<p>Tất cả <br/>danh mục</p>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
 </div>
 
 <footer>
