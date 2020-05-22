@@ -58,6 +58,16 @@ body {
 	color:white;
 }
 
+.container{
+	color: white;
+	font-size: 16px;	
+}
+
+.container .help-block{
+	color: #BABABA;
+	font-size: 16px;
+	font-style: italic;
+}
 .container h1{
 	color: white;
 	font-size: 128px;	
@@ -160,7 +170,7 @@ footer{
 	align-items: center;
 	text-align: center;
 	color:white;
-	font-size: 32px;
+	font-size: 2vh;
 	font-weight: 300;
 	
 }
