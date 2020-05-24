@@ -20,7 +20,8 @@ nav:before {
   z-index: -1;
   
   display: block;
-  background: url("../img/background.jpg") no-repeat center center fixed;
+  /* background: url("../img/background.jpg") no-repeat center center fixed; */
+  background-color: #51515115;
   background-size:cover;
   width: 110%;
   height: 110%;
@@ -55,25 +56,23 @@ body {
           align-items: stretch;
 	align-items: center;
 	text-align: center;
-	color:white;
+	color: black;
 }
 
 .container{
-	color: white;
+	color: black;
 	font-size: 16px;	
 }
 
 .container .help-block{
-	color: #BABABA;
+	color: #515151;
 	font-size: 16px;
 	font-style: italic;
 }
 .container h1{
-	color: white;
 	font-size: 128px;	
 }
 .container h2{
-	color: white;
 	font-size: 4vh;
 	font-weight: 300;	
 }
@@ -95,7 +94,10 @@ body {
 .white-text{
 	color:white;
 }
-
+.menu-scroll {
+  overflow-y: scroll;
+  max-height: 200px;
+}
 .card{
 	padding:0px;
 }
@@ -169,7 +171,6 @@ footer{
 	margin: 64px;
 	align-items: center;
 	text-align: center;
-	color:white;
 	font-size: 2vh;
 	font-weight: 300;
 	

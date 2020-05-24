@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TUDO - Đồ gì cũng có</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/fonts.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet" >
+    <link href="css/all.css" rel="stylesheet" >
+    <script defer src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script defer src="js/index_script.js"></script>
+</head>
+
+<body>
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href=".">
+    <img src="img/logo.png" width="140" height="36" alt="">
+  </a>
+  <div class="navbar-brand d-none d-lg-block" href="#">
+	  <a class="navbar-brand" href="#">
+		Cho thuê đồ
+	  </a>
+	  <a class="navbar-brand" href="#">
+		Tìm hiểu thêm
+	  </a>
+	  <a class="navbar-brand" href="#">
+		Đăng ký
+	  </a>
+	  <a class="navbar-brand" href="#">
+		Đăng nhập
+	  </a>
+	  <a class="navbar-brand" href="#">
+			<img src="img/no_user.png" width="36" height="36" alt="">
+	  </a>
+  </div>
+  
+  <div class="navbar-brand d-md-block d-lg-none" href="#">
+	  <a class="navbar-brand" href="#">
+			<img src="img/no_user.png" width="36" height="36" alt="">
+	  </a>
+  </div>
+</nav>
+
+<div class="container"><br/>
+	<div class="row d-flex justify-content-between">
+		<div class="col-md-12 col-lg-9 w-100 justify-content-between">
+			<h2 class="text-md-center text-lg-left">
+				Đăng tin cho thuê đồ
+			</h2>
+		</div>
+		<div class="col-md-12 col-lg-3 justify-content-between">
+			<button type="button" class="btn btn-secondary mr-2" id="backButton">Quay lại</button>
+			<button type="button" class="btn btn-primary ml-2"id="continueButton">Tiếp tục <i class="fas fa-angle-right"></i></button>
+		</div>
+	</div>
+	<div class="row">
+	<div class="col-12 postObjectPanel" style="display:block;" id="panel1">
+		<br/>
+		<form class="form-horizontal" name="basicInfo">
+		
+		<div class="container">
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="tenDoVat">Tên đồ vật:</label>  
+		  <div class="col-md-12">
+		  <input id="tenDoVat" name="tenDoVat" type="text" placeholder="nhập vào tên đồ vật, vd: Macbook pro 13 inch" class="form-control" required="">
+		  <span class="help-block">Bạn cần nhập vào tên đồ vật</span>  
+		  </div>
+		</div>
+
+		<!-- Select Basic -->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="danhMuc">Danh mục đồ vật:</label>
+		  <div class="col-md-8">
+			<select id="danhMuc" name="danhMuc" class="form-control">
+			  <option value="1">Thể thao &amp; dã ngoại</option>
+			  <option value="2">Âm thanh &amp; ánh sáng</option>
+			  <option value="3">Sách &amp; tài liệu</option>
+			  <option value="4">Nội thất &amp; trang trí</option>
+			  <option value="5">Thiết bị gia dụng</option>
+			  <option value="6">Thời trang</option>
+			  <option value="7">Đồ điện tử</option>
+			  <option value="8">Nhạc cụ</option>
+			  <option value="9">Dụng cụ</option>
+			  <option value="10">Dịch vụ</option>
+			</select>
+		  </div>
+		</div>
+
+		<!-- Appended Input-->
+	
+		<div class="form-group">
+		<label class="col-md-4 control-label" for="tienThue">Tiền thuê theo ngày:</label>  
+		<div class="input-group col-8">
+		  <input type="number" class="form-control form-conrol input-md"  placeholder="vd: 200.000">
+		  <div class="input-group-append">
+			<span class="input-group-text" id="basic-addon2">VNĐ / ngày</span>
+		  </div>
+		  <span class="help-block col-12">Bạn cần nhập vào số tiền thuê đồ theo ngày.</span>  
+		</div>
+		</div>
+
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="dienThoai">Số điện thoại liên hệ:</label>  
+		  <div class="col-md-8">
+		  <input id="dienThoai" name="dienThoai" type="number" placeholder="vd: 0912345678" class="form-control input-md" required="">
+		  <span class="help-block col-12">Bạn cần nhập vào số điện thoại để người thuê liên hệ với bạn.</span>  
+		  </div>
+		</div>
+
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="diaChi">Địa chỉ nhận &amp; trả đồ:</label>  
+		  <div class="input-group col-md-12">
+		  <input id="diaChi" name="diaChi" type="text" placeholder="vd: 227 Nguyễn Văn Cừ, P.4, Q.5, TP.HCM" class="form-control input-md" required="">
+		  <div class="input-group-append">
+			<span class="input-group-text" id="basic-addon2">Chọn trên bản đồ</span>
+		  </div>
+		  <span class="help-block  col-12">Bạn cần nhập vào địa chỉ để người thuê nhận và trả đồ.</span>  
+		  </div>
+		</div>
+	</form>
+	</div>
+</div>
+
+<div class="col-12 postObjectPanel"  style="display:none;" id="detailPanel">
+		<br/>
+	<div class="col-sm-12 col-lg-6 float-md-left float-sm-none">
+	<div class="row" style="height:auto;width:auto;">
+		<!-- Text input-->
+		<div class="form-group w-100">	
+		  <label class="col-md-12 control-label" for="tenDoVat">Hình ảnh đồ vật:</label>  
+		  <div class="col-12">
+		  <div id="hinhAnh" type="file"  class="form-control" style="height:256px;width:100%;">
+			<input name="tenDoVat" type="file"  accept="image/*"  placeholder="kéo ảnh vào để tải lên" class="form-control input-md">
+		  </div>
+		  </div>
+		</div>
+	</div>
+	
+	<div class="row" style="height:auto;width:auto;">
+		<!-- Text input-->
+		<div class="form-group w-100">
+		  <label class="col-md-12 control-label" for="tenDoVat">Các dịch vụ bạn cung cấp kèm món đồ:</label>  
+		  <div class="col-12">
+		  <div id="dichVu" type="file"  class="form-control menu-scroll" style="height:220px;">
+			<ul class="list-group">
+			  <li class="list-group-item">Giao đồ tận nơi</li>
+			  <li class="list-group-item">Hướng dẫn sử dụng</li>
+			  <li class="list-group-item">Lắp đặt món đồ</li>
+			  <li class="list-group-item">Bao chi phí sửa chữa</li>
+			  <li class="list-group-item">Vestibulum at eros</li>
+			</ul>
+		  </div>
+		  </div>
+		</div>
+	</div>
+	</div>
+	
+	
+	<div class="col-sm-12 col-lg-6 float-md-right float-sm-none">
+	<div class="row" style="height:auto;">
+		<!-- Text input-->
+		<div class="form-group w-100">
+		  <label class="col-md-12 control-label" for="tenDoVat">Mô tả đồ vật:</label>  
+		  <div class="col-12">
+		  <div id="moTa" name="moTa" class="form-control input-md" style="height:auto;padding:1px">
+			<textarea class="col-12" rows="22" cols="64" placeholder="Hãy thêm các mô tả để món đồ trở nên rõ ràng và thu hút hơn" style="border:0px;"></textarea>
+		  </div>
+		  </div>
+		</div>
+	</div>
+	</div>	
+</div>
+
+<footer>
+	<p>Một sản phẩm của PTUDW-17TN-Nhom16</p>
+</footer>
+    <script defer src="js/post-stuff.js"></script>
+</body>
+</html>
