@@ -15,7 +15,7 @@
 	color:white;
 }
 .index-button-panel b{
-	font-size:60px;	
+	font-size:3rem;	
 }
 .index-button-panel:hover{
 	background: #6E62F9; !important
@@ -25,6 +25,26 @@
 }
 .index-post-background{
 	background: linear-gradient(180deg,rgba(255, 255, 255, 0.1) 0%, rgba(05, 10, 99, 0.64) 16%, rgba(51, 10, 99, 0.44) 84% , rgba(255, 255, 255, 0.1) 100%), url("../img/categories/panel-post.jpg");	
+}
+@media only screen and (max-width: 800px){
+.card-columns {
+    column-count: 4;
+}
+}
+
+@media only screen and (max-width: 600px){
+.card-columns {
+    column-count: 2;
+}
+}
+@media only screen and (max-width: 400px){
+.card-columns {
+    column-count: 2;
+}
+.jumbotron-fluid h1{
+	font-size:3rem;
+}
+
 }
 
 .jumbotron-fluid{

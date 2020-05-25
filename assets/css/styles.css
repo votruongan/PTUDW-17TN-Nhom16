@@ -9,6 +9,11 @@ html {
 	
 }
 
+nav{
+	
+box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
 
 nav:before {
   content: "";
@@ -114,7 +119,6 @@ body {
 .card-columns {
     column-count: 6;
 }
-
 .cat-sports{
   background: linear-gradient(180deg, #3B9A5F 25%, rgba(166, 95, 172, 0) 100%, rgba(166, 95, 172, 0) 100%), url('../img/categories/sports.jpg');
 box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
@@ -154,6 +158,12 @@ box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 .cat-services{
   background: linear-gradient(180deg, #3B9A5F 25%, rgba(166, 95, 172, 0) 100%, rgba(166, 95, 172, 0) 100%), url('../img/categories/services.jpg');
 box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.category-card-body:hover{
+	background: #3B9A5F;
+	-webkit-animation: fadein 1s;
+	animation: fadein 1s;
 }
 
 .shadow .category-card-body.cat-all{
