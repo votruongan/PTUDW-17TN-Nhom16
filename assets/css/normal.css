@@ -1,0 +1,39 @@
+/* format of class: <site>-<function>-<area> */
+
+/* site: index.html */
+
+.index-search-area{
+	background-color:#00000000;
+	padding: 6px;
+	padding-top:8%;
+	color:white;
+}
+.index-button-panel{
+	height:200px;
+	width:100%;
+	font-size:30px;
+	color:white;
+}
+.index-button-panel b{
+	font-size:60px;	
+}
+.index-button-panel:hover{
+	background: #6E62F9; !important
+}
+.index-explore-background{
+	background: linear-gradient(180deg,rgba(255, 255, 255, 0.1) 0%, rgba(05, 10, 99, 0.64) 16%, rgba(51, 10, 99, 0.44) 84% , rgba(255, 255, 255, 0.1) 100%), url("../img/categories/panel-explore.jpg");
+}
+.index-post-background{
+	background: linear-gradient(180deg,rgba(255, 255, 255, 0.1) 0%, rgba(05, 10, 99, 0.64) 16%, rgba(51, 10, 99, 0.44) 84% , rgba(255, 255, 255, 0.1) 100%), url("../img/categories/panel-post.jpg");	
+}
+
+.jumbotron-fluid{
+  background: url("../img/background.jpg")  no-repeat center center;
+  background-color: rgba(0, 128, 0, 0.3);
+  background-size: cover;
+}
+
+.seperator{
+	margin-top:5%;
+	margin-bottom:5%;
+}
