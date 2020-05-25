@@ -79,7 +79,7 @@
 
         <!-- Details of Item content box -->
         <div class="content-box">
-            <div class="flex-6">
+            <div class="flex-7 ml-4">
                 <!-- Item detail box -->
                 <div class="flex-box">
                     <div class="flex-2">
@@ -171,13 +171,10 @@
                     <div class="flex-8">
                         <div class="d-flex flex-column mb-3">
                             <b>Giao đồ vật tận nơi</b>
-                            <p>Đồ vật này được chủ đồ vật hỗ trợ giao hàng tận nơi. Miễn phí giao hàng trong 5km đầu
-                                tiên, 10K/km tiếp theo.</p>
-                            <hr class="mt-2 mb-3" />
+                            <p>Đồ vật này được chủ đồ vật hỗ trợ giao hàng tận nơi. Miễn phí giao hàng trong 5km đầu tiên, 10K/km tiếp theo.</p>
+                            <hr class="mt-2 mb-3 w-100" />
                             <b>Miễn phí sửa chữa sau khi sử dụng</b>
-                            <p>Thiết bị sau khi sử dụng nếu có sự cố hỏng hóc. Nếu chi phí sửa chữa dưới 2000K sẽ được
-                                chủ đồ vật miễn phí sửa chữa. Nếu vượt quá 2000K, khách thuê cần chi trả phần chi phí
-                                còn lại.</p>
+                            <p>Thiết bị sau khi sử dụng nếu có sự cố hỏng hóc. Nếu chi phí sửa chữa dưới 2000K sẽ được chủ đồ vật miễn phí sửa chữa. Nếu vượt quá 2000K, khách thuê cần chi trả phần chi phí còn lại.</p>
                         </div>
                     </div>
                 </div>
@@ -207,9 +204,7 @@
                                             <b class="mr-1">Võ Trường An</b>
                                             <p>20/4/2020</p>
                                         </div>
-                                        <div>Sed ac massa lacinia, pretium mauris ut, luctus nulla. Donec est tellus,
-                                            porta id pharetra pretium, dapibus sit amet sapien. Integer venenatis eros
-                                            vitae metus pulvinar, ac tristique massa dapibus.</div>
+                                        <div>Sed ac massa lacinia, pretium mauris ut, luctus nulla. Donec est tellus, porta id pharetra pretium, dapibus sit amet sapien. Integer venenatis eros vitae metus pulvinar, ac tristique massa dapibus.</div>
                                     </div>
                                 </div>
                                 <hr class="mt-2 mb-3" />
@@ -240,22 +235,55 @@
                 </div>
             </div>
             <!-- Booking info box -->
-            <div class="flex-4 flex-box">
-                <div class="d-flex flex-column bd-highlight">
-                    <h2 class="text-center w-100 mb-3">200K/ngày</h2>
-                    <b>Bắt đầu</b>
-                    <div class="input-group date" data-provide="datepicker">
-                        <input type="text" class="form-control">
-                        <div class="input-group-addon">
-                            <span class="glyphicon glyphicon-th"></span>
-                        </div>
-                        <script>
-                            $('.datepicker').datepicker({
-                                format: 'mm/dd/yyyy',
-                                startDate: '-3d'
-                            });
-                        </script>
+            <div class="flex-3 flex-box mr-4 ml-4">
+                <div class="d-flex flex-column bd-highlight w-100">
+                    <div class="d-flex flex-row mb-2 justify-content-center align-items-end w-100">
+                        <h2>200K</h2>
+                        <p>/ngày</p>
                     </div>
+                    <b class="mt-3">Bắt đầu</b>
+                    <input id="datetimepicker" class="mt-2 w-100">
+                    <b class="mt-3">Kết thúc</b>
+                    <input id="datetimepicker2" class="mt-2 w-100">
+                    <script>
+                        $("#datetimepicker").datetimepicker();
+                        $("#datetimepicker2").datetimepicker();
+                    </script>
+                    <b class="mt-3">Địa điểm nhận & trả đồ vật</b>
+                    <input id="pac-input" type="text" placeholder="Enter a location" class="mt-2 w-100">
+                    <div class="promo-card w-100 mt-3 mb-3 d-flex flex-row p-2 justify-content-between">
+                        <div class="d-flex flex-column" mr-2>
+                            <p style="font-size:small;">Khuyến mãi thuê trên 2 ngày (?)</p>
+                            <p style="font-size: small; color: gray;">Bạn tiết kiệm được 5%</p>
+                        </div>
+                        <b class="align-bottom" style="color: #178514;">20K</b>
+                    </div>
+                    <button type="button" class="btn btn-primary w-100 shadow-sm" style="min-height: 60px;">
+                        ĐI ĐẾN THUÊ ĐỒ
+                    </button>
+                    <p class="mt-3 text-center w-100" style="font-size: small;">Bạn cần phải đăng nhập trước</p>
+                    <hr class="mt-1 mb-3 w-100"/>
+                    <div class="d-flex flex-row bd-highlight">
+                        <img src="img/like.png" alt="" style="width: 50px; height: 50px;">
+                        <div class="d-flex flex-column ml-3">
+                            <b>Huỷ thuê miễn phí</b>
+                            <p style="font-size:small; color: gray;">
+                                Hoàn tiền 100% nếu huỷ lượt thuê trước 26/4/2020 - 10:00PM
+                            </p>
+                        </div>
+                    </div>
+                    <hr class="mt-1 mb-3 w-100"/>
+                    <div class="d-flex flex-row bd-highlight">
+                        <img src="img/money.png" alt="" style="width: 50px; height: 50px;">
+                        <div class="d-flex flex-column ml-3">
+                            <b>Phí vượt quá giới hạn</b>
+                            <p style="font-size:small; color: gray;">
+                                Tính thêm 20K/giờ nếu vượt quá giới hạn đăng ký thuê.
+                            </p>
+                        </div>
+                    </div>
+                    <hr class="mt-1 mb-3 w-100"/>
+                    
                 </div>
             </div>
         </div>

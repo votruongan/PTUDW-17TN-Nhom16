@@ -1,5 +1,6 @@
 .body {
     background-color: beige;
+    font-family: 'Roboto', sans-serif;
 }
 
 .tailes {
@@ -71,7 +72,6 @@
     box-sizing: border-box;
     width: 100%;
     display: flex;
-    margin-left: 10%;
     margin-top: 5%;
 }
 
@@ -88,4 +88,40 @@
 
 .circle-img {
     border-radius: 50%;
+}
+
+.shadow .category-card-body{
+    width: 164px;
+    height: 164px;
+    padding: 6px;
+    align-items: center;
+    text-align: left;
+    font-size: 27px;
+    color: white;
+}
+
+.promo-card {
+    background-color: #E5E7E9;
+    border-radius: 10px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary {
+    background-color: #6E62F9 !important;
+}
+
+.btn-primary:hover {
+    background-color: #584DDB !important;
+}
+
+.btn-primary:focus, .btn-primary.focus {
+    background-color: #584DDB !important;
+}
+
+.white {color:#ffffff;}
+
+hr {
+    border-top: 1px solid rgba(0, 0, 0, 0.15)
 }
