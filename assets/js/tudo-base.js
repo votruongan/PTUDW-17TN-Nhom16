@@ -17,9 +17,8 @@ function templateImplement(template,params,isArrayOfParams=false){
 		}	
 		return res;
 	}
-	var res = template;
 	for (i = 0; i < len; i++){
-		res = execImplement(res,i,params[i]);
+		res.push(execImplement(template,0,params[i]));
 	}
 	return res;
 }
