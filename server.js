@@ -8,6 +8,10 @@ app.get('/', (req, res) =>{
 	res.sendFile(__dirname + '/html/index.html');
 })
 
+app.get('/info', (req, res) => {
+	res.sendFile(__dirname + '/html/item_info_page.html');
+})
+
 app.get('/post-stuff', (req, res) =>{
 	res.sendFile(__dirname + '/html/post-stuff.html');
 })
