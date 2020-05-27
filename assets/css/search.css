@@ -47,7 +47,7 @@ form div img {
 
 a.navbar-brand img {
     width: 100px;
-    float: right;
+    /* float: right; */
 }
 
 
@@ -146,7 +146,7 @@ div.theSearch div.container img {
     margin-top: -2px;
     border: 1px solid #2422227d;
     background: #f0f8fa;
-    border-radius: 0px 0px 20px 20px;
+    /* border-radius: 0px 0px 20px 20px; */
     box-shadow: 2px 2px 3px 1px #aaaaaa;
 }
 
@@ -167,7 +167,7 @@ div.theSearch div.container img {
 .txtDD {
     width: fit-content;
     float: left;
-    color: #66b1f7
+    color: #3c2def;
 }
 
 
@@ -198,11 +198,12 @@ button.btnss {
     border: 1px solid black;
     border-radius: 10px 10px 0 0;
     padding: 0px 5px;
+    color: black;
 }
 
 button.btnss.acctive {
-    background: #78d9f6;
-    color: #050505;
+    background: #6c757d;
+    color: #ffffff;
 }
 
 .form-group.gia {
@@ -234,9 +235,9 @@ button.btnss.acctive {
     /* text-align-last: center; */
     margin: 0;
     padding: 5px;
-    margin-top: 4px;
+    /* margin-top: 4px; */
     background: #f8f9fa;
-    border-radius: 20px 20px 0 0;
+    /* border-radius: 20px 20px 0 0; */
     border: 1px solid #999696;
     box-shadow: 1px 1px 1px 1px #727070;
 }
@@ -250,6 +251,21 @@ button.btnss.acctive {
 * {
     margin: 0px;
     padding: 0px
+}
+
+.bodychothue.row {
+    background: #ffffffa6;
+}
+
+a.navbar-brand.col-lg-3 {
+    margin: 0px;
+    text-align: -webkit-right;
+}
+
+.col-lg-7.row {
+    padding: 0px;
+    margin: 0px;
+    justify-content: center;
 }
 
 li.col-xl-4.col-lg-4.col-md-4 {

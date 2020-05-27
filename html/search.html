@@ -8,6 +8,7 @@
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="../assets/css/fonts.css" rel="stylesheet">
     <link href="../assets/css/styles.css" rel="stylesheet">
+    <link href="../assets/css/all.css" rel="stylesheet">
     <link href="../assets/css/search.css" rel="stylesheet">
     <script defer src="../assets/js/search_script.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
@@ -21,17 +22,19 @@
 <body>
     <div class="logovamenu">
         <nav class="navbar row navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand col-xl-2" href="#"><img src="../assets/img/logo.png" alt=""></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <form class="form-inline col-xl-5 ">
-                <div class="form-inlinesearch">
-                    <img src="../assets/img/search.png" alt="">
-                    <input class="form-controlsearch" type="search" placeholder="Bất cứ thứ gì bạn muốn">
-                </div>
-            </form>
-            <div class="collapse navbar-collapse col-xl-5" id="navbarTogglerDemo02">
+            <div class="col-lg-7 row">
+                <a class="navbar-brand col-lg-3" href="#"><img src="../assets/img/logo.png" alt=""></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <form class="form-inline col-lg-9">
+                    <div class="form-inlinesearch">
+                        <img src="../assets/img/search.png" alt="">
+                        <input class="form-controlsearch" type="search" placeholder="Bất cứ thứ gì bạn muốn">
+                    </div>
+                </form>
+            </div>
+            <div class="collapse navbar-collapse col-lg-5" id="navbarTogglerDemo02">
                 <ul class="navbar-nav mr-auto float-xl-right  float-sm-right">
                     <li class="nav-item">
                         <a class="nav-link" href="#">Cho thuê đồ</a>
@@ -54,7 +57,7 @@
         </nav>
     </div>
     <!-- het logo va menu -->
-    <div class="theSearch">
+    <div class="theSearch ">
         <!-- <input type="text" name="datefilter" value="" > -->
         <div class="container ">
             <form class="form ">
@@ -92,10 +95,10 @@
     <div class="sapxep row">
         <div class="txtsapxep">Sắp xếp theo</div>
         <div class="classbtnss">
-            <button class="btnss lienquan acctive">Liên quan</button>
-            <button class="btnss moinhat">Mới nhất</button>
-            <button class="btnss duocthue">Được thuê</button>
-            <button class="btnss danhgia">Đánh giá</button>
+            <button class="btnss btn btn-outline-secondary lienquan acctive">Liên quan</button>
+            <button class="btnss btn btn-outline-secondary moinhat">Mới nhất</button>
+            <button class="btnss btn btn-outline-secondary duocthue">Được thuê</button>
+            <button class="btnss btn btn-outline-secondary danhgia">Đánh giá</button>
         </div>
         <div class="form-group gia">
             <select class="form-control">
@@ -303,11 +306,15 @@
                     </div>
                 </li>
             </ul>
-
             <div class="map col-xl-4 col-lg-4 col-md-2">
                 <div id='map'></div>
             </div>
         </div>
+    </div>
+
+    <footer>
+        <p>Một sản phẩm của PTUDW-17TN-Nhom16</p>
+    </footer>
 </body>
 
 </html>
