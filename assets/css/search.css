@@ -1,8 +1,3 @@
-* {
-    margin: 0px;
-    padding: 0px
-}
-
 .logovamenu {
     border-bottom: 2px solid #c6c6c663;
 }
@@ -31,17 +26,19 @@ a.nav-link.btn {
 
 div#navbarTogglerDemo02 {
     font-weight: bold;
-    margin-left: 300px;
 }
 
-form.form-inline.my-2.my-lg-0 {
+.form-inlinesearch {
     border-bottom: 1px solid black;
+    max-width: fit-content;
+    /* border-left: 1px solid black; */
 }
 
-input.form-control.mr-sm-2 {
+input.form-controlsearch {
     border: none;
     background-color: #F8F9FA;
-    width: 350px;
+    width: 250px;
+    margin-left: 10px;
 }
 
 form div img {
@@ -50,6 +47,356 @@ form div img {
 
 a.navbar-brand img {
     width: 100px;
-    margin-left: 100px;
-    margin-right: 30px;
+    float: right;
+}
+
+
+/* HET PHAN MENU */
+
+
+/* PHAN DIADIEM THOIGIAN */
+
+input.form-controlMain {
+    background: none;
+    border: none;
+    position: absolute;
+    margin-left: 170px;
+    width: 412px;
+}
+
+.soxuong {
+    float: right;
+    position: relative;
+    border: 2px solid black;
+    transform: rotateZ(45deg);
+    display: block;
+    width: 10px;
+    height: 10px;
+    bottom: -7px;
+}
+
+.soxuong::before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    border: 2px #f0f8fa solid;
+    display: block;
+    background: #f0f8fa;
+    margin-top: -6px;
+    margin-left: -6px;
+}
+
+.from {
+    border-bottom: 1px solid black;
+    /* width: 300px; */
+    max-width: max-content;
+    margin-left: 20px;
+}
+
+.to {
+    border-bottom: 1px solid black;
+    /* width: 300px; */
+    /* width: max-content; */
+    /* width: fit-content; */
+    max-width: max-content;
+    margin-left: 20px;
+}
+
+input.form-control1,
+input.form-control2 {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    margin-left: 2px;
+    width: 150px;
+}
+
+.datetime {
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+fieldset.form-group.date-icon {
+    text-align: center;
+    align-items: center;
+    padding: 0px;
+    margin-top: 1rem;
+}
+
+input#inputDD {
+    margin-left: 2px;
+    border: none;
+    background: none;
+    width: 150px;
+}
+
+div.theSearch div.container img {
+    width: 25px;
+    padding: 0px;
+    margin: 0px;
+    float: left;
+    margin-right: 8px;
+}
+
+.theSearch {
+    text-align: -webkit-center;
+    margin-top: -2px;
+    border: 1px solid #2422227d;
+    background: #f0f8fa;
+    border-radius: 0px 0px 20px 20px;
+    box-shadow: 2px 2px 3px 1px #aaaaaa;
+}
+
+.container {
+    text-align: center;
+    align-items: center;
+    padding: 0;
+    /* border: 1px solid black; */
+    /* width: 100%; */
+    /* margin-top: 10px; */
+    /* padding: 0; */
+}
+
+.diadiem {
+    border-bottom: 1px solid black;
+}
+
+.txtDD {
+    width: fit-content;
+    float: left;
+    color: #66b1f7
+}
+
+
+/* het phan dia diem thoigian */
+
+
+/* phan sap xep */
+
+select.form-control {
+    margin: 0;
+    padding: 0;
+    height: 28px;
+    width: 180px;
+    border: 1px solid black;
+}
+
+button.lienquan {
+    /* align-content: center; */
+    /* align-items: center; */
+    /* align-self: center; */
+    padding: 0;
+}
+
+button.btnss {
+    margin-bottom: 0;
+    margin-top: 0;
+    margin-left: 25px;
+    border: 1px solid black;
+    border-radius: 10px 10px 0 0;
+    padding: 0px 5px;
+}
+
+button.btnss.acctive {
+    background: #78d9f6;
+    color: #050505;
+}
+
+.form-group.gia {
+    float: left;
+    margin: 0;
+    padding: 0;
+    height: 28px;
+    width: 180px;
+    margin-left: 30px;
+}
+
+.txtsapxep {
+    float: left;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    margin-top: 3px;
+    background: none;
+    margin-left: 110px;
+}
+
+.sapxep {
+    /* float: left; */
+    /* border: 1px solid black; */
+    width: 100%;
+    /* align-items: center; */
+    /* text-align: center; */
+    /* text-align-last: center; */
+    margin: 0;
+    padding: 5px;
+    margin-top: 4px;
+    background: #f8f9fa;
+    border-radius: 20px 20px 0 0;
+    border: 1px solid #999696;
+    box-shadow: 1px 1px 1px 1px #727070;
+}
+
+
+/* het phan sap xep */
+
+
+/* Body */
+
+* {
+    margin: 0px;
+    padding: 0px
+}
+
+li.col-xl-4.col-lg-4.col-md-4 {
+    padding: 0px;
+    margin: 0px;
+    text-align: -webkit-center;
+    margin-top: 20px;
+}
+
+ul.stufflist.row {
+    list-style-type: none;
+    margin-left: 23px;
+}
+
+.boderstuff {
+    display: block;
+    width: 300px;
+    height: 320px;
+    background: #ffffffff;
+    border-radius: 7px 7px 10px 10px;
+    position: relative;
+    clear: both;
+    float: left;
+    margin-left: 27px;
+    margin-bottom: 25px;
+}
+
+.txttop {
+    position: absolute;
+    top: 6px;
+    font-weight: bold;
+    left: 65px;
+}
+
+.top {
+    position: absolute;
+    left: 200px;
+    /* bottom: 95px; */
+}
+
+div.top img#star {
+    position: absolute;
+    left: 30px;
+    width: 40px;
+    /* background: black; */
+    /* bottom: -119px; */
+}
+
+.lienhe {
+    position: absolute;
+    background: #dddddd;
+    bottom: 10px;
+    left: 145px;
+    padding: 0px 10px;
+    border-radius: 5px;
+}
+
+.thuengay {
+    position: absolute;
+    left: 20px;
+    bottom: 11px;
+    background: #dddddd;
+    padding: 0px 10px;
+    border-radius: 5px;
+}
+
+.solanthue {
+    position: absolute;
+    left: 85px;
+    width: max-content;
+}
+
+div.saovathue img#star {
+    width: 30px;
+    position: absolute;
+    left: 48px;
+}
+
+.saosanpham {
+    position: absolute;
+    font-weight: bold;
+}
+
+.saovathue {
+    position: absolute;
+    bottom: 65px;
+    left: 20px;
+}
+
+.tensanpham {
+    position: absolute;
+    bottom: 67px;
+    left: 20px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.phithue {
+    position: absolute;
+    bottom: 105px;
+    right: 5px;
+    font-size: 16px;
+    background: white;
+    padding: 0px 6px 0px 6px;
+    border-radius: 12px;
+}
+
+img#heart {
+    width: 50px;
+    background: #ffffff8c;
+    top: 0px;
+    position: absolute;
+    right: 0px;
+    border-radius: 100%;
+    padding: 2px;
+}
+
+.imagestuff {
+    text-align: -webkit-center;
+}
+
+img#main {
+    width: 300px;
+    height: 220px;
+}
+
+ul.stufflist li.col-xl-6 {
+    padding: 0px;
+    margin: 0px;
+    text-align: -webkit-center;
+}
+
+div.stuff div.note img {
+    width: 40px;
+    float: left;
+    margin-right: 5px;
+    background: white;
+    margin-top: -8px;
+}
+
+.note {
+    border: 1px solid #c0adad;
+    border-radius: 7px;
+    width: fit-content;
+    margin: 10px;
+    -webkit-font-smoothing: auto;
+    margin-left: 50px;
+    background: white;
+    padding: 15px;
 }
