@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/votruongan/PTUDW-17TN-Nhom16#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "serve-favicon": "^2.5.0"
   }
 }

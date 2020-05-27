@@ -1,7 +1,10 @@
-const express = require('express')
-const app = express()
-const port = 3000
+const express = require('express');
+var favicon = require('serve-favicon');
+const app = express();
+const port = 3000;
 
+
+app.use(favicon("assets/img/fav.png")); 
 app.use(express.static(__dirname + '/assets/'));
 
 app.get('/', (req, res) =>{
@@ -9,11 +12,17 @@ app.get('/', (req, res) =>{
 })
 
 app.get('/info', (req, res) => {
-	res.sendFile(__dirname + '/html/item_info_page.html');
+	res.sendFile(__dirname + '/html/item-info-page.html');
 })
 
-app.get('/post-stuff', (req, res) =>{
-	res.sendFile(__dirname + '/html/post-stuff.html');
+app.get('/post-item', (req, res) =>{
+	res.sendFile(__dirname + '/html/post-item.html');
 })
+
+
+app.get('/booking', (req, res) =>{
+	res.sendFile(__dirname + '/html/booking.html');
+})
+
 
 app.listen(port, () => console.log(`TUDO app is listening at http://localhost:${port}`))
