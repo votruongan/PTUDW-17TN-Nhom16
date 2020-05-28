@@ -231,10 +231,22 @@ box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: transparent; /* Black background with opacity */
+  background-color: transparent;
   z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
   cursor: pointer; /* Add a pointer on hover */
 }
+
+.overlay-button{
+	top:60% !important;
+	left:85% !important;
+}
+
+.focus{
+    background-color: #000000ab;	
+	display: block;
+}
+
+
 
 footer{
 	margin: 64px;
@@ -242,5 +254,4 @@ footer{
 	text-align: center;
 	font-size: 2vh;
 	font-weight: 300;
-	
 }

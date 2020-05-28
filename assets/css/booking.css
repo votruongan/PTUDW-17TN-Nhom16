@@ -5,6 +5,11 @@
 	text-align: center;
 }
 
+.receiptImage{
+  background-repeat: no-repeat !important;
+  background-size: 100% auto !important;
+}
+
 button.stepNav{
 	color: #16A32C;
     background-color: transparent;
@@ -24,4 +29,27 @@ button.stepNav:not(.active):hover{
 button.stepNav.active{
 	background-color: #16A32C;
 	color: white;
+}
+
+@media only screen and (max-width: 600px) {
+.detail-area b{
+	font-size: 90%;
+
+}
+
+.not-cover-receipt{
+	width: 100%;
+    background-color: #00000051;	
+	display: block;
+	z-index: 1;
+}
+}
+
+
+@media only screen and (min-width: 600px) {
+.not-cover-receipt{
+	width: 60%;
+    background-color: #00000051;	
+	display: block;
+}
 }
