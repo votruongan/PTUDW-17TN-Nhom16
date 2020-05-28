@@ -63,3 +63,17 @@ function execImplement(template,index,str){
 	return template.replace(tmp,str);
 }
 
+
+
+//INIT Page
+function basePageInit(){
+	var arr = document.getElementsByClassName("backButton");
+	for (let ele of arr){
+		console.log(ele);
+		ele.onclick = function(){ window.history.back()};
+	}
+}
+
+basePageInit();
+
+
