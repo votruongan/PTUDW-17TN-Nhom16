@@ -42,7 +42,10 @@ input.form-controlsearch {
 }
 
 form div img {
-    width: 20px;
+    width: 22px;
+    height: 22px;
+    padding: 0px;
+    margin: 0px;
 }
 
 a.navbar-brand img {
@@ -66,64 +69,50 @@ a.navbar-brand.col-lg-3 {
     margin: 0px;
 }
 
-img.imageIcon {
+input#fileInput {
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.groupUpFile {
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+.containerUpfile {
+    margin: 0px;
+    padding: 0px;
+    border: 1px solid black;
+    width: -webkit-fill-available;
+    float: left;
+    height: 200px;
+    overflow: scroll;
+}
+
+button.question img {
     width: 25px;
+    height: 25px;
+}
+
+button.question {
+    border: none;
+    background: none;
     padding: 0px;
     margin: 0px;
-}
-
-button.btn.btn-light.btnReg {
+    float: left;
     margin-left: 10px;
-    border: 1px solid black;
 }
 
-.txtbtnreg {
-    margin-top: 25px;
-}
-
-button.btn.btn-light.btnApple {
-    width: -webkit-fill-available;
-    height: 45px;
-    margin-top: 15px;
-    border: 1px solid black;
-}
-
-button.btn.btn-light.btnFacebook {
-    width: -webkit-fill-available;
-    border: 1px solid black;
-    margin-top: 15px;
-    height: 45px;
-}
-
-button.btn.btn-light.btnGoogle {
-    width: -webkit-fill-available;
-    border: 1px solid black;
-    height: 45px;
-}
-
-.d-inline-flex.txtOr {
-    width: -webkit-fill-available;
-    justify-content: center;
-    margin-top: 20px;
-    margin-bottom: 15px;
-}
-
-.contentbody.bg-white.text-center {
-    padding-bottom: 40px;
-}
-
-button.btn.btn-dark {
-    width: -webkit-fill-available;
-    background: black;
-    color: white;
-    height: 45px;
-}
-
-.d-inline-flex.txtWelcome {
-    margin-top: 45px;
-    font-size: 30px;
+span.icon-correct {
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    display: none;
+    top: 38px;
+    right: 7px;
     font-weight: bold;
-    margin-bottom: 20px;
+    padding: 0px;
+    margin: 0px;
 }
 
 span.icon-error {
@@ -141,13 +130,22 @@ span.icon-error {
     position: relative;
 }
 
-a.forgotPass {
-    float: right;
-    margin: 0px;
-    padding: 0px;
-    margin-top: 8px;
-    color: #002bff;
-    font-size: 14px;
+.contentbody.bg-white.text-center {
+    padding-bottom: 40px;
+}
+
+button.btn.btn-dark {
+    width: -webkit-fill-available;
+    background: black;
+    color: white;
+    height: 45px;
+}
+
+.d-inline-flex.txtSignUp {
+    margin-top: 45px;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
 }
 
 label {
