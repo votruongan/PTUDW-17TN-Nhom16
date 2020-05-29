@@ -1,5 +1,6 @@
 var temp = document.getElementsByClassName("form-controlInput");
 var temp1 = document.getElementsByClassName("icon-error");
+var temp2 = document.getElementsByClassName("time")
 
 function btnTiepTucdangky() {
     var check = 1;
@@ -13,54 +14,95 @@ function btnTiepTucdangky() {
             temp1[i].style.display = "none";
         }
     }
+    if (temp2.length == 0) {
+        temp1[4].style.display = "block";
+        $(".containerUpfile").css("border", "1px solid red")
+    } else {
+        temp1[i].style.display = "none";
+        $(".containerUpfile").css("border", "1px solid black")
+    }
     if (check == 1) {
-        //Tiến hành truy vấn đăng ký
+        $(".panel1").css("display", "none")
+        $(".panel2").css("display", "block")
+        window.scrollTo(0, 0);
+
     }
 }
+
+function btnquaylai() {
+    $(".panel1").css("display", "block")
+    $(".panel2").css("display", "none")
+    window.scrollTo(0, 0);
+}
 $("#InputPassword1").keyup(function() {
+    console.log("Loi 1")
+
     var pas1 = $("#InputPassword").val()
     var pas2 = $(this).val()
     if (pas1 == pas2 && pas1 != "" && pas2 != "") {
         $(".icon-correct").css("display", "block")
     } else {
-        temp1[3].style.display = "block";
+        temp1[2].style.display = "block";
         $(".icon-correct").css("display", "none")
 
     }
 })
 $("#InputPassword").keyup(function() {
+    console.log("Loi 2")
+
     var pas1 = $("#InputPassword1").val()
     var pas2 = $(this).val()
     if (pas1 == pas2 && pas1 != "" && pas2 != "") {
         $(".icon-correct").css("display", "block")
     } else {
-        temp1[3].style.display = "block";
+        temp1[2].style.display = "block";
         $(".icon-correct").css("display", "none")
 
     }
 })
 
 //UPLOAD FILE
-function uploadFile(files, index) {
-    var length = files.length
-    if (index == length) {
-        return;
-    }
-    var file = files[index];
-    var fileReader = new FileReader();
-    fileReader.onload = function() {
-        var str = '<div class="col-4 float-left" style="width:100px; margin:2px; padding:0px;">' +
-            '<img class="img-thumbnail js-file-image" style="width: 100px;"' +
-            '</div>';
-        $('.js-file-list').append(str);
 
-        var imageSrc = event.target.result;
-        $('.js-file-image').last().attr('src', imageSrc);
-        uploadFile(files, index + 1)
-    };
-    fileReader.readAsDataURL(file);
+$(".hinh").click(function() {
+    console.log("Loi 4")
+    $("input[id='files']").click();
+});
+
+function handleFileSelect(evt) {
+    var files = evt.target.files; // FileList object
+    // Loop through the FileList and render image files as thumbnails.
+    console.log("Loi 5")
+
+    for (var i = 0, f; f = files[i]; i++) {
+        // Only process image files.
+        if (!f.type.match('image.*')) {
+            continue;
+        }
+        var reader = new FileReader(); //biến hiện images ra   
+        // Closure to capture the file information.
+        reader.onload = (function(theFile) {
+                return function(e) {
+                    // render thumbnail.
+                    var span = document.createElement('span');
+                    span.classList.add('csshinhanh')
+                    span.innerHTML = ['<img class="thumb" src="', e.target.result, '" title="', escape(theFile.name), '"/>', '<i class="fa fa-times time " ></i>'].join('');
+                    document.getElementById('previewImg').insertBefore(span, null); //chèn images vào span dựng sẵn có ID previewImg
+
+                };
+            })
+            (f);
+        // Read in the image file as a data URL.     
+        reader.readAsDataURL(f);
+    }
 }
-$('#fileInput').on('change', function() {
-    var files = $(this)[0].files;
-    uploadFile(files, 0)
+
+document.getElementById('files').addEventListener('change', handleFileSelect, false);
+
+//hàm xóa
+$(document).on('click', ".time", function() {
+    if (confirm("Bạn Có Muốn Xóa ?")) {
+        $(this).closest("span").fadeOut();
+        $("#files").val(null); //xóa tên của file trong input
+    } else
+        return false;
 });
