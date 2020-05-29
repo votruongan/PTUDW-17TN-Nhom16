@@ -22,8 +22,17 @@ function btnTiepTucdangky() {
         $(".containerUpfile").css("border", "1px solid black")
     }
     if (check == 1) {
-        //Tiến hành Chuyeenr tieesp
+        $(".panel1").css("display", "none")
+        $(".panel2").css("display", "block")
+        window.scrollTo(0, 0);
+
     }
+}
+
+function btnquaylai() {
+    $(".panel1").css("display", "block")
+    $(".panel2").css("display", "none")
+    window.scrollTo(0, 0);
 }
 $("#InputPassword1").keyup(function() {
     console.log("Loi 1")
@@ -33,7 +42,7 @@ $("#InputPassword1").keyup(function() {
     if (pas1 == pas2 && pas1 != "" && pas2 != "") {
         $(".icon-correct").css("display", "block")
     } else {
-        temp1[3].style.display = "block";
+        temp1[2].style.display = "block";
         $(".icon-correct").css("display", "none")
 
     }
@@ -46,7 +55,7 @@ $("#InputPassword").keyup(function() {
     if (pas1 == pas2 && pas1 != "" && pas2 != "") {
         $(".icon-correct").css("display", "block")
     } else {
-        temp1[3].style.display = "block";
+        temp1[2].style.display = "block";
         $(".icon-correct").css("display", "none")
 
     }

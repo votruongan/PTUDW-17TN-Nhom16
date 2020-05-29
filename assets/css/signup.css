@@ -130,13 +130,17 @@ span.icon-error {
     position: relative;
 }
 
+.form-group label {
+    float: left;
+}
+
 .contentbody.bg-white.text-center {
     padding-bottom: 40px;
 }
 
 button.btn.btn-dark {
     width: -webkit-fill-available;
-    background: black;
+    background: rgb(68, 68, 68);
     color: white;
     height: 45px;
 }
@@ -148,13 +152,8 @@ button.btn.btn-dark {
     margin-bottom: 20px;
 }
 
-label {
-    float: left;
-}
-
 .contentLogin {
     display: inline-block;
-    width: 460px;
 }
 
 
@@ -163,6 +162,79 @@ label {
 * {
     padding: 0px;
     margin: 0px;
+}
+
+@keyframes example {
+    from {
+        background-color: white;
+        color: black;
+        left: 0px;
+        top: 0px;
+    }
+    to {
+        background-color: #7df7af;
+        left: 0px;
+        top: 60px;
+    }
+}
+
+.EmailThongbao {
+    margin-top: 0px;
+    margin-bottom: 100px;
+    position: relative;
+    animation-name: example;
+    animation-duration: 4s;
+    animation-fill-mode: both;
+}
+
+button.btnquaylai.btn.btn-secondary {
+    width: 120px;
+    height: 50px;
+    margin-top: 20px;
+}
+
+button.btnxacnhan.btn.btn-success {
+    width: 200px;
+    height: 50px;
+    margin-top: 20px;
+}
+
+input#defaultCheck1 {
+    float: left;
+}
+
+.dongydieukhoan {
+    margin-top: 40px;
+}
+
+input#maxacthuc {
+    margin-right: 10px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 3px 1px grey;
+    text-align: center;
+}
+
+.maxacthuc {
+    display: inline-flex;
+    margin-top: 15px;
+}
+
+.txtmaxacthuc {
+    width: fit-content;
+    align-self: center;
+    margin-right: 10px;
+}
+
+.xacthucsdt {
+    display: -webkit-inline-box;
+    -webkit-box-pack: center;
+    margin-bottom: 3px;
+}
+
+.sdtxacthuc {
+    /* width: fit-content; */
+    margin-left: 5px;
+    /* font-weight: bold; */
 }
 
 button.btn.btn-dark.btndangky {
