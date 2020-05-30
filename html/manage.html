@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TUDO - Đồ gì cũng có</title>
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/fonts.css" rel="stylesheet">
+    <link href="../assets/css/styles.css" rel="stylesheet">
+    <link href="../assets/css/all.css" rel="stylesheet">
+    <link href="../assets/css/manage.css" rel="stylesheet">
+    <script defer src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script defer src="../assets/js/manage.js"></script>
+</head>
+
+<body>
+    <!-- Hearder -->
+    <div class="logovamenu">
+        <nav class="navbar row navbar-expand-lg navbar-light bg-light">
+            <div class="col-lg-7 row">
+                <a class="navbar-brand col-lg-3" href="#"><img src="../assets/img/logo.png" alt=""></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <form class="form-inline col-lg-9">
+                    <div class="form-inlinesearch">
+                        <img src="../assets/img/search.png" alt="">
+                        <input class="form-controlsearch" type="search" placeholder="Bất cứ thứ gì bạn muốn">
+                    </div>
+                </form>
+            </div>
+            <div class="collapse navbar-collapse col-lg-5" id="navbarTogglerDemo02">
+                <ul class="navbar-nav mr-auto float-xl-right  float-sm-right">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Cho thuê đồ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Tìm hiểu thêm</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Đăng ký</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Đăng nhập</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn" href="#"><img src="../assets/img/no_user.png" alt=""></a>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+    </div>
+    <!-- het header -->
+    <!-- the phan trang -->
+    <div class="panel-post">
+        <img class="panel-post-img" style="width: 100%;height: 70px;" src="" alt="">
+        <div class="quanlydovat" style="font-weight:bold">Quản lý đồ của bạn</div>
+    </div>
+    <!-- Het the phan trang -->
+    <!-- manage -->
+    <div class="container">
+        <div class="mystuff row justify-content-left" style="margin-top: 10px;">
+            <div class="imgstuff col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                <div class="imagestuff">
+                    <img id="main" src="../assets/img/stuff/image2.png" alt="">
+                    <img id="heart" src="../assets/img/heart.png" alt="" />
+                    <div class="phithue">200k/day</div>
+                    <div class="tinhtrang">
+                        <div class="tentinhtrang"> <span class="daucham"></span> Đang cho thuê</div>
+                    </div>
+                </div>
+            </div>
+            <div class="allinfostuff col-xs-12 col-sm-12 col-md-4 col-lg-4" style="justify-content:center">
+                <div class="infostuff" style="margin-left: 5px; display:inline-grid">
+                    <div class="stuffname" style="font-weight: bold;font-size: 25px;display: inline-flex;">MACBOOK PRO 2019</div>
+                    <div class="danhmuc d-inline-flex" style="font-weight: bold;font-size: 20px;">
+                        Danh mục:
+                        <div class="tendanhmuc" style="font-weight: normal; margin-left: 5px;"> Đồ điện tử</div>
+                    </div>
+                    <div class="saovathue d-inline-flex" style="margin-top: 5px;">
+                        <div class="saosanpham">4.8/5</div>
+                        <img id="star" src="../assets/img/star.png" alt="" style="width: 30px;margin-left: 5px;">
+                        <div class="solanthue" style="margin-left: 5px;">(52 lượt cho thuê)</div>
+                    </div>
+                    <div style="font-weight: bold;width: fit-content; display: inline-flex;">Thời gian cho thuê:</div>
+                    <strong class="d-inline-flex" style="margin-left: 50px;margin-top: 5px;">Từ:<div class="timefrom"style="font-weight: normal; margin-left: 5px;" >11/5/2020 8:00 AM</div>
+                    </strong>
+                    <strong class="d-inline-flex" style="margin-left: 50px;">Đến:<div class="timeto"style="font-weight: normal; margin-left: 5px;" >13/5/2020 8:00 AM</div>
+                    </strong>
+                    <strong style="margin-top:5px;display:inline-block" class="d-inline-flex">Tổng tiền thu nhập:
+                    <div class="Tongtienthunhap" style="font-weight: normal; margin-left: 5px;">400.000</div>
+                    <div style="font-weight: normal; margin-left: 5px;">VNĐ</div>
+                    </strong>
+                </div>
+            </div>
+            <div class="allrenterinfocol-xs-12 col-sm-12 col-md-4 col-lg-4">
+                <div class="renterinfo">
+                    <div style="font-weight: bold;font-size: 22px;">Thông tin người thuê</div>
+                    <div class="column1" style="width: fit-content; float:left">
+                        <div class="rentername" style="font-weight: bold;font-size: 22px;margin-top: 5px;">Trần Đình Tôn Hiếu</div>
+                        <strong class="d-inline-flex" style="font-weight: bold;font-size: 16px;">Ngày đăng ký:
+                        <div class="signupdate"style="font-weight: normal; margin-left: 5px;">10/04/2020</div></strong>
+                    </div>
+                    <img src="https://downloadwap.com/thumbs2/wallpapers/p2/new/15/Y2fLYUjz.jpg" alt="" style="margin-top: 5px; border: 1px solid black; margin-left: 20px;width:55px;height: 55px; border-radius: 100%; object-fit: cover;">
+                    <p style="margin-top: 12px;margin-bottom: 0.5rem;font-size: 16px;">XÁC THỰC THÔNG TIN CÁ NHÂN</p>
+                    <strong style="margin-left: 25px;">Địa chỉ email: <div style="float:right;font-weight: normal;">Đã xác thực <img style="width: 20px;height: 20px;" src="../assets/img/Tick.png" alt=""></div></strong>
+                    <strong style="display: block;margin-left: 25px;">Số điện thoại:<div style="float:right;font-weight: normal;">Đã xác thực <img style="width: 20px;height: 20px;" src="../assets/img/Tick.png" alt=""></div></strong>
+                    <strong style="display: block;margin-left: 25px;">CMND/CCCD:<div style="float:right;font-weight: normal;">Đã xác thực <img style="width: 20px;height: 20px;" src="../assets/img/Tick.png" alt=""></div></strong>
+
+                </div>
+            </div>
+        </div>
+        <div class="mystuff row justify-content-left" style="margin-top: 10px;">
+            <div class="imgstuff col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                <div class="imagestuff">
+                    <img id="main" src="../assets/img/stuff/image2.png" alt="">
+                    <img id="heart" src="../assets/img/heart.png" alt="" />
+                    <div class="phithue">200k/day</div>
+                    <div class="tinhtrang">
+                        <div class="tentinhtrang"> <span class="daucham"></span> Đang cho thuê</div>
+                    </div>
+                </div>
+            </div>
+            <div class="allinfostuff col-xs-12 col-sm-12 col-md-4 col-lg-4" style="justify-content:center">
+                <div class="infostuff" style="margin-left: 5px; display:inline-grid">
+                    <div class="stuffname" style="font-weight: bold;font-size: 25px;display: inline-flex;">MACBOOK PRO 2019</div>
+                    <div class="danhmuc d-inline-flex" style="font-weight: bold;font-size: 20px;">
+                        Danh mục:
+                        <div class="tendanhmuc" style="font-weight: normal; margin-left: 5px;"> Đồ điện tử</div>
+                    </div>
+                    <div class="saovathue d-inline-flex" style="margin-top: 5px;">
+                        <div class="saosanpham">4.8/5</div>
+                        <img id="star" src="../assets/img/star.png" alt="" style="width: 30px;margin-left: 5px;">
+                        <div class="solanthue" style="margin-left: 5px;">(52 lượt cho thuê)</div>
+                    </div>
+                    <div style="font-weight: bold;width: fit-content; display: inline-flex;">Thời gian cho thuê:</div>
+                    <strong class="d-inline-flex" style="margin-left: 50px;margin-top: 5px;">Từ:<div class="timefrom"style="font-weight: normal; margin-left: 5px;" >11/5/2020 8:00 AM</div>
+                    </strong>
+                    <strong class="d-inline-flex" style="margin-left: 50px;">Đến:<div class="timeto"style="font-weight: normal; margin-left: 5px;" >13/5/2020 8:00 AM</div>
+                    </strong>
+                    <strong style="margin-top:5px;display:inline-block" class="d-inline-flex">Tổng tiền thu nhập:
+                    <div class="Tongtienthunhap" style="font-weight: normal; margin-left: 5px;">400.000</div>
+                    <div style="font-weight: normal; margin-left: 5px;">VNĐ</div>
+                    </strong>
+                </div>
+            </div>
+            <div class="allrenterinfocol-xs-12 col-sm-12 col-md-4 col-lg-4">
+                <div class="renterinfo">
+                    <div style="font-weight: bold;font-size: 22px;">Thông tin người thuê</div>
+                    <div class="column1" style="width: fit-content; float:left">
+                        <div class="rentername" style="font-weight: bold;font-size: 22px;margin-top: 5px;">Trần Đình Tôn Hiếu</div>
+                        <strong class="d-inline-flex" style="font-weight: bold;font-size: 16px;">Ngày đăng ký:
+                        <div class="signupdate"style="font-weight: normal; margin-left: 5px;">10/04/2020</div></strong>
+                    </div>
+                    <img src="https://downloadwap.com/thumbs2/wallpapers/p2/new/15/Y2fLYUjz.jpg" alt="" style="margin-top: 5px; border: 1px solid black; margin-left: 20px;width:55px;height: 55px; border-radius: 100%; object-fit: cover;">
+                    <p style="margin-top: 12px;margin-bottom: 0.5rem;font-size: 16px;">XÁC THỰC THÔNG TIN CÁ NHÂN</p>
+                    <strong style="margin-left: 25px;">Địa chỉ email: <div style="float:right;font-weight: normal;">Đã xác thực <img style="width: 20px;height: 20px;" src="../assets/img/Tick.png" alt=""></div></strong>
+                    <strong style="display: block;margin-left: 25px;">Số điện thoại:<div style="float:right;font-weight: normal;">Đã xác thực <img style="width: 20px;height: 20px;" src="../assets/img/Tick.png" alt=""></div></strong>
+                    <strong style="display: block;margin-left: 25px;">CMND/CCCD:<div style="float:right;font-weight: normal;">Đã xác thực <img style="width: 20px;height: 20px;" src="../assets/img/Tick.png" alt=""></div></strong>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- het manage -->
+    <!-- khám phá danh mục -->
+    <div class="container">
+        <br/>
+        <div class="khampha row justify-content-left">
+            <div class="col-12">
+                <h2>Khám phá theo các danh mục:</h2>
+            </div>
+        </div>
+        <br/>
+        <div class="">
+            <div class="card-columns">
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-2 p-2">
+                    <div class="card shadow text-center border-0">
+                        <div class="category-card-body cat-sports">
+                            Thể thao <br/>& dã ngoại
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-2 p-2">
+                    <div class="card shadow text-center border-0">
+                        <div class="category-card-body cat-av">
+                            Âm thanh <br/>& ánh sáng
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-2 p-2">
+                    <div class="card shadow text-center border-0">
+                        <div class="category-card-body cat-books">
+                            Sách <br/>& tài liệu
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-4 col-lg-2 p-2">
+                    <div class="card shadow text-center border-0">
+                        <div class="category-card-body cat-decor">
+                            Nội thất <br/>& trang trí
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-4 col-lg-2 p-2">
+                    <div class="card shadow text-center border-0">
+                        <div class="category-card-body cat-households">
+                            Thiết bị <br/>gia dụng
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-4 col-lg-2 p-2">
+                    <div class="card shadow text-center border-0">
+                        <div class="category-card-body cat-fashion">
+                            Thời trang
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-4 col-lg-2 p-2">
+                    <div class="card shadow text-center border-0">
+                        <div class="category-card-body cat-electronics">
+                            Đồ điện tử
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-4 col-lg-2 p-2">
+                    <div class="card shadow text-center border-0">
+                        <div class="category-card-body cat-instruments">
+                            Nhạc cụ
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-4 col-lg-2 p-2">
+                    <div class="card shadow text-center border-0">
+                        <div class="category-card-body cat-tools">
+                            Dụng cụ
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-4 col-lg-2 p-2">
+                    <div class="card shadow text-center border-0">
+                        <div class="category-card-body cat-services">
+                            Dịch vụ
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-4 col-lg-2 p-2">
+                    <div class="card shadow text-center border-0">
+                        <div class="category-card-body cat-all">
+                            <p>Tất cả <br/>danh mục</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Het kham pha danh muc -->
+</body>
+
+</html>

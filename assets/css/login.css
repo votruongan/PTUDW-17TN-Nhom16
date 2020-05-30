@@ -61,6 +61,10 @@ a.navbar-brand.col-lg-3 {
     justify-content: center;
 }
 
+input:focus {
+    outline: 0;
+}
+
 * {
     padding: 0px;
     margin: 0px;

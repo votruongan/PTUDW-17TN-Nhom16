@@ -16,6 +16,10 @@ ul li.nav-item a.nav-link.btn img {
     margin: 0;
 }
 
+input:focus {
+    outline: 0;
+}
+
 .navbar-light .navbar-nav .nav-link {
     color: black;
 }
@@ -253,6 +257,13 @@ button.btnss.acctive {
     padding: 0px
 }
 
+.info {
+    width: 300px;
+    height: 100px;
+    background: white;
+    border-radius: 0 0 7px 7px;
+}
+
 .bodychothue.row {
     background: #ffffffa6;
 }
@@ -284,7 +295,7 @@ ul.stufflist.row {
     display: block;
     width: 300px;
     height: 320px;
-    background: #ffffffff;
+    background: #e3e0e099;
     border-radius: 7px 7px 10px 10px;
     position: relative;
     clear: both;
@@ -374,22 +385,25 @@ div.saovathue img#star {
 }
 
 img#heart {
-    width: 50px;
+    width: 45px;
     background: #ffffff8c;
     top: 0px;
     position: absolute;
     right: 0px;
     border-radius: 100%;
-    padding: 2px;
+    padding: 0px;
 }
 
 .imagestuff {
     text-align: -webkit-center;
+    border-radius: 7px 7px 0px 0px;
 }
 
 img#main {
     width: 300px;
     height: 220px;
+    object-fit: cover;
+    border-radius: 7px 7px 0px 0px;
 }
 
 ul.stufflist li.col-xl-6 {
