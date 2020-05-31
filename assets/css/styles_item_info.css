@@ -123,3 +123,10 @@
 hr {
     border-top: 1px solid rgba(0, 0, 0, 0.15)
 }
+
+.absolute-container {
+    position: absolute;
+    top: 200px;
+    left: 10%;
+    right: 10%;
+}
