@@ -28,5 +28,13 @@ app.get('/leasing', (req, res) =>{
 	res.sendFile(__dirname + '/html/leasing.html');
 })
 
+app.get('/signup', (req, res) =>{
+	res.sendFile(__dirname + '/html/signup.html');
+})
+
+app.get('/profile', (req, res) => {
+	res.sendFile(__dirname + '/html/profile.html')
+})
+
 
 app.listen(port, () => console.log(`TUDO app is listening at http://localhost:${port}`))
