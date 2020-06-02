@@ -106,7 +106,7 @@ body {
 .card{
 	padding:0px;
 }
-.shadow .category-card-body{
+.card .category-card-body{
   width: 164px;
   height: 164px;
   padding: 6px;
@@ -161,9 +161,16 @@ box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .category-card-body:hover{
-	background: #3B9A5F;
+	background: #0AAE4F;
 	-webkit-animation: fadein 1s;
 	animation: fadein 1s;
+	padding-top:50px !important;
+	text-align: center;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }
 
 .shadow .category-card-body.cat-all{

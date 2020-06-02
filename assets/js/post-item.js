@@ -1,5 +1,6 @@
 var continueButton = document.getElementById("continueButton");
 var backButton = document.getElementById("backButton");
+var mapPanel = document.getElementById("chooseMapPanel");
 var currentPanel = 0
 var panels = document.getElementsByClassName("postObjectPanel");
 var formNames = ["basicInfo"];
@@ -15,7 +16,6 @@ function basicInfoValidation(){
 		}
 		if (!Number.isInteger(key))
 			continue;
-		console.log(key)
 		var help;
 		try{
 			help = formObj[key].parentElement.getElementsByClassName("help-block")[0];
@@ -64,14 +64,34 @@ function previousPanel(){
 	}
 }
 
-
-
-var arr = document.getElementsByClassName("help-block");
-var i = 0;
-for (i = 0; i < arr.length; i++){
-	arr[i].style.display = "none";
+function openChooseLocationPanel(){
+	mapPanel.classList.add("focus");
+}
+function cancelChooseLocationPanel(){
+	mapPanel.classList.remove("focus");
 }
 
-continueButton.onclick = nextPanel;
-backButton.style.visibility = "hidden";
-backButton.onclick = previousPanel;
+function chooseLocation(){
+	mapPanel.classList.remove("focus");
+	var formObj = document.forms[formNames[currentPanel]];
+	formObj["address"].value = document.getElementById("mapAddress").innerHTML;
+}
+
+function initPage(){
+	var arr = document.getElementsByClassName("help-block");
+	var i = 0;
+	for (i = 0; i < arr.length; i++){
+		arr[i].style.display = "none";
+	}
+	continueButton.onclick = nextPanel;
+	backButton.style.visibility = "hidden";
+	backButton.onclick = previousPanel;
+	
+	// set the map button
+	document.getElementById("openMapButton").onclick = openChooseLocationPanel;
+	document.getElementById("cancelMapButton").onclick = cancelChooseLocationPanel;
+	document.getElementById("chooseMapButton").onclick = chooseLocation;
+}
+
+
+initPage();
