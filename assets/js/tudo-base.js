@@ -66,14 +66,60 @@ function execImplement(template,index,str){
 
 
 //INIT Page
-function basePageInit(){
-	var arr = document.getElementsByClassName("backButton");
-	for (let ele of arr){
-		console.log(ele);
-		ele.onclick = function(){ window.history.back()};
+var choosedStarButton = 0;
+var starButtonArray;
+function activateStarButton(addingClass="active"){
+	if (typeof addingClass != 'string')
+		addingClass = "active";
+	var starIndex = parseInt(this.id.split("-")[1]);
+	for (var i = 0; i < starIndex; i++){
+		starButtonArray[i].classList.add(addingClass);
+	}
+}
+function resetStarButton(removingClass="active"){
+	if (typeof removingClass != 'string')
+		removingClass = "active";
+	for (let ele of starButtonArray){
+		ele.classList.remove(removingClass);
+	}
+}
+function setStarButton(){
+	var starIndex = parseInt(this.id.split("-")[1]);
+	resetStarButton("active");
+	resetStarButton("pinned");
+	for (var i = 0; i <= starIndex; i++){
+		starButtonArray[i].classList.add("pinned");
 	}
 }
 
+function basePageInit(){
+	var arr = document.getElementsByClassName("backButton");
+	for (let ele of arr){
+		ele.onclick = function(){ window.history.back()};
+	}
+	for (i = 0; i < 10; i++){
+		var e = document.getElementById("panel"+i);
+		if (e == null || e == undefined)
+			continue;
+		e.classList.add("d-none");
+		e.classList.add("d-block");
+		if (i == 0){
+			e.classList.remove("d-none");
+		} else {
+			e.classList.remove("d-block");			
+		}
+	}
+	starButtonArray = document.getElementsByClassName("star-button");
+	for (i = 0; i < starButtonArray.length; i++){
+		starButtonArray[i].id = "starButton-"+i;
+		starButtonArray[i].onmouseover = activateStarButton;
+		starButtonArray[i].onmouseout = resetStarButton;
+		starButtonArray[i].onclick = setStarButton;
+	}
+	
+}
+
 basePageInit();
+
 
 

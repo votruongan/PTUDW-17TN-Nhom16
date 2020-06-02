@@ -29,4 +29,9 @@ app.get('/leasing', (req, res) =>{
 })
 
 
+app.get('/forgot-password', (req, res) =>{
+	res.sendFile(__dirname + '/html/forgot-password.html');
+})
+
+
 app.listen(port, () => console.log(`TUDO app is listening at http://localhost:${port}`))

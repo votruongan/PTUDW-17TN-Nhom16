@@ -273,3 +273,17 @@ footer{
 	font-size: 2vh;
 	font-weight: 300;
 }
+
+.star-button{
+	color:#fff;
+	width:64px;
+	height:64px;
+	border: 0px;
+	background: url("../img/star.png");
+	background-size: 100% 100%;
+	opacity: 0.3;
+}
+
+.star-button.active, .star-button:hover, .star-button.pinned{
+	opacity: 1;
+}
