@@ -1,0 +1,136 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TUDO - Thông tin cá nhân</title>
+    <!-- CSS Styles -->
+    <link href="css/styles_item_info.css" rel="stylesheet">
+    <link href="css/fonts.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet" >
+    <link href="css/all.css" rel="stylesheet" >
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Optional JavaScript -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+    <!-- Navigation bar -->
+	<nav class="navbar navbar-light bg-light">
+            <a class="navbar-brand" href=".">
+              <img src="img/logo.png" width="140" height="36" alt="">
+            </a>
+            <div class="navbar-brand d-none d-lg-block" href="#">
+                <a class="navbar-brand" href="post-item">
+                  Cho thuê đồ
+                </a>
+                <a class="navbar-brand" href="#">
+                  Tìm hiểu thêm
+                </a>
+                <a class="navbar-brand" href="#">
+                  Đăng ký
+                </a>
+                <a class="navbar-brand" href="#">
+                  Đăng nhập
+                </a>
+                <a class="navbar-brand" href="#" onclick="location.href='profile'">
+                      <img src="img/no_user.png" width="36" height="36" alt="">
+                </a>
+            </div>
+          </nav>
+
+    <div class="w-100 position-relative">
+    <div style="z-index: 5;">
+        <!-- Background image -->
+        <img src="img/profile_background.png" alt="" class="w-100" style="height: 300px; z-index: 4;">
+    </div>
+    <div class="absolute-container">
+        <div class="d-flex flex-row justify-content-start align-items-start">
+            <!-- Avatar -->
+            <img src="https://cuoifly.tuoitre.vn/820/0/ttc/r/2020/04/27/hong-que-me-sang-vi-ve-dep-cua-lee-min-ho-em-se-cho-truoc-cua-nha-anh-85250a-1588003308.jpg" alt=""
+            style="width: 200px; height: 200px; margin-left: 7%;" class="circle-img border border-secondary">
+            <div class="d-flex flex-row justify-content-end align-items-start w-100">
+                <button type="button" class="btn btn-primary shadow-sm" 
+                style="min-height: 50px; width: 200px; margin-top: 10px;">
+                        Sửa thông tin
+                </button>
+            </div>
+        </div>
+        <div class="flex-box" style="margin-left: 5%; width: 95%; margin-right: 5%;">
+            <!-- Info box -->
+            <div class="flex-4 d-flex flex-column mt-4" style="height: 500px;">
+                <h2 class="w-100">LÊ MINH HỐ</h2>
+                <p style="font: small;">Ngày tạo: 10/4/2020</p>
+                <b class="mt-3">XÁC THỰC THÔNG TIN CÁ NHÂN</b>
+                <div class="d-flex flex-row w-100 mt-3">
+                    <p style="width: 40%;">Địa chỉ email</p>
+                    <p style="width: 50%;">hieutdt@vng.com.vn</p>
+                    <img src="img/checked.png" alt="" style="width: 20px; height: 20px;">
+                </div>
+                <div class="d-flex flex-row w-100">
+                    <p style="width: 40%;">Số điện thoại</p>
+                    <p style="width: 50%;">+84 967502000</p>
+                    <img src="img/checked.png" alt="" style="width: 20px; height: 20px;">
+                </div>
+                <div class="d-flex flex-row w-100">
+                    <p style="width: 40%;">Chứng minh nhân dân</p>
+                    <p style="width: 50%;">Đã xác thực</p>
+                    <img src="img/checked.png" alt="" style="width: 20px; height: 20px;">
+                </div>
+            </div>
+            <div class="flex-6 ml-5" style="height: 500px;">
+                <b>ĐÁNH GIÁ TỪ TUDO VÀ CỘNG ĐỒNG</b>
+                <span class="d-flex flex-row bd-highlight mb-3 align-items-middle mt-3">
+                    <h3>4.8</h3>
+                    <div class="bd-highlight">
+                    <img src="img/star.png" alt="" style="width: 30px; height:30px">
+                        (52 lượt cho thuê)
+                    </div>
+                </span>
+                <!-- Review box -->
+                <div class="d-flex flex-row mb-1">
+                    <img src="img/no_user.png" alt=""
+                        style="width:84px; height:84px" class="circle-img mr-2">
+                    <div class="d-flex flex-column">
+                        <div class="d-flex flex-row mb-1">
+                            <img src="img/star.png" alt="" style="width: 30px; height:30px">
+                            <img src="img/star.png" alt="" style="width: 30px; height:30px">
+                            <img src="img/star.png" alt="" style="width: 30px; height:30px">
+                            <img src="img/star.png" alt="" style="width: 30px; height:30px">
+                            <img src="img/star.png" alt="" style="width: 30px; height:30px">
+                        </div>
+                        <div class="d-flex flex-row mb-1">
+                            <b class="mr-1">Võ Trường An</b>
+                            <p>20/4/2020</p>
+                        </div>
+                        <div>Sed ac massa lacinia, pretium mauris ut, luctus nulla. Donec est tellus, porta id pharetra pretium, dapibus sit amet sapien. Integer venenatis eros vitae metus pulvinar, ac tristique massa dapibus.</div>
+                    </div>
+                </div>
+                <!-- Review box -->
+                <div class="d-flex flex-row mb-1 mt-4">
+                    <img src="img/no_user.png" alt=""
+                        style="width:84px; height:84px" class="circle-img mr-2">
+                    <div class="d-flex flex-column">
+                        <div class="d-flex flex-row mb-1">
+                            <img src="img/star.png" alt="" style="width: 30px; height:30px">
+                            <img src="img/star.png" alt="" style="width: 30px; height:30px">
+                            <img src="img/star.png" alt="" style="width: 30px; height:30px">
+                            <img src="img/star.png" alt="" style="width: 30px; height:30px">
+                            <img src="img/star.png" alt="" style="width: 30px; height:30px">
+                        </div>
+                        <div class="d-flex flex-row mb-1">
+                            <b class="mr-1">Phan Văn Thành Quý</b>
+                            <p>20/4/2020</p>
+                        </div>
+                        <div>Sed ac massa lacinia, pretium mauris ut, luctus nulla. Donec est tellus, porta id pharetra pretium, dapibus sit amet sapien. Integer venenatis eros vitae metus pulvinar, ac tristique massa dapibus.</div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-outline-dark w-100 mt-2">Xem thêm</button>
+            </div>
+        </div>
+    </div>
+    </div>
+    
+</body>
+</html>

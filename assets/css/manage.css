@@ -1,0 +1,190 @@
+.logovamenu {
+    border-bottom: 2px solid #c6c6c663;
+}
+
+nav.navbar.navbar-expand-lg.navbar-light.bg-light {
+    border-bottom: 1px solid #908f8f;
+}
+
+li.nav-item {
+    margin-left: 10px;
+}
+
+ul li.nav-item a.nav-link.btn img {
+    width: 35px;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: black;
+}
+
+a.nav-link.btn {
+    padding: 0px 0px;
+}
+
+div#navbarTogglerDemo02 {
+    font-weight: bold;
+}
+
+.form-inlinesearch {
+    border-bottom: 1px solid black;
+    max-width: fit-content;
+    /* border-left: 1px solid black; */
+}
+
+input.form-controlsearch {
+    border: none;
+    background-color: #F8F9FA;
+    width: 250px;
+    margin-left: 10px;
+}
+
+form div img {
+    width: 20px;
+}
+
+a.navbar-brand img {
+    width: 100px;
+    /* float: right; */
+}
+
+a.navbar-brand.col-lg-3 {
+    margin: 0px;
+    text-align: -webkit-right;
+}
+
+.col-lg-7.row {
+    padding: 0px;
+    margin: 0px;
+    justify-content: center;
+}
+
+input:focus {
+    outline: 0;
+}
+
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+.quanlydovat {
+    position: absolute;
+    font-size: 25px;
+    justify-self: center;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+}
+
+.panel-post {
+    width: 100%;
+    height: 70px;
+    display: inline-grid;
+    position: relative;
+    line-height: 70px;
+}
+
+img.panel-post-img {
+    background: linear-gradient(0deg, #3B9A5F 25%, rgba(260, 137, 230, 0) 100%, rgba(200, 203, 221, 83) 100%), url('../img/categories/panel-post.jpg');
+    box-shadow: 0px 2px 10px 0px;
+    opacity: 50%;
+}
+
+.renterinfo {
+    margin: auto;
+}
+
+.allrenterinfocol-xs-12.col-sm-12.col-md-4.col-lg-4 {
+    justify-content: center;
+    display: flex;
+}
+
+.stuffname {
+    width: fit-content;
+}
+
+.infostuff {
+    margin-top: auto;
+    margin-bottom: auto;
+    width: fit-content;
+}
+
+.allinfostuff.col-xs-12.col-sm-12.col-md-4.col-lg-4 {
+    display: flex;
+}
+
+span.daucham {
+    width: 10px;
+    height: 10px;
+    background: red;
+    display: inline-table;
+    border-radius: 100%;
+    margin-bottom: 1px;
+}
+
+.tentinhtrang {
+    font-size: 19px;
+    margin: auto;
+    height: 40px;
+    line-height: 40px;
+}
+
+.tinhtrang {
+    position: absolute;
+    width: 340px;
+    height: 40px;
+    background: #96f8d4b0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.phithue {
+    background: white;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    border-radius: 12px;
+    padding: 0px 6px 0px 6px;
+}
+
+.mystuff.row.justify-content-left {
+    background: white;
+}
+
+.imgstuff.col-xs-12.col-sm-12.col-md-4.col-lg-4 {
+    text-align: -webkit-center;
+}
+
+img#heart {
+    position: absolute;
+    top: 0;
+    width: 45px;
+    background: #ffffff8c;
+    right: 0px;
+    border-radius: 100%;
+}
+
+.imagestuff {
+    text-align: -webkit-center;
+    position: relative;
+    width: 340px;
+    background: #e3e0e099;
+    border-radius: 7px;
+}
+
+img#main {
+    width: 340px;
+    height: 240px;
+    object-fit: cover;
+    position: relative;
+    border-radius: 7px;
+}

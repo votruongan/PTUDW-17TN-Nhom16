@@ -28,6 +28,18 @@ app.get('/leasing', (req, res) =>{
 	res.sendFile(__dirname + '/html/leasing.html');
 })
 
+app.get('/signup', (req, res) =>{
+	res.sendFile(__dirname + '/html/signup.html');
+})
+
+app.get('/profile', (req, res) => {
+	res.sendFile(__dirname + '/html/profile.html')
+})
+
+app.get('/about', (req, res) => {
+	res.sendFile(__dirname + '/html/about.html');
+})
+
 
 app.get('/forgot-password', (req, res) =>{
 	res.sendFile(__dirname + '/html/forgot-password.html');
