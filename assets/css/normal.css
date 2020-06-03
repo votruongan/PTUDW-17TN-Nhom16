@@ -14,11 +14,19 @@
 	font-size:30px;
 	color:white;
 }
+
+
+.index-button-panel:hover{
+	background: blueviolet;
+	transition-duration: 700ms;
+}
+
+.index-button-panel:not(:hover){
+	transition-duration: 700ms;
+}
+
 .index-button-panel b{
 	font-size:3rem;	
-}
-.index-button-panel:hover{
-	background: #6E62F9; !important
 }
 .index-explore-background{
 	background: linear-gradient(180deg,rgba(255, 255, 255, 0.1) 0%, rgba(05, 10, 99, 0.64) 16%, rgba(51, 10, 99, 0.44) 84% , rgba(255, 255, 255, 0.1) 100%), url("../img/categories/panel-explore.jpg");
@@ -43,12 +51,16 @@
 }
 .jumbotron-fluid h1{
 	font-size:3rem;
+	transition-duration: 500ms;
+	transition-delay: 200ms;
 }
 }
 
 
 
 .jumbotron-fluid{
+	transition-delay: 200ms;
+	transition-duration: 500ms;
   background: url("../img/background.jpg")  no-repeat center center;
   background-color: rgba(0, 128, 0, 0.3);
   background-size: cover;
@@ -93,14 +105,22 @@
 .MultiCarousel .rightLst {
 	position: absolute;
 	border-radius: 50%;
+	border: 0px;
 	top: calc(50% - 20px);
 }
 
 .MultiCarousel a:hover {
+	-webkit-transform: scale(1.1);
+	-ms-transform: scale(1.1);
+	transform: scale(1.1);
 	text-decoration: none;
-	font-weight: 900;
 }
 
+@keyframes raiseup {
+  from   { transform: translate(10,10);}
+to { transform: translate(10,10);
+}
+}
 .MultiCarousel .leftLst {
 	left: 0;
 }

@@ -5,17 +5,15 @@
           box-sizing: border-box;
 }
 
-html {
-	
-}
-
 nav{
 	
+  transition-duration: 0.5s;
 box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 
 nav:before {
+  transition-duration: 0.5s;
   content: "";
   position: fixed;
   top: -5%;
@@ -41,7 +39,7 @@ nav:before {
 
 
 body {
-  font-family: 'Lexend Deca' !important;
+  font-family: 'Open Sans' !important;
   background-size: cover !important;
   background-color: #F5F0F95B !important;
   background-repeat: no-repeat !important;
@@ -114,72 +112,91 @@ body {
   text-align: left;
   font-size: 27px;
   color: white;
+  
+  transition-property: background;
+  transition-duration: 0.5s;
+  transition-timing-function: linear;
 }
 
 .card-columns {
     column-count: 6;
+    transition-duration: 0.5s;
 }
 .cat-sports{
   background: linear-gradient(180deg, #3B9A5F 25%, rgba(166, 95, 172, 0) 100%, rgba(166, 95, 172, 0) 100%), url('../img/categories/sports.jpg');
-box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+
 }
 .cat-av{
   background: linear-gradient(180deg, #3B9A5F 25%, rgba(166, 95, 172, 0) 100%, rgba(166, 95, 172, 0) 100%), url('../img/categories/av.jpg');
-box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+
 }
 .cat-books{
   background: linear-gradient(180deg, #3B9A5F 25%, rgba(166, 95, 172, 0) 100%, rgba(166, 95, 172, 0) 100%), url('../img/categories/books.jpg');
-box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+
 }
 .cat-decor{
   background: linear-gradient(180deg, #3B9A5F 25%, rgba(166, 95, 172, 0) 100%, rgba(166, 95, 172, 0) 100%), url('../img/categories/decors.jpg');
-box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+
 }
 .cat-households{
   background: linear-gradient(180deg, #3B9A5F 25%, rgba(166, 95, 172, 0) 100%, rgba(166, 95, 172, 0) 100%), url('../img/categories/household.jpg');
-box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+
 }
 .cat-fashion{
   background: linear-gradient(180deg, #3B9A5F 25%, rgba(166, 95, 172, 0) 100%, rgba(166, 95, 172, 0) 100%), url('../img/categories/fashion.jpg');
-box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+
 }
 .cat-electronics{
   background: linear-gradient(180deg, #3B9A5F 25%, rgba(166, 95, 172, 0) 100%, rgba(166, 95, 172, 0) 100%), url('../img/categories/electronics.jpg');
-box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+
 }
 .cat-instruments{
   background: linear-gradient(180deg, #3B9A5F 25%, rgba(166, 95, 172, 0) 100%, rgba(166, 95, 172, 0) 100%), url('../img/categories/instruments.jpg');
-box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+
 }
 .cat-tools{
   background: linear-gradient(180deg, #3B9A5F 25%, rgba(166, 95, 172, 0) 100%, rgba(166, 95, 172, 0) 100%), url('../img/categories/tools.jpg');
-box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+
 }
 .cat-services{
   background: linear-gradient(180deg, #3B9A5F 25%, rgba(166, 95, 172, 0) 100%, rgba(166, 95, 172, 0) 100%), url('../img/categories/services.jpg');
-box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+
 }
 
 .category-card-body:hover{
-	background: #0AAE4F;
-	-webkit-animation: fadein 1s;
-	animation: fadein 1s;
-	padding-top:50px !important;
-	text-align: center;
+  box-shadow:
+          2px 4px 8px #515151,
+          2px 4px 8px #515151,
+          2px 4px 8px #515151;
+  -webkit-transform: translateY(-8px);
+  transform: translateY(-8px);
+  transition-duration: 500ms;
 }
 
-@keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+.category-card-body:not(:hover){
+  
 }
 
-.shadow .category-card-body.cat-all{
+.cat-all:hover{
+  box-shadow:
+          0px 0px #515151,
+          0px 0px #515151,
+          0px 0px #515151,
+          2px 4px 8px #515151,
+          2px 4px 8px #515151,
+          2px 4px 8px #515151
+          ;
+  -webkit-transform: translateX(8px);
+  transform: translateX(8px);
+  transition-duration: 500ms;
+}
+
+.category-card-body.cat-all{
   height: 355px;
   background: #5A5AAF ;
-box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.shadow .category-card-body.cat-all p{
+.category-card-body.cat-all p{
 	text-align: center;
 	padding-top:75%;
 }
@@ -216,8 +233,6 @@ box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 .angleButton-button {
     background-color: transparent;
     border-radius: 50%;
-    width: 100%;
-	padding-top: 100%; /* 1:1 Aspect Ratio */
 	border: 1px solid #000;
     vertical-align: middle;
 	align-items: middle;
@@ -262,7 +277,6 @@ a.boxclose{
     border-radius: 0.3rem;
     background: #605F61;
     font-size: 1.8rem;
-    display: inline-block;
     line-height: 2rem;
     padding: 0px 0.5rem ; 
 	

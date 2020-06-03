@@ -9,6 +9,7 @@
     <link href="css/fonts.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet" >
     <link href="css/all.css" rel="stylesheet" >
+    <link href="css/post-item.css" rel="stylesheet" >
     <script defer src="js/jquery.min.js"></script>
 </head>
 
@@ -137,7 +138,7 @@
 	</div>
 </div>
 
-<div class="col-12 postObjectPanel"  style="display:none;" id="detailPanel">
+<div class="col-12 postObjectPanel" id="detailPanel" style="display:none;">
 		<br/>
 	<div class="col-sm-12 col-lg-6 float-md-left float-sm-none">
 	<div class="row" style="height:auto;width:auto;">
@@ -159,7 +160,14 @@
 		  <div class="col-12">
 		  <div id="services" type="file"  class="form-control menu-scroll" style="height:220px;">
 			<ul class="list-group">
-			  <li class="list-group-item"id="s_deliver"><input type="checkbox"/> Giao đồ tận nơi<button class=""></li>
+			  <li class="list-group-item" id="s_deliver">
+			  <div class="row">
+				<input class="col-1" type="checkbox"/>
+				<p class="col-10" > Giao đồ tận nơi</p>
+				<div class="col-1 p-0 toggleInfoButton">
+						<button class="angleButton-button black h-100 w-100" ></button>
+					</div></li>
+				</div>
 			  <li class="list-group-item"id="s_guide"><input type="checkbox"/> Hướng dẫn sử dụng</li>
 			  <li class="list-group-item"id="s_install"><input type="checkbox"/> Lắp đặt món đồ</li>
 			  <li class="list-group-item"id="s_fix"><input type="checkbox"/> Bao chi phí sửa chữa</li>
@@ -168,7 +176,6 @@
 		  </div>
 		  </div>
 		</div>
-	</div>
 	</div>
 	
 	
