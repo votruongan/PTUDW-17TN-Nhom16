@@ -47,42 +47,38 @@
                 </div>
             </nav>
             <!-- het logo va menu -->
-            <div class="theSearch ">
+            <div class="theSearch">
                 <!-- <input type="text" name="datefilter" value="" > -->
-                <div class="container ">
-                    <form class="form ">
-                        <fieldset class="form-group date-icon">
-                            <div class="datetime row" style="display: flex;">
-                                <div class="diadiem">
-                                    <img src="img/where.png" alt="">
-                                    <div class="txtDD">
-                                        Địa điểm
-                                        <input id="inputDD" placeholder="Địa điểm">
-                                    </div>
-                                </div>
-                                <input type="text" class="form-controlMain" data-datepicker="separateRange">
-                                <div class="from">
-                                    <img src="img/datefrom.png" alt="">
-                                    <div class="txtDD">Từ
-                                        <input type="text" class="form-control1" name="start_date">
-                                        <div class="soxuong"> </div>
-                                    </div>
-                                </div>
-                                <div class="to">
-                                    <img src="img/dateto.png" alt="">
-                                    <div class="txtDD">Đến
-                                        <input type="text" class="form-control2" name="end_date" />
-                                        <div class="soxuong"></div>
-                                    </div>
-                                </div>
-
+                <div class="container" style="padding: 1rem">
+                    <div class="datetime row d-flex flex-column flex-lg-row">
+                        <div class="diadiem">
+                            <img src="img/where.png" alt="">
+                            <div class="txtDD">
+                                Địa điểm
+                                <input id="inputDD" placeholder="Địa điểm">
                             </div>
-                        </fieldset>
-                    </form>
+                        </div>
+                        <input type="text" class="form-controlMain" data-datepicker="separateRange">
+                        <div class="from">
+                            <img src="img/datefrom.png" alt="">
+                            <div class="txtDD">Từ
+                                <input type="text" class="form-control1" name="start_date">
+                                <div class="soxuong"> </div>
+                            </div>
+                        </div>
+                        <div class="to">
+                            <img src="img/dateto.png" alt="">
+                            <div class="txtDD">Đến
+                                <input type="text" class="form-control2" name="end_date" />
+                                <div class="soxuong"></div>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
             <!-- Het dia diem thoi gian -->
-            <div class="sapxep row">
+            <div class="sapxep row d-none d-lg-flex">
                 <div class="txtsapxep">Sắp xếp theo</div>
                 <div class="classbtnss">
                     <button class="btnss btn btn-outline-secondary lienquan acctive">Liên quan</button>
@@ -92,10 +88,10 @@
                 </div>
                 <div class="form-group gia">
                     <select class="form-control">
-            <option selected>Giá...</option>
-                <option value="1">Từ cao đến thấp</option>
-                <option value="1">Từ thấp đến cao</option>
-              </select>
+                    <option selected>Giá...</option>
+                    <option value="1">Từ cao đến thấp</option>
+                    <option value="1">Từ thấp đến cao</option>
+                    </select>
                 </div>
 
             </div>
@@ -300,7 +296,7 @@
             </ul>
 
         </div>
-        <div class="map col-xl-4 col-lg-4 col-md-2">
+        <div class="map col-xl-4 col-lg-4 col-md-2 d-none d-lg-block">
             <div id='map'></div>
         </div>
     </div>
