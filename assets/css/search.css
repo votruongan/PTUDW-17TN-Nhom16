@@ -49,11 +49,6 @@ form div img {
     width: 20px;
 }
 
-a.navbar-brand img {
-    width: 100px;
-    /* float: right; */
-}
-
 
 /* HET PHAN MENU */
 
@@ -252,11 +247,6 @@ button.btnss.acctive {
 
 /* Body */
 
-* {
-    margin: 0px;
-    padding: 0px
-}
-
 .info {
     width: 300px;
     height: 100px;
@@ -266,6 +256,7 @@ button.btnss.acctive {
 
 .bodychothue.row {
     background: #ffffffa6;
+    margin-top: 172px;
 }
 
 a.navbar-brand.col-lg-3 {
@@ -429,4 +420,31 @@ div.stuff div.note img {
     margin-left: 50px;
     background: white;
     padding: 15px;
+}
+
+
+/* map */
+
+#map {
+    width: 100%;
+    position: fixed;
+    height: 100%;
+}
+
+* {
+    margin: 0px;
+    padding: 0px
+}
+
+.stuff.col-xl-8.col-lg-8.col-md-10 {
+    padding: 0px;
+}
+
+.map.col-xl-4.col-lg-4.col-md-2 {
+    position: fixed;
+    top: 172px;
+    right: 0px;
+    bottom: 0px;
+    padding: 0px;
+    z-index: 100;
 }

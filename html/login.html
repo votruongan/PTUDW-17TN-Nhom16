@@ -5,49 +5,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TUDO - Đồ gì cũng có</title>
-    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../assets/css/fonts.css" rel="stylesheet">
-    <link href="../assets/css/styles.css" rel="stylesheet">
-    <link href="../assets/css/all.css" rel="stylesheet">
-    <link href="../assets/css/login.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/fonts.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <link href="css/all.css" rel="stylesheet">
+    <link href="css/login.css" rel="stylesheet">
     <script defer src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script defer src="../assets/js/login.js"></script>
+    <script defer src="js/login.js"></script>
 </head>
 
 <body>
     <div class="logovamenu">
-        <nav class="navbar row navbar-expand-lg navbar-light bg-light">
-            <div class="col-lg-7 row">
-                <a class="navbar-brand col-lg-3" href="#"><img src="../assets/img/logo.png" alt=""></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <form class="form-inline col-lg-9">
-                    <div class="form-inlinesearch">
-                        <img src="../assets/img/search.png" alt="">
-                        <input class="form-controlsearch" type="search" placeholder="Bất cứ thứ gì bạn muốn">
-                    </div>
-                </form>
-            </div>
-            <div class="collapse navbar-collapse col-lg-5" id="navbarTogglerDemo02">
-                <ul class="navbar-nav mr-auto float-xl-right  float-sm-right">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Cho thuê đồ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Tìm hiểu thêm</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Đăng ký</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Đăng nhập</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn" href="#"><img src="../assets/img/no_user.png" alt=""></a>
-                    </li>
-                </ul>
-
+        <nav class="navbar navbar-light bg-light">
+            <a class="navbar-brand" href=".">
+                <img src="img/logo.png" width="140" height="36" alt="">
+            </a>
+            <div class="navbar-brand d-none d-lg-block" href="#">
+                <a class="navbar-brand" href="post-item">
+                  Cho thuê đồ
+                </a>
+                <a class="navbar-brand" href="about">
+                  Tìm hiểu thêm
+                </a>
+                <a class="navbar-brand" href="login">
+                  Đăng ký
+                </a>
+                <a class="navbar-brand" href="signup">
+                  Đăng nhập
+                </a>
+                <a class="navbar-brand" href="#" onclick="location.href='profile'">
+                    <img src="img/no_user.png" width="36" height="36" alt="">
+                </a>
             </div>
         </nav>
     </div>
@@ -72,15 +60,15 @@
             </form>
             <div class="d-inline-flex txtOr">Hoặc</div>
             <button type="submit" class="btn btn-light btnGoogle">
-                <img class = "imageIcon" src="../assets/img/login/google.png" alt="">
+                <img class = "imageIcon" src="img/login/google.png" alt="">
                 Đăng nhập với Google
             </button>
             <button type="submit" class="btn btn-light btnFacebook">
-                <img class = "imageIcon" src="../assets/img/login/facebook.png" alt="">
+                <img class = "imageIcon" src="img/login/facebook.png" alt="">
                 Đăng nhập với Facebook
             </button>
             <button type="submit" class="btn btn-light btnApple">
-                <img class = "imageIcon" src="../assets/img/login/apple.png" alt="">
+                <img class = "imageIcon" src="img/login/apple.png" alt="">
                 Đăng nhập với Apple
             </button>
             <div class="txtbtnreg">

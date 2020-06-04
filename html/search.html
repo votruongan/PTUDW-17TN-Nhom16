@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TUDO - Đồ gì cũng có</title>
-    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../assets/css/fonts.css" rel="stylesheet">
-    <link href="../assets/css/styles.css" rel="stylesheet">
-    <link href="../assets/css/all.css" rel="stylesheet">
-    <link href="../assets/css/search.css" rel="stylesheet">
-    <script defer src="../assets/js/search_script.js"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/fonts.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <link href="css/all.css" rel="stylesheet">
+    <link href="css/search.css" rel="stylesheet">
+    <script defer src="js/search_script.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
@@ -20,122 +20,114 @@
 </head>
 
 <body>
-    <div class="logovamenu">
-        <nav class="navbar row navbar-expand-lg navbar-light bg-light">
-            <div class="col-lg-7 row">
-                <a class="navbar-brand col-lg-3" href="#"><img src="../assets/img/logo.png" alt=""></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <form class="form-inline col-lg-9">
-                    <div class="form-inlinesearch">
-                        <img src="../assets/img/search.png" alt="">
-                        <input class="form-controlsearch" type="search" placeholder="Bất cứ thứ gì bạn muốn">
-                    </div>
-                </form>
-            </div>
-            <div class="collapse navbar-collapse col-lg-5" id="navbarTogglerDemo02">
-                <ul class="navbar-nav mr-auto float-xl-right  float-sm-right">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Cho thuê đồ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Tìm hiểu thêm</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Đăng ký</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Đăng nhập</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn" href="#"><img src="../assets/img/no_user.png" alt=""></a>
-                    </li>
-                </ul>
 
-            </div>
-        </nav>
-    </div>
-    <!-- het logo va menu -->
-    <div class="theSearch ">
-        <!-- <input type="text" name="datefilter" value="" > -->
-        <div class="container ">
-            <form class="form ">
-                <fieldset class="form-group date-icon">
-                    <div class="datetime row" style="display: flex;">
-                        <div class="diadiem">
-                            <img src="../assets/img/where.png" alt="">
-                            <div class="txtDD">
-                                Địa điểm
-                                <input id="inputDD" placeholder="Địa điểm">
-                            </div>
-                        </div>
-                        <input type="text" class="form-controlMain" data-datepicker="separateRange">
-                        <div class="from">
-                            <img src="../assets/img/datefrom.png" alt="">
-                            <div class="txtDD">Từ
-                                <input type="text" class="form-control1" name="start_date">
-                                <div class="soxuong"> </div>
-                            </div>
-                        </div>
-                        <div class="to">
-                            <img src="../assets/img/dateto.png" alt="">
-                            <div class="txtDD">Đến
-                                <input type="text" class="form-control2" name="end_date" />
-                                <div class="soxuong"></div>
-                            </div>
-                        </div>
+    <div class="Thanhfixed" style="width: 100%;position: fixed; top: 0;z-index: 100;">
+        <div class="logovamenu">
+            <nav class="navbar navbar-light bg-light">
+                <a class="navbar-brand" href=".">
+                    <img src="img/logo.png" width="140" height="36" alt="">
+                </a>
 
-                    </div>
-                </fieldset>
-            </form>
-        </div>
-    </div>
-    <!-- Het dia diem thoi gian -->
-    <div class="sapxep row">
-        <div class="txtsapxep">Sắp xếp theo</div>
-        <div class="classbtnss">
-            <button class="btnss btn btn-outline-secondary lienquan acctive">Liên quan</button>
-            <button class="btnss btn btn-outline-secondary moinhat">Mới nhất</button>
-            <button class="btnss btn btn-outline-secondary duocthue">Được thuê</button>
-            <button class="btnss btn btn-outline-secondary danhgia">Đánh giá</button>
-        </div>
-        <div class="form-group gia">
-            <select class="form-control">
+                <div class="navbar-brand d-none d-lg-block" href="#">
+                    <a class="navbar-brand" href="post-item">
+                      Cho thuê đồ
+                    </a>
+                    <a class="navbar-brand" href="about">
+                      Tìm hiểu thêm
+                    </a>
+                    <a class="navbar-brand" href="login">
+                      Đăng ký
+                    </a>
+                    <a class="navbar-brand" href="signup">
+                      Đăng nhập
+                    </a>
+                    <a class="navbar-brand" href="#" onclick="location.href='profile'">
+                        <img src="img/no_user.png" width="36" height="36" alt="">
+                    </a>
+                </div>
+            </nav>
+            <!-- het logo va menu -->
+            <div class="theSearch ">
+                <!-- <input type="text" name="datefilter" value="" > -->
+                <div class="container ">
+                    <form class="form ">
+                        <fieldset class="form-group date-icon">
+                            <div class="datetime row" style="display: flex;">
+                                <div class="diadiem">
+                                    <img src="img/where.png" alt="">
+                                    <div class="txtDD">
+                                        Địa điểm
+                                        <input id="inputDD" placeholder="Địa điểm">
+                                    </div>
+                                </div>
+                                <input type="text" class="form-controlMain" data-datepicker="separateRange">
+                                <div class="from">
+                                    <img src="img/datefrom.png" alt="">
+                                    <div class="txtDD">Từ
+                                        <input type="text" class="form-control1" name="start_date">
+                                        <div class="soxuong"> </div>
+                                    </div>
+                                </div>
+                                <div class="to">
+                                    <img src="img/dateto.png" alt="">
+                                    <div class="txtDD">Đến
+                                        <input type="text" class="form-control2" name="end_date" />
+                                        <div class="soxuong"></div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            <!-- Het dia diem thoi gian -->
+            <div class="sapxep row">
+                <div class="txtsapxep">Sắp xếp theo</div>
+                <div class="classbtnss">
+                    <button class="btnss btn btn-outline-secondary lienquan acctive">Liên quan</button>
+                    <button class="btnss btn btn-outline-secondary moinhat">Mới nhất</button>
+                    <button class="btnss btn btn-outline-secondary duocthue">Được thuê</button>
+                    <button class="btnss btn btn-outline-secondary danhgia">Đánh giá</button>
+                </div>
+                <div class="form-group gia">
+                    <select class="form-control">
             <option selected>Giá...</option>
                 <option value="1">Từ cao đến thấp</option>
                 <option value="1">Từ thấp đến cao</option>
               </select>
-        </div>
+                </div>
 
+            </div>
+        </div>
     </div>
     <!-- het phan sap xep -->
     <div class="bodychothue row">
         <div class="stuff col-xl-8 col-lg-8 col-md-10">
             <div class="note">
                 <div class="txt">
-                    <img src="../assets/img/like1.png" alt=""> Đừng lo lắng, bạn có thể huỷ đồ mà bạn thuê miễn phí, lên đến 24 giờ trước khi bắt đầu</div>
+                    <img src="img/like1.png" alt=""> Đừng lo lắng, bạn có thể huỷ đồ mà bạn thuê miễn phí, lên đến 24 giờ trước khi bắt đầu</div>
 
             </div>
             <ul class="stufflist row">
                 <li class="1stuff">
                     <div class="boderstuff">
                         <div class="imagestuff">
-                            <img id="main" src="../assets/img/stuff/image2.png" alt="">
-                            <img id="heart" src="../assets/img/heart.png" alt="">
+                            <img id="main" src="img/stuff/image2.png" alt="">
+                            <img id="heart" src="img/heart.png" alt="">
                             <div class="phithue">200k/day</div>
                         </div>
                         <div class="info">
                             <div class="tensanpham">MACBOOK PRO 2019</div>
                             <div class="saovathue">
                                 <div class="saosanpham">4.8/5</div>
-                                <img id="star" src="../assets/img/star.png" alt="">
+                                <img id="star" src="img/star.png" alt="">
                                 <div class="solanthue">(52 lượt cho thuê)</div>
                             </div>
                             <div class="thuengay">Thuê ngay</div>
                             <div class="lienhe">Liên hệ</div>
                             <div class="top">
-                                <img id="star" src="../assets/img/badge.png" alt="">
+                                <img id="star" src="img/badge.png" alt="">
                                 <div class="txttop">Top</div>
                             </div>
                         </div>
@@ -146,21 +138,21 @@
                 <li class="1stuff">
                     <div class="boderstuff">
                         <div class="imagestuff">
-                            <img id="main" src="../assets/img/stuff/image4.png" alt="">
-                            <img id="heart" src="../assets/img/heart.png" alt="">
+                            <img id="main" src="img/stuff/image4.png" alt="">
+                            <img id="heart" src="img/heart.png" alt="">
                             <div class="phithue">200k/day</div>
                         </div>
                         <div class="info">
                             <div class="tensanpham">MACBOOK PRO 2019</div>
                             <div class="saovathue">
                                 <div class="saosanpham">4.8/5</div>
-                                <img id="star" src="../assets/img/star.png" alt="">
+                                <img id="star" src="img/star.png" alt="">
                                 <div class="solanthue">(52 lượt cho thuê)</div>
                             </div>
                             <div class="thuengay">Thuê ngay</div>
                             <div class="lienhe">Liên hệ</div>
                             <div class="top">
-                                <img id="star" src="../assets/img/badge.png" alt="">
+                                <img id="star" src="img/badge.png" alt="">
                                 <div class="txttop">Top</div>
                             </div>
                         </div>
@@ -170,21 +162,21 @@
                 <li class="1stuff">
                     <div class="boderstuff">
                         <div class="imagestuff">
-                            <img id="main" src="../assets/img/stuff/image3.png" alt="">
-                            <img id="heart" src="../assets/img/heart.png" alt="">
+                            <img id="main" src="img/stuff/image3.png" alt="">
+                            <img id="heart" src="img/heart.png" alt="">
                             <div class="phithue">300k/day</div>
                         </div>
                         <div class="info">
                             <div class="tensanpham">MACBOOK AIR 2020</div>
                             <div class="saovathue">
                                 <div class="saosanpham">4.7/5</div>
-                                <img id="star" src="../assets/img/star.png" alt="">
+                                <img id="star" src="img/star.png" alt="">
                                 <div class="solanthue">(20 lượt cho thuê)</div>
                             </div>
                             <div class="thuengay">Thuê ngay</div>
                             <div class="lienhe">Liên hệ</div>
                             <div class="top">
-                                <img id="star" src="../assets/img/badge.png" alt="">
+                                <img id="star" src="img/badge.png" alt="">
                                 <div class="txttop">Top</div>
                             </div>
                         </div>
@@ -193,21 +185,21 @@
                 <li class="1stuff">
                     <div class="boderstuff">
                         <div class="imagestuff">
-                            <img id="main" src="../assets/img/stuff/image5.png" alt="">
-                            <img id="heart" src="../assets/img/heart.png" alt="">
+                            <img id="main" src="img/stuff/image5.png" alt="">
+                            <img id="heart" src="img/heart.png" alt="">
                             <div class="phithue">200k/day</div>
                         </div>
                         <div class="info">
                             <div class="tensanpham">MACBOOK PRO 2019</div>
                             <div class="saovathue">
                                 <div class="saosanpham">4.8/5</div>
-                                <img id="star" src="../assets/img/star.png" alt="">
+                                <img id="star" src="img/star.png" alt="">
                                 <div class="solanthue">(52 lượt cho thuê)</div>
                             </div>
                             <div class="thuengay">Thuê ngay</div>
                             <div class="lienhe">Liên hệ</div>
                             <div class="top">
-                                <img id="star" src="../assets/img/badge.png" alt="">
+                                <img id="star" src="img/badge.png" alt="">
                                 <div class="txttop">Top</div>
                             </div>
                         </div>
@@ -216,21 +208,21 @@
                 <li class="1stuff">
                     <div class="boderstuff">
                         <div class="imagestuff">
-                            <img id="main" src="../assets/img/stuff/image3.png" alt="">
-                            <img id="heart" src="../assets/img/heart.png" alt="">
+                            <img id="main" src="img/stuff/image3.png" alt="">
+                            <img id="heart" src="img/heart.png" alt="">
                             <div class="phithue">250k/day</div>
                         </div>
                         <div class="info">
                             <div class="tensanpham">MACBOOK AIR 2019</div>
                             <div class="saovathue">
                                 <div class="saosanpham">4.7/5</div>
-                                <img id="star" src="../assets/img/star.png" alt="">
+                                <img id="star" src="img/star.png" alt="">
                                 <div class="solanthue">(30 lượt cho thuê)</div>
                             </div>
                             <div class="thuengay">Thuê ngay</div>
                             <div class="lienhe">Liên hệ</div>
                             <div class="top">
-                                <img id="star" src="../assets/img/badge.png" alt="">
+                                <img id="star" src="img/badge.png" alt="">
                                 <div class="txttop">Top</div>
                             </div>
                         </div>
@@ -239,21 +231,21 @@
                 <li class="1stuff">
                     <div class="boderstuff">
                         <div class="imagestuff">
-                            <img id="main" src="../assets/img/stuff/image2.png" alt="">
-                            <img id="heart" src="../assets/img/heart.png" alt="">
+                            <img id="main" src="img/stuff/image2.png" alt="">
+                            <img id="heart" src="img/heart.png" alt="">
                             <div class="phithue">200k/day</div>
                         </div>
                         <div class="info">
                             <div class="tensanpham">MACBOOK PRO 2019</div>
                             <div class="saovathue">
                                 <div class="saosanpham">4.8/5</div>
-                                <img id="star" src="../assets/img/star.png" alt="">
+                                <img id="star" src="img/star.png" alt="">
                                 <div class="solanthue">(52 lượt cho thuê)</div>
                             </div>
                             <div class="thuengay">Thuê ngay</div>
                             <div class="lienhe">Liên hệ</div>
                             <div class="top">
-                                <img id="star" src="../assets/img/badge.png" alt="">
+                                <img id="star" src="img/badge.png" alt="">
                                 <div class="txttop">Top</div>
                             </div>
                         </div>
@@ -262,21 +254,21 @@
                 <li class="1stuff">
                     <div class="boderstuff">
                         <div class="imagestuff">
-                            <img id="main" src="../assets/img/stuff/image2.png" alt="">
-                            <img id="heart" src="../assets/img/heart.png" alt="">
+                            <img id="main" src="img/stuff/image2.png" alt="">
+                            <img id="heart" src="img/heart.png" alt="">
                             <div class="phithue">200k/day</div>
                         </div>
                         <div class="info">
                             <div class="tensanpham">MACBOOK AIR 2018</div>
                             <div class="saovathue">
                                 <div class="saosanpham">4.6/5</div>
-                                <img id="star" src="../assets/img/star.png" alt="">
+                                <img id="star" src="img/star.png" alt="">
                                 <div class="solanthue">(50 lượt cho thuê)</div>
                             </div>
                             <div class="thuengay">Thuê ngay</div>
                             <div class="lienhe">Liên hệ</div>
                             <div class="top">
-                                <img id="star" src="../assets/img/badge.png" alt="">
+                                <img id="star" src="img/badge.png" alt="">
                                 <div class="txttop">Top</div>
                             </div>
                         </div>
@@ -285,36 +277,39 @@
                 <li class="1stuff">
                     <div class="boderstuff">
                         <div class="imagestuff">
-                            <img id="main" src="../assets/img/stuff/image3.png" alt="">
-                            <img id="heart" src="../assets/img/heart.png" alt="">
+                            <img id="main" src="img/stuff/image3.png" alt="">
+                            <img id="heart" src="img/heart.png" alt="">
                             <div class="phithue">300k/day</div>
                         </div>
                         <div class="info">
                             <div class="tensanpham">MACBOOK AIR 2020</div>
                             <div class="saovathue">
                                 <div class="saosanpham">4.7/5</div>
-                                <img id="star" src="../assets/img/star.png" alt="">
+                                <img id="star" src="img/star.png" alt="">
                                 <div class="solanthue">(20 lượt cho thuê)</div>
                             </div>
                             <div class="thuengay">Thuê ngay</div>
                             <div class="lienhe">Liên hệ</div>
                             <div class="top">
-                                <img id="star" src="../assets/img/badge.png" alt="">
+                                <img id="star" src="img/badge.png" alt="">
                                 <div class="txttop">Top</div>
                             </div>
                         </div>
                     </div>
                 </li>
             </ul>
-            <div class="map col-xl-4 col-lg-4 col-md-2">
-                <div id='map'></div>
-            </div>
+
+        </div>
+        <div class="map col-xl-4 col-lg-4 col-md-2">
+            <div id='map'></div>
         </div>
     </div>
 
     <footer>
         <p>Một sản phẩm của PTUDW-17TN-Nhom16</p>
     </footer>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkKqNeJcs9YCNG8EfTfxi8ILGyLNYefsY&callback=initMap" async defer></script>
+
 </body>
 
 </html>

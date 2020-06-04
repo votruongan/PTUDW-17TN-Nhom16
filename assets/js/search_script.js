@@ -20,3 +20,15 @@ $(function() {
         $(this).val('');
     })
 });
+
+function initMap() {
+    var position = { lat: 10.7624176, lng: 106.6820081 }
+    var map = new google.maps.Map(document.getElementById("map"), {
+        center: position,
+        zoom: 16
+    });
+    var marker = new google.maps.Marker({
+        position: position,
+        map: map,
+    });
+}

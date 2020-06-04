@@ -48,11 +48,6 @@ form div img {
     margin: 0px;
 }
 
-a.navbar-brand img {
-    width: 100px;
-    /* float: right; */
-}
-
 a.navbar-brand.col-lg-3 {
     margin: 0px;
     text-align: -webkit-right;
