@@ -108,11 +108,10 @@ body {
   width: 164px;
   height: 164px;
   padding: 6px;
-  align-items: center;
+  align-items: flex-end;
   text-align: left;
   font-size: 27px;
   color: white;
-  
   transition-property: background;
   transition-duration: 0.5s;
   transition-timing-function: linear;
@@ -123,43 +122,43 @@ body {
     transition-duration: 0.5s;
 }
 .cat-sports{
-  background: linear-gradient(180deg, #3B9A5F 25%, rgba(166, 95, 172, 0) 100%, rgba(166, 95, 172, 0) 100%), url('../img/categories/sports.jpg');
+  background: linear-gradient(0deg, #3B9A5F 8%, rgba(166, 95, 172, 0) 100%, rgba(166, 95, 172, 0) 100%), url('../img/categories/sports.jpg');
 
 }
 .cat-av{
-  background: linear-gradient(180deg, #3B9A5F 25%, rgba(166, 95, 172, 0) 100%, rgba(166, 95, 172, 0) 100%), url('../img/categories/av.jpg');
+  background: linear-gradient(0deg, #3B9A5F 8%, rgba(166, 95, 172, 0) 100%, rgba(166, 95, 172, 0) 100%), url('../img/categories/av.jpg');
 
 }
 .cat-books{
-  background: linear-gradient(180deg, #3B9A5F 25%, rgba(166, 95, 172, 0) 100%, rgba(166, 95, 172, 0) 100%), url('../img/categories/books.jpg');
+  background: linear-gradient(0deg, #3B9A5F 8%, rgba(166, 95, 172, 0) 100%, rgba(166, 95, 172, 0) 100%), url('../img/categories/books.jpg');
 
 }
 .cat-decor{
-  background: linear-gradient(180deg, #3B9A5F 25%, rgba(166, 95, 172, 0) 100%, rgba(166, 95, 172, 0) 100%), url('../img/categories/decors.jpg');
+  background: linear-gradient(0deg, #3B9A5F 8%, rgba(166, 95, 172, 0) 100%, rgba(166, 95, 172, 0) 100%), url('../img/categories/decors.jpg');
 
 }
 .cat-households{
-  background: linear-gradient(180deg, #3B9A5F 25%, rgba(166, 95, 172, 0) 100%, rgba(166, 95, 172, 0) 100%), url('../img/categories/household.jpg');
+  background: linear-gradient(0deg, #3B9A5F 8%, rgba(166, 95, 172, 0) 100%, rgba(166, 95, 172, 0) 100%), url('../img/categories/household.jpg');
 
 }
 .cat-fashion{
-  background: linear-gradient(180deg, #3B9A5F 25%, rgba(166, 95, 172, 0) 100%, rgba(166, 95, 172, 0) 100%), url('../img/categories/fashion.jpg');
+  background: linear-gradient(0deg, #3B9A5F 8%, rgba(166, 95, 172, 0) 100%, rgba(166, 95, 172, 0) 100%), url('../img/categories/fashion.jpg');
 
 }
 .cat-electronics{
-  background: linear-gradient(180deg, #3B9A5F 25%, rgba(166, 95, 172, 0) 100%, rgba(166, 95, 172, 0) 100%), url('../img/categories/electronics.jpg');
+  background: linear-gradient(0deg, #3B9A5F 8%, rgba(166, 95, 172, 0) 100%, rgba(166, 95, 172, 0) 100%), url('../img/categories/electronics.jpg');
 
 }
 .cat-instruments{
-  background: linear-gradient(180deg, #3B9A5F 25%, rgba(166, 95, 172, 0) 100%, rgba(166, 95, 172, 0) 100%), url('../img/categories/instruments.jpg');
+  background: linear-gradient(0deg, #3B9A5F 8%, rgba(166, 95, 172, 0) 100%, rgba(166, 95, 172, 0) 100%), url('../img/categories/instruments.jpg');
 
 }
 .cat-tools{
-  background: linear-gradient(180deg, #3B9A5F 25%, rgba(166, 95, 172, 0) 100%, rgba(166, 95, 172, 0) 100%), url('../img/categories/tools.jpg');
+  background: linear-gradient(0deg, #3B9A5F 8%, rgba(166, 95, 172, 0) 100%, rgba(166, 95, 172, 0) 100%), url('../img/categories/tools.jpg');
 
 }
 .cat-services{
-  background: linear-gradient(180deg, #3B9A5F 25%, rgba(166, 95, 172, 0) 100%, rgba(166, 95, 172, 0) 100%), url('../img/categories/services.jpg');
+  background: linear-gradient(0deg, #3B9A5F 8%, rgba(166, 95, 172, 0) 100%, rgba(166, 95, 172, 0) 100%), url('../img/categories/services.jpg');
 
 }
 
@@ -171,6 +170,7 @@ body {
   -webkit-transform: translateY(-8px);
   transform: translateY(-8px);
   transition-duration: 500ms;
+  text-decoration: none;
 }
 
 .category-card-body:not(:hover){
@@ -193,12 +193,13 @@ body {
 
 .category-card-body.cat-all{
   height: 355px;
-  background: #5A5AAF ;
+  background: blueviolet ;
+  align-items: center;
 }
 
 .category-card-body.cat-all p{
-	text-align: center;
-	padding-top:75%;
+  text-align: center;
+  padding-left: 10%;
 }
 
 .tooltipButton-button {
@@ -307,4 +308,11 @@ footer{
 
 .star-button.active, .star-button:hover, .star-button.pinned{
 	opacity: 1;
+}
+
+
+@keyframes raiseup {
+  from   { transform: translate(10,10);}
+to { transform: translate(10,10);
+}
 }

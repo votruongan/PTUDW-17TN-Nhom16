@@ -13,16 +13,17 @@
 	width:100%;
 	font-size:30px;
 	color:white;
+	transition-duration: 700ms;
 }
 
 
 .index-button-panel:hover{
 	background: blueviolet;
-	transition-duration: 700ms;
+	text-decoration: none;
+	transition: ease-in;
 }
 
 .index-button-panel:not(:hover){
-	transition-duration: 700ms;
 }
 
 .index-button-panel b{
@@ -122,11 +123,11 @@ to { transform: translate(10,10);
 }
 }
 .MultiCarousel .leftLst {
-	left: 0;
+	left: 3px;
 }
 
 .MultiCarousel .rightLst {
-	right: 0;
+	right: 3px;
 }
 
 .MultiCarousel .leftLst.over,
