@@ -13,14 +13,13 @@
 	width:100%;
 	font-size:30px;
 	color:white;
-	transition-duration: 700ms;
+	transition: 0.15s ease-in-out;
 }
 
 
 .index-button-panel:hover{
 	background: blueviolet;
 	text-decoration: none;
-	transition: ease-in;
 }
 
 .index-button-panel:not(:hover){
@@ -86,7 +85,7 @@
 }
 
 .MultiCarousel .MultiCarousel-inner {
-	transition: 1s ease all;
+	transition: 0.5s ease all;
 	float: left;
 }
 
@@ -116,6 +115,10 @@
 	transform: scale(1.1);
 	text-decoration: none;
 }
+.MultiCarousel a {
+	transition: 0.15s ease-in-out;
+}
+
 
 @keyframes raiseup {
   from   { transform: translate(10,10);}

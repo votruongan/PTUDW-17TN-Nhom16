@@ -112,9 +112,7 @@ body {
   text-align: left;
   font-size: 27px;
   color: white;
-  transition-property: background;
-  transition-duration: 0.5s;
-  transition-timing-function: linear;
+  transition: 0.15s ease-in-out;
 }
 
 .card-columns {
@@ -169,8 +167,11 @@ body {
           2px 4px 8px #515151;
   -webkit-transform: translateY(-8px);
   transform: translateY(-8px);
-  transition-duration: 500ms;
   text-decoration: none;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  background: #3B9A5F;
 }
 
 .category-card-body:not(:hover){
@@ -188,7 +189,6 @@ body {
           ;
   -webkit-transform: translateX(8px);
   transform: translateX(8px);
-  transition-duration: 500ms;
 }
 
 .category-card-body.cat-all{
@@ -315,4 +315,10 @@ footer{
   from   { transform: translate(10,10);}
 to { transform: translate(10,10);
 }
+}
+
+a.btn {
+  justify-content: center;
+  align-items: center;
+  text-align: center;  
 }
