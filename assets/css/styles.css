@@ -72,14 +72,19 @@ body {
 	font-size: 16px;
 	font-style: italic;
 }
+.special-font{
+  font-family: 'Lexend Deca', Times, serif;
+}
 .container h1{
-	font-size: 128px;	
+	font-size: 3rem;	
 }
 .container h2{
 	font-size: 4vh;
-	font-weight: 300;	
+	font-weight: 700;	
 }
-
+.container h3,.container h4{
+	font-weight: 700;	
+}
 .form-control-borderless {
     border: none;
 }
@@ -171,7 +176,7 @@ body {
   align-items: center;
   text-align: center;
   justify-content: center;
-  background: #3B9A5F;
+  background: orangered;
 }
 
 .category-card-body:not(:hover){
