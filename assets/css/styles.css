@@ -15,12 +15,10 @@ box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 nav:before {
   transition-duration: 0.5s;
   content: "";
-  position: fixed;
   top: -5%;
   left: -5%;
   right: 0;
   bottom: 0;
-  z-index: -1;
   
   display: block;
   /* background: url("../img/background.jpg") no-repeat center center fixed; */
@@ -37,6 +35,12 @@ nav:before {
   filter: contrast(40%) brightness(50%);
 }
 
+.Thanhfixed,.FixedBar{
+  width: 100%;
+  position: fixed; 
+  top: 0;
+  z-index: 100;
+}
 
 body {
   font-family: 'Open Sans' !important;
@@ -73,7 +77,8 @@ body {
 	font-style: italic;
 }
 .special-font{
-  font-family: 'Lexend Deca', Times, serif;
+  font-family: 'Playfair Display';
+  font-weight: 600 !important;
 }
 .container h1{
 	font-size: 3rem;	
