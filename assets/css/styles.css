@@ -11,6 +11,10 @@ nav{
 box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
+.shadow{
+  
+	box-shadow: 0 .2rem 1rem rgba(0,0,0,.23)!important;
+}
 
 nav:before {
   transition-duration: 0.5s;
@@ -174,7 +178,7 @@ body {
   box-shadow:
           2px 4px 8px #515151,
           2px 4px 8px #515151,
-          2px 4px 8px #515151;
+          2px 4px 8px #515151 !important;
   -webkit-transform: translateY(-8px);
   transform: translateY(-8px);
   text-decoration: none;
