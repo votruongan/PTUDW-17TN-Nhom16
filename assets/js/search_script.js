@@ -32,3 +32,7 @@ function initMap() {
         map: map,
     });
 }
+
+$('.1stuff').click(function(){
+    location.href="./info"
+})
