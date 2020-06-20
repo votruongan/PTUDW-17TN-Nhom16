@@ -15,7 +15,9 @@ ul li.nav-item a.nav-link.btn img {
     padding: 0;
     margin: 0;
 }
-
+.boderstuff{
+    cursor: pointer;
+}
 input:focus {
     outline: 0;
 }
@@ -385,7 +387,9 @@ img#heart {
     border-radius: 100%;
     padding: 0px;
 }
-
+img#heart:hover {
+    background: #f16c2d94;
+}
 .imagestuff {
     text-align: -webkit-center;
     border-radius: 7px 7px 0px 0px;
