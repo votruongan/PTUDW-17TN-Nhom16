@@ -7,6 +7,7 @@
     <title>TUDO - Về chúng tôi</title>
     <!-- CSS Styles -->
     <link href="css/styles_item_info.css" rel="stylesheet">
+    <link href="css/all.css" rel="stylesheet">
     <link href="css/fonts.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
     <link href="css/normal.css" rel="stylesheet">
@@ -43,40 +44,46 @@
             </a>
         </div>
     </nav>
-    <!-- Content -->
-    <div class="container flex-box">
-        <div class="flex-6 d-flex flex-column mt-5 pr-3 w-100">
-            <h2>Giới thiệu về TUDO:</h2>
-            <p class="mt-4 ml-5 mr-3">TUDO giúp bạn có thể sử dụng đồ vật mà không cần phải bỏ tiền để sở hữu chúng</p>
-            <p class="mt-4 ml-5 mr-3">TUDO cũng là nơi giúp bạn kiếm tiền bằng cách cho thuê những đồ vật mà bạn không
-                có nhiều nhu cầu sử dụng nữa</p>
-            <button type="button" class="btn btn-primary shadow-sm ml-4 mr-4 mt-4"
-                style="min-height: 50px; margin-top: 10px;">
-                Hướng dẫn sử dụng và các lưu ý
-                <img src="img/polygon.png" alt="" style="width: 20px; height: 20px;">
-            </button>
-        </div>
-        <div class="flex-4 d-flex flex-column">
-            <div class=" row container my-3">
-                <div class=" index-button-panel index-explore-background card shadow text-center border-0">
-                    <div class="my-5 align-middle">
-                        <b class="fas fa-map"></b>
-                        <p>Khám phá các món đồ gần bạn</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row container my-3">
-                <div class="index-button-panel index-post-background card shadow text-center border-0"
-                    onclick="location.href='post-item'">
-                    <div class="my-5 align-middle">
-                        <b class="fas fa-plus"></b>
-                        <p>Tôi có đồ cho thuê</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- Introductory body -->
+			
+	<div class="container mt-5">
+		<div class="row justify-content-left">
+				<h2>Giới thiệu về TUDO:</h2>
+		</div>
+	 <div class="row container">
+		<div class="row">
+			<div class="col-xs-12 col-md-6 container my-md-5">
+				Bạn đang cần dùng thử một món đồ, hay đang có nhu cầu sử dụng một đồ vật nào đó tạm thời, nhưng lại không muốn tốn một khoản tiền quá lớn? Tất cả món đồ đều có thể thuê ở TUDO.
+			</div>
+			<div class="col-xs-12 col-md-6 container my-3">
+			<a href="search" class=" index-button-panel index-explore-background card shadow text-center border-0 text-white">
+				<div class="my-5 align-middle">
+					<b class="fas fa-map"></b>
+					<p>Khám phá các món đồ gần bạn</p>
+				</div>
+			</a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-md-6 container my-md-5">
+				TUDO cũng là nơi sẽ giúp bạn kiếm thêm tiền từ những món đồ mà bạn đã mua mà không còn sử dụng thường xuyên nữa. Hoặc tìm cho bạn, những đơn vị cho thuê đồ chuyên nghiệp, những tập khách hàng mới.
+			</div>
+			<div class="col-xs-12 col-md-6 container my-3">
+			<a href="post-item" class="index-button-panel index-post-background card shadow text-center border-0 text-white">
+				<div class="my-5 align-middle">
+					<b class="fas fa-plus"></b>
+					<p>Tôi có đồ cho thuê</p>
+				</div>
+			</a>
+			</div>
+		</div>		
+	 </div>	
     </div>
-    <div class="container flex-box d-flex flex-column">
+    
+    <div class="container flex-box d-flex flex-column mt-5">
+		<div class="row justify-content-left mb-3">
+				<h2>Hướng dẫn sử dụng TUDO:</h2>
+		</div>
         <div id="accordion">
             <div class="card">
                 <div class="card-header" id="headingOne">
@@ -89,7 +96,7 @@
                     </h5>
                 </div>
 
-                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                     <div class="card-body">
                         Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
                         3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
