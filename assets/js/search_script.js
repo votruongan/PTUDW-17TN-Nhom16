@@ -1,26 +1,25 @@
-$(function() {
-    $('[data-datepicker=separateRange]').daterangepicker({
-        autoUpdateInput: false,
-        startDate: moment().startOf('days'),
-        endDate: moment().startOf('days').add(3, 'days'),
-        minDate: moment().startOf('days'),
-        opens: 'center',
-        locale: {
-            cancelLabel: 'Clear'
-        }
-    });
+var startRentTime = document.getElementById("startDateTime");
+var endRentTime = document.getElementById("endDateTime");
+function convertFormat(input){
+	return input.toISOString().slice(0,19);
+}
 
-    $('[data-datepicker=separateRange]').on('apply.daterangepicker', function(ev, picker) {
-        $('input[name="start_date"]').val(picker.startDate.format('MM/DD/YYYY'));
-        $('input[name="end_date"]').val(picker.endDate.format('MM/DD/YYYY'));
-    });
+function offsetFromNow(hours){
+	var dtNow = Date.now();
+	hours -= ((new Date()).getTimezoneOffset()/60);
+	return new Date(dtNow + hours * 60 * 60 * 1000);
+}
 
 
-    $('[data-datepicker=separateRange]').on('cancel.daterangepicker', function(ev, picker) {
-        $(this).val('');
-    })
-});
+function initDateTimePicker() {
+	var dtString = offsetFromNow(6);
+	startRentTime.value = convertFormat(dtString);
+	var dtString = offsetFromNow(30);
+	endRentTime.value = convertFormat(dtString);
+}
 
+
+initDateTimePicker();
 function initMap() {
     var position = { lat: 10.7624176, lng: 106.6820081 }
     var map = new google.maps.Map(document.getElementById("map"), {

@@ -161,6 +161,22 @@ div.theSearch div.container img {
     /* padding: 0; */
 }
 
+input#startDateTime {
+    border: none;
+    background: none;
+    max-width: 265px;
+    padding-left: 19px;
+    height: 24px;
+}
+
+input#endDateTime {
+    border: none;
+    background: none;
+    max-width: 265px;
+    padding-left: 19px;
+    height: 24px;
+}
+
 .diadiem {
     border-bottom: 1px solid black;
     margin-left: 20px;
