@@ -99,18 +99,18 @@ function basePageInit(){
 	for (let ele of arr){
 		ele.onclick = function(){ window.history.back()};
 	}
-	for (i = 0; i < 10; i++){
-		var e = document.getElementById("panel"+i);
-		if (e == null || e == undefined)
-			continue;
-		e.classList.add("d-none");
-		e.classList.add("d-block");
-		if (i == 0){
-			e.classList.remove("d-none");
-		} else {
-			e.classList.remove("d-block");			
-		}
-	}
+	// for (i = 0; i < 10; i++){
+	// 	var e = document.getElementById("panel"+i);
+	// 	if (e == null || e == undefined)
+	// 		continue;
+	// 	e.classList.add("d-none");
+	// 	e.classList.add("d-block");
+	// 	if (i == 0){
+	// 		e.classList.remove("d-none");
+	// 	} else {
+	// 		e.classList.remove("d-block");			
+	// 	}
+	// }
 	starButtonArray = document.getElementsByClassName("star-button");
 	for (i = 0; i < starButtonArray.length; i++){
 		starButtonArray[i].id = "starButton-"+i;
