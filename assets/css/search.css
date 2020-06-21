@@ -143,12 +143,18 @@ div.theSearch div.container img {
 
 .theSearch {
     text-align: -webkit-center;
-    margin-top: -2px;
+    margin-top: 70px;
     border: 1px solid #2422227d;
     background: #f0f8fa;
     /* border-radius: 0px 0px 20px 20px; */
     box-shadow: 2px 2px 3px 1px #aaaaaa;
 }
+
+@media only screen and (max-width: 991px){
+    .theSearch{
+        margin-top: 60px;
+    }
+  }
 
 .container {
     text-align: center;
