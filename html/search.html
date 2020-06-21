@@ -10,13 +10,8 @@
     <link href="css/styles.css" rel="stylesheet">
     <link href="css/all.css" rel="stylesheet">
     <link href="css/search.css" rel="stylesheet">
-    <link href="css/tudo-base.css" rel="stylesheet">
-    <script defer src="js/search_script.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script defer src="js/search_script.js"></script>    
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 
 </head>
 
@@ -59,20 +54,15 @@
                                 <input id="inputDD" placeholder="Địa điểm">
                             </div>
                         </div>
-                        <input type="text" class="form-controlMain" data-datepicker="separateRange">
                         <div class="from">
                             <img src="img/datefrom.png" alt="">
-                            <div class="txtDD">Từ
-                                <input type="text" class="form-control1" name="start_date">
-                                <div class="soxuong"> </div>
-                            </div>
+                            <div class="txtDD">Từ</div>
+                            <input id="startDateTime" type="datetime-local">
                         </div>
                         <div class="to">
                             <img src="img/dateto.png" alt="">
-                            <div class="txtDD">Đến
-                                <input type="text" class="form-control2" name="end_date" />
-                                <div class="soxuong"></div>
-                            </div>
+                            <div class="txtDD">Đến</div>
+                            <input id="endDateTime" type="datetime-local">
                         </div>
 
                     </div>
@@ -305,6 +295,10 @@
     <footer>
         <p>Một sản phẩm của PTUDW-17TN-Nhom16</p>
     </footer>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkKqNeJcs9YCNG8EfTfxi8ILGyLNYefsY&callback=initMap" async defer></script>
 
 </body>
