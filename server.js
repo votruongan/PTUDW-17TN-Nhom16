@@ -15,6 +15,10 @@ app.get('/info', (req, res) => {
     res.sendFile(__dirname + '/html/item-info-page.html');
 })
 
+app.get('/item', (req, res) => {
+    res.sendFile(__dirname + '/html/item-info-page.html');
+})
+
 app.get('/post-item', (req, res) => {
     res.sendFile(__dirname + '/html/post-item.html');
 })

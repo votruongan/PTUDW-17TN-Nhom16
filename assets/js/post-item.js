@@ -39,6 +39,7 @@ var formValidators = [basicInfoValidation];
 function nextPanel(){
 	if (currentPanel+1 == panels.length){
 		// post object 
+		window.location.href = 'info';
 		return;
 	}
 	if (formValidators[currentPanel] != undefined){

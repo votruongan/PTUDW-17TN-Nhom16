@@ -11,6 +11,8 @@
     <link href="css/all.css" rel="stylesheet" >
     <link href="css/post-item.css" rel="stylesheet" >
     <script defer src="js/jquery.min.js"></script>
+    <script defer src="js/tudo-base.js">
+	<script defer src="js/map_script.js"></script>
 </head>
 
 <body>
@@ -127,7 +129,11 @@
 		<div class="overlay text-white p-md-5 p-2" id="chooseMapPanel">
 			<div class="form-control h-100 d-block">
 				<p class="text-center lead">Chọn địa điểm</p>
-				<div class="h-75 w-100 overflow-hidden justify-content-center d-flex"><img class="FitImage" src="img/background.jpg"/></div>
+				<div class="h-75 w-100 overflow-hidden justify-content-center d-flex">
+					<div class="col-12 d-block">
+						<div id='map'></div>
+					</div>
+				</div>
 				<div class="col-12 text-center" id="mapAddress">81/24/3 Đường số 2, P. Trường Thọ, Q.Thủ Đức</div>
 				<div class="row d-flex justify-content-center mt-2">
 					<button class="col-6 btn btn-primary mr-2" id="chooseMapButton">Xác nhận địa điểm</button>
@@ -199,5 +205,6 @@
 	<p>Một sản phẩm của PTUDW-17TN-Nhom16</p>
 </footer>
     <script defer src="js/post-item.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkKqNeJcs9YCNG8EfTfxi8ILGyLNYefsY&callback=initMap" async defer></script>
 </body>
 </html>

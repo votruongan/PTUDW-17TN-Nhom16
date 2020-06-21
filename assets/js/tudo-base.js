@@ -7,61 +7,63 @@
 //		templateImplement(t,p)
 // output: <div>foo</div>
 
-function templateImplement(template,params,isArrayOfParams=false){
-	var i = 0, len = params.length,j;
-	var res = []; var tmp;
-	if (isArrayOfParams){
-		var pArr = [];
-		for (i = 0; i < len; i++){
-			pArr.push(params[i][j]);
-		}	
-		return res;
-	}
-	for (i = 0; i < len; i++){
-		res.push(execImplement(template,0,params[i]));
-	}
-	return res;
-}
+var ReloadNeedsConfirm = false;
 
-function deArrayToElements(arr){
-	var res = []; var len = arr.length;
-	var tmp,j,i,k;
-	tmp = arr.splice(0);
-	for (i = 0; i < len-1; i++){
-		tmp = expandArray(tmp,i)
-		for (j = 0; j < tmp.length; j++){
-			var det = expandArray(tmp[j],i+1);
-			if (det == undefined)
-			{
-				console.log(tmp);
-				console.log(j + " - " +i);
-				continue;
-			}
-			for (k = 0; k < det.length; k++){
-				res.push(expandArray(tmp[j],i+1));
-			}
-		}
-	}
-	return res;
-}
+// function templateImplement(template,params,isArrayOfParams=false){
+// 	var i = 0, len = params.length,j;
+// 	var res = []; var tmp;
+// 	if (isArrayOfParams){
+// 		var pArr = [];
+// 		for (i = 0; i < len; i++){
+// 			pArr.push(params[i][j]);
+// 		}	
+// 		return res;
+// 	}
+// 	for (i = 0; i < len; i++){
+// 		res.push(execImplement(template,0,params[i]));
+// 	}
+// 	return res;
+// }
 
-function expandArray(arr,index){
-	if (!Array.isArray(arr[index]))
-		return;
-	var res = []; var len = arr[index].length;
-	var i =0;
-	for (i=0;i < len;i++){
-		res.push(arr.slice(0));
-		res[i][index] = arr[index][i];
-	}
-	return res;
-}
+// function deArrayToElements(arr){
+// 	var res = []; var len = arr.length;
+// 	var tmp,j,i,k;
+// 	tmp = arr.splice(0);
+// 	for (i = 0; i < len-1; i++){
+// 		tmp = expandArray(tmp,i)
+// 		for (j = 0; j < tmp.length; j++){
+// 			var det = expandArray(tmp[j],i+1);
+// 			if (det == undefined)
+// 			{
+// 				console.log(tmp);
+// 				console.log(j + " - " +i);
+// 				continue;
+// 			}
+// 			for (k = 0; k < det.length; k++){
+// 				res.push(expandArray(tmp[j],i+1));
+// 			}
+// 		}
+// 	}
+// 	return res;
+// }
+
+// function expandArray(arr,index){
+// 	if (!Array.isArray(arr[index]))
+// 		return;
+// 	var res = []; var len = arr[index].length;
+// 	var i =0;
+// 	for (i=0;i < len;i++){
+// 		res.push(arr.slice(0));
+// 		res[i][index] = arr[index][i];
+// 	}
+// 	return res;
+// }
 
 
-function execImplement(template,index,str){
-	tmp = "$" + index;
-	return template.replace(tmp,str);
-}
+// function execImplement(template,index,str){
+// 	tmp = "$" + index;
+// 	return template.replace(tmp,str);
+// }
 
 
 
@@ -119,11 +121,29 @@ function basePageInit(){
 	
 }
 
+window.onbeforeunload = function() {
+	if (ReloadNeedsConfirm)
+		return 'Mốt số thay đổi vẫn chưa được lưu lại :/ bạn có chắc chắn muốn rời đi chứ';
+};
+
 basePageInit();
 
 
 
-function expandNavBar(){
-	
+function extendNavBar(){
+	$("#toggleNavBar").children()[0].classList.remove("fa-bars");
+	$("#toggleNavBar").children()[0].classList.add("fa-angle-up");
+	$("#toggleNavBar").attr("onclick","reduceNavBar()");
+	$("#moreNav").removeClass();
+	$("#moreNav").children().addClass("col-12");
+}
+
+
+function reduceNavBar(){
+	$("#toggleNavBar").children()[0].classList.remove("fa-angle-up");
+	$("#toggleNavBar").children()[0].classList.add("fa-bars");
+	$("#toggleNavBar").attr("onclick","extendNavBar()");
+	$("#moreNav").addClass("d-none navbar-brand d-lg-block");
+	$("#moreNav").children().removeClass("col-12");
 }
 
