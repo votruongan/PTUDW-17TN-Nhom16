@@ -35,3 +35,10 @@ function initMap() {
 $('.1stuff').click(function(){
     location.href="./info"
 })
+
+$(function(){
+    $('.btnss').click(function(){
+        $('.btnss').removeClass('acctive')
+        $(this).addClass('acctive')
+    })
+})
