@@ -94,12 +94,14 @@
 	
 		<div class="form-group">
 		<label class="col-md-4 control-label" for="rentalFee">Tiền thuê theo ngày:</label>  
-		<div class="input-group col-md-12 col-lg-8">
+		<div class=" col-md-12 col-lg-8">
+			<div class="input-group">
 		  <input type="number" name="rentalFee" class="form-control form-conrol input-md"  placeholder="vd: 200.000">
 		  <div class="input-group-append">
 			<span class="input-group-text" id="basic-addon2">VNĐ / ngày</span>
 		  </div>
 		  <span class="help-block col-12">Bạn cần nhập vào số tiền thuê đồ theo ngày.</span>  
+			</div>
 		</div>
 		</div>
 
@@ -115,18 +117,20 @@
 		<!-- Address input-->
 		<div class="form-group">
 		  <label class="col-md-4 control-label" for="address">Địa chỉ nhận &amp; trả đồ:</label>  
-		  <div class="input-group col-md-12 col-lg-7">
+		  <div class="col-md-12 col-lg-7">
+			<div class="input-group ">
 		  <input id="address col-md-12" name="address" type="text" placeholder="vd: 227 Nguyễn Văn Cừ, P.4, Q.5, TP.HCM" class="form-control input-md" required="">
 		  <div class="input-group-append col-md-12 col-lg-1 p-0">
 			<a href="#" id="openMapButton"><span class="input-group-text m-0" id="basic-addon2">Chọn trên bản đồ</span></a>
 		  </div>
 		  <span class="help-block  col-12">Bạn cần nhập vào địa chỉ để người thuê nhận và trả đồ.</span>  
+			</div>
 		  </div>
 		</div>
 		</div>
 	</form>
 	
-		<div class="overlay text-white p-md-5 p-2" id="chooseMapPanel">
+		<div class="overlay text-white p-md-5 mt-3 p-2" id="chooseMapPanel">
 			<div class="form-control h-100 d-block">
 				<p class="text-center lead">Chọn địa điểm</p>
 				<div class="h-75 w-100 overflow-hidden justify-content-center d-flex">
