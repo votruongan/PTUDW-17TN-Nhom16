@@ -12,6 +12,71 @@ nav{
 box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
+
+
+.searchbar{
+  margin-bottom: auto;
+  margin-top: auto;
+  height: 60px;
+  background-color: white;
+  border-radius: 30px;
+  padding: 10px;
+  }
+
+  .search_input{
+  color: #515151;
+  border: 0;
+  outline: 0;
+  background: none;
+  caret-color:transparent;
+  line-height: 40px;
+  transition: width 0.4s linear;
+  }
+
+  @media only screen and (max-width: 450px) {
+    .searchbar:hover > .search_input{
+      padding: 0 10px;
+      width: 220px;
+      caret-color:red;
+      transition: width 0.4s linear;
+      }
+    }
+    
+  @media only screen and (min-width: 450px) {
+    .searchbar:hover > .search_input{
+      padding: 0 10px;
+      width: 350px;
+      caret-color:red;
+      transition: width 0.4s linear;
+      }
+    }
+    
+  
+  @media only screen and (min-width: 990px) {
+  .searchbar:hover > .search_input{
+  padding: 0 10px;
+  caret-color:red;
+  transition: width 0.4s linear;
+  }
+  }
+
+  .searchbar:hover > .search_icon{
+  background: white;
+  color: #6E62F9;
+  }
+
+  .search_icon{
+  height: 40px;
+  width: 40px;
+  float: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color:black;
+  text-decoration:none;
+  }
+
 .shadow{
   
 	box-shadow: 0 .2rem 1rem rgba(0,0,0,.23)!important;
