@@ -9,6 +9,27 @@
 
 var ReloadNeedsConfirm = false;
 
+
+function getXHR(toSend,param=null){
+    url =  toSend;
+    if (param != null)
+        url = url + "/" + param.toString();
+    let xhr = new XMLHttpRequest();
+    xhr.open("GET",url);
+    return xhr;
+}
+
+function postXHR(toSend,param=null){
+    url =  toSend;
+    if (param != null)
+        url = url + "/" + param.toString();
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST",url,true);
+	//Send the proper header information along with the request
+	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    return xhr;
+}
+
 // function templateImplement(template,params,isArrayOfParams=false){
 // 	var i = 0, len = params.length,j;
 // 	var res = []; var tmp;

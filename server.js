@@ -1,12 +1,30 @@
 const express = require('express');
-var favicon = require('serve-favicon');
+const favicon = require('serve-favicon');
+const bodyParser = require('body-parser');
+// create application/x-www-form-urlencoded parser
+const urlencodedParser = bodyParser.urlencoded({ extended: false })
+const bookingHandler = require('./server_handlers/booking_handler');
+ 
 const app = express();
 const port = process.env.PORT || 3000;
-
 
 app.use(favicon("assets/img/fav.png"));
 app.use(express.static(__dirname + '/assets/'));
 
+// FUNCTIONS
+
+app.post('/book-item/:stageId/:itemId', urlencodedParser, (req, res) => {
+    const body = req.body;
+    const stage = req.params.stageId;
+    const itemId = req.params.itemId;    
+    bookingHandler.sendBookingRequest(itemId,body.userId,body.message);
+})
+
+
+
+// STATIC FILE SERVING
+
+ 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/html/index.html');
 })
@@ -43,7 +61,6 @@ app.get('/profile', (req, res) => {
 app.get('/about', (req, res) => {
     res.sendFile(__dirname + '/html/about.html');
 })
-
 
 app.get('/forgot-password', (req, res) => {
     res.sendFile(__dirname + '/html/forgot-password.html');
