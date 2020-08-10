@@ -2,6 +2,14 @@ const MongoClient = require('mongodb').MongoClient;
 
 const url = "mongodb://localhost:27017";
 
+function initDatabase(){
+  MongoClient.connect(url+"/tudo",(e,db)=>{
+    if (err) throw err;
+    console.log("Database created!");
+    db.close();
+  })
+}
+
 function createCollection(collectionName){
   MongoClient.connect(url, function(err, db) {
     if (err) throw err;
@@ -49,6 +57,7 @@ function deleteDocument(collection,queryObject){
 }
 
 module.exports = {
+  initDatabase,
   createCollection,
   insertDocument,
   findDocument,
