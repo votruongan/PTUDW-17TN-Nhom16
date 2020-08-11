@@ -118,9 +118,7 @@
                                     <p class="mr-2 d-none d-md-block">Tài khoản cao cấp</p>
                                 </div>
                                 <div class="d-flex flex-row">
-                                    <p class="mr-2">459 lượt cho thuê</p>
-                                    <p class="mr-2"> * </p>
-                                    <p class="mr-2">Đăng ký T1/2020</p>
+                                    <p class="mr-2">459 lượt cho thuê từ Tháng 1, 2020</p>
                                 </div>
                                 <p>Phản hồi trung bình sau 2 phút</p>
                             </div>
@@ -141,12 +139,12 @@
                 </div>
                 <div class="flex-box">
                     <div class="col-7">
-                    <button type="button" class="btn btn-primary w-100 shadow-sm" style="min-height: 60px;">
+                    <button type="button" class="btn btn-primary w-100 shadow-sm" style="min-height: 60px;" id="sendBookingRequest">
                         Gửi yêu cầu cho thuê
                     </button>						
                     </div>
                     <div class="col-5">
-                    <button type="button" class="btn btn-outline-secondary w-100" style="min-height: 60px;">
+                    <button type="button" class="btn btn-outline-secondary w-100" style="min-height: 60px;" id="cancelBookingRequest">
                         Hủy yêu cầu
                     </button>		
                     </div>
@@ -420,8 +418,7 @@
 			
 			
             <!-- Reciept info box -->
-			<div class="overlay overlay-button d-block d-lg-none"><button class="btn btn-secondary" style="width:15%;">Chi tiết tiền thuê</button></div>
-            <div class="col-lg-4 flex-box mr-4 ml-4 mt-4 d-none d-lg-block">
+            <div class="col-lg-4 flex-box mr-4 ml-4 mt-4 d-none d-lg-block" id="detailPanel">
                 <div class="d-flex flex-column bd-highlight w-100">
                     <div class="d-flex align-items-end justify-content-center align-items-between receiptImage" style="background: url(https://s4.nhattao.com/data/attachment-files/2020/05/15043954_1.jpg); height:200px; padding:0px">
 						<div class="focus white-text w-100 p-2" style="height:40%">
@@ -465,8 +462,8 @@
                             <b class="">Mã giảm giá:</b>	
 						</div>
 				  <div class="input-group">
-				  <input id="discountText" name="address" type="text" placeholder="" class="h-100 form-control input-md" required=""/>
-				  <div class="input-group-append col-md-6 col-lg-6 p-0 m-0">
+				  <input id="discountText" name="address" type="text" placeholder="" class="h-100 form-control input-md"/>
+				  <div class="input-group-append">
 					<button class="m-0 p-md-0 p-lg-1 btn btn-primary white" id="basic-addon2">Áp dụng</button>
 				  </div>
 				</div>
@@ -497,6 +494,9 @@
                     <hr class="mt-1 mb-3 w-100"/>
                     <button type="button" class="btn btn-link w-100" style="color: #6E62F9;">Hướng dẫn thuê đồ</button>
                 </div>
+            </div>
+			<div class="overlay overlay-button d-block d-lg-none">
+                <button class="btn btn-secondary" style="width:15%;" id="showDetailButton">Chi tiết tiền thuê</button>
             </div>
         </div>
     </div>

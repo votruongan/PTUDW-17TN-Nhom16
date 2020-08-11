@@ -29,6 +29,17 @@ function postXHR(toSend,param=null){
     return xhr;
 }
 
+function makeFormData(obj){
+	let str = ""
+	for (const key in obj) {
+		if (obj.hasOwnProperty(key)) {
+			const ele = obj[key];
+			str += key+"="+ele+ "&";
+		}
+	}
+	return str.substr(0,str.length-1);
+}
+
 // function templateImplement(template,params,isArrayOfParams=false){
 // 	var i = 0, len = params.length,j;
 // 	var res = []; var tmp;
@@ -167,3 +178,16 @@ function reduceNavBar(){
 	$("#moreNav").children().removeClass("col-12");
 }
 
+function toggleClassList(target,classString){
+	classString.split(" ").forEach(val=>{
+		target.classList.toggle(val)
+	})
+}
+
+if (showDetailButton)
+	showDetailButton.onclick = () => {
+		detailPanel.classList.toggle("d-none")
+		toggleClassList(detailPanel,"d-block overlay bg-white p-5 position-absolute")
+		if (detailPanel.classList.contains("d-none")) return showDetailButton.innerText = "Chi tiết tiền thuê"
+		showDetailButton.innerText = "Quay lại"
+	}
