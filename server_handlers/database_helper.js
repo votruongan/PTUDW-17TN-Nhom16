@@ -1,9 +1,10 @@
 const MongoClient = require('mongodb').MongoClient;
 
 const url = "mongodb://localhost:27017";
+const dbName = "tudo";
 
 function initDatabase(){
-  MongoClient.connect(url+"/tudo",(e,db)=>{
+  MongoClient.connect(url+"/" + dbName,(e,db)=>{
     if (err) throw err;
     console.log("Database created!");
     db.close();

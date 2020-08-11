@@ -111,6 +111,7 @@
         <div class="content-box">
             <div class="flex-xs-12 flex-md-6 ml-4 pr-4 mt-4">
                 <!-- Item detail box -->
+                <div>
                 <div class="flex-box mb-0">
                     <div class="flex-xs-12 flex-md-8">
                         <h1 style="font-size:2rem;">Macbook Pro 13" 2015 MF841 Core i5 2.9-Ram 8Gb-SSD 512GB</h1>
@@ -123,60 +124,63 @@
                         </span>
                     </div>
                 </div>
-                <div class="row">
-                <div class="col-lg-4 flex-box mr-4 ml-4 mt-4 below-md-overlay">
-                    <div class="d-flex flex-column bd-highlight w-100">
-                        <div class="d-flex flex-row justify-content-center align-items-center">
-                            <p style="font-size:1.5rem;">₫&nbsp;
-                            <b style="font-size:2rem;color:#6E62F9;">200.000</b></p>
-                            /ngày
-                        </div>
-                        <b class="mt-3">Bắt đầu:</b>
-                        <input id="startDateTime" type="datetime-local" class="form-control mt-2 w-100">
-                        <b class="mt-3">Kết thúc:</b>
-                        <input id="endDateTime" type="datetime-local" class="form-control mt-2 w-100">
-                        <b class="mt-3">Địa điểm nhận & trả đồ vật</b>
-                        <input id="pac-input" type="text" placeholder="Chọn địa điểm" class="form-control mt-2 w-100">
-                        <div class="promo-card w-100 mt-3 mb-3 d-flex flex-row p-2 justify-content-between">
-                            <div class="d-flex flex-column" mr-2>
-                                <span style="font-size:small;">Khuyến mãi thuê trên 2 ngày <button class="tooltipButton-button gray"></button></span>
-                                <p style="font-size: small; color: gray;">Bạn tiết kiệm được 5%</p>
-                            </div>
-                            <b class="align-bottom" style="color: #178514;">20K</b>
-                        </div>
-                        <a type="button" class="p-0 m-0 btn btn-primary w-100 shadow-sm" style="min-height: 60px;" href="./booking">
-                            <p class="mt-3 " style="font-size:1.4rem">ĐI ĐẾN THUÊ ĐỒ</p>
-                        </a>
-                        <p class="mt-3 text-center w-100" style="font-size: small;">Bạn cần phải đăng nhập trước</p>
-                        <hr class="mt-1 mb-3 w-100"/>
-                        <div class="d-flex flex-row bd-highlight">
-                            <img src="img/like.png" alt="" style="width: 50px; height: 50px;">
-                            <div class="d-flex flex-column ml-3">
-                                <b>Huỷ thuê miễn phí</b>
-                                <p style="font-size:small; color: gray;">
-                                    Hoàn tiền 100% nếu huỷ lượt thuê trước 26/4/2020 - 10:00PM
-                                </p>
-                            </div>
-                        </div>
-                        <hr class="mt-1 mb-3 w-100"/>
-                        <div class="d-flex flex-row bd-highlight">
-                            <img src="img/money.png" alt="" style="width: 50px; height: 50px;">
-                            <div class="d-flex flex-column ml-3">
-                                <b>Phí vượt quá giới hạn</b>
-                                <p style="font-size:small; color: gray;">
-                                    Tính thêm 20K/giờ nếu vượt quá giới hạn đăng ký thuê.
-                                </p>
-                            </div>
-                        </div>
-                        <hr class="mt-1 mb-3 w-100"/>
-                        <button type="button" class="btn btn-outline-secondary">
-                            <img src="img/heart.png" alt="" style="width: 40px; height: 40px;">
-                            Thêm vào yêu thích
-                        </button>
-                        <button type="button" class="btn btn-link w-100" style="color: #6E62F9;">Chính sách huỷ thuê</button>
+                </div>
+                            <!-- Booking info box -->
+		<!-- <div class="overlay overlay-button d-block d-lg-none"><button class="btn btn-secondary" style="width:15%;">Chi tiết tiền thuê</button></div> -->
+        <div class="col-lg-4 flex-box mr-4 ml-4 mt-4 d-none d-lg-block below-md-overlay">
+            <div class="d-flex flex-column bd-highlight w-100">
+                <div class="d-flex flex-row justify-content-center align-items-center">
+                    <p style="font-size:1.5rem;">₫&nbsp;
+                    <b style="font-size:2rem;color:#6E62F9;">200.000</b></p>
+                    /ngày
+                </div>
+                <b class="mt-3">Bắt đầu:</b>
+                <input id="startDateTime" type="datetime-local" class="form-control mt-2 w-100">
+                <b class="mt-3">Kết thúc:</b>
+                <input id="endDateTime" type="datetime-local" class="form-control mt-2 w-100">
+                <b class="mt-3">Địa điểm nhận & trả đồ vật</b>
+                <input id="pac-input" type="text" placeholder="Chọn địa điểm" class="form-control mt-2 w-100">
+                <div class="promo-card w-100 mt-3 mb-3 d-flex flex-row p-2 justify-content-between">
+                    <div class="d-flex flex-column" mr-2>
+                        <span style="font-size:small;">Khuyến mãi thuê trên 2 ngày <button class="tooltipButton-button gray"></button></span>
+                        <p style="font-size: small; color: gray;">Bạn tiết kiệm được 5%</p>
                     </div>
-                </div>    
-                <div class="col-lg-7">
+                    <b class="align-bottom" style="color: #178514;">20K</b>
+                </div>
+                <a type="button" class="p-0 m-0 btn btn-primary w-100 shadow-sm" style="min-height: 60px;" href="./booking">
+                    <p class="mt-3 " style="font-size:1.4rem">ĐI ĐẾN THUÊ ĐỒ</p>
+                </a>
+                <p class="mt-3 text-center w-100" style="font-size: small;">Bạn cần phải đăng nhập trước</p>
+                <hr class="mt-1 mb-3 w-100"/>
+                <div class="d-flex flex-row bd-highlight">
+                    <img src="img/like.png" alt="" style="width: 50px; height: 50px;">
+                    <div class="d-flex flex-column ml-3">
+                        <b>Huỷ thuê miễn phí</b>
+                        <p style="font-size:small; color: gray;">
+                            Hoàn tiền 100% nếu huỷ lượt thuê trước 26/4/2020 - 10:00PM
+                        </p>
+                    </div>
+                </div>
+                <hr class="mt-1 mb-3 w-100"/>
+                <div class="d-flex flex-row bd-highlight">
+                    <img src="img/money.png" alt="" style="width: 50px; height: 50px;">
+                    <div class="d-flex flex-column ml-3">
+                        <b>Phí vượt quá giới hạn</b>
+                        <p style="font-size:small; color: gray;">
+                            Tính thêm 20K/giờ nếu vượt quá giới hạn đăng ký thuê.
+                        </p>
+                    </div>
+                </div>
+                <hr class="mt-1 mb-3 w-100"/>
+                <button type="button" class="btn btn-outline-secondary">
+                    <img src="img/heart.png" alt="" style="width: 40px; height: 40px;">
+                    Thêm vào yêu thích
+                </button>
+                <button type="button" class="btn btn-link w-100" style="color: #6E62F9;">Chính sách huỷ thuê</button>
+            </div>
+        </div>
+    </div>
+    </div>
                 <!-- Detail's info -->
                 <div class="flex-box mt-0 pt-0 justify-content-center mt-3 mb-5">
 						<div class="row col-lg-12 col-xs-12">
@@ -284,11 +288,6 @@
                     </div>
                 </div>
             </div>
-                </div>
-            </div>
-            <!-- Booking info box -->
-		<div class="overlay overlay-button d-block d-lg-none"><button class="btn btn-secondary" style="width:15%;">Chi tiết tiền thuê</button></div>
-        </div>
     </div>
     <script src="js/item_info.js"></script>
 </body>
