@@ -26,11 +26,12 @@ function createCollection(collectionName){
 function insertDocument(collection,doc){
   return new Promise((resolve,reject)=>{
     MongoClient.connect(url, function(err, db) {
-        if (err) reject(err);
+        if (err) resolve(false);
         var dbo = db.db("tudo");
         dbo.collection(collection).insertOne(doc, function(err, res) {
-            if (err) reject(err);
+            if (err) resolve(false);
             console.log(doc," inserted to collection",collection,"db",dbName);
+            resolve(true);
             db.close();
         });
     });
