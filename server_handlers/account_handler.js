@@ -39,54 +39,46 @@ async function logIn(user) {
 // Module class for export
 class UserHandler {
 	
-	static signUpRequest = async function(username, password, name, phonenumber, email, address) {
+	static signUpRequest = async function(email, password, name, phonenumber, address) {
 		let user = {
-			"username" 	: username,
+			"email"		: email,
 			"password"	: password,
 			"name"		: name,
 			"phone" 	: phonenumber,
-			"email"		: email,
 			"address"	: address
 		};
 	
-		// 1. Check username is valid
-		let validUsername = await isValid({username});
-		console.log("Valid Username: ", validUsername);
+		// 1. Check email is valid
+		let validEmail = await isValid({email});
+		console.log("Valid email: ", validEmail)
 	
 		// 2. Check phonenumber is valid
 		let validPhonenumber= await isValid({"phone": phonenumber});
 		console.log("Valid phonenumber: ", validPhonenumber);
 
-		// 3. Check email is valid
-		let validEmail = await isValid({email});
-		console.log("Valid email: ", validEmail)
-
-		// 4. Check and return
-		if (!validUsername) {
+		// 3. Check and return
+		if (!validEmail) {
 			return 1;
 		}
 		if (!validPhonenumber) {
 			return 2;
 		}
-		if (!validEmail) {
-			return 3;
-		}
 
-		// 5. If valid, create user
+		// 4. If valid, create user
 		let created = await createUser(user)
 		console.log("Created = ", created)
 
 		if (created) {
 			return 0; // Success
 		} else {
-			return 4; // Failed
+			return 3; // Failed
 		}
 	}
 
-	static logInRequest = async function(username, password) {
+	static logInRequest = async function(email, password) {
 		let user = {
-			"username" : username,
-			"password" : password
+			"email"		: email,
+			"password" 	: password
 		}
 
 		let logInResult = await logIn(user);

@@ -22,10 +22,11 @@ function btnTiepTucdangky() {
         $(".containerUpfile").css("border", "1px solid black")
     }
     if (check == 1) {
+        signUpButtonTapped();
+
         $(".panel1").css("display", "none")
         $(".panel2").css("display", "block")
         window.scrollTo(0, 0);
-
     }
 }
 
@@ -106,3 +107,41 @@ $(document).on('click', ".time", function() {
     } else
         return false;
 });
+
+
+// SIGN UP
+
+async function signUpButtonTapped() {
+    let email = InputEmail.value;
+    let password = InputPassword.value;
+    let repassword = InputPassword1.value;
+    let phone = Inputsdt.value;
+    let name = "aaaa"
+    let address = "bbb"
+
+    if (password != repassword) {
+        // Bao loi
+
+        return;
+    }
+
+    let user = {
+        "email"     : email,
+        "password"  : password,
+        "phone"     : phone,
+        "name"      : name,
+        "address"   : address
+    }
+
+    const url = "http://localhost:3000" + "/sign_up/"
+
+    const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(user)
+    });
+    let r = await response.json();
+    console.log(r);
+}
