@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 // create application/x-www-form-urlencoded parser
 const urlencodedParser = bodyParser.urlencoded({ extended: false })
 const bookingHandler = require('./server_handlers/booking_handler');
+
+const dbHelper = require('./server_handlers/database_helper');
  
 const app = express();
 const port = process.env.PORT || 3000;
