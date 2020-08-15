@@ -14,14 +14,45 @@ app.use(favicon("assets/img/fav.png"));
 app.use(express.static(__dirname + '/assets/'));
 
 // FUNCTIONS
+function responseError(res){
+    res.sendStatus(404)
+}
 
-app.post('/book-item/:stageId/:itemId', urlencodedParser, (req, res) => {
+app.post('/rent-item/:stageId/:itemId', urlencodedParser, (req, res) => {
     const body = req.body;
     const stage = req.params.stageId;
-    const itemId = req.params.itemId;    
-    bookingHandler.sendBookingRequest(itemId,body.userId,body.message);
+    const itemId = req.params.itemId;
+    const uId = body.userId
+    if (!uId || ! itemId || !stage) return responseError(res);
+    switch (stage) {
+        case "1":
+            bookingHandler.writeBookingRequest(itemId,uId,body.message); 
+            break;
+        default:
+            return responseError(res)
+            break;
+    }
 })
 
+app.post('/manage-renting-item/:stageId/:itemId', urlencodedParser, (req, res) => {
+    const body = req.body;
+    const stage = req.params.stageId;
+    const itemId = req.params.itemId;
+    const uId = body.userId;
+    if (!uId || !itemId || !stage) return responseError(res);
+    const successResponse = function (obj){
+        res.send(obj);
+    }
+    console.log(successResponse);
+    switch (stage) {
+        case "1":
+            bookingHandler.fetchBookingRequest(itemId,successResponse); 
+            break;
+        default:
+            responseError(res)
+            break;
+    }
+})
 
 
 // STATIC FILE SERVING
@@ -44,12 +75,12 @@ app.get('/post-item', (req, res) => {
 })
 
 
-app.get('/booking', (req, res) => {
-    res.sendFile(__dirname + '/html/booking.html');
+app.get('/rent', (req, res) => {
+    res.sendFile(__dirname + '/html/rent.html');
 })
 
-app.get('/leasing', (req, res) => {
-    res.sendFile(__dirname + '/html/leasing.html');
+app.get('/lease', (req, res) => {
+    res.sendFile(__dirname + '/html/lease.html');
 })
 
 app.get('/signup', (req, res) => {
