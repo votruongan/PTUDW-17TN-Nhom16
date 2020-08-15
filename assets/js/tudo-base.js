@@ -184,7 +184,7 @@ function toggleClassList(target,classString){
 	})
 }
 
-if (showDetailButton)
+if (typeof showDetailButton != "undefined")
 	showDetailButton.onclick = () => {
 		detailPanel.classList.toggle("d-none")
 		toggleClassList(detailPanel,"d-block overlay bg-white p-5 position-absolute")
