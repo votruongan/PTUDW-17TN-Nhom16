@@ -3,7 +3,11 @@ const favicon = require('serve-favicon');
 const bodyParser = require('body-parser');
 // create application/x-www-form-urlencoded parser
 const urlencodedParser = bodyParser.urlencoded({ extended: false })
+const jsonParser = bodyParser.json();
 const bookingHandler = require('./server_handlers/renting_handler');
+const userHandler = require('./server_handlers/account_handler');
+
+const dbHelper = require('./server_handlers/database_helper');
  
 const app = express();
 const port = process.env.PORT || 3000;
@@ -52,10 +56,19 @@ app.post('/manage-renting-item/:stageId/:itemId', urlencodedParser, (req, res) =
     }
 })
 
+app.post('/sign_up', jsonParser, async (req, res) => {
+    const body = req.body;
+
+    let result = await userHandler.signUpRequest(body.email, body.password, body.name, body.phone, body.address);
+
+    res.send({result});
+})
+
+// ACCOUNT HANDLER MODULES
+
 
 // STATIC FILE SERVING
 
- 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/html/index.html');
 })

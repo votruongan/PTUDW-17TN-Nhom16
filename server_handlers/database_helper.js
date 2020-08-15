@@ -4,7 +4,7 @@ const url = "mongodb://localhost:27017";
 const dbName = "tudo";
 
 function initDatabase(){
-  MongoClient.connect(url+"/" + dbName,(e,db)=>{
+  MongoClient.connect(url+"/" + dbName,(err,db)=>{
     if (err) throw err;
     console.log("Database",dbName,"created!");
     db.close();
@@ -49,7 +49,7 @@ function findDocument(collection,queryObject){
           db.close();
         });
     });
-  })     
+  })
 }
 
 function deleteDocument(collection,queryObject){
