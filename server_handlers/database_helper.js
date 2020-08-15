@@ -35,7 +35,7 @@ function insertDocument(collection,doc){
             db.close();
         });
     });
-  }
+  });
 }
 
 function findDocument(collection,queryObject){
