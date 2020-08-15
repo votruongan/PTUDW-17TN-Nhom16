@@ -24,27 +24,31 @@ function createCollection(collectionName){
 }
 
 function insertDocument(collection,doc){
-  MongoClient.connect(url, function(err, db) {
-      if (err) throw err;
-      var dbo = db.db("tudo");
-      dbo.collection(collection).insertOne(doc, function(err, res) {
-          if (err) throw err;
-          console.log(doc," inserted to collection",collection,"db",dbName);
-          db.close();
-      });
-  });
+  return new Promise((resolve,reject)=>{
+    MongoClient.connect(url, function(err, db) {
+        if (err) reject(err);
+        var dbo = db.db("tudo");
+        dbo.collection(collection).insertOne(doc, function(err, res) {
+            if (err) reject(err);
+            console.log(doc," inserted to collection",collection,"db",dbName);
+            db.close();
+        });
+    });
+  }
 }
 
-function findDocument(collection,queryObject,successCallback){
-  MongoClient.connect(url, function(err, db) {
-      if (err) throw err;
-      var dbo = db.db("tudo");
-      dbo.collection(collection).find(queryObject).toArray(function(err, result) {
+function findDocument(collection,queryObject){
+  return new Promise((resolve,reject)=>{
+    MongoClient.connect(url, function(err, db) {
         if (err) throw err;
-        successCallback(result);
-        db.close();
-      });
-  });      
+        var dbo = db.db("tudo");
+        dbo.collection(collection).find(queryObject).toArray(function(err, result) {
+          if (err) reject(err);
+          resolve(result);
+          db.close();
+        });
+    });
+  })     
 }
 
 function deleteDocument(collection,queryObject){
@@ -58,6 +62,12 @@ function deleteDocument(collection,queryObject){
     });
   });  
 }
+
+async function main(){
+  let res = await findDocument("booking-1",{userId:'123'});
+  console.log(res);
+}
+main()
 
 module.exports = {
   initDatabase,
