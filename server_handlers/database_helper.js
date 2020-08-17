@@ -3,6 +3,12 @@ const MongoClient = require('mongodb').MongoClient;
 const url = "mongodb://localhost:27017";
 const dbName = "tudo";
 
+async function sleep(ms){
+  return new Promise((resolve,reject)=>{
+    setTimeout(()=>resolve(true),ms);
+  })
+}
+
 function initDatabase(){
   MongoClient.connect(url+"/" + dbName,(err,db)=>{
     if (err) throw err;
@@ -41,13 +47,28 @@ function insertDocument(collection,doc){
 function findDocument(collection,queryObject){
   return new Promise((resolve,reject)=>{
     MongoClient.connect(url, function(err, db) {
-        if (err) throw err;
+        if (err) resolve(false);
         var dbo = db.db("tudo");
         dbo.collection(collection).find(queryObject).toArray(function(err, result) {
-          if (err) reject(err);
+          if (err) resolve(false);
           resolve(result);
           db.close();
         });
+    });
+  })
+}
+
+function updateDocument(collection,queryObject,dataObject){
+  return new Promise((resolve,reject)=>{
+    MongoClient.connect(url,async function(err, db) {
+        if (err) resolve(false);
+        var dbo = db.db("tudo");
+        dbo.collection(collection).findOneAndUpdate(
+          queryObject, // query
+          {$set: dataObject}, // replacement 
+        );
+        await sleep(100)
+        resolve(true)
     });
   })
 }
@@ -63,12 +84,6 @@ function deleteDocument(collection,queryObject){
     });
   });  
 }
-
-async function main(){
-  let res = await findDocument("booking-1",{userId:'123'});
-  console.log(res);
-}
-main()
 
 module.exports = {
   initDatabase,
