@@ -16,7 +16,7 @@ async function updateStatus(){
 		else
 			return openPanel(i);
 	}
-	return openPanel(0);
+	return openPanel(1);
 }
 
 function openPanel(index){

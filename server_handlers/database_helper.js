@@ -85,7 +85,7 @@ function deleteDocument(collection,queryObject){
   });  
 }
 
-function deleteAllDocument(collection,queryObject){
+function deleteManyDocument(collection,queryObject){
   MongoClient.connect(url, function(err, db) {
     if (err) throw err;
     var dbo = db.db("tudo");
@@ -104,5 +104,6 @@ module.exports = {
   insertDocument,
   findDocument,
   deleteDocument,
-  updateDocument
+  updateDocument,
+  deleteManyDocument
 };
