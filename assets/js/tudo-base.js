@@ -9,6 +9,20 @@
 
 var ReloadNeedsConfirm = false;
 
+let urlPrefix = window.location.host + "/";
+
+function makeRequest(path,postObject = null){
+	if (postObject)
+		return fetch(path,{
+			method: "POST",
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(postObject)
+		}).then(val => val.json())
+	//no object to post -> get method
+	return fetch(path).then(val => val.json());
+}
 
 function getXHR(toSend,param=null){
     url =  toSend;
@@ -191,3 +205,42 @@ if (typeof showDetailButton != "undefined")
 		if (detailPanel.classList.contains("d-none")) return showDetailButton.innerText = "Chi tiết tiền thuê"
 		showDetailButton.innerText = "Quay lại"
 	}
+
+
+
+function getEle(id){
+    return document.getElementById(id);
+}
+
+function grandParent(ele){
+  return ele.parentNode.parentNode;
+}
+
+function takeGrandParentHeightPx(ele){
+    let raw = grandParent(ele).style.height;
+    raw.substring(0,raw.length-3);
+    return parseInt(raw);
+}
+
+function changeTab(addActive, removeActive,enableEle, disableEle){
+	console.log(removeActive, removeActive.classList);
+	removeActive.classList.remove("active");
+	getEle(addActive).classList.add("active");
+	setObjectVisiblity(disableEle,false)
+	setObjectVisiblity(enableEle,true)
+}
+
+function setObjectVisiblity(obj, value, visibleClass="d-block"){
+  if (value) {
+      obj.classList.remove("d-none");
+      obj.classList.add(visibleClass);
+      return;
+  }
+  obj.classList.remove(visibleClass);
+  obj.classList.add("d-none");
+}
+
+function setObjectActive(obj, value){
+  if (value) obj.removeAttribute("disabled")
+  else obj.setAttribute("disabled","true")
+}
