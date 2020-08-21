@@ -93,6 +93,8 @@ app.post('/result-lease-item/:stageId/:itemId', jsonParser, async (req, res) => 
     res.send(await rentingHandler.fetchRentStatus(allInfo));
 })
 
+// ACCOUNT HANDLER MODULES
+
 app.post('/sign_up', jsonParser, async (req, res) => {
     const body = req.body;
 
@@ -101,8 +103,13 @@ app.post('/sign_up', jsonParser, async (req, res) => {
     res.send({result});
 })
 
-// ACCOUNT HANDLER MODULES
+app.post('/verify_account', jsonParser, async (req, res) => {
+    const body = req.body;
 
+    let result = await userHandler.verifyAccountRequest(body.email)
+
+    res.send(result);
+})
 
 // STATIC FILE SERVING
 

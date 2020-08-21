@@ -25,13 +25,24 @@ async function createUser(user) {
 	return false;
 }
 
+async function verify(user) {
+	let res = await dbHelper.updateDocument(userCollection, user).catch((err) => {
+		console.log("Err: ", err);
+	});
+
+	if (res) {
+		return true;
+	}
+	return false;
+}
+
 async function logIn(user) {
 	let res = await dbHelper.findDocument(userCollection, user).catch((err) => {
 		console.log("Err", err);
 	});
 
 	if (res) {
-		return true;
+		return true; 
 	}
 	return false;
 }
@@ -89,8 +100,21 @@ class UserHandler {
 		}
 		return false;
 	}
+
+	static verifyAccountRequest = async function(email) {
+		let user = {
+			"email" : email,
+			"verify": true
+		};
+
+		let verifyResult = await verify(user);
+		console.log("Verify res = ", verifyResult);
+
+		if (verifyResult) {
+			return true;
+		}
+		return false;
+	}
 }
 
 module.exports = UserHandler;
-
-UserHandler.signUpRequest("TONHIEU", "123",  "Hieu", "1234", "123")

@@ -2,7 +2,7 @@ var temp = document.getElementsByClassName("form-controlInput");
 var temp1 = document.getElementsByClassName("icon-error");
 var temp2 = document.getElementsByClassName("time")
 
-function btnTiepTucdangky() {
+function btnTiepTucdangkyTapped() {
     var check = 1;
     for (var i = 0; i < temp.length; i++) {
         if (temp[i].value === "") {
@@ -27,7 +27,7 @@ function btnTiepTucdangky() {
         $(".panel1").css("display", "none")
         $(".panel2").css("display", "block")
         window.scrollTo(0, 0);
-    }
+    }   
 }
 
 function btnquaylai() {
@@ -121,7 +121,7 @@ async function signUpButtonTapped() {
 
     if (password != repassword) {
         // Bao loi
-
+        alert("Nhập lại mật khẩu không chính xác. Vui lòng kiểm tra và thử lại!")
         return;
     }
 
@@ -144,4 +144,52 @@ async function signUpButtonTapped() {
     });
     let r = await response.json();
     console.log(r);
+}
+
+async function verifyButtonTapped() {
+    console.log("Verify button tapped");
+
+    let accepted = defaultCheck1.checked;
+    let email = InputEmail.value;
+    let user = {
+        "email" : email
+    }
+
+    console.log("Accepted = ", accepted);
+
+    if (!accepted) {
+        swal("Thất bại!", "Bạn chưa đồng ý với điều khoản của chúng tôi", "error");
+        return;
+    }
+
+    const url = "http://localhost:3000" + "/verify_account";
+
+    const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(user)
+    });
+
+    let r = await response.json();
+    console.log(r);
+
+    // Success
+    if (r) {
+        // alert("Xác thực tài khoản thành công!");
+        swal({
+            title: "Thành công",
+            text: "Bạn đã đăng ký tài khoản thành công!",
+            icon: "success",
+        })
+        .then(confirm => {
+            if (confirm) {
+                // Navigate to home page
+                window.location.href = "http://localhost:3000";
+            }
+        })
+    } else {
+        swal("Oops!", "Xác thực tài khoản thất bại", "error");
+    }
 }
