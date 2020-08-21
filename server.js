@@ -29,28 +29,61 @@ app.post('/rent-item/:stageId/:itemId', jsonParser, async (req, res) => {
     const clientId = body.userId;
     const timeStamp = Date.now();
     if (!clientId || ! itemId || !stage) return responseError(res);
-    let result = null;
+    let handlerStr = null;
     switch (stage) {
         case "1":
-            result = await rentingHandler.writeBookingRequest(itemId,clientId,body.message);
+            handlerStr =  'handleRentRequest';            break;
+        case "2":
+            handlerStr = 'handleDeposit';            break;
+        case "3":
+            handlerStr = 'handleReceieve';            break;
+        case "4":
+            handlerStr = 'handleReturn';            break;
+        default:
+            return responseError(res)
+    }
+    console.log(handlerStr, rentingHandler[handlerStr])
+    if (handlerStr){
+        const result = await rentingHandler[handlerStr](itemId,clientId,body);
+        res.send(result);
+    } else
+    responseError(res)
+})
+
+app.post('/result-rent-item/:stageId/:itemId', jsonParser, async (req, res) => {
+    const body = req.body;
+    const stage = req.params.stageId;
+    const itemId = req.params.itemId;
+    const uId = body.userId;
+    if (!uId || !itemId || !stage) return responseError(res);
+    const allInfo = {stage, itemId, clientId:uId}
+    res.send({status:await rentingHandler.fetchRentStatus(allInfo)});
+})
+
+app.post('/lease-item/:stageId/:itemId', jsonParser, async (req, res) => {
+    const body = req.body;
+    const stage = req.params.stageId;
+    const itemId = req.params.itemId;
+    const clientId = body.userId;
+    const timeStamp = Date.now();
+    if (!clientId || ! itemId || !stage) return responseError(res);
+    let handlerStr = null;
+    switch (stage) {
+        case "1":
             break;
         case "2":
-            result = await rentingHandler.writeToRenting(2,{itemId,clientId,timeStamp});
             break;
         case "3":
-            result = await rentingHandler.writeToRenting(3,{itemId,clientId,timeStamp});
             break;
         case "4":
-            result = await rentingHandler.writeToRenting(4,{itemId,clientId,timeStamp});
             break;
         default:
             return responseError(res)
-            break;
     }
     res.send(result);
 })
 
-app.post('/manage-renting-item/:stageId/:itemId', jsonParser, async (req, res) => {
+app.post('/result-lease-item/:stageId/:itemId', jsonParser, async (req, res) => {
     const body = req.body;
     const stage = req.params.stageId;
     const itemId = req.params.itemId;

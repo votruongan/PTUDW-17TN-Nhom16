@@ -2,12 +2,16 @@
 const rentData = {userId:123}
 const maxStage = 4
 
+const itemId = 2810
+
+const fetchResultPrefix = 'result-rent-item'
 
 async function updateStatus(){
 	for (let i = 4; i > 0; i--) {
-		const obj = await makeRequest(`manage-renting-item/${i}/2810`,rentData)
-		console.log("updateRentingStatus",);
-		if (obj == null || (Object.keys(obj).length === 0 && obj.constructor === Object) || obj ==""){
+		const obj = await makeRequest(`${fetchResultPrefix}/${i}/${itemId}`,rentData)
+		console.log("updateRentingStatus",obj);
+		
+		if (obj.status == null || obj.status == "failed"){
 			console.log("obj is null");
 			continue;
 		}
@@ -16,6 +20,7 @@ async function updateStatus(){
 		else
 			return openPanel(i);
 	}
+	console.log(fetchResultPrefix);
 	return openPanel(1);
 }
 
@@ -37,29 +42,30 @@ function openPanel(index){
 
 async function onSendBookingRequest(){
 	rentData.message = requestMessage.value;
-	let r = await makeRequest("rent-item/1/2810",rentData)
+	let r = await makeRequest("rent-item/1/"+itemId,rentData)
 	console.log(r);
 	updateStatus();
 }
 
 
 async function onCompleteDeposit(){
-	let r = await makeRequest("rent-item/2/2810",rentData)
+	let r = await makeRequest("rent-item/2/"+itemId,rentData)
 	console.log(r);
 	updateStatus();
 }
 
 async function onReceiveItem(){
-	let r = await makeRequest("rent-item/3/2810",rentData)
+	let r = await makeRequest("rent-item/3/"+itemId,rentData)
 	console.log(r);
 	updateStatus();
 }
 
 async function onReturnItem(){
-	let r = await makeRequest("rent-item/4/2810",rentData)
+	let r = await makeRequest("rent-item/4/"+itemId,rentData)
 	console.log(r);
 	updateStatus();
 }
+
 updateStatus();
 sendBookingRequest.onclick = onSendBookingRequest;
 completeDeposit.onclick = onCompleteDeposit;

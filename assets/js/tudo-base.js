@@ -19,7 +19,11 @@ function makeRequest(path,postObject = null){
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify(postObject)
-		}).then(val => val.json())
+		}).then(val => {
+			console.log(val);
+			console.log(val);
+			return val.json();
+		})
 	//no object to post -> get method
 	return fetch(path).then(val => val.json());
 }

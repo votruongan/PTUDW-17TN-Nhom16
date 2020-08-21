@@ -16,7 +16,6 @@
     <!-- Optional JavaScript -->
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script defer src="js/tudo-base.js"></script>
 </head>
 
 <body>
@@ -95,7 +94,7 @@
                     </div>
 					
                 </div>
-			<div class="d-block" id="panel0">
+			<div class="d-none" id="panel0">
                 <!-- Owner's info box -->
                 <div class="flex-box">
                     <div class="flex-2">
@@ -132,19 +131,19 @@
 					Lời nhắn
                     </div>
                     <div class="flex-8">
-		  <div id="requestMessage" name="requestMessage" class="form-control input-md" style="height:auto;padding:1px">
-			<textarea class="col-12" rows="8" cols="64" placeholder="Hãy gửi lời nhắn kèm với yêu cầu cho thuê để người chủ sở hữu có thể chấp nhận cho bạn thuê nhanh hơn" style="border:0px;" readonly="true"></textarea>
+		  <div class="form-control input-md" style="height:auto;padding:1px">
+			<textarea class="col-12" rows="8" cols="64" placeholder="Nhắn gửi từ người cho thuê" style="border:0px;" readonly="true" id="lease1-message"></textarea>
 		  </div>
                     </div>
                 </div>
                 <div class="flex-box">
                     <div class="col-7">
-                    <button type="button" class="btn btn-primary w-100 shadow-sm" style="min-height: 60px;">
+                    <button type="button" class="btn btn-primary w-100 shadow-sm" style="min-height: 60px;" id="btnAcceptLendingRequest">
                         Chấp nhận cho thuê
                     </button>						
                     </div>
                     <div class="col-5">
-                    <button type="button" class="btn btn-outline-secondary w-100" style="min-height: 60px;">
+                    <button type="button" class="btn btn-outline-secondary w-100" style="min-height: 60px;" id="btnRejectLendingRequest">
                         Không chấp nhận
                     </button>		
                     </div>
@@ -391,19 +390,15 @@
                     <div class="d-flex flex-row bd-highlight justify-content-between">
                             <b class="ml-3">Tổng tiền thuê:</b>
                             <p style="font-size:1.2rem; "  id="totalFeeDisplay">1.800.000 VND</p>
-                    </div>	
-                    <div class="d-flex flex-row bd-highlight justify-content-between" id="discountArea">
-                            <b class="ml-3">Tiền được giảm:</b>
-                            <p style="font-size:1.2rem; "  id="discountFeeDisplay">- 180.000 VND</p>
-                    </div>						
+                    </div>			
                     <hr class="mt-1 mb-3 w-100"/>
 					<div>
                     <div class="d-flex flex-row bd-highlight justify-content-left">
                         <div class="d-flex flex-column ml-3">
-                            <b>Tổng số tiền cần thanh toán:</b>	
+                            <b>Tổng số tiền nhận được:</b>	
                         </div>
                     </div>							
-                    <p class="d-flex ml-3 justify-content-end text-primary" style="font-size:1.4rem; ">1.620.000 VND</p>
+                    <p class="d-flex ml-3 justify-content-end text-primary" style="font-size:1.4rem; ">1.800.000 VND</p>
 					</div>
 					<div>
                     <div class="d-flex flex-row bd-highlight justify-content-left">
@@ -413,7 +408,7 @@
                             <b>:</b>
                         </div>
                     </div>							
-                    <p class="d-flex ml-3 justify-content-end  text-primary" style="font-size:1.4rem; ">162.000 VND</p>
+                    <p class="d-flex ml-3 justify-content-end  text-primary" style="font-size:1.4rem; ">180.000 VND</p>
 					</div>
                     <hr class="mt-1 mb-3 w-100"/>
                     <button type="button" class="btn btn-link w-100" style="color: #6E62F9;">Hướng dẫn thuê đồ</button>
@@ -427,9 +422,10 @@
 <footer>
 	<p>Một sản phẩm của PTUDW-17TN-Nhom16</p>
 </footer>
-    <script src="js/tudo-base.js"></script>
-    <script src="js/panel-control.js"></script>
-    <script src="js/leas.js"></script>
+    <script defer src="js/tudo-base.js"></script>
+    <script defer src="js/panel-control.js"></script>
+    <script defer src="js/rent.js"></script>
+    <script defer src="js/lease.js"></script>
 </body>
 
 </html>

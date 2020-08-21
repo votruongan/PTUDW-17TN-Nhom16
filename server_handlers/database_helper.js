@@ -36,7 +36,7 @@ function insertDocument(collection,doc){
         var dbo = db.db("tudo");
         dbo.collection(collection).insertOne(doc, function(err, res) {
             if (err) resolve(false);
-            console.log(doc," inserted to collection",collection,"db",dbName);
+            console.log(res," inserted to collection",collection,"db",dbName);
             resolve(true);
             db.close();
         });
@@ -97,6 +97,10 @@ function deleteManyDocument(collection,queryObject){
   });  
 }
 
+//CREATE for RENT-LEASE
+// createCollection("rent");
+// createCollection("payment");
+// createCollection("image-log");
 
 module.exports = {
   initDatabase,
