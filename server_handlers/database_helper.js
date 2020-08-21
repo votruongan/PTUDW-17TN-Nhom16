@@ -79,11 +79,24 @@ function deleteDocument(collection,queryObject){
     var dbo = db.db("tudo");
     dbo.collection(collection).deleteOne(queryObject, function(err, obj) {
       if (err) throw err;
-      console.log(obj," removed from collection",collection,"db",dbName);
+      console.log(obj.deletedCount," document removed from collection",collection,"db",dbName);
       db.close();
     });
   });  
 }
+
+function deleteManyDocument(collection,queryObject){
+  MongoClient.connect(url, function(err, db) {
+    if (err) throw err;
+    var dbo = db.db("tudo");
+    dbo.collection(collection).deleteMany(queryObject, function(err, obj) {
+      if (err) throw err;
+      console.log(obj.deletedCount," document removed from collection",collection,"db",dbName);
+      db.close();
+    });
+  });  
+}
+
 
 module.exports = {
   initDatabase,
@@ -91,5 +104,6 @@ module.exports = {
   insertDocument,
   findDocument,
   deleteDocument,
-  updateDocument
+  updateDocument,
+  deleteManyDocument
 };

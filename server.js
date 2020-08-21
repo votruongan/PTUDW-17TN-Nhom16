@@ -4,10 +4,12 @@ const bodyParser = require('body-parser');
 // create application/x-www-form-urlencoded parser
 const urlencodedParser = bodyParser.urlencoded({ extended: false })
 const jsonParser = bodyParser.json();
-const bookingHandler = require('./server_handlers/renting_handler');
+const rentingHandler = require('./server_handlers/renting_handler');
 const userHandler = require('./server_handlers/account_handler');
 
 const dbHelper = require('./server_handlers/database_helper');
+const { raw } = require('body-parser');
+const { request } = require('express');
  
 const app = express();
 const port = process.env.PORT || 3000;
@@ -17,43 +19,45 @@ app.use(express.static(__dirname + '/assets/'));
 
 // FUNCTIONS
 function responseError(res){
-    res.sendStatus(404)
+    res.sendStatus(500)
 }
 
-app.post('/rent-item/:stageId/:itemId', urlencodedParser, (req, res) => {
+app.post('/rent-item/:stageId/:itemId', jsonParser, async (req, res) => {
     const body = req.body;
     const stage = req.params.stageId;
     const itemId = req.params.itemId;
-    const uId = body.userId
-    if (!uId || ! itemId || !stage) return responseError(res);
+    const clientId = body.userId;
+    const timeStamp = Date.now();
+    if (!clientId || ! itemId || !stage) return responseError(res);
+    let result = null;
     switch (stage) {
         case "1":
-            bookingHandler.writeBookingRequest(itemId,uId,body.message); 
+            result = await rentingHandler.writeBookingRequest(itemId,clientId,body.message);
+            break;
+        case "2":
+            result = await rentingHandler.writeToRenting(2,{itemId,clientId,timeStamp});
+            break;
+        case "3":
+            result = await rentingHandler.writeToRenting(3,{itemId,clientId,timeStamp});
+            break;
+        case "4":
+            result = await rentingHandler.writeToRenting(4,{itemId,clientId,timeStamp});
             break;
         default:
             return responseError(res)
             break;
     }
+    res.send(result);
 })
 
-app.post('/manage-renting-item/:stageId/:itemId', urlencodedParser, (req, res) => {
+app.post('/manage-renting-item/:stageId/:itemId', jsonParser, async (req, res) => {
     const body = req.body;
     const stage = req.params.stageId;
     const itemId = req.params.itemId;
     const uId = body.userId;
     if (!uId || !itemId || !stage) return responseError(res);
-    const successResponse = function (obj){
-        res.send(obj);
-    }
-    console.log(successResponse);
-    switch (stage) {
-        case "1":
-            bookingHandler.fetchBookingRequest(itemId,successResponse); 
-            break;
-        default:
-            responseError(res)
-            break;
-    }
+    const allInfo = {stage, itemId, clientId:uId}
+    res.send(await rentingHandler.fetchRentStatus(allInfo));
 })
 
 // ACCOUNT HANDLER MODULES
