@@ -121,7 +121,7 @@ async function signUpButtonTapped() {
 
     if (password != repassword) {
         // Bao loi
-
+        alert("Nhập lại mật khẩu không chính xác. Vui lòng kiểm tra và thử lại!")
         return;
     }
 
@@ -144,4 +144,43 @@ async function signUpButtonTapped() {
     });
     let r = await response.json();
     console.log(r);
+}
+
+async function verifyButtonTapped() {
+    console.log("Verify button tapped");
+
+    let accepted = defaultCheck1.checked;
+    let email = InputEmail.value;
+    let user = {
+        "email" : email
+    }
+
+    console.log("Accepted = ", accepted);
+
+    if (!accepted) {
+        alert("Bạn vui lòng đồng ý Điều khoản của chúng tôi trước!");
+        return;
+    }
+
+    const url = "http://localhost:3000" + "/verify_account";
+
+    const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(user)
+    });
+
+    let r = await response.json();
+    console.log(r);
+
+    // Success
+    if (r) {
+        alert("Xác thực tài khoản thành công!");
+        // Navigate to home page
+        window.location.href = "http://localhost:3000";
+    } else {
+        alert("Xác thực tài khoản thất bại");
+    }
 }

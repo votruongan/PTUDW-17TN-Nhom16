@@ -58,7 +58,7 @@ function findDocument(collection,queryObject){
   })
 }
 
-function updateDocument(collection,queryObject,dataObject){
+function updateDocument(collection,queryObject,dataObject) {
   return new Promise((resolve,reject)=>{
     MongoClient.connect(url,async function(err, db) {
         if (err) resolve(false);
@@ -91,4 +91,5 @@ module.exports = {
   insertDocument,
   findDocument,
   deleteDocument,
+  updateDocument
 };
