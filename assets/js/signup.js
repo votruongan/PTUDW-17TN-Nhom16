@@ -2,7 +2,7 @@ var temp = document.getElementsByClassName("form-controlInput");
 var temp1 = document.getElementsByClassName("icon-error");
 var temp2 = document.getElementsByClassName("time")
 
-function btnTiepTucdangky() {
+function btnTiepTucdangkyTapped() {
     var check = 1;
     for (var i = 0; i < temp.length; i++) {
         if (temp[i].value === "") {
@@ -27,7 +27,7 @@ function btnTiepTucdangky() {
         $(".panel1").css("display", "none")
         $(".panel2").css("display", "block")
         window.scrollTo(0, 0);
-    }
+    }   
 }
 
 function btnquaylai() {
@@ -158,7 +158,7 @@ async function verifyButtonTapped() {
     console.log("Accepted = ", accepted);
 
     if (!accepted) {
-        alert("Bạn vui lòng đồng ý Điều khoản của chúng tôi trước!");
+        swal("Thất bại!", "Bạn chưa đồng ý với điều khoản của chúng tôi", "error");
         return;
     }
 
@@ -177,10 +177,19 @@ async function verifyButtonTapped() {
 
     // Success
     if (r) {
-        alert("Xác thực tài khoản thành công!");
-        // Navigate to home page
-        window.location.href = "http://localhost:3000";
+        // alert("Xác thực tài khoản thành công!");
+        swal({
+            title: "Thành công",
+            text: "Bạn đã đăng ký tài khoản thành công!",
+            icon: "success",
+        })
+        .then(confirm => {
+            if (confirm) {
+                // Navigate to home page
+                window.location.href = "http://localhost:3000";
+            }
+        })
     } else {
-        alert("Xác thực tài khoản thất bại");
+        swal("Oops!", "Xác thực tài khoản thất bại", "error");
     }
 }
