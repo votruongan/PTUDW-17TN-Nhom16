@@ -12,7 +12,9 @@ function BtnLogInTapped() {
             check = 0;
         } else {
             temp[i].style.border = "1px solid #ced4da"
-            temp1[i].style.display = "none";
+            if (temp1[i]) {
+                temp1[i].style.display = "none";
+            }
         }
     }
     if (check == 1) {
@@ -21,7 +23,7 @@ function BtnLogInTapped() {
     }
 }
 
-function login() {
+async function login() {
     console.log("LogIn()");
 
     let email = InputEmail.value;
