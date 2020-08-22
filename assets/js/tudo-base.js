@@ -19,7 +19,9 @@ function makeRequest(path,postObject = null){
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify(postObject)
-		}).then(val => val.json())
+		}).then(val => {
+			return val.json();
+		})
 	//no object to post -> get method
 	return fetch(path).then(val => val.json());
 }
@@ -31,6 +33,10 @@ function getXHR(toSend,param=null){
     let xhr = new XMLHttpRequest();
     xhr.open("GET",url);
     return xhr;
+}
+
+function convertISOTimeFormat(input){
+	return input.toISOString().slice(0,19);
 }
 
 function postXHR(toSend,param=null){

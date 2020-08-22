@@ -1,34 +1,72 @@
-var startRentTime = document.getElementById("startDateTime");
-var endRentTime = document.getElementById("endDateTime");
 
-function initPlaceAutocomplete() {
-    var input = document.getElementById("pac-input");
-    var autocomplete = new google.maps.places.Autocomplete(intput);
-    autocomplete.setFields(
-        ['address_components', 'geometry', 'icon', 'name']
-    );
-    var infoWindow = new google.maps.InfoWindow();
+const rentData = {userId:123}
+const maxStage = 4
+
+const itemId = 2810
+
+const fetchResultPrefix = 'result-lease-item'
+
+async function updateStatus(){
+	for (let i = 4; i > 0; i--) {
+		const obj = await makeRequest(`${fetchResultPrefix}/${i}/${itemId}`,rentData)
+		console.log("updateRentingStatus",);
+		if (obj == null || (Object.keys(obj).length === 0 && obj.constructor === Object) || obj ==""){
+			console.log("obj is null");
+			continue;
+		}
+		if (i < maxStage)
+			return openPanel(i+1);
+		else
+			return openPanel(i);
+	}
+	console.log(fetchResultPrefix);
+	return openPanel(1);
 }
 
-function convertFormat(input){
-	return input.toISOString().slice(0,19);
-}
-
-function offsetFromNow(hours){
-	var dtNow = Date.now();
-	hours -= ((new Date()).getTimezoneOffset()/60);
-	return new Date(dtNow + hours * 60 * 60 * 1000);
-}
-
-
-function initDateTimePicker() {
-	var dtString = offsetFromNow(6);
-	startRentTime.value = convertFormat(dtString);
-	var dtString = offsetFromNow(30);
-	endRentTime.value = convertFormat(dtString);
+function openPanel(index){
+	index--;
+	console.log("openning panel",index);
+	for (let i = 0; i < 4; i++) {
+		setObjectVisiblity(getEle("panel"+i),false);
+	}
+	setObjectVisiblity(getEle("panel"+index),true);
+	const sn = document.getElementsByClassName("stepNav");
+	for (let i = 1; i < sn.length; i++) {
+		sn[i].classList.remove("active");
+		if (i == index+1)
+			sn[i].classList.add("active");
+	}
 }
 
 
-// initDateTimePicker();
+async function onSendBookingRequest(){
+	rentData.message = requestMessage.value;
+	let r = await makeRequest("rent-item/1/"+itemId,rentData)
+	console.log(r);
+	updateStatus();
+}
 
-// initPlaceAutocomplete();
+
+async function onCompleteDeposit(){
+	let r = await makeRequest("rent-item/2/"+itemId,rentData)
+	console.log(r);
+	updateStatus();
+}
+
+async function onReceiveItem(){
+	let r = await makeRequest("rent-item/3/"+itemId,rentData)
+	console.log(r);
+	updateStatus();
+}
+
+async function onReturnItem(){
+	let r = await makeRequest("rent-item/4/"+itemId,rentData)
+	console.log(r);
+	updateStatus();
+}
+
+updateStatus();
+sendBookingRequest.onclick = onSendBookingRequest;
+completeDeposit.onclick = onCompleteDeposit;
+btnRecievedItem.onclick = onReceiveItem;
+btnReturnedItem.onclick = onReturnItem;
