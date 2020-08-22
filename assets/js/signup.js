@@ -177,7 +177,6 @@ async function verifyButtonTapped() {
 
     // Success
     if (r) {
-        // alert("Xác thực tài khoản thành công!");
         swal({
             title: "Thành công",
             text: "Bạn đã đăng ký tài khoản thành công!",
