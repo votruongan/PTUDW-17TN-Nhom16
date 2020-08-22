@@ -21,13 +21,19 @@ app.use(express.static(__dirname + '/assets/'));
 function responseError(res){
     res.sendStatus(500)
 }
+app.post('/rent-date-time/:itemId', jsonParser, async (req, res) => {
+    const body = req.body;
+    const itemId = req.params.itemId;
+    const clientId = body.userId;
+    if (!clientId || ! itemId) return responseError(res);
+    res.send(await rentingHandler.fetchRentDateTime({itemId,clientId}));
+})
 
 app.post('/rent-item/:stageId/:itemId', jsonParser, async (req, res) => {
     const body = req.body;
     const stage = req.params.stageId;
     const itemId = req.params.itemId;
     const clientId = body.userId;
-    const timeStamp = Date.now();
     if (!clientId || ! itemId || !stage) return responseError(res);
     let handlerStr = null;
     switch (stage) {

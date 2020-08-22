@@ -1,6 +1,3 @@
-var startRentTime = document.getElementById("startDateTime");
-var endRentTime = document.getElementById("endDateTime");
-
 function initPlaceAutocomplete() {
     var input = document.getElementById("pac-input");
     var autocomplete = new google.maps.places.Autocomplete(intput);
@@ -10,9 +7,13 @@ function initPlaceAutocomplete() {
     var infoWindow = new google.maps.InfoWindow();
 }
 
-function convertFormat(input){
-	return input.toISOString().slice(0,19);
+
+function goToRent() {
+	localStorage.setItem("rent-from",startDateTime.value)
+	localStorage.setItem("rent-to",endDateTime.value)
+	window.location.href = "/rent"	
 }
+
 
 function offsetFromNow(hours){
 	var dtNow = Date.now();
@@ -23,11 +24,10 @@ function offsetFromNow(hours){
 
 function initDateTimePicker() {
 	var dtString = offsetFromNow(6);
-	startRentTime.value = convertFormat(dtString);
+	startDateTime.value = convertISOTimeFormat(dtString);
 	var dtString = offsetFromNow(30);
-	endRentTime.value = convertFormat(dtString);
+	endDateTime.value = convertISOTimeFormat(dtString);
 }
-
 
 initDateTimePicker();
 

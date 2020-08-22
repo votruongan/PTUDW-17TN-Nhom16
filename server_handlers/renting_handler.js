@@ -1,7 +1,8 @@
 const dbHelper = require("./database_helper");
 
-// rent: itemId, clientId, isActive, from, to, discount, requestMessage, isAccepted, depositId, paymentId,
-//      clientRecieptionLogId, clientSendLogId, ownerRecieptionLogId, ownerSendLogId
+// rent: itemId, clientId, isActive, fromDateTime, toDatetime, discount, 
+//      requestMessage, isAccepted, depositId, paymentId, clientRecieptionLogId,
+//      clientSendLogId, ownerRecieptionLogId, ownerSendLogId
 // rent-changelog: rentId, from, to, isAccepted
 
 const succeed = "succeed"
@@ -21,9 +22,18 @@ function checkLinkCondition(r,fieldInRent, secondDb, fieldInDb, condition=null){
     return waiting;
 }
 
+function rentQueryObject(params){
+    return {
+        itemId: params.itemId,
+        clientId: params.clientId,
+        isActive: params.isActive || true
+    };
+}
+
 class rentingHandler{
     static handleRentRequest = async function(itemId,clientId,body){
-        let obj = {itemId,clientId,requestMessage:body.message,isActive:true};
+        let obj = {itemId,clientId,requestMessage:body.message,isActive:true,
+                    fromDateTime: body.fromDateTime,toDateTime: body.toDateTime};
         const r = await dbHelper.insertDocument("rent",obj);
         return r;
     }
@@ -57,17 +67,25 @@ class rentingHandler{
         return r;
     }
 
-
+    static fetchRentDateTime = async function(params){
+        const qObj = rentQueryObject(params);
+        let r = await dbHelper.findDocument("rent",qObj);
+        r = r[0];
+        if (r == null) return failed;
+        return r;
+    }
 
     static fetchRentStatus = async function(params){
-        const itemId = params.itemId;
-        const clientId = params.clientId;
-        const qObj = {itemId,clientId,isActive:true}
-        let r = await dbHelper.findDocument("renting",qObj)[0];
+        const qObj = rentQueryObject(params);
+        console.log(qObj);
+        let r = await dbHelper.findDocument("rent",qObj);
+        r = r[0];
         if (r == null) return failed;
         let _id = "",c1,c2;
         switch (params.stage) {
             case "1":
+                if (r.isAccepted == null)
+                    return waiting;
                 if (r.isAccepted === true)
                     return succeed; 
                 if (r.isAccepted === false)
@@ -96,7 +114,9 @@ class rentingHandler{
                 if (c1 != succeed) return waiting;
                 return succeed;
         }
-        return r;
+        return waiting;
     }
 }
+
+
 module.exports = rentingHandler

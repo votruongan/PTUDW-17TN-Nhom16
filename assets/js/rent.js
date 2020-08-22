@@ -6,6 +6,36 @@ const itemId = 2810
 
 const fetchResultPrefix = 'result-rent-item'
 
+//check if redirected from item page -> get from and to datetime
+const rentDateTime = {from:localStorage.getItem("rent-from"),to:localStorage.getItem("rent-to")}
+
+function setRentDateTime(timeEle, dateEle, data){
+	timeEle.innerText = data.substr(11,5);
+	dateEle.innerText = `${data.substr(8,2)}/${data.substr(5,2)}/${data.substr(0,4)}`;
+}
+
+function updateDateTime(){
+	console.log(rentDateTime);
+	setRentDateTime(fromTime,fromDate,rentDateTime.from)
+	setRentDateTime(toTime,toDate,rentDateTime.to)
+}
+
+if (!rentDateTime.from || !rentDateTime.to){
+	console.log("not redirected from item page");
+} else {
+	updateDateTime();
+}
+
+async function fetchRentDateTime(){
+	const obj = await makeRequest(`rent-date-time/${itemId}`,rentData)
+	console.log("fetchRentDateTime", obj)
+	if (!obj.fromDateTime) return;
+	rentDateTime.from = obj.fromDateTime;
+	rentDateTime.to = obj.toDateTime;
+	updateDateTime();
+}
+fetchRentDateTime();
+
 async function updateStatus(){
 	for (let i = 4; i > 0; i--) {
 		const obj = await makeRequest(`${fetchResultPrefix}/${i}/${itemId}`,rentData)
@@ -15,6 +45,7 @@ async function updateStatus(){
 			console.log("obj is null");
 			continue;
 		}
+		fetchRentDateTime();
 		if (i < maxStage)
 			return openPanel(i+1);
 		else
@@ -42,6 +73,8 @@ function openPanel(index){
 
 async function onSendBookingRequest(){
 	rentData.message = requestMessage.value;
+	rentData.fromDateTime = rentDateTime.from;
+	rentData.toDateTime = rentDateTime.to;
 	let r = await makeRequest("rent-item/1/"+itemId,rentData)
 	console.log(r);
 	updateStatus();

@@ -34,9 +34,10 @@ function insertDocument(collection,doc){
     MongoClient.connect(url, function(err, db) {
         if (err) resolve(false);
         var dbo = db.db("tudo");
+        doc.timeStamp = Date.now();
         dbo.collection(collection).insertOne(doc, function(err, res) {
             if (err) resolve(false);
-            console.log(res," inserted to collection",collection,"db",dbName);
+            console.log(res.ops[0]," inserted to collection",collection,"db",dbName);
             resolve(true);
             db.close();
         });
@@ -94,7 +95,7 @@ function deleteManyDocument(collection,queryObject){
       console.log(obj.deletedCount," document removed from collection",collection,"db",dbName);
       db.close();
     });
-  });  
+  });
 }
 
 //CREATE for RENT-LEASE
@@ -102,6 +103,11 @@ function deleteManyDocument(collection,queryObject){
 // createCollection("payment");
 // createCollection("image-log");
 
+
+async function start(){
+  console.log( await findDocument("rent",{itemId:'2810'}));
+}
+start()
 module.exports = {
   initDatabase,
   createCollection,
