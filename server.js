@@ -78,6 +78,14 @@ app.post('/verify_account', jsonParser, async (req, res) => {
     res.send(result);
 })
 
+app.post('/log_in', jsonParser, async (req, res) => {
+    const body = req.body;
+
+    let result = await userHandler.logInRequest(body.email, body.password);
+
+    res.send(result);
+})
+
 // STATIC FILE SERVING
 
 app.get('/', (req, res) => {
