@@ -207,7 +207,8 @@ function toggleClassList(target,classString){
 if (typeof showDetailButton != "undefined")
 	showDetailButton.onclick = () => {
 		detailPanel.classList.toggle("d-none")
-		toggleClassList(detailPanel,"d-block overlay bg-white p-5 position-absolute")
+		toggleClassList(detailPanel,"focus overlay bg-white position-absolute")
+		detailPanel.style.height = "950px"
 		if (detailPanel.classList.contains("d-none")) return showDetailButton.innerText = "Chi tiết tiền thuê"
 		showDetailButton.innerText = "Quay lại"
 	}
