@@ -47,7 +47,7 @@ async function login() {
     console.log(r);
 
     // Success
-    if (r) {
+    if (r.status == 0) {
         swal({
             title: "Thành công",
             text: "Đăng nhập thành công!",
@@ -55,6 +55,10 @@ async function login() {
         })
         .then(confirm => {
             if (confirm) {
+                console.log("Token = ", r.token);
+
+                setCookie("tudo_token", r.token, 7);
+
                 // Navigate to home page
                 window.location.href = "http://localhost:3000";
             }

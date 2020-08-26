@@ -57,11 +57,18 @@ async function logIn(user) {
 		let token =	makeid(12);
 		let sessionRes = await setSesstion(user.email, token);
 		if (sessionRes) {
-			return true;
+			return {
+				"status" : 0,
+				"token" : token	
+			}
 		}
-		return false;
+		return {
+			"status" : 1
+		}
 	}
-	return false;
+	return {
+		"status" : 1
+	}
 }
 
 async function setSesstion(email, token) {
@@ -142,10 +149,7 @@ class UserHandler {
 		let logInResult = await logIn(user);
 		console.log("LogInRes = ", logInResult);
 
-		if (logInResult) {
-			return true;
-		}
-		return false;
+		return logInResult;
 	}
 
 	static verifyAccountRequest = async function(email) {
