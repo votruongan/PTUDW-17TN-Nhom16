@@ -8,7 +8,7 @@ const rentingHandler = require('./server_handlers/renting_handler');
 const userHandler = require('./server_handlers/account_handler');
 
 const dbHelper = require('./server_handlers/database_helper');
-const { raw } = require('body-parser');
+const { raw, json } = require('body-parser');
 const { request } = require('express');
  
 const app = express();
@@ -125,6 +125,24 @@ app.post('/log_in', jsonParser, async (req, res) => {
     res.send(result);
 })
 
+app.post('/auth_by_token', jsonParser, async (req, res) => {
+    console.log("Auth by token");
+
+    const body = req.body;
+
+    let result = await userHandler.isValidToken(body.email, body.token);
+
+    res.send(result);
+});
+
+app.post('/get_user_info', jsonParser, async (req, res) => { 
+    const body = req.body;
+
+    let result = await userHandler.getUserInfo(body.email, body.token);
+
+    res.send(result);
+});
+
 // STATIC FILE SERVING
 
 app.get('/', (req, res) => {
@@ -173,6 +191,7 @@ app.get('/search', (req, res) => {
 })
 
 app.get('/login', (req, res) => {
+    console.log("TONHIEU: send login file")
     res.sendFile(__dirname + '/html/login.html');
 })
 

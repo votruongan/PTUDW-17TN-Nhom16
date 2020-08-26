@@ -168,13 +168,15 @@ class UserHandler {
 	}
 
 	static isValidToken = async function(email, token) {
+		console.log("Is Valid Token");
+
 		let date = new Date();
 		let session = {
 			"email"	: email,
 			"token"	: token
 		}
 
-		let res = dbHelper.findDocument(sessionCollection, session).catch((err) => {
+		let res = await dbHelper.findDocument(sessionCollection, session).catch((err) => {
 			console.log(err);
 		});
 
@@ -200,6 +202,23 @@ class UserHandler {
 	static updateSession = async function(email, token) {
 		let res = await setSesstion(email, token);
 		return res;
+	}
+
+	static getUserInfo = async function(email, token) {
+		let user = {
+			"email" : email
+		};
+
+		let res = await dbHelper.findDocument(userCollection, user).catch((error) => {
+			console.log("Find user err ", err);
+		});
+
+		console.log("Userinfo = ", res);
+		
+		if (res) {
+			return res;	
+		}
+		return null;
 	}
 }
 

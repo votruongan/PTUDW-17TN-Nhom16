@@ -13,9 +13,6 @@ $(document).ready(function () {
 
     ResCarouselSize();
 
-
-
-
     $(window).resize(function () {
         ResCarouselSize();
     });
@@ -104,3 +101,65 @@ $(document).ready(function () {
     }
 
 });
+
+async function autoLoginWithToken() {
+    let urlParamms = new URLSearchParams(window.location.search);
+    const token = urlParamms.get('token');
+    const email = urlParamms.get('email');
+
+    if (token == "" || email == "") {
+        return;
+    }
+
+    let user = {
+        "email" : email,
+        "token" : token
+    }
+
+    const url = "http://localhost:3000" + "/auth_by_token/";
+    
+    const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(user)
+    });
+
+    let r = await response.json();
+    console.log(r);
+
+    if (r) {
+        // Get user info if this token is valid
+        let userInfo = await getUserInfo(email, token);
+        console.log("User info = ", userInfo);
+
+        if (userInfo.length > 0) {
+            navBtnLogIn.value = userInfo.name;
+            navBtnSignUp.style.display = 'none';
+        }
+    }
+}
+
+async function getUserInfo(email, token) {
+    let user = {
+        "email" : email, 
+        "token" : token
+    };
+
+    const url = "http://localhost:3000" + "/get_user_info/";
+
+    const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(user)
+    });
+
+    let r = await response.json();
+
+    return r;
+}
+
+autoLoginWithToken()
