@@ -1,7 +1,7 @@
 var temp = document.getElementsByClassName("form-controlInput");
 var temp1 = document.getElementsByClassName("icon-error");
 var temp2 = document.getElementsByClassName("time")
-
+var files;
 function btnTiepTucdangkyTapped() {
     var check = 1;
     for (var i = 0; i < temp.length; i++) {
@@ -79,7 +79,7 @@ $(".hinh").click(function() {
 });
 
 function handleFileSelect(evt) {
-    var files = evt.target.files; // FileList object
+    files = evt.target.files; // FileList object
     // Loop through the FileList and render image files as thumbnails.
     console.log("Loi 5")
 

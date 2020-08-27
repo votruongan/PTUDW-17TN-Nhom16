@@ -150,6 +150,15 @@
                     </div>
                 </div>
             </div>
+            
+			<div class="d-none" id="waitingPanel0">
+                <div class="d-flex text-center justify-content-center p-0 mt-5 mb-4">
+                    Đang chờ chủ món đồ phê duyệt yêu cầu cho thuê của bạn
+                </div>
+                <div class="d-flex text-center justify-content-center p-0 mb-5">
+                <h1 class="fas fa-user-check text-secondary"></h1>
+                </div>
+			</div>
 			<div class="d-none payment-panel" id="panel1">
 			<div id="paymentDescription">Thanh toán tiền đặt cọc:</div>
 			<ul class="nav nav-tabs justify-content-center p-0">
@@ -169,7 +178,7 @@
 						</div>
 						<div class="col-8">
 						  <div name="requestMessage" class="form-control input-md" style="height:auto;padding:1px">
-							<input class="form-control col-12" name="cardID" placeholder="Nhập vào số thẻ tín dụng của bạn" style="border:0px;"></input>
+							<input class="form-control col-12" id="inputCardId" placeholder="Nhập vào số thẻ tín dụng của bạn" style="border:0px;"></input>
 						  </div>
 						</div>
                     </div>
@@ -179,7 +188,7 @@
 						</div>
 						<div class="col-8">
 						  <div name="requestMessage" class="form-control input-md" style="height:auto;padding:1px">
-							<input class="form-control col-12" name="cardID" placeholder="Số CCV của thẻ" style="border:0px;"></input>
+							<input class="form-control col-12" id="inputCCV" placeholder="Số CCV của thẻ" style="border:0px;"></input>
 						  </div>
 						</div>
                     </div>
@@ -189,7 +198,7 @@
 						</div>
 						<div class="col-8">
 						  <div name="requestMessage" class="form-control input-md" style="height:auto;padding:1px">
-							<input class="form-control col-12" name="cardID" placeholder="ví dụ: 05/10" style="border:0px;"></input>
+							<input class="form-control col-12" id="inputExpire" placeholder="ví dụ: 05/10" style="border:0px;"></input>
 						  </div>
 						</div>
                     </div>
@@ -198,7 +207,7 @@
 						Số tiền thanh toán:
 						</div>
 						<div class="col-8">
-                    <p class="d-flex text-primary" style="font-size:1.5rem; ">162.000 VND</p>						
+                            <p class="d-flex text-primary m-0" style="font-size:1.5rem; ">162.000 VND</p>						
 						</div>
                     </div>
                     </div>
@@ -267,6 +276,16 @@
                     </div>
                 </div>
             </div>
+            
+			<div class="d-none" id="waitingPanel2">
+                <div class="d-flex text-center justify-content-center p-0 mt-5 mb-4">
+                    Món đồ đang được bàn giao
+                </div>
+                <div class="d-flex text-center justify-content-center p-0 mb-5">
+                <h1 class="fas fa-shipping-fast text-secondary"></h1>
+                </div>
+            </div>
+            
 			<div class="d-none" id="panel2">
                 <div class="row mb-3">
                     <div class="col-12 col-md-3 px-0 mb-3" id="receiveReturnDescription">
@@ -349,7 +368,7 @@
 						</div>
 						<div class="col-8">
 						  <div name="requestMessage" class="form-control input-md" style="height:auto;padding:1px">
-							<input class="form-control col-12" name="cardID" placeholder="nhập vào địa chỉ trả đồ" style="border:0px;"></input>
+							<input class="form-control col-12" id="inputAddress" placeholder="nhập vào địa chỉ trả đồ" style="border:0px;"></input>
 						  </div>
 						</div>
                     </div>

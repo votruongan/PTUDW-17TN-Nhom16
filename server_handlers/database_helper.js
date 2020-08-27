@@ -38,7 +38,7 @@ function insertDocument(collection,doc){
         dbo.collection(collection).insertOne(doc, function(err, res) {
             if (err) resolve(false);
             console.log(res.ops[0]," inserted to collection",collection,"db",dbName);
-            resolve(true);
+            resolve(res.ops[0]);
             db.close();
         });
     });
@@ -107,6 +107,7 @@ function deleteManyDocument(collection,queryObject){
 // createCollection("Sessions");
 
 async function start(){
+  // console.log(await deleteManyDocument("payment",{}));
 }
 start()
 module.exports = {
