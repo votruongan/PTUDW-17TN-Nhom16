@@ -107,7 +107,6 @@ function deleteManyDocument(collection,queryObject){
 // createCollection("Sessions");
 
 async function start(){
-  console.log( await findDocument("rent",{itemId:'2810'}));
 }
 start()
 module.exports = {
