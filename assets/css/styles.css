@@ -254,9 +254,9 @@ body {
   background: orangered;
 }
 
-.category-card-body:not(:hover){
+/* .category-card-body:not(:hover){
   
-}
+} */
 
 .cat-all:hover{
   box-shadow:
@@ -408,7 +408,9 @@ a.btn {
   font-weight: 500;
 }
 
-
+a.navbar-brand:hover {
+  text-decoration: underline;
+}
 
 @media only screen and (max-width: 990px) {
   .below-lg-overlay{
@@ -423,4 +425,5 @@ a.btn {
     background-color: transparent;
     z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
     cursor: pointer; /* Add a pointer on hover */
+  }
 }

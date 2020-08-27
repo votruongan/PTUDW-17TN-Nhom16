@@ -23,79 +23,102 @@
 
 <body>
     <!-- Navigation bar -->
-<nav class="FixedBar navbar navbar-light bg-light">
-	<a class="navbar-brand" href=".">
-	  <img src="img/logo.png" width="140" height="36" alt="">
-	</a>
-  <a href="javascript:void(0);" class="d-xs-block d-xl-none " id="toggleNavBar" onclick="extendNavBar()">
-    <h4 class="fa fa-bars"></h4>
-  </a>
-  <div class="navbar-brand d-none d-xl-block" href="#" id="moreNav">
-	<div class="navbar-brand">
-	<div class="d-flex justify-content-center h-100">
-	  <div class="searchbar">
-		<input class="search_input" type="text" name="" placeholder="Tìm kiếm...">
-		<a href="search" class="search_icon"><i class="fas fa-search"></i></a>
-	  </div>
-	</div>
-  </div>
-	  <a class="navbar-brand" href="post-item">
-		Cho thuê đồ
-	  </a>
-	  <a class="navbar-brand" href="about">
-		Tìm hiểu thêm
-	  </a>
-	  <a class="navbar-brand" href="signup">
-		Đăng ký
-	  </a>
-	  <a class="navbar-brand" href="login">
-		Đăng nhập
-	  </a>
-	  <a class="navbar-brand" href="#" onclick="location.href='profile'">
-			<img src="img/no_user.png" width="36" height="36" alt="">
-	  </a>
-  </div>
-</nav>
+    <!-- Navigation bar -->
+    <nav class="FixedBar navbar navbar-light bg-light">
+        <a class="navbar-brand" href=".">
+            <img src="img/logo.png" width="140" height="36" alt="">
+        </a>
+        <a href="javascript:void(0);" class="d-xs-block d-xl-none " id="toggleNavBar" onclick="extendNavBar()">
+            <h4 class="fa fa-bars"></h4>
+        </a>
+        <div class="navbar-brand d-none d-xl-block" href="#" id="moreNav">
+            <div class="navbar-brand">
+                <div class="d-flex justify-content-center h-100">
+                    <div class="searchbar">
+                        <input class="search_input" type="text" name="" placeholder="Tìm kiếm...">
+                        <a href="search" class="search_icon"><i class="fas fa-search"></i></a>
+                    </div>
+                </div>
+            </div>
+            <a class="navbar-brand" href="post-item">
+                Cho thuê đồ
+            </a>
+            <a class="navbar-brand" href="about">
+                Tìm hiểu thêm
+            </a>
+            <a class="navbar-brand" href="signup" id="navBtnSignUp">
+                Đăng ký
+            </a>
+            <a class="navbar-brand" href="login" id="navBtnLogIn">
+                Đăng nhập
+            </a>
+            <div class="navbar-brand dropdown">
+                <img class="btn p-0 dropdown-toggle" id="navBtnAvatar" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false" src="img/no_user.png" width="36" height="36">
+                </img>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="left: -400%;">
+                    <a class="dropdown-item" href="profile">
+                        Thông tin cá nhân
+                    </a>
+                    <a class="dropdown-item" href="#">
+                        Danh sách đồ vật
+                    </a>
+                    <a class="dropdown-item" href="#">
+                        Danh sách thuê
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#" onclick="logOutOnClick()">
+                        Đăng xuất
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
     <!-- Introductory body -->
-			
-	<div class="container mt-5">
-		<div class="row justify-content-left">
-				<h2>Giới thiệu về TUDO:</h2>
-		</div>
-	 <div class="row container">
-		<div class="row">
-			<div class="col-xs-12 col-md-6 container my-md-5">
-				Bạn đang cần dùng thử một món đồ, hay đang có nhu cầu sử dụng một đồ vật nào đó tạm thời, nhưng lại không muốn tốn một khoản tiền quá lớn? Tất cả món đồ đều có thể thuê ở TUDO.
-			</div>
-			<div class="col-xs-12 col-md-6 container my-3">
-			<a href="search" class=" index-button-panel index-explore-background card shadow text-center border-0 text-white">
-				<div class="my-5 align-middle">
-					<b class="fas fa-map"></b>
-					<p>Khám phá các món đồ gần bạn</p>
-				</div>
-			</a>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-12 col-md-6 container my-md-5">
-				TUDO cũng là nơi sẽ giúp bạn kiếm thêm tiền từ những món đồ mà bạn đã mua mà không còn sử dụng thường xuyên nữa. Hoặc tìm cho bạn, những đơn vị cho thuê đồ chuyên nghiệp, những tập khách hàng mới.
-			</div>
-			<div class="col-xs-12 col-md-6 container my-3">
-			<a href="post-item" class="index-button-panel index-post-background card shadow text-center border-0 text-white">
-				<div class="my-5 align-middle">
-					<b class="fas fa-plus"></b>
-					<p>Tôi có đồ cho thuê</p>
-				</div>
-			</a>
-			</div>
-		</div>		
-	 </div>	
+
+    <div class="container mt-5">
+        <div class="row justify-content-left">
+            <h2>Giới thiệu về TUDO:</h2>
+        </div>
+        <div class="row container">
+            <div class="row">
+                <div class="col-xs-12 col-md-6 container my-md-5">
+                    Bạn đang cần dùng thử một món đồ, hay đang có nhu cầu sử dụng một đồ vật nào đó tạm thời, nhưng lại
+                    không muốn tốn một khoản tiền quá lớn? Tất cả món đồ đều có thể thuê ở TUDO.
+                </div>
+                <div class="col-xs-12 col-md-6 container my-3">
+                    <a href="search"
+                        class=" index-button-panel index-explore-background card shadow text-center border-0 text-white">
+                        <div class="my-5 align-middle">
+                            <b class="fas fa-map"></b>
+                            <p>Khám phá các món đồ gần bạn</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-md-6 container my-md-5">
+                    TUDO cũng là nơi sẽ giúp bạn kiếm thêm tiền từ những món đồ mà bạn đã mua mà không còn sử dụng
+                    thường xuyên nữa. Hoặc tìm cho bạn, những đơn vị cho thuê đồ chuyên nghiệp, những tập khách hàng
+                    mới.
+                </div>
+                <div class="col-xs-12 col-md-6 container my-3">
+                    <a href="post-item"
+                        class="index-button-panel index-post-background card shadow text-center border-0 text-white">
+                        <div class="my-5 align-middle">
+                            <b class="fas fa-plus"></b>
+                            <p>Tôi có đồ cho thuê</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
-    
+
     <div class="container flex-box d-flex flex-column mt-5">
-		<div class="row justify-content-left mb-3">
-				<h2>Hướng dẫn sử dụng TUDO:</h2>
-		</div>
+        <div class="row justify-content-left mb-3">
+            <h2>Hướng dẫn sử dụng TUDO:</h2>
+        </div>
         <div id="accordion">
             <div class="card">
                 <div class="card-header" id="headingOne">

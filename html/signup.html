@@ -12,48 +12,70 @@
     <link href="css/signup.css" rel="stylesheet">
     <script defer src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script defer src="js/signup.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+    </script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script defer src="js/tudo-base.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body>
     <div class="logovamenu">
         <!-- Navigation bar -->
-    <nav class="FixedBar navbar navbar-light bg-light">
-        <a class="navbar-brand" href=".">
-          <img src="img/logo.png" width="140" height="36" alt="">
-        </a>
-      <a href="javascript:void(0);" class="d-xs-block d-xl-none " id="toggleNavBar" onclick="extendNavBar()">
-        <h4 class="fa fa-bars"></h4>
-      </a>
-      <div class="navbar-brand d-none d-xl-block" href="#" id="moreNav">
-        <div class="navbar-brand">
-        <div class="d-flex justify-content-center h-100">
-          <div class="searchbar">
-            <input class="search_input" type="text" name="" placeholder="Tìm kiếm...">
-            <a href="search" class="search_icon"><i class="fas fa-search"></i></a>
-          </div>
-        </div>
-      </div>
-          <a class="navbar-brand" href="post-item">
-            Cho thuê đồ
-          </a>
-          <a class="navbar-brand" href="about">
-            Tìm hiểu thêm
-          </a>
-          <a class="navbar-brand" href="signup">
-            Đăng ký
-          </a>
-          <a class="navbar-brand" href="login">
-            Đăng nhập
-          </a>
-          <a class="navbar-brand" href="#" onclick="location.href='profile'">
-                <img src="img/no_user.png" width="36" height="36" alt="">
-          </a>
-      </div>
-    </nav>
+        <nav class="FixedBar navbar navbar-light bg-light">
+            <a class="navbar-brand" href=".">
+                <img src="img/logo.png" width="140" height="36" alt="">
+            </a>
+            <a href="javascript:void(0);" class="d-xs-block d-xl-none " id="toggleNavBar" onclick="extendNavBar()">
+                <h4 class="fa fa-bars"></h4>
+            </a>
+            <div class="navbar-brand d-none d-xl-block" href="#" id="moreNav">
+                <div class="navbar-brand">
+                    <div class="d-flex justify-content-center h-100">
+                        <div class="searchbar">
+                            <input class="search_input" type="text" name="" placeholder="Tìm kiếm...">
+                            <a href="search" class="search_icon"><i class="fas fa-search"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <a class="navbar-brand" href="post-item">
+                    Cho thuê đồ
+                </a>
+                <a class="navbar-brand" href="about">
+                    Tìm hiểu thêm
+                </a>
+                <a class="navbar-brand" href="signup" id="navBtnSignUp">
+                    Đăng ký
+                </a>
+                <a class="navbar-brand" href="login" id="navBtnLogIn">
+                    Đăng nhập
+                </a>
+                <div class="navbar-brand dropdown">
+                    <img class="btn p-0 dropdown-toggle" id="navBtnAvatar" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false" src="img/no_user.png" width="36" height="36">
+                    </img>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="left: -400%;">
+                        <a class="dropdown-item" href="#" onclick="profileOnClick()">
+                            Thông tin cá nhân
+                        </a>
+                        <a class="dropdown-item" href="#">
+                            Danh sách đồ vật
+                        </a>
+                        <a class="dropdown-item" href="#">
+                            Danh sách thuê
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#" onclick="logOutOnClick()">
+                            Đăng xuất
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
     </div>
     <!-- het menu -->
     <div class="contentbody bg-white text-center mt-5">
@@ -63,73 +85,145 @@
                 <form>
                     <div class="form-group">
                         <label for="InputEmail">Email</label>
-                        <input type="email" class="form-control form-controlInput" id="InputEmail" aria-describedby="emailHelp" placeholder="Nhập email của bạn">
+                        <input type="email" class="form-control form-controlInput" id="InputEmail"
+                            aria-describedby="emailHelp" placeholder="Nhập email của bạn">
                         <span class="icon-error"></span>
                     </div>
                     <div class="form-group">
                         <label for="InputPassword">Mật khẩu</label>
-                        <input type="password" class="form-control form-controlInput" id="InputPassword" placeholder="Nhập mật khẩu của bạn">
+                        <input type="password" class="form-control form-controlInput" id="InputPassword"
+                            placeholder="Nhập mật khẩu của bạn">
                         <span class="icon-error"></span>
                     </div>
                     <div class="form-group">
                         <label for="InputPassword">Xác nhận lại mật khẩu</label>
-                        <input type="password" class="form-control form-controlInput" id="InputPassword1" placeholder="Nhập lại mật khẩu của bạn">
+                        <input type="password" class="form-control form-controlInput" id="InputPassword1"
+                            placeholder="Nhập lại mật khẩu của bạn">
                         <span class="icon-error"></span>
                         <span class="icon-correct">
-                        <img src="img/check.png" alt="">
-                    </span>
+                            <img src="img/check.png" alt="">
+                        </span>
                     </div>
+
+                    <!-- Name -->
+                    <div class="form-group">
+                        <label for="InputName">Họ và tên</label>
+                        <input type="text" class="form-control form-controlInput" id="InputName"
+                            placeholder="Nhập Họ và tên của bạn">
+                        <span class="icon-error"></span>
+                    </div>
+
+                    <!-- Address -->
+                    <div class="form-group">
+                        <label for="InputAddress">Địa chỉ</label>
+                        <input type="text" class="form-control form-controlInput" id="InputAddress"
+                            placeholder="Nhập Địa chỉ hiện tại của bạn">
+                        <span class="icon-error"></span>
+                    </div>
+
                     <div class="form-group">
                         <label for="InputSdt">Số điện thoại</label>
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn question" data-toggle="modal" data-target="#exampleModal"><img src="img/question.png" alt="">
-                    </button>
+                        <button type="button" class="btn question" data-toggle="modal" data-target="#exampleModal"><img
+                                src="img/question.png" alt="">
+                        </button>
                         <!-- Toast info about phonenumber needs -->
                         <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Tại sao chúng tôi cần số điện thoại?</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Tại sao chúng tôi cần số điện
+                                            thoại?</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
                                     </div>
                                     <div class="modal-body">
-                                        <p>Số điện thoại sẽ giúp bạn và người cho thuê cũng như khách thuê đồ dễ liên lạc hơn, đặc biệt trong các trường hợp khẩn cấp. Ngoài ra, số điện thoại cũng cho phép bạn sử dụng tính năng bảo mật 2 lớp.</p>
+                                        <p>Số điện thoại sẽ giúp bạn và người cho thuê cũng như khách thuê đồ dễ liên
+                                            lạc hơn, đặc biệt trong các trường hợp khẩn cấp. Ngoài ra, số điện thoại
+                                            cũng cho phép bạn sử dụng tính năng bảo mật 2 lớp.</p>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Close</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <!-- end toast -->
-                        <input class="form-control form-controlInput" type="number" id="Inputsdt" placeholder="Nhập số điện thoại của bạn">
+                        <input class="form-control form-controlInput" type="number" id="Inputsdt"
+                            placeholder="Nhập số điện thoại của bạn">
                         <span class="icon-error"></span>
                     </div>
+
+                    <div class="form-group">
+                        <label for="InputPersonalID">Chứng minh nhân dân</label>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn question" data-toggle="modal" data-target="#exampleModal2"><img
+                                src="img/question.png" alt="">
+                        </button>
+                        <!-- Toast info about phonenumber needs -->
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Tại sao chúng tôi cần Chứng minh
+                                            nhân dân</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Chúng tôi cần số CMND nhằm mục đích xác thực tài khoản của bạn. Và đảm bảo
+                                            mỗi người dùng chỉ có thể tạo duy nhất một tài khoản.</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end toast -->
+                        <input class="form-control form-controlInput" type="number" id="InputPersonalID"
+                            placeholder="Nhập số Chứng minh nhân dân của bạn">
+                        <span class="icon-error"></span>
+                    </div>
+
                     <div class="form-group">
                         <label for="InputSdt">Ảnh chụp CNND/CCCD cùng với bạn:</label>
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn question" data-toggle="modal" data-target="#exampleModal1"><img src="img/question.png" alt="">
-                    </button>
+                        <button type="button" class="btn question" data-toggle="modal" data-target="#exampleModal1"><img
+                                src="img/question.png" alt="">
+                        </button>
                         <!-- Toast info about phonenumber needs -->
                         <!-- Modal -->
-                        <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
-                                <div class="modal-content">btnTiepTucdangky
+                                <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Tại sao chúng tôi cần hình ảnh CMND/CCCD cùng với bạn?</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Tại sao chúng tôi cần hình ảnh
+                                            CMND/CCCD cùng với bạn?</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
                                     </div>
                                     <div class="modal-body">
-                                        <p>1. Chúng tôi muốn đảm bảo tài khoản này là chính chủ <br/>2. Chúng tôi muốn hạn chế các hành vi lừa đảo, giả mạo<br/> 3. Với mọi vấn đề ngoài ý muốn. Chúng tôi dễ dàng tiếp cận và xử lý hơn trong mọi tình huống.<br/>                                            !Chú ý: Ngoại trừ việc điều tra. Chúng tôi đảm bảo sẽ không cung cấp thông tin cho bên thứ ba.
+                                        <p>1. Chúng tôi muốn đảm bảo tài khoản này là chính chủ <br />2. Chúng tôi muốn
+                                            hạn chế các hành vi lừa đảo, giả mạo<br /> 3. Với mọi vấn đề ngoài ý muốn.
+                                            Chúng tôi dễ dàng tiếp cận và xử lý hơn trong mọi tình huống.<br /> !Chú ý:
+                                            Ngoại trừ việc điều tra. Chúng tôi đảm bảo sẽ không cung cấp thông tin cho
+                                            bên thứ ba.
                                         </p>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Close</button>
                                     </div>
                                 </div>
                             </div>
@@ -146,7 +240,8 @@
                         <!-- end load file -->
                         <span class="icon-error"></span>
                     </div>
-                    <button type="button" class="btn btn-dark btndangky" onclick="btnTiepTucdangkyTapped()">Tiếp tục</button>
+                    <button type="button" class="btn btn-dark btndangky" onclick="btnTiepTucdangkyTapped()">Tiếp
+                        tục</button>
                 </form>
             </div>
             <div class="panel2" style=" justify-content: center; display: none;">
@@ -159,7 +254,8 @@
                         <p>Hãy nhập mã xác nhận vào ô bên dưới để chứng minh đó là số điện thoại của bạn.</p>
                         <div class="maxacthuc">
                             <div class="txtmaxacthuc">*Mã xác thực</div>
-                            <input type="text" id="maxacthuc" class="nhapmaxacthuc" style="border: 1px solid black; width: 120px;" />
+                            <input type="text" id="maxacthuc" class="nhapmaxacthuc"
+                                style="border: 1px solid black; width: 120px;" />
                             <button type="button" class="guilaima btn btn-primary">Gửi lại mã</button>
                         </div>
                     </div>
@@ -167,16 +263,18 @@
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                             <label class="form-check-label" for="defaultCheck1">
-                                Tôi đã đọc và đồng ý với <a href="" target="_blank"><u>các điều khoản dành cho người dùng cuối của TUDO</u></a>
+                                Tôi đã đọc và đồng ý với <a href="" target="_blank"><u>các điều khoản dành cho người
+                                        dùng cuối của TUDO</u></a>
                             </label>
                         </div>
                     </div>
                     <button type="button" class="btnquaylai btn btn-secondary" onclick="btnquaylai()">Quay lại</button>
-                    <button type="button" class="btnxacnhan btn btn-success" onclick="verifyButtonTapped()">Xác nhận</button>
+                    <button type="button" class="btnxacnhan btn btn-success" onclick="verifyButtonTapped()">Xác
+                        nhận</button>
                     <div class="EmailThongbao">
                         <p>E-mail xác thực đã được gửi đến địa chỉ
                             <a id="RegEmail" target="_blank" href="">votrngan@gmail.com</a>.
-                            <br/>Hãy làm theo hướng dẫn để xác thực và chứng minh E-mail này là của bạn.
+                            <br />Hãy làm theo hướng dẫn để xác thực và chứng minh E-mail này là của bạn.
                         </p>
                     </div>
                 </form>
