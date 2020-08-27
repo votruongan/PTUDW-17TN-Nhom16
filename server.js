@@ -138,7 +138,9 @@ app.post('/auth_by_token', jsonParser, async (req, res) => {
 app.post('/get_user_info', jsonParser, async (req, res) => { 
     const body = req.body;
 
-    let result = await userHandler.getUserInfo(body.email, body.token);
+    console.log(body);
+
+    let result = await userHandler.getUserInfo(body.email);
 
     res.send(result);
 });

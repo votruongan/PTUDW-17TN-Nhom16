@@ -103,6 +103,8 @@ function deleteManyDocument(collection,queryObject){
 // createCollection("payment");
 // createCollection("image-log");
 
+// createCollection("Users");
+// createCollection("Sessions");
 
 async function start(){
   console.log( await findDocument("rent",{itemId:'2810'}));

@@ -135,16 +135,15 @@ async function autoLoginWithToken() {
         console.log("User info = ", userInfo);
 
         if (userInfo.length > 0) {
-            navBtnLogIn.value = userInfo.name;
+            navBtnLogIn.innerText = userInfo[0].name;
             navBtnSignUp.style.display = 'none';
         }
     }
 }
 
-async function getUserInfo(email, token) {
+async function getUserInfo(email) {
     let user = {
-        "email" : email, 
-        "token" : token
+        "email" : email
     };
 
     const url = "http://localhost:3000" + "/get_user_info/";

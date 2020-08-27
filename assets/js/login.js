@@ -60,7 +60,7 @@ async function login() {
                 setCookie("tudo_token", r.token, 7);
 
                 // Navigate to home page
-                window.location.href = "http://localhost:3000/?email=" + r.email + "&token=" + r.token;
+                window.location.href = "http://localhost:3000/?email=" + user.email + "&token=" + r.token;
             }
         })
 
