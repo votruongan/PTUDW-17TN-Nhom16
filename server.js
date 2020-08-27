@@ -104,7 +104,7 @@ app.post('/result-lease-item/:stageId/:itemId', jsonParser, async (req, res) => 
 app.post('/sign_up', jsonParser, async (req, res) => {
     const body = req.body;
 
-    let result = await userHandler.signUpRequest(body.email, body.password, body.name, body.phone, body.address);
+    let result = await userHandler.signUpRequest(body.email, body.password, body.name, body.phone, body.address, body.personalID);
 
     res.send({result});
 })
@@ -126,10 +126,14 @@ app.post('/log_in', jsonParser, async (req, res) => {
 })
 
 app.post('/log_out', jsonParser, async (req, res) => {
+    console.log("TONHIEU: Log out!!!!!");
+
     const body = req.body;
 
     let result = await userHandler.logOut(body.email);
     
+    console.log("TONHIEU: result");
+
     res.send(result);
 })
 

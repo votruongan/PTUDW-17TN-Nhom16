@@ -106,13 +106,20 @@ async function setSesstion(email, token) {
 // Module class for export
 class UserHandler {
 	
-	static signUpRequest = async function(email, password, name, phonenumber, address) {
+	static signUpRequest = async function(email, password, name, phonenumber, address, id_number) {
+		let date = new Date();
+
 		let user = {
 			"email"		: email,
 			"password"	: password,
 			"name"		: name,
 			"phone" 	: phonenumber,
-			"address"	: address
+			"address"	: address,
+			"create_date" : date.getTime(),
+			"id_number" :  id_number,
+			"rating" : [],
+			"item" : [],
+			"pending_item" : []
 		};
 	
 		// 1. Check email is valid
@@ -230,14 +237,14 @@ class UserHandler {
 			"email" : email
 		};
 
+		console.log("TONHIEU: user to log out ", user);
+
 		let res = await dbHelper.findDocument(userCollection, user).catch((err) => {
 			console.log("Find user err = ", err);
 		});
 
 		if (res.length > 0) {
-			let removeSessionRes = await dbHelper.deleteDocument(userCollection, user).catch((err) => {
-				console.log("Delete session err ", err);
-			});
+			dbHelper.deleteDocument(sessionCollection, user);
 		}
 
 		return true;

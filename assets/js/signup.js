@@ -21,6 +21,15 @@ function btnTiepTucdangkyTapped() {
         temp1[i].style.display = "none";
         $(".containerUpfile").css("border", "1px solid black")
     }
+
+    let password = InputPassword.value;
+    let repassword = InputPassword1.value;
+    if (password != repassword) {
+        // Bao loi
+        swal("Thất bại", "Nhập lại mật khẩu không chính xác. Vui lòng kiểm tra và thử lại!", "error");
+        return;
+    }
+
     if (check == 1) {
         signUpButtonTapped();
 
@@ -116,12 +125,13 @@ async function signUpButtonTapped() {
     let password = InputPassword.value;
     let repassword = InputPassword1.value;
     let phone = Inputsdt.value;
+    let personalID = InputPersonalID.value;
     let name = "aaaa"
     let address = "bbb"
 
     if (password != repassword) {
         // Bao loi
-        alert("Nhập lại mật khẩu không chính xác. Vui lòng kiểm tra và thử lại!")
+        swal("Thất bại", "Nhập lại mật khẩu không chính xác. Vui lòng kiểm tra và thử lại!", "error");
         return;
     }
 
@@ -130,7 +140,8 @@ async function signUpButtonTapped() {
         "password"  : password,
         "phone"     : phone,
         "name"      : name,
-        "address"   : address
+        "address"   : address,
+        "personalID" : personalID
     }
 
     const url = "http://localhost:3000" + "/sign_up/"

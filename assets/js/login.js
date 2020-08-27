@@ -57,8 +57,8 @@ async function login() {
             if (confirm) {
                 console.log("Token = ", r.token);
 
-                setCookie("tudo_email", user.email, 7);
-                setCookie("tudo_token", r.token, 7);
+                localStorage.setItem("tudo_email", user.email);
+                localStorage.setItem("tudo_token", r.token);
 
                 // Navigate to home page
                 window.location.href = "http://localhost:3000/";

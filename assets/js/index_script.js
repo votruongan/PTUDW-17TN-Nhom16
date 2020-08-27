@@ -109,9 +109,8 @@ async function autoLoginWithToken() {
     console.log(token);
 
     if (!token || !email) {
-        console.log("In here");
-        email = getCookie("tudo_email");
-        token = getCookie("tudo_token");
+        email = localStorage.getItem("tudo_email");
+        token = localStorage.getItem("tudo_token");
 
         if (email == "" || token == "") {
             return;
@@ -176,7 +175,7 @@ async function logOutOnClick() {
     let email = urlParamms.get('email');
 
     if (!email) {
-        email = getCookie("tudo_email");
+        email = localStorage.getItem("tudo_email");
 
         if (email == "") {
             return;
@@ -199,19 +198,18 @@ async function logOutOnClick() {
 
     let r = await response.json();
 
-    if (r) {
-        swal({
-            title: "Thành công",
-            text: "Đăng xuất thành công",
-            icon: "success",
-        })
-        .then(confirm => {
-            if (confirm) {
-                removeCookie();
+    swal({
+        title: "Thành công",
+        text: "Đăng xuất thành công",
+        icon: "success",
+    })
+    .then(confirm => {
+        if (confirm) {
+            localStorage.removeItem("tudo_email");
+            localStorage.removeItem("tudo_token");
 
-                // Navigate to home page
-                window.location.href = "http://localhost:3000/";
-            }
-        })
-    }
+            // Navigate to home page
+            window.location.href = "http://localhost:3000/";
+        }
+    })
 }

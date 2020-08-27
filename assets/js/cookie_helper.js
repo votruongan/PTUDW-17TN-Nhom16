@@ -24,5 +24,5 @@ function getCookie(cname) {
 }
 
 function removeCookie() {
-  document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+  document.cookie = "email=; token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 }
