@@ -224,6 +224,24 @@ class UserHandler {
 		}
 		return null;
 	}
+
+	static logOut = async function(email) {
+		let user = {
+			"email" : email
+		};
+
+		let res = await dbHelper.findDocument(userCollection, user).catch((err) => {
+			console.log("Find user err = ", err);
+		});
+
+		if (res.length > 0) {
+			let removeSessionRes = await dbHelper.deleteDocument(userCollection, user).catch((err) => {
+				console.log("Delete session err ", err);
+			});
+		}
+
+		return true;
+	}
 }
 
 module.exports = UserHandler;

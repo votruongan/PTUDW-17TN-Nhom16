@@ -170,3 +170,48 @@ async function getUserInfo(email) {
 }
 
 autoLoginWithToken()
+
+async function logOutOnClick() {
+    let urlParamms = new URLSearchParams(window.location.search);
+    let email = urlParamms.get('email');
+
+    if (!email) {
+        email = getCookie("tudo_email");
+
+        if (email == "") {
+            return;
+        }
+    }
+
+    let user = {
+        "email": email
+    }
+
+    const url = "http://localhost:3000" + "/log_out/";
+
+    const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(user)
+    });
+
+    let r = await response.json();
+
+    if (r) {
+        swal({
+            title: "Thành công",
+            text: "Đăng xuất thành công",
+            icon: "success",
+        })
+        .then(confirm => {
+            if (confirm) {
+                removeCookie();
+
+                // Navigate to home page
+                window.location.href = "http://localhost:3000/";
+            }
+        })
+    }
+}

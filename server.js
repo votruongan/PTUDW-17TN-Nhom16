@@ -125,6 +125,14 @@ app.post('/log_in', jsonParser, async (req, res) => {
     res.send(result);
 })
 
+app.post('/log_out', jsonParser, async (req, res) => {
+    const body = req.body;
+
+    let result = await userHandler.logOut(body.email);
+    
+    res.send(result);
+})
+
 app.post('/auth_by_token', jsonParser, async (req, res) => {
     console.log("Auth by token");
 
