@@ -369,6 +369,35 @@ async function logOutOnClick() {
     })
 }
 
+async function profileOnClick() {
+	console.log("Profile On Click")
+
+	let email = localStorage.getItem("tudo_email");
+	let token = localStorage.getItem("tudo_token");
+
+	let user = {
+        "email": email,
+        "token": token
+    }
+
+    const url = "http://localhost:3000" + "/auth_by_token/";
+
+    const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(user)
+    });
+
+    let r = await response.json();
+    console.log("Authen result = ", r);
+
+    if (r) {
+        window.location.href = "/profile"
+	}
+}
+
 // Activate 
 
 autoLoginWithToken()

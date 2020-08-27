@@ -23,6 +23,10 @@ function BtnLogInTapped() {
     }
 }
 
+function signUpTapped() {
+    window.location.href = "http://localhost:3000/signup";
+}
+
 async function login() {
     console.log("LogIn()");
 

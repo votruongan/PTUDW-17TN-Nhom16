@@ -20,6 +20,7 @@
     </script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script defer src="js/tudo-base.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -58,7 +59,7 @@
                         aria-expanded="false" src="img/no_user.png" width="36" height="36">
                     </img>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="left: -400%;">
-                        <a class="dropdown-item" href="profile">
+                        <a class="dropdown-item" href="#" onclick="profileOnClick()">
                             Thông tin cá nhân
                         </a>
                         <a class="dropdown-item" href="#">
@@ -103,6 +104,23 @@
                             <img src="img/check.png" alt="">
                         </span>
                     </div>
+
+                    <!-- Name -->
+                    <div class="form-group">
+                        <label for="InputName">Họ và tên</label>
+                        <input type="text" class="form-control form-controlInput" id="InputName"
+                            placeholder="Nhập Họ và tên của bạn">
+                        <span class="icon-error"></span>
+                    </div>
+
+                    <!-- Address -->
+                    <div class="form-group">
+                        <label for="InputAddress">Địa chỉ</label>
+                        <input type="text" class="form-control form-controlInput" id="InputAddress"
+                            placeholder="Nhập Địa chỉ hiện tại của bạn">
+                        <span class="icon-error"></span>
+                    </div>
+
                     <div class="form-group">
                         <label for="InputSdt">Số điện thoại</label>
                         <!-- Button trigger modal -->

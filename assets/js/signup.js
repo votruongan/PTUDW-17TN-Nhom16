@@ -2,7 +2,8 @@ var temp = document.getElementsByClassName("form-controlInput");
 var temp1 = document.getElementsByClassName("icon-error");
 var temp2 = document.getElementsByClassName("time")
 var files;
-function btnTiepTucdangkyTapped() {
+
+async function btnTiepTucdangkyTapped() {
     var check = 1;
     for (var i = 0; i < temp.length; i++) {
         if (temp[i].value === "") {
@@ -31,7 +32,11 @@ function btnTiepTucdangkyTapped() {
     }
 
     if (check == 1) {
-        signUpButtonTapped();
+        let res = await signUpButtonTapped();
+
+        if (!res) {
+            return;
+        }
 
         $(".panel1").css("display", "none")
         $(".panel2").css("display", "block")
@@ -126,8 +131,8 @@ async function signUpButtonTapped() {
     let repassword = InputPassword1.value;
     let phone = Inputsdt.value;
     let personalID = InputPersonalID.value;
-    let name = "aaaa"
-    let address = "bbb"
+    let name = InputName.value;
+    let address = InputAddress.value;
 
     if (password != repassword) {
         // Bao loi
@@ -154,7 +159,17 @@ async function signUpButtonTapped() {
         body: JSON.stringify(user)
     });
     let r = await response.json();
-    console.log(r);
+    console.log(r.result);
+
+    if (r.result == 1) {
+        swal("Thất bại", "Địa chỉ email đã được sử dụng!", "error");
+        return false;
+    } else if (r.result == 2) {
+        swal("Thất bại", "Số điện thoại đã được sử dụng!", "error");
+        return false;
+    }
+
+    return true;
 }
 
 async function verifyButtonTapped() {
@@ -195,8 +210,8 @@ async function verifyButtonTapped() {
         })
         .then(confirm => {
             if (confirm) {
-                // Navigate to home page
-                window.location.href = "http://localhost:3000";
+                // Navigate to login page
+                window.location.href = "http://localhost:3000/login";
             }
         })
     } else {

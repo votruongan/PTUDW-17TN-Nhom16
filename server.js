@@ -208,13 +208,10 @@ app.post('/log_in', jsonParser, async (req, res) => {
 })
 
 app.post('/log_out', jsonParser, async (req, res) => {
-    console.log("TONHIEU: Log out!!!!!");
 
     const body = req.body;
 
     let result = await userHandler.logOut(body.email);
-    
-    console.log("TONHIEU: result");
 
     res.send(result);
 })
