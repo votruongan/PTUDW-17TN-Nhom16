@@ -49,11 +49,13 @@ async function verify(user) {
 }
 
 async function logIn(user) {
+	console.log("Login User = ", user);
+
 	let res = await dbHelper.findDocument(userCollection, user).catch((err) => {
 		console.log("Err", err);
 	});
 
-	if (res) {
+	if (res.length > 0) {
 		let token =	makeid(12);
 		let sessionRes = await setSesstion(user.email, token);
 		if (sessionRes) {
@@ -204,10 +206,12 @@ class UserHandler {
 		return res;
 	}
 
-	static getUserInfo = async function(email, token) {
+	static getUserInfo = async function(email) {
 		let user = {
 			"email" : email
 		};
+
+		console.log("user for get = ", user);
 
 		let res = await dbHelper.findDocument(userCollection, user).catch((error) => {
 			console.log("Find user err ", err);
@@ -219,6 +223,24 @@ class UserHandler {
 			return res;	
 		}
 		return null;
+	}
+
+	static logOut = async function(email) {
+		let user = {
+			"email" : email
+		};
+
+		let res = await dbHelper.findDocument(userCollection, user).catch((err) => {
+			console.log("Find user err = ", err);
+		});
+
+		if (res.length > 0) {
+			let removeSessionRes = await dbHelper.deleteDocument(userCollection, user).catch((err) => {
+				console.log("Delete session err ", err);
+			});
+		}
+
+		return true;
 	}
 }
 

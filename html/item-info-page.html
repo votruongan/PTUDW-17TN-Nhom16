@@ -6,23 +6,23 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>TUDO - Đồ gì cũng có</title>    
 	<!-- CSS Styles -->
-    <link href="css/styles_item_info.css" rel="stylesheet">
-    <link href="css/fonts.css" rel="stylesheet">
-    <link href="css/styles.css" rel="stylesheet" >
-    <link href="css/all.css" rel="stylesheet" >
+    <link href="/css/styles_item_info.css" rel="stylesheet">
+    <link href="/css/fonts.css" rel="stylesheet">
+    <link href="/css/styles.css" rel="stylesheet" >
+    <link href="/css/all.css" rel="stylesheet" >
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
     <!-- Optional JavaScript -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script defer src="js/tudo-base.js"></script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script defer src="/js/tudo-base.js"></script>
 </head>
 
 <body>
     <!-- Navigation bar -->
 <nav class="FixedBar navbar navbar-light bg-light">
-	<a class="navbar-brand" href=".">
-	  <img src="img/logo.png" width="140" height="36" alt="">
+	<a class="navbar-brand" href="/.">
+	  <img src="/img/logo.png" width="140" height="36" alt="">
 	</a>
   <a href="javascript:void(0);" class="d-xs-block d-xl-none " id="toggleNavBar" onclick="extendNavBar()">
     <h4 class="fa fa-bars"></h4>
@@ -32,36 +32,36 @@
 	<div class="d-flex justify-content-center h-100">
 	  <div class="searchbar">
 		<input class="search_input" type="text" name="" placeholder="Tìm kiếm...">
-		<a href="search" class="search_icon"><i class="fas fa-search"></i></a>
+		<a href="/search" class="search_icon"><i class="fas fa-search"></i></a>
 	  </div>
 	</div>
   </div>
-	  <a class="navbar-brand" href="post-item">
+	  <a class="navbar-brand" href="/post-item">
 		Cho thuê đồ
 	  </a>
-	  <a class="navbar-brand" href="about">
+	  <a class="navbar-brand" href="/about">
 		Tìm hiểu thêm
 	  </a>
-	  <a class="navbar-brand" href="signup">
+	  <a class="navbar-brand" href="/signup">
 		Đăng ký
 	  </a>
-	  <a class="navbar-brand" href="login">
+	  <a class="navbar-brand" href="/login">
 		Đăng nhập
 	  </a>
-	  <a class="navbar-brand" href="#" onclick="location.href='profile'">
-			<img src="img/no_user.png" width="36" height="36" alt="">
+	  <a class="navbar-brand" href="/#" onclick="location.href='/profile'">
+			<img src="/img/no_user.png" width="36" height="36" alt="">
 	  </a>
   </div>
 </nav>
     <!-- MAIN CONTAINER -->
     <div class="container">
-  <ol class="breadcrumb p-1 mb-0" style="height:2rem;">
+  <!-- <ol class="breadcrumb p-1 mb-0" style="height:2rem;">
     <li class="breadcrumb-item"><a href="#">TP Hồ Chí Minh</a></li>
     <li class="breadcrumb-item"><a href="#">Quận 7</a></li>
     <li class="breadcrumb-item"><a href="#">Đồ điện tử</a></li>
     <li class="breadcrumb-item"><a href="#">Laptop</a></li>
     <li class="breadcrumb-item"><a href="#">Macbook</a></li>
-  </ol>
+  </ol> -->
         <!-- Image slideshow -->
         <div id="imageCarousel" class="carousel slide" style="height:28rem;" data-ride="carousel">
 		  <ol class="carousel-indicators">
@@ -74,19 +74,13 @@
             <div class="carousel-inner" role="listbox" style=" width:100%;">
                 <div class="carousel-item active">
                 <div class="d-flex justify-content-center h-100">
-                    <img src="https://s4.nhattao.com/data/attachment-files/2020/05/15043954_1.jpg"
+                    <img id="imageStuff" src=""
                         class="d-block" alt="...">
                 </div>
                 </div>
-                <div class="carousel-item">
+                <!-- <div class="carousel-item">
                 <div class="d-flex justify-content-center  h-100">
-                    <img src="https://s4.nhattao.com/data/attachment-files/2020/05/15043957_4.jpg"
-                        class="d-block" alt="...">
-                </div>
-                </div>
-                <div class="carousel-item">
-                <div class="d-flex justify-content-center  h-100">
-                    <img src="https://s4.nhattao.com/data/attachment-files/2020/05/15043959_6.jpg"
+                    <img src="https://s4.nhattao.com/data/attachment-files/2020/05/15043961_8.jpg"
                         class="d-block" alt="...">
                 </div>
                 </div>
@@ -96,13 +90,19 @@
                         class="d-block" alt="...">
                 </div>
                 </div>
+                <div class="carousel-item">
+                <div class="d-flex justify-content-center  h-100">
+                    <img src="https://s4.nhattao.com/data/attachment-files/2020/05/15043961_8.jpg"
+                        class="d-block" alt="...">
+                </div>
+                </div> -->
             </div>
             <!-- Carousel buttons -->
-            <a class="carousel-control-prev" href="#imageCarousel" role="button" data-slide="prev">
+            <a class="carousel-control-prev" href="/#imageCarousel" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="false"></span>
                 <span class="sr-only">Previous</span>
             </a>
-            <a class="carousel-control-next" href="#imageCarousel" role="button" data-slide="next">
+            <a class="carousel-control-next" href="/#imageCarousel" role="button" data-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="false"></span>
                 <span class="sr-only">Next</span>
             </a>
@@ -113,12 +113,12 @@
                 <!-- Item detail box -->
                 <div class="flex-box mb-0">
                     <div class="flex-xs-12 flex-md-8">
-                        <h1 style="font-size:2rem;">Macbook Pro 13" 2015 MF841 Core i5 2.9-Ram 8Gb-SSD 512GB</h1>
+                        <h1 id ="nameStuff" style="font-size:2rem;"></h1>
                         <span class="d-flex flex-row bd-highlight mb-3 align-items-middle">
-                            <h3>4.8</h3>
-                            <div class="bd-highlight">
-                            <img src="img/star.png" alt="" style="width: 30px; height:30px">
-                                (52 lượt cho thuê)
+                            <h3 id = "starStuff"></h3>
+                            <div  class="bd-highlight" style="display: flex;">
+                            <img src="/img/star.png" alt="" style="width: 30px; height:30px; ">
+                                <div id = "hiring"></div>
                             </div>
                         </span>
                     </div>
@@ -128,7 +128,7 @@
                     <div class="d-flex flex-column bd-highlight w-100">
                         <div class="d-flex flex-row justify-content-center align-items-center">
                             <p style="font-size:1.5rem;">₫&nbsp;
-                            <b style="font-size:2rem;color:#6E62F9;">200.000</b></p>
+                            <b id="cost"style="font-size:2rem;color:#6E62F9;"></b></p>
                             /ngày
                         </div>
                         <b class="mt-3">Bắt đầu:</b>
@@ -142,7 +142,7 @@
                                 <span style="font-size:small;">Khuyến mãi thuê trên 2 ngày <button class="tooltipButton-button gray"></button></span>
                                 <p style="font-size: small; color: gray;">Bạn tiết kiệm được 5%</p>
                             </div>
-                            <b class="align-bottom" style="color: #178514;">20K</b>
+                            <b id="sale" class="align-bottom" style="color: #178514;"></b>
                         </div>
                         <button class="p-0 m-0 btn btn-primary w-100 shadow-sm" style="min-height: 60px;" onclick="goToRent();">
                             <p class="mt-3 " style="font-size:1.4rem">ĐI ĐẾN THUÊ ĐỒ</p>
@@ -150,7 +150,7 @@
                         <p class="mt-3 text-center w-100" style="font-size: small;">Bạn cần phải đăng nhập trước</p>
                         <hr class="mt-1 mb-3 w-100"/>
                         <div class="d-flex flex-row bd-highlight">
-                            <img src="img/like.png" alt="" style="width: 50px; height: 50px;">
+                            <img src="/img/like.png" alt="" style="width: 50px; height: 50px;">
                             <div class="d-flex flex-column ml-3">
                                 <b>Huỷ thuê miễn phí</b>
                                 <p style="font-size:small; color: gray;">
@@ -160,7 +160,7 @@
                         </div>
                         <hr class="mt-1 mb-3 w-100"/>
                         <div class="d-flex flex-row bd-highlight">
-                            <img src="img/money.png" alt="" style="width: 50px; height: 50px;">
+                            <img src="/img/money.png" alt="" style="width: 50px; height: 50px;">
                             <div class="d-flex flex-column ml-3">
                                 <b>Phí vượt quá giới hạn</b>
                                 <p style="font-size:small; color: gray;">
@@ -170,7 +170,7 @@
                         </div>
                         <hr class="mt-1 mb-3 w-100"/>
                         <button type="button" class="btn btn-outline-secondary">
-                            <img src="img/heart.png" alt="" style="width: 40px; height: 40px;">
+                            <img src="/img/heart.png" alt="" style="width: 40px; height: 40px;">
                             Thêm vào yêu thích
                         </button>
                         <button type="button" class="btn btn-link w-100" style="color: #6E62F9;">Chính sách huỷ thuê</button>
@@ -205,14 +205,14 @@
                             <!-- Info -->
                             <div class="d-flex flex-column bd-highlight">
                                 <div class="d-flex flex-row mb-1">
-                                    <h4 class="mr-2">Trần Hiếu</h4>
-                                    <img src="img/badge.png" alt="" style="width: 30px; height:30px" class="mr-2">
+                                    <h4 id= "userName"class="mr-2">Trần Hiếu</h4>
+                                    <img src="/img/badge.png" alt="" style="width: 30px; height:30px" class="mr-2">
                                     <p class="mr-2">Tài khoản cao cấp</p>
                                 </div>
                                 <div class="d-flex flex-row">
-                                    <p class="mr-2">459 lượt thuê</p>
+                                    <p id="userHiring" class="mr-2">459 lượt thuê</p>
                                     <p class="mr-2"> * </p>
-                                    <p class="mr-2">Đăng ký T1/2020</p>
+                                    <p id="atCreate" class="mr-2">Đăng ký T1/2020</p>
                                 </div>
                                 <p>Phản hồi trung bình sau 2 phút</p>
                             </div>
@@ -223,7 +223,7 @@
                     <div class="flex-2">MÔ TẢ</div>
                     <div class="flex-8">
                         <div class="d-flex flex-column bd-highlight mb-3">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum efficitur rhoncus
+                            <p id = "describe">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum efficitur rhoncus
                                 massa, ac dignissim ipsum euismod eu. Morbi fringilla mollis elementum. Vivamus vitae
                                 urna ipsum. Curabitur venenatis lobortis tincidunt. Suspendisse iaculis, augue non
                                 sodales laoreet, lorem odio ullamcorper ex, sit amet lobortis mauris enim in lacus.
@@ -253,21 +253,21 @@
                         <div class="d-flex flex-column bd-highlight mb-1">
                             <div class="d-flex flex-row mb-1">
                                 <h3>4.84</h3>
-                                <img src="img/star.png" alt="" style="width: 30px; height:30px">
+                                <img src="/img/star.png" alt="" style="width: 30px; height:30px">
                             </div>
                             <div class="mb-2">(31 lượt đánh giá)</div>
                             <div>
                                 <div class="d-flex flex-column mb-1">
 									<div class="d-flex flex-row">
-                                    <img src="img/no_user.png" alt=""
+                                    <img src="/img/no_user.png" alt=""
                                         style="width:84px; height:84px" class="circle-img mr-2">
                                     <div class="d-flex flex-column">
                                         <div class="d-flex flex-row mb-1">
-                                            <img src="img/star.png" alt="" style="width: 30px; height:30px">
-                                            <img src="img/star.png" alt="" style="width: 30px; height:30px">
-                                            <img src="img/star.png" alt="" style="width: 30px; height:30px">
-                                            <img src="img/star.png" alt="" style="width: 30px; height:30px">
-                                            <img src="img/star.png" alt="" style="width: 30px; height:30px">
+                                            <img src="/img/star.png" alt="" style="width: 30px; height:30px">
+                                            <img src="/img/star.png" alt="" style="width: 30px; height:30px">
+                                            <img src="/img/star.png" alt="" style="width: 30px; height:30px">
+                                            <img src="/img/star.png" alt="" style="width: 30px; height:30px">
+                                            <img src="/img/star.png" alt="" style="width: 30px; height:30px">
                                         </div>
                                         <div class="d-flex flex-row mb-1">
                                             <b class="mr-1">Võ Trường An</b>
@@ -290,7 +290,7 @@
 		<!-- <div class="overlay overlay-button d-block d-lg-none"><button class="btn btn-secondary" style="width:15%;">Chi tiết tiền thuê</button></div> -->
         </div>
     </div>
-    <script defer src="js/item_info.js"></script>
+    <script defer src="/js/item_info.js"></script>
 </body>
 
 </html>

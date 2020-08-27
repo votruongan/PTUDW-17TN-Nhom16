@@ -2,368 +2,413 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TUDO - Đồ gì cũng có</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/fonts.css" rel="stylesheet">
-    <link href="css/styles.css" rel="stylesheet" >
-    <link href="css/all.css" rel="stylesheet" >
-    <link href="css/normal.css" rel="stylesheet" >
-    <script defer src="js/jquery.min.js"></script>
-    <script defer src="js/index_script.js"></script>
-    <script defer src="js/tudo-base.js"></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>TUDO - Đồ gì cũng có</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/fonts.css" rel="stylesheet">
+	<link href="css/styles.css" rel="stylesheet">
+	<link href="css/all.css" rel="stylesheet">
+	<link href="css/normal.css" rel="stylesheet">
+	<script defer src="js/cookie_helper.js"></script>
+	<script defer src="js/jquery.min.js"></script>
+	<script defer src="js/index_script.js"></script>
+	<script defer src="js/tudo-base.js"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+	</script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+		integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+	</script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+		integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
+	</script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body>
-    <!-- Navigation bar -->
-<nav class="FixedBar navbar navbar-light bg-light">
-	<a class="navbar-brand" href=".">
-	  <img src="img/logo.png" width="140" height="36" alt="">
-	</a>
-  <a href="javascript:void(0);" class="d-xs-block d-xl-none " id="toggleNavBar" onclick="extendNavBar()">
-    <h4 class="fa fa-bars"></h4>
-  </a>
-  <div class="navbar-brand d-none d-xl-block" href="#" id="moreNav">
-	<div class="navbar-brand">
-	<div class="d-flex justify-content-center h-100">
-	  <div class="searchbar">
-		<input class="search_input" type="text" name="" placeholder="Tìm kiếm...">
-		<a href="search" class="search_icon"><i class="fas fa-search"></i></a>
-	  </div>
-	</div>
-  </div>
-	  <a class="navbar-brand" href="post-item">
-		Cho thuê đồ
-	  </a>
-	  <a class="navbar-brand" href="about">
-		Tìm hiểu thêm
-	  </a>
-	  <a class="navbar-brand" href="signup" id="navBtnSignUp">
-		Đăng ký
-	  </a>
-	  <a class="navbar-brand" href="login" id="navBtnLogIn">
-		Đăng nhập
-	  </a>
-	  <a class="navbar-brand" href="#" onclick="location.href='profile'">
-			<img src="img/no_user.png" width="36" height="36" alt="" id="navBtnAvatar">
-	  </a>
-  </div>
-</nav>
-    <!-- Main container -->
-<div class="">
-    <!-- Big big search container -->
-	<div class="jumbotron-fluid index-search-area" style="height:650px;">
-		<div class="row justify-content-center">
-			<div class="col-12 col-md-10 col-lg-8 mt-5">
-				<div class="text-center">
-					<h1 class="special-font display-2 d-none d-md-block mb-3">Thuê không giới hạn</h1>
-					<h1 class="special-font display-4 d-xs-block d-md-none mb-3">Thuê không giới hạn</h1>
-					<h3>Tìm món đồ bạn đang cần đến ngay!</h3>
-					<br/>
-				</div>
-				<div class="d-flex justify-content-center">
-				<form class="card card-sm col-lg-9 col-xm-12">
-					<div class="card-body row no-gutters align-items-center">
-						<div class="col-auto">
-							<i class=" fas fa-search h4 text-body"></i>
-						</div>
-						<!--end of col-->
-						<div class="col">
-							<input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Tên đồ vật, danh mục đồ vật, ...">
-						</div>
-						<!--end of col-->
-						<div class="col-auto">
-							<button onclick="location.href = './search';" class="btn btn-lg theme-main" type="button">Tìm kiếm</button>
-						</div>
-						<!--end of col-->
+	<!-- Navigation bar -->
+	<nav class="FixedBar navbar navbar-light bg-light">
+		<a class="navbar-brand" href=".">
+			<img src="img/logo.png" width="140" height="36" alt="">
+		</a>
+		<a href="javascript:void(0);" class="d-xs-block d-xl-none " id="toggleNavBar" onclick="extendNavBar()">
+			<h4 class="fa fa-bars"></h4>
+		</a>
+		<div class="navbar-brand d-none d-xl-block" href="#" id="moreNav">
+			<div class="navbar-brand">
+				<div class="d-flex justify-content-center h-100">
+					<div class="searchbar">
+						<input class="search_input" type="text" name="" placeholder="Tìm kiếm...">
+						<a href="search" class="search_icon"><i class="fas fa-search"></i></a>
 					</div>
-				</form>
+				</div>
 			</div>
+			<a class="navbar-brand" href="post-item">
+				Cho thuê đồ
+			</a>
+			<a class="navbar-brand" href="about">
+				Tìm hiểu thêm
+			</a>
+			<a class="navbar-brand" href="signup" id="navBtnSignUp">
+				Đăng ký
+			</a>
+			<a class="navbar-brand" href="login" id="navBtnLogIn">
+				Đăng nhập
+			</a>
+			<div class="navbar-brand dropdown">
+				<img class="btn p-0 dropdown-toggle" id="navBtnAvatar" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false" src="img/no_user.png" width="36" height="36">
+				</img>
+				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="left: -400%;">
+					<a class="dropdown-item" href="profile">
+						<img src="img/check.png" width="30" height="30">
+						Thông tin cá nhân
+					</a>
+					<a class="dropdown-item" href="#">
+						<img src="img/check.png" width="30" height="30">
+						Danh sách đồ vật
+					</a>
+					<a class="dropdown-item" href="#">
+						<img src="img/check.png" width="30" height="30">
+						Danh sách thuê
+					</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="#" onclick="logOutOnClick()">
+						<img src="img/check.png" width="30" height="30">
+						Đăng xuất
+					</a>
+				</div>
 			</div>
-			<!--end of col-->
+		</div>
+	</nav>
+	<!-- Main container -->
+	<div class="">
+		<!-- Big big search container -->
+		<div class="jumbotron-fluid index-search-area" style="height:650px;">
+			<div class="row justify-content-center">
+				<div class="col-12 col-md-10 col-lg-8 mt-5">
+					<div class="text-center">
+						<h1 class="special-font display-2 d-none d-md-block mb-3">Thuê không giới hạn</h1>
+						<h1 class="special-font display-4 d-xs-block d-md-none mb-3">Thuê không giới hạn</h1>
+						<h3>Tìm món đồ bạn đang cần đến ngay!</h3>
+						<br />
+					</div>
+					<div class="d-flex justify-content-center">
+						<form class="card card-sm col-lg-9 col-xm-12">
+							<div class="card-body row no-gutters align-items-center">
+								<div class="col-auto">
+									<i class=" fas fa-search h4 text-body"></i>
+								</div>
+								<!--end of col-->
+								<div class="col">
+									<input class="form-control form-control-lg form-control-borderless" type="search"
+										placeholder="Tên đồ vật, danh mục đồ vật, ...">
+								</div>
+								<!--end of col-->
+								<div class="col-auto">
+									<button onclick="location.href = './search';" class="btn btn-lg theme-main"
+										type="button">Tìm kiếm</button>
+								</div>
+								<!--end of col-->
+							</div>
+						</form>
+					</div>
+				</div>
+				<!--end of col-->
+			</div>
 		</div>
 	</div>
-</div>
-		
-    <!-- Introductory body -->
-			
+
+	<!-- Introductory body -->
+
 	<div class="container mt-5">
 		<div class="special-font row justify-content-center text-center">
-				<h4 class="mt-2 col-lg-7"">Không cần phải đau đầu kiếm đồ nữa</h4>
-				<h1 class="mt-2 col-sm-12 col-md-10 col-lg-8">Trải nghiệm nền tảng chia sẻ<br class="d-none d-xl-block"/> vật dụng tốt nhất hiện nay</h1>
+			<h4 class="mt-2 col-lg-7"">Không cần phải đau đầu kiếm đồ nữa</h4>
+				<h1 class=" mt-2 col-sm-12 col-md-10 col-lg-8">Trải nghiệm nền tảng chia sẻ<br class="d-none d-xl-block" /> vật
+				dụng tốt nhất hiện nay</h1>
 		</div>
-	 <div class="row d-flex justify-content-center mt-4">
-		 <div class="container row d-flex justify-content-center">
-		<div class="col-sm-12 col-md-6 col-xl-4 pr-md-5  mt-2">
-			<div class="row text-primary">
-				<h1 class="fas fa-shield-alt"></h1>
-			</div>
-			<div class="row">
-				<h4>Mọi thứ đều được bảo đảm</h4>
-			</div>
-			<div class="row">
-				TUDO tập hợp những giải pháp tiên tiến, giúp đảm bảo tất cả hoạt động của người thuê và người cho thuê đều được xác thực và lưu lại một cách tự động.
+		<div class="row d-flex justify-content-center mt-4">
+			<div class="container row d-flex justify-content-center">
+				<div class="col-sm-12 col-md-6 col-xl-4 pr-md-5  mt-2">
+					<div class="row text-primary">
+						<h1 class="fas fa-shield-alt"></h1>
+					</div>
+					<div class="row">
+						<h4>Mọi thứ đều được bảo đảm</h4>
+					</div>
+					<div class="row">
+						TUDO tập hợp những giải pháp tiên tiến, giúp đảm bảo tất cả hoạt động của người thuê và người
+						cho thuê đều được xác thực và lưu lại một cách tự động.
+					</div>
+				</div>
+				<div class="col-sm-12 col-md-6 col-xl-4 pr-md-5 my-xs-5 mt-md-2">
+					<div class="row text-primary">
+						<h1 class="fas fa-headphones"></h1>
+					</div>
+					<div class="row">
+						<h4>Chăm sóc khách hàng 24/7</h4>
+					</div>
+					<div class="row">
+						Nhân viên của TUDO luôn mong được chăm sóc quý khách hàng một cách tốt nhất. Chúng tôi sẽ luôn
+						luôn lắng nghe và giải quyết nhanh chóng các vấn đề phát sinh.
+					</div>
+				</div>
+				<div class="col-sm-12 col-md-6 col-xl-4 my-xs-5  mt-md-2">
+					<div class="row text-primary">
+						<h1 class="fas fa-thumbs-up"></h1>
+					</div>
+					<div class="row">
+						<h4>Chế độ hủy linh hoạt</h4>
+					</div>
+					<div class="row">
+						Chúng tôi luôn thấu hiểu những vấn đề bất ngờ có thể xảy đến khiến khách hàng thay đổi quyết
+						định của mình. Do đó, bạn vẫn có thể hủy thuê đồ trước 24 tiếng.
+					</div>
+				</div>
 			</div>
 		</div>
-		<div class="col-sm-12 col-md-6 col-xl-4 pr-md-5 my-xs-5 mt-md-2">
-			<div class="row text-primary">
-				<h1 class="fas fa-headphones"></h1>
-			</div>
-			<div class="row">
-				<h4>Chăm sóc khách hàng 24/7</h4>
-			</div>
-			<div class="row">
-				Nhân viên của TUDO luôn mong được chăm sóc quý khách hàng một cách tốt nhất. Chúng tôi sẽ luôn luôn lắng nghe và giải quyết nhanh chóng các vấn đề phát sinh.
-			</div>
-		</div>
-		<div class="col-sm-12 col-md-6 col-xl-4 my-xs-5  mt-md-2">
-			<div class="row text-primary">
-				<h1 class="fas fa-thumbs-up"></h1>
-			</div>
-			<div class="row">
-				<h4>Chế độ hủy linh hoạt</h4>
-			</div>
-			<div class="row">
-				Chúng tôi luôn thấu hiểu những vấn đề bất ngờ có thể xảy đến khiến khách hàng thay đổi quyết định của mình. Do đó, bạn vẫn có thể hủy thuê đồ trước 24 tiếng.
-			</div>
-		</div>		
-	 </div>	
-	</div>
 	</div>
 
-    <!-- Category discovery body -->
-	
+	<!-- Category discovery body -->
+
 	<div class="container mt-5">
-		<br/>
+		<br />
 		<div class="row justify-content-left">
-				<h2>Khám phá theo các danh mục:</h2>
+			<h2>Khám phá theo các danh mục:</h2>
 		</div>
-		<br/>
+		<br />
 		<div class="">
-            <div class="card-columns">
-                <div class="col-xs-12 col-sm-12 col-lg-12 w-md-25 w-xl-100 col-xl-2 p-2 m-0">
-                    <div class="card text-center border-0 bg-transparent">
-                        <a href="./search" class="shadow row category-card-body cat-sports">
-							Thể thao <br/>& dã ngoại
+			<div class="card-columns">
+				<div class="col-xs-12 col-sm-12 col-lg-12 w-md-25 w-xl-100 col-xl-2 p-2 m-0">
+					<div class="card text-center border-0 bg-transparent">
+						<a href="./search" class="shadow row category-card-body cat-sports">
+							Thể thao <br />& dã ngoại
 						</a>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-lg-12 w-md-25 w-xl-100 col-xl-2 p-2 m-0">
-                    <div class="card text-center border-0 bg-transparent">
-                        <a href="./search" class="shadow row category-card-body  cat-av">
-							Âm thanh <br/>& ánh sáng
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-lg-12 w-md-25 w-xl-100 col-xl-2 p-2 m-0">
+					<div class="card text-center border-0 bg-transparent">
+						<a href="./search" class="shadow row category-card-body  cat-av">
+							Âm thanh <br />& ánh sáng
 						</a>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-lg-12 w-md-25 w-xl-100 col-xl-2 p-2 m-0">
-                    <div class="card text-center border-0 bg-transparent">
-                        <a href="./search" class="shadow row category-card-body  cat-books">
-							Sách <br/>& tài liệu
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-lg-12 w-md-25 w-xl-100 col-xl-2 p-2 m-0">
+					<div class="card text-center border-0 bg-transparent">
+						<a href="./search" class="shadow row category-card-body  cat-books">
+							Sách <br />& tài liệu
 						</a>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-lg-12 w-md-25 w-xl-100 col-xl-2 p-2 m-0">
-                    <div class="card text-center border-0 bg-transparent">
-                        <a href="./search" class="shadow row category-card-body  cat-decor">
-							Nội thất <br/>& trang trí
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-lg-12 w-md-25 w-xl-100 col-xl-2 p-2 m-0">
+					<div class="card text-center border-0 bg-transparent">
+						<a href="./search" class="shadow row category-card-body  cat-decor">
+							Nội thất <br />& trang trí
 						</a>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-lg-12 w-md-25 w-xl-100 col-xl-2 p-2 m-0">
-                    <div class="card text-center border-0 bg-transparent">
-                        <a href="./search" class="shadow row category-card-body  cat-households">
-							Thiết bị <br/>gia dụng
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-lg-12 w-md-25 w-xl-100 col-xl-2 p-2 m-0">
+					<div class="card text-center border-0 bg-transparent">
+						<a href="./search" class="shadow row category-card-body  cat-households">
+							Thiết bị <br />gia dụng
 						</a>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-lg-12 w-md-25 w-xl-100 col-xl-2 p-2 m-0">
-                    <div class="card text-center border-0 bg-transparent">
-                        <a href="./search" class="shadow row category-card-body  cat-fashion">
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-lg-12 w-md-25 w-xl-100 col-xl-2 p-2 m-0">
+					<div class="card text-center border-0 bg-transparent">
+						<a href="./search" class="shadow row category-card-body  cat-fashion">
 							Thời trang
 						</a>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-lg-12 w-md-25 w-xl-100 col-xl-2 p-2 m-0">
-                    <div class="card text-center border-0 bg-transparent">
-                        <a href="./search" class="shadow row category-card-body  cat-electronics">
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-lg-12 w-md-25 w-xl-100 col-xl-2 p-2 m-0">
+					<div class="card text-center border-0 bg-transparent">
+						<a href="./search" class="shadow row category-card-body  cat-electronics">
 							Đồ điện tử
 						</a>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-lg-12 w-md-25 w-xl-100 col-xl-2 p-2 m-0">
-                    <div class="card text-center border-0 bg-transparent">
-                        <a href="./search" class="shadow row category-card-body  cat-instruments">
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-lg-12 w-md-25 w-xl-100 col-xl-2 p-2 m-0">
+					<div class="card text-center border-0 bg-transparent">
+						<a href="./search" class="shadow row category-card-body  cat-instruments">
 							Nhạc cụ
 						</a>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-lg-12 w-md-25 w-xl-100 col-xl-2 p-2 m-0">
-                    <div class="card text-center border-0 bg-transparent">
-                        <a href="./search" class="shadow row category-card-body  cat-tools">
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-lg-12 w-md-25 w-xl-100 col-xl-2 p-2 m-0">
+					<div class="card text-center border-0 bg-transparent">
+						<a href="./search" class="shadow row category-card-body  cat-tools">
 							Dụng cụ
 						</a>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-lg-12 w-md-25 w-xl-100 col-xl-2 p-2 m-0">
-                    <div class="card text-center border-0 bg-transparent">
-                        <a href="./search" class="shadow row category-card-body  cat-services">
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-lg-12 w-md-25 w-xl-100 col-xl-2 p-2 m-0">
+					<div class="card text-center border-0 bg-transparent">
+						<a href="./search" class="shadow row category-card-body  cat-services">
 							Dịch vụ
 						</a>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-lg-12 w-md-25 w-xl-100 col-xl-2 p-2 m-0">
-                    <div class="card text-center border-0 bg-transparent">
-                        <a href="./search" class="shadow row category-card-body  cat-all">
-							<p>Tất cả <br/>danh mục</p>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-lg-12 w-md-25 w-xl-100 col-xl-2 p-2 m-0">
+					<div class="card text-center border-0 bg-transparent">
+						<a href="./search" class="shadow row category-card-body  cat-all">
+							<p>Tất cả <br />danh mục</p>
 						</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-	</div>
-	
-			<div class="seperator"></div>
-			
-    <!-- Recent Item body -->
-			
-			
-<div class="container mb-5">	
-		<div class="row justify-content-left">
-				<h2>Các món đồ có thể bạn quan tâm:</h2>
-		</div>
-	<div class="row">
-		<div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel"  data-interval="1000">
-            <div class="MultiCarousel-inner">
-                <a class="item" href="item">
-                    <div class="pad15">
-						<div class="h-50 w-100 p-1">
-							<img class="FitImage" src="img/stuff/image2.png"/>
-						</div>
-						<div class="overflow-hidden" style="height:50px">
-							<p class="lead"  href="item">Macbook pro 13 inch</p>
-						</div>
-                        <p>₫ 200.000
-                        /ngày</p>
-                    </div>
-                </a>
-                <a class="item" href="item">
-                    <div class="pad15">
-						<div class="h-50 w-100 p-1">
-							<img class="FitImage" src="img/stuff/image2.png"/>
-						</div>
-						<div class="overflow-hidden" style="height:50px">
-							<p class="lead"  href="item">Macbook pro 13 inch</p>
-						</div>
-                        <p>₫ 200.000
-                        /ngày</p>
-                    </div>
-                </a>
-                <a class="item" href="item">
-                    <div class="pad15">
-						<div class="h-50 w-100 p-1">
-							<img class="FitImage" src="img/stuff/image2.png"/>
-						</div>
-						<div class="overflow-hidden" style="height:50px">
-							<p class="lead"  href="item">Macbook pro 13 inch</p>
-						</div>
-                        <p>₫ 200.000
-                        /ngày</p>
-                    </div>
-                </a>
-                <a class="item" href="item">
-                    <div class="pad15">
-						<div class="h-50 w-100 p-1">
-							<img class="FitImage" src="img/stuff/image2.png"/>
-						</div>
-						<div class="overflow-hidden" style="height:50px">
-							<p class="lead"  href="item">Macbook pro 13 inch</p>
-						</div>
-                        <p>₫ 200.000
-                        /ngày</p>
-                    </div>
-                </a>
-                <a class="item" href="item">
-                    <div class="pad15">
-						<div class="h-50 w-100 p-1">
-							<img class="FitImage" src="img/stuff/image2.png"/>
-						</div>
-						<div class="overflow-hidden" style="height:50px">
-							<p class="lead"  href="item">Macbook pro 13 inch</p>
-						</div>
-                        <p>₫ 200.000
-                        /ngày</p>
-                    </div>
-                </a>
-                <a class="item " href="item">
-                    <div class="pad15">
-						<div class="h-50 w-100 p-1">
-							<img class="FitImage" src="img/stuff/image2.png"/>
-						</div>
-						<div class="overflow-hidden" style="height:50px">
-							<p class="lead"  href="item">Macbook pro 13 inch</p>
-						</div>
-                        <p>₫ 200.000
-                        /ngày</p>
-                    </div>
-                </a>
-                <a class="item" href="item">
-                    <div class="pad15">
-						<div class="h-50 w-100 p-1">
-							<img class="FitImage" src="img/stuff/image2.png"/>
-						</div>
-						<div class="overflow-hidden" style="height:50px">
-							<p class="lead"  href="item">Macbook pro 13 inch</p>
-						</div>
-                        <p>₫ 200.000
-                        /ngày</p>
-                    </div>
-                </a>
-            </div>
-            <button class="btn btn-primary leftLst"><</button>
-            <button class="btn btn-primary rightLst">></button>
-        </div>
-	</div>
-</div>
-			
-    <!-- Introductory body -->
-			
-	<div class="container mt-5">
-		<div class="row justify-content-left">
-				<h2>Giới thiệu về TUDO:</h2>
-		</div>
-	 <div class="row container">
-		<div class="row">
-			<div class="col-xs-12 col-md-6 container my-md-5">
-				Bạn đang cần dùng thử một món đồ, hay đang có nhu cầu sử dụng một đồ vật nào đó tạm thời, nhưng lại không muốn tốn một khoản tiền quá lớn? Tất cả món đồ đều có thể thuê ở TUDO.
-			</div>
-			<div class="col-xs-12 col-md-6 container my-3">
-			<a href="search" class=" index-button-panel index-explore-background card shadow text-center border-0 text-white">
-				<div class="my-5 align-middle">
-					<b class="fas fa-map"></b>
-					<p>Khám phá các món đồ gần bạn</p>
+					</div>
 				</div>
-			</a>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-xs-12 col-md-6 container my-md-5">
-				TUDO cũng là nơi sẽ giúp bạn kiếm thêm tiền từ những món đồ mà bạn đã mua mà không còn sử dụng thường xuyên nữa. Hoặc tìm cho bạn, những đơn vị cho thuê đồ chuyên nghiệp, những tập khách hàng mới.
-			</div>
-			<div class="col-xs-12 col-md-6 container my-3">
-			<a href="post-item" class="index-button-panel index-post-background card shadow text-center border-0 text-white">
-				<div class="my-5 align-middle">
-					<b class="fas fa-plus"></b>
-					<p>Tôi có đồ cho thuê</p>
-				</div>
-			</a>
-			</div>
-		</div>		
-	 </div>	
 	</div>
 
-<footer>
-	<p>Một sản phẩm của PTUDW-17TN-Nhom16</p>
-</footer>
+	<div class="seperator"></div>
+
+	<!-- Recent Item body -->
+
+
+	<div class="container mb-5">
+		<div class="row justify-content-left">
+			<h2>Các món đồ có thể bạn quan tâm:</h2>
+		</div>
+		<div class="row">
+			<div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel" data-interval="1000">
+				<div class="MultiCarousel-inner">
+					<a class="item" href="item">
+						<div class="pad15">
+							<div class="h-50 w-100 p-1">
+								<img class="FitImage" src="img/stuff/image2.png" />
+							</div>
+							<div class="overflow-hidden" style="height:50px">
+								<p class="lead" href="item">Macbook pro 13 inch</p>
+							</div>
+							<p>₫ 200.000
+								/ngày</p>
+						</div>
+					</a>
+					<a class="item" href="item">
+						<div class="pad15">
+							<div class="h-50 w-100 p-1">
+								<img class="FitImage" src="img/stuff/image2.png" />
+							</div>
+							<div class="overflow-hidden" style="height:50px">
+								<p class="lead" href="item">Macbook pro 13 inch</p>
+							</div>
+							<p>₫ 200.000
+								/ngày</p>
+						</div>
+					</a>
+					<a class="item" href="item">
+						<div class="pad15">
+							<div class="h-50 w-100 p-1">
+								<img class="FitImage" src="img/stuff/image2.png" />
+							</div>
+							<div class="overflow-hidden" style="height:50px">
+								<p class="lead" href="item">Macbook pro 13 inch</p>
+							</div>
+							<p>₫ 200.000
+								/ngày</p>
+						</div>
+					</a>
+					<a class="item" href="item">
+						<div class="pad15">
+							<div class="h-50 w-100 p-1">
+								<img class="FitImage" src="img/stuff/image2.png" />
+							</div>
+							<div class="overflow-hidden" style="height:50px">
+								<p class="lead" href="item">Macbook pro 13 inch</p>
+							</div>
+							<p>₫ 200.000
+								/ngày</p>
+						</div>
+					</a>
+					<a class="item" href="item">
+						<div class="pad15">
+							<div class="h-50 w-100 p-1">
+								<img class="FitImage" src="img/stuff/image2.png" />
+							</div>
+							<div class="overflow-hidden" style="height:50px">
+								<p class="lead" href="item">Macbook pro 13 inch</p>
+							</div>
+							<p>₫ 200.000
+								/ngày</p>
+						</div>
+					</a>
+					<a class="item " href="item">
+						<div class="pad15">
+							<div class="h-50 w-100 p-1">
+								<img class="FitImage" src="img/stuff/image2.png" />
+							</div>
+							<div class="overflow-hidden" style="height:50px">
+								<p class="lead" href="item">Macbook pro 13 inch</p>
+							</div>
+							<p>₫ 200.000
+								/ngày</p>
+						</div>
+					</a>
+					<a class="item" href="item">
+						<div class="pad15">
+							<div class="h-50 w-100 p-1">
+								<img class="FitImage" src="img/stuff/image2.png" />
+							</div>
+							<div class="overflow-hidden" style="height:50px">
+								<p class="lead" href="item">Macbook pro 13 inch</p>
+							</div>
+							<p>₫ 200.000
+								/ngày</p>
+						</div>
+					</a>
+				</div>
+				<button class="btn btn-primary leftLst">
+					<</button> <button class="btn btn-primary rightLst">>
+				</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- Introductory body -->
+
+	<div class="container mt-5">
+		<div class="row justify-content-left">
+			<h2>Giới thiệu về TUDO:</h2>
+		</div>
+		<div class="row container">
+			<div class="row">
+				<div class="col-xs-12 col-md-6 container my-md-5">
+					Bạn đang cần dùng thử một món đồ, hay đang có nhu cầu sử dụng một đồ vật nào đó tạm thời, nhưng lại
+					không muốn tốn một khoản tiền quá lớn? Tất cả món đồ đều có thể thuê ở TUDO.
+				</div>
+				<div class="col-xs-12 col-md-6 container my-3">
+					<a href="search"
+						class=" index-button-panel index-explore-background card shadow text-center border-0 text-white">
+						<div class="my-5 align-middle">
+							<b class="fas fa-map"></b>
+							<p>Khám phá các món đồ gần bạn</p>
+						</div>
+					</a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 col-md-6 container my-md-5">
+					TUDO cũng là nơi sẽ giúp bạn kiếm thêm tiền từ những món đồ mà bạn đã mua mà không còn sử dụng
+					thường xuyên nữa. Hoặc tìm cho bạn, những đơn vị cho thuê đồ chuyên nghiệp, những tập khách hàng
+					mới.
+				</div>
+				<div class="col-xs-12 col-md-6 container my-3">
+					<a href="post-item"
+						class="index-button-panel index-post-background card shadow text-center border-0 text-white">
+						<div class="my-5 align-middle">
+							<b class="fas fa-plus"></b>
+							<p>Tôi có đồ cho thuê</p>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer>
+		<p>Một sản phẩm của PTUDW-17TN-Nhom16</p>
+	</footer>
 </body>
+
 </html>

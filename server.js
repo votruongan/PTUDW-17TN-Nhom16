@@ -7,6 +7,10 @@ const jsonParser = bodyParser.json();
 const rentingHandler = require('./server_handlers/renting_handler');
 const leasingHandler = require('./server_handlers/leasing_handler');
 const userHandler = require('./server_handlers/account_handler');
+const stuffHandler = require('./server_handlers/stuff_handler');
+const path = require('path');
+const multer = require('multer'); //cài đặt  dependencie
+const fs = require('fs');
 
 const dbHelper = require('./server_handlers/database_helper');
 const { raw, json } = require('body-parser');
@@ -22,6 +26,78 @@ app.use(express.static(__dirname + '/assets/'));
 function responseError(res){
     res.sendStatus(500)
 }
+
+//--------------- UP load anh------------
+const upload = multer({
+    dest:'images/',
+    fileFilter: (req,file,callback)=>{
+        if (/\S+\.(jpg|bmp|gif|png)/gi.test(file.originalname)){
+            callback(null,true)
+        }else {
+            callback(Error('Invalid image file name'),false)
+        }
+    }
+}).single('image')
+app.post('/images/upload',(req,res)=>{
+    upload(req,res,(err)=>{
+        if (err){
+            res.status(400).json({message:err.message})
+        }else {
+            res.status(200).json({
+                message:'Uploaded image successfully',
+                image_path: path.join('images',req.file.filename)
+            })
+        }
+    })
+
+})
+
+app.get('/images/:image_name',(req,res)=>{
+    const imagePath = path.join(__dirname,'images',req.params.image_name)
+    try {
+        
+        const buffer = fs.readFileSync(imagePath)
+        let mime='image/jpeg';
+        res.writeHead(200,{'Content-Type':mime})
+        res.end(buffer,'binary')
+    }
+    catch(error){
+        console.log(error.code)
+        if(error.code === 'ENLENT'){
+            res.status(404).json({message:"No such image file"})
+        }else {
+            res.status(500).json({message:error.message})
+        }
+        res.end()
+    }
+})
+
+//--------------HET UPLOAD ANH----------------
+app.post('/item/post', jsonParser, async (req, res) => {
+    const body = req.body;
+    console.log(body);
+    const token = req.headers['token'];
+    console.log(token);
+
+    if (token == null || token == '') return responseError(res);
+    res.send({id:await stuffHandler.postItem(token,body)});
+})
+
+app.get('/item/:itemId',async (req, res) => {
+    const itemId = req.params.itemId;
+    res.sendFile(__dirname + '/html/item-info-page.html');
+
+    //res.send(stuff[0])
+})
+
+app.get('/item/id/:itemId',async (req, res) => {
+    const itemId = req.params.itemId;
+    const stuff = await stuffHandler.getItem(itemId);
+    console.log(stuff)
+    res.send(stuff);
+
+})
+
 app.post('/rent-date-time/:itemId', jsonParser, async (req, res) => {
     const body = req.body;
     const itemId = req.params.itemId;
@@ -131,6 +207,14 @@ app.post('/log_in', jsonParser, async (req, res) => {
     res.send(result);
 })
 
+app.post('/log_out', jsonParser, async (req, res) => {
+    const body = req.body;
+
+    let result = await userHandler.logOut(body.email);
+    
+    res.send(result);
+})
+
 app.post('/auth_by_token', jsonParser, async (req, res) => {
     console.log("Auth by token");
 
@@ -144,7 +228,9 @@ app.post('/auth_by_token', jsonParser, async (req, res) => {
 app.post('/get_user_info', jsonParser, async (req, res) => { 
     const body = req.body;
 
-    let result = await userHandler.getUserInfo(body.email, body.token);
+    console.log(body);
+
+    let result = await userHandler.getUserInfo(body.email);
 
     res.send(result);
 });

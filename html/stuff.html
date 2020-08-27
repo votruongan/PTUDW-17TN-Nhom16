@@ -69,7 +69,7 @@
 		<div class="form-group">
 		  <label class="col-md-4 control-label" for="tenDoVat">Tên đồ vật:</label>  
 		  <div class="col-md-12">
-		  <input id="tenDoVat" name="tenDoVat" type="text" placeholder="nhập vào tên đồ vật, vd: Macbook pro 13 inch" class="form-control" required="">
+		  <input id="tenDoVat" for ="tenDoVat" name="tenDoVat" type="text" placeholder="nhập vào tên đồ vật, vd: Macbook pro 13 inch" class="form-control" required="">
 		  <span class="help-block">Bạn cần nhập vào tên đồ vật</span>  
 		  </div>
 		</div>
@@ -78,7 +78,7 @@
 		<div class="form-group">
 		  <label class="col-md-4 control-label" for="danhMuc">Danh mục đồ vật:</label>
 		  <div class="col-md-8">
-			<select id="danhMuc" name="danhMuc" class="form-control">
+			<select id="danhMuc" name="danhMuc" class="form-control" for="danhMuc">
 			  <option value="1">Thể thao &amp; dã ngoại</option>
 			  <option value="2">Âm thanh &amp; ánh sáng</option>
 			  <option value="3">Sách &amp; tài liệu</option>
@@ -98,7 +98,7 @@
 		<div class="form-group">
 		<label class="col-md-4 control-label" for="tienThue">Tiền thuê theo ngày:</label>  
 		<div class="input-group col-8">
-		  <input type="number" class="form-control form-conrol input-md"  placeholder="vd: 200.000">
+		  <input type="number" class="form-control form-conrol input-md" for="tien"  placeholder="vd: 200.000">
 		  <div class="input-group-append">
 			<span class="input-group-text" id="basic-addon2">VNĐ / ngày</span>
 		  </div>
@@ -110,7 +110,7 @@
 		<div class="form-group">
 		  <label class="col-md-4 control-label" for="dienThoai">Số điện thoại liên hệ:</label>  
 		  <div class="col-md-8">
-		  <input id="dienThoai" name="dienThoai" type="number" placeholder="vd: 0912345678" class="form-control input-md" required="">
+		  <input id="dienThoai" name="dienThoai" type="number" for="dienThoai" placeholder="vd: 0912345678" class="form-control input-md" required="">
 		  <span class="help-block col-12">Bạn cần nhập vào số điện thoại để người thuê liên hệ với bạn.</span>  
 		  </div>
 		</div>
@@ -119,7 +119,7 @@
 		<div class="form-group">
 		  <label class="col-md-4 control-label" for="diaChi">Địa chỉ nhận &amp; trả đồ:</label>  
 		  <div class="input-group col-md-12">
-		  <input id="diaChi" name="diaChi" type="text" placeholder="vd: 227 Nguyễn Văn Cừ, P.4, Q.5, TP.HCM" class="form-control input-md" required="">
+		  <input id="diaChi" name="diaChi" for="diaChi" type="text" placeholder="vd: 227 Nguyễn Văn Cừ, P.4, Q.5, TP.HCM" class="form-control input-md" required="">
 		  <div class="input-group-append">
 			<span class="input-group-text" id="basic-addon2">Chọn trên bản đồ</span>
 		  </div>
@@ -138,7 +138,7 @@
 		  <label class="col-md-12 control-label" for="tenDoVat">Hình ảnh đồ vật:</label>  
 		  <div class="col-12">
 		  <div id="hinhAnh" type="file"  class="form-control" style="height:20vh;width:38rem;">
-			<input name="tenDoVat" type="file"  accept="image/*"  placeholder="kéo ảnh vào để tải lên" class="form-control input-md">
+			<input name="tenDoVat"  type="file"  accept="image/*"  placeholder="kéo ảnh vào để tải lên" class="form-control input-md">
 		  </div>
 		  </div>
 		</div>

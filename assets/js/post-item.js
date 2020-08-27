@@ -36,11 +36,55 @@ function basicInfoValidation(){
 
 var formValidators = [basicInfoValidation];
 
-function nextPanel(){
-	if (currentPanel+1 == panels.length){
+async function nextPanel(){
+	if (currentPanel+1 === panels.length){
 		// post object 
-		window.location.href = 'info';
-		return;
+		if (stuffName.value!='' && category.value!=''&& money.value!=''&& phone.value!=''&& address!=''&& describe.value && files !=undefined){
+			let path='';
+			if (files){
+				const url1 = "http://localhost:3000" + "/images/upload";
+				let formData = new FormData();
+				formData.append('image', files[0]);
+				const response1 = await fetch(url1, {
+					method: 'POST',
+					body:formData  
+				});
+				let r1 = await response1.json();
+				if (r1['message'] == 'Uploaded image successfully'){
+					path = r1['image_path']
+				}
+			}
+			let stuff ={
+				"name" : stuffName.value,
+				"category": category.value,
+				"money" : money.value,
+				"phone" : phone.value,
+				"address" : address.value,	
+				"path" : path,
+				"describe" :describe.value
+			}
+			let token = "JoKv7W8lL2qA";//getCookie("tudo_token");
+			const url = "http://localhost:3000" + "/item/post";	
+
+			const response = await fetch(url, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					'token' : token
+				},
+				body: JSON.stringify(stuff)
+			});
+
+			let r = await response.json();
+			console.log(r);
+			if (r["id"]==0) {
+				swal("Thất bại", "Bạn vui lòng thử lại sau nhé", "error");
+			}
+			else {
+				window.location.href = '/item/'+r["id"];
+			}
+			return;
+		}
 	}
 	if (formValidators[currentPanel] != undefined){
 		if (!formValidators[currentPanel]()){
@@ -84,7 +128,8 @@ function initPage(){
 	for (i = 0; i < arr.length; i++){
 		arr[i].style.display = "none";
 	}
-	continueButton.onclick = nextPanel;
+	
+	continueButton.onclick=nextPanel;
 	backButton.style.visibility = "hidden";
 	backButton.onclick = previousPanel;
 	
@@ -94,5 +139,28 @@ function initPage(){
 	document.getElementById("chooseMapButton").onclick = chooseLocation;
 }
 
+function initMap() {
+    var position = { lat: 10.7624176, lng: 106.6820081 }
+    var map = new google.maps.Map(document.getElementById("map"), {
+        center: position,
+        zoom: 16
+    });
+    
+	var geocoder = new google.maps.Geocoder();
+
+google.maps.event.addListener(map, 'click', function(event) {
+  geocoder.geocode({
+    'latLng': event.latLng
+  }, function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+      if (results[0]) {
+		console.log(results[0].formatted_address);
+		var temp = document.getElementById("mapAddress");
+		temp.innerHTML =  results[0].formatted_address;
+      }
+    }
+  });
+});
+}
 
 initPage();
