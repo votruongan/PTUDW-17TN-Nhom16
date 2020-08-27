@@ -101,6 +101,22 @@ async function onHandleRentRequest(isAccepted){
 
 
 async function onSendItem(){
+	//convert each image file to base64
+	const file64 = [];
+	const ext = [];
+	console.log(fileSendItem.files);
+	for (let i = 0; i < fileSendItem.files.length; i++) {
+		const f = fileSendItem.files[i];
+		const bytes = new Uint8Array(await f.arrayBuffer());
+		let binary = '';
+		for (let j = 0; j < bytes.byteLength; j++) {
+			binary += String.fromCharCode(bytes[j]);
+		}
+		file64.push(window.btoa(binary));
+		ext.push(f.type.split("/")[1]);
+	}
+	rentData.images = file64;
+	rentData.extensions = ext;
 	let r = await makeRequest("lease-item/2/"+itemId,rentData)
 	console.log(r);
 	updateStatus();

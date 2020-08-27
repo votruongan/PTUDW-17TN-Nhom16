@@ -21,6 +21,7 @@ const port = process.env.PORT || 3000;
 
 app.use(favicon("assets/img/fav.png"));
 app.use(express.static(__dirname + '/assets/'));
+app.use(bodyParser.json({limit: '10mb'}));
 
 // FUNCTIONS
 function responseError(res){
@@ -155,7 +156,7 @@ app.post('/lease-item/:stageId/:itemId', jsonParser, async (req, res) => {
         case "1":
             handlerStr =  'handleRentRequest';            break;
         case "2":
-            handlerStr = 'handleDeposit';            break;
+            handlerStr = 'handleSendItem';            break;
         case "3":
             handlerStr = 'handleReceieve';            break;
         case "4":

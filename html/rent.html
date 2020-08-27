@@ -279,7 +279,7 @@
             
 			<div class="d-none" id="waitingPanel2">
                 <div class="d-flex text-center justify-content-center p-0 mt-5 mb-4">
-                    Món đồ đang được bàn giao
+                    Chủ đồ vật đang bàn giao món đồ cho bạn
                 </div>
                 <div class="d-flex text-center justify-content-center p-0 mb-5">
                 <h1 class="fas fa-shipping-fast text-secondary"></h1>
@@ -291,7 +291,7 @@
                     <div class="col-12 col-md-3 px-0 mb-3" id="receiveReturnDescription">
                         Thông tin nhận đồ:
                     </div>
-                    <div class="detail-area col-xs-12 col-md-9 pl-2">
+                    <div class="detail-area col-12 col-md-9 pl-3">
                         <div class="d-flex flex-row mb-2">
 							<b class="col-4 p-0 m-0">Hình thức nhận:</b>
 							<p class="col-8 p-0 m-0"> Nhận tại địa điểm cố định</p>
@@ -306,18 +306,18 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex-box">
-                    <div class="flex-3 p-0 m-0">
+                <div class="row mb-3">
+                    <div class="col-12 col-md-3 px-0 mb-3">
                         Hiện trạng khi nhận:<br/>
 						<i style="font-size:0.8rem;color:gray;">(Tải lên ảnh hoặc video để lưu lại hình ảnh của đồ vật lúc nhận)</i>
                     </div>
-                    <div class="flex-7">					
+                    <div class="col-12 col-md-9 ">					
 		  <div id="images" type="file"  class="form-control" style="height:200px;width:100%;">
-			<input name="images" type="file"  accept="image/*"  placeholder="kéo ảnh vào để tải lên" class="form-control input-md">
+			<input name="images" type="file"  accept="image/*"  placeholder="kéo ảnh vào để tải lên" class="form-control input-md" id="fileSendItem">
 		  </div>
                     </div>
                 </div>				
-                <div class="flex-box">
+                <div class="row mb-3">
                     <div class="col-7">
                     <button type="button" class="btn btn-primary w-100 shadow-sm" style="min-height: 60px;" id="btnRecievedItem">
                         Đã nhận món đồ
@@ -330,6 +330,7 @@
                     </div>
                 </div>				
             </div>
+
 			
 			<div class="overlay focus not-cover-receipt p-lg-5 p-xm-0 d-none" id="requestChangeReturn">
 				<div class="bg-white px-5 py-5" style="padding-top:20%;">

@@ -1,4 +1,5 @@
 const dbHelper = require("./database_helper");
+const {writeBase64ToFile} = require("./misc_helper");
 
 // rent: itemId, clientId, isActive, fromDateTime, toDatetime, discount, 
 //      requestMessage, isAccepted, depositId, paymentId, clientRecieptionLogId,
@@ -37,19 +38,20 @@ class rentingHandler{
         return r;
     }
 
-    static handleDeposit = async function(itemId,clientId,body){
+    static handleSendItem = async function(itemId,clientId,body){
         const queryObj = {itemId,clientId,isActive:true}
-        const method = body.method;
-        //write to payment collection
-        const payObj = {method,receivedMoney:0};
-        if (method == "credit"){
-            payObj.cardNumber = body.card;
-            payObj.ccv = body.ccv;
-            payObj.issueDate = body.issueDate;
+        const imgs = body.images;
+        const exts = body.extensions;
+        //save images to files
+        const logPath = `./assets/logImages/${itemId}_${clientId}_${Date.now()}`;
+        for(let i = 0; i < imgs.length; i++){
+            writeBase64ToFile(imgs[i],logPath,i+"."+exts[i]);
         }
-        let r = await dbHelper.insertDocument("payment",payObj);
-        //add payment id to document
-        r = await dbHelper.updateDocument("rent",queryObj,{depositId:r.id});
+        //write images to image-log collection
+        const logObj = {logPath, extensions: exts};
+        let r = await dbHelper.insertDocument("image-log",logObj);
+        //add log-image id to document
+        r = await dbHelper.updateDocument("rent",queryObj,{ownerSendLogId:r._id});
         return r;
     }
 

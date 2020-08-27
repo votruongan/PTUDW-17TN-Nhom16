@@ -1,7 +1,7 @@
 const dbHelper = require("./database_helper");
 
 // rent: itemId, clientId, isActive, fromDateTime, toDatetime, discount, 
-//      requestMessage, isAccepted, depositId, paymentId, clientRecieptionLogId,
+//      requestMessage, isAccepted, depositPaymentId, paymentId, clientRecieptionLogId,
 //      clientSendLogId, ownerRecieptionLogId, ownerSendLogId
 // rent-changelog: rentId, from, to, isAccepted
 
@@ -9,11 +9,14 @@ const succeed = "succeed"
 const failed = "failed"
 const waiting = "waiting"
 
-function checkLinkCondition(r,fieldInRent, secondDb, fieldInDb, condition=null){
+async function checkLinkCondition(r,fieldInRent, secondDb, fieldInDb, condition=null){
     if (!r[fieldInRent])
         return failed;
-    _id = r[fieldInRent];
-    const d = dbHelper.findDocument(secondDb,{_id});
+    let _id = r[fieldInRent];
+    console.log(secondDb,_id)
+    let d = await dbHelper.findDocument(secondDb,{_id});
+    d = d[0];
+    console.log(d,fieldInDb,d[fieldInDb])
     if (d[fieldInDb]){
         if(!condition)
             return succeed;
@@ -51,7 +54,7 @@ class rentingHandler{
         let r = await dbHelper.insertDocument("payment",payObj);
         //add payment id to document
         console.log("inserted payment result:",r._id);
-        r = await dbHelper.updateDocument("rent",queryObj,{depositId:r._id});
+        r = await dbHelper.updateDocument("rent",queryObj,{depositPaymentId:r._id});
         return r;
     }
 
@@ -95,22 +98,22 @@ class rentingHandler{
             case "2":
                 if (r.isAccepted !== true || !r.requestMessage)
                     return failed;
-                return checkLinkCondition(r,"depositId","payment","receivedMoney",(v)=>{
+                return await checkLinkCondition(r,"depositPaymentId","payment","receivedMoney",(v)=>{
                     return v > 0;
                 });
             case "3":
-                c1 = checkLinkCondition(r,"ownerSendLogId","image-log","imageLocation");
-                c2 = checkLinkCondition(r,"clientReceiptionLogId","image-log","imageLocation");
+                c1 = await checkLinkCondition(r,"ownerSendLogId","image-log","logPath");
+                c2 = await checkLinkCondition(r,"clientReceiptionLogId","image-log","logPath");
                 if (c1 != succeed){
-                    if (checkLinkCondition(r,"depositId","payment","receivedMoney",(v)=>v > 0) == "succeed"){
+                    if (checkLinkCondition(r,"depositPaymentId","payment","receivedMoney",(v)=>v > 0) == "succeed"){
                         return waiting;
                     }
                 }
                 if (c2 == succeed) return succeed;
                 return failed;
             case "4":
-                c1 = checkLinkCondition(r,"ownerReceiptionLogId","image-log","imageLocation");
-                c2 = checkLinkCondition(r,"clientSendLogId","image-log","imageLocation");
+                c1 = checkLinkCondition(r,"ownerReceiptionLogId","image-log","logPath");
+                c2 = checkLinkCondition(r,"clientSendLogId","image-log","logPath");
                 if (c2 != succeed) return failed;
                 if (c1 != succeed) return waiting;
                 return succeed;
