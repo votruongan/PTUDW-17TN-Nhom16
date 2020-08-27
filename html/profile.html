@@ -20,39 +20,56 @@
 
 <body>
     <!-- Navigation bar -->
-<nav class="FixedBar navbar navbar-light bg-light">
-	<a class="navbar-brand" href=".">
-	  <img src="img/logo.png" width="140" height="36" alt="">
-	</a>
-  <a href="javascript:void(0);" class="d-xs-block d-xl-none " id="toggleNavBar" onclick="extendNavBar()">
-    <h4 class="fa fa-bars"></h4>
-  </a>
-  <div class="navbar-brand d-none d-xl-block" href="#" id="moreNav">
-	<div class="navbar-brand">
-	<div class="d-flex justify-content-center h-100">
-	  <div class="searchbar">
-		<input class="search_input" type="text" name="" placeholder="Tìm kiếm...">
-		<a href="search" class="search_icon"><i class="fas fa-search"></i></a>
-	  </div>
-	</div>
-  </div>
-	  <a class="navbar-brand" href="post-item">
-		Cho thuê đồ
-	  </a>
-	  <a class="navbar-brand" href="about">
-		Tìm hiểu thêm
-	  </a>
-	  <a class="navbar-brand" href="signup">
-		Đăng ký
-	  </a>
-	  <a class="navbar-brand" href="login">
-		Đăng nhập
-	  </a>
-	  <a class="navbar-brand" href="#" onclick="location.href='profile'">
-			<img src="img/no_user.png" width="36" height="36" alt="">
-	  </a>
-  </div>
-</nav>
+    <nav class="FixedBar navbar navbar-light bg-light">
+        <a class="navbar-brand" href=".">
+            <img src="img/logo.png" width="140" height="36" alt="">
+        </a>
+        <a href="javascript:void(0);" class="d-xs-block d-xl-none " id="toggleNavBar" onclick="extendNavBar()">
+            <h4 class="fa fa-bars"></h4>
+        </a>
+        <div class="navbar-brand d-none d-xl-block" href="#" id="moreNav">
+            <div class="navbar-brand">
+                <div class="d-flex justify-content-center h-100">
+                    <div class="searchbar">
+                        <input class="search_input" type="text" name="" placeholder="Tìm kiếm...">
+                        <a href="search" class="search_icon"><i class="fas fa-search"></i></a>
+                    </div>
+                </div>
+            </div>
+            <a class="navbar-brand" href="post-item">
+                Cho thuê đồ
+            </a>
+            <a class="navbar-brand" href="about">
+                Tìm hiểu thêm
+            </a>
+            <a class="navbar-brand" href="signup" id="navBtnSignUp">
+                Đăng ký
+            </a>
+            <a class="navbar-brand" href="login" id="navBtnLogIn">
+                Đăng nhập
+            </a>
+            <div class="navbar-brand dropdown">
+                <img class="btn p-0 dropdown-toggle" id="navBtnAvatar" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false" src="img/no_user.png" width="36" height="36">
+                </img>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="left: -400%;">
+                    <a class="dropdown-item" href="profile">
+                        Thông tin cá nhân
+                    </a>
+                    <a class="dropdown-item" href="#">
+                        Danh sách đồ vật
+                    </a>
+                    <a class="dropdown-item" href="#">
+                        Danh sách thuê
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#" onclick="logOutOnClick()">
+                        Đăng xuất
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
 
     <div class="w-100 position-relative">
         <div style="z-index: 5;">
