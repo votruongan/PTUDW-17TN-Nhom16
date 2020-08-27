@@ -11,7 +11,7 @@ function initPlaceAutocomplete() {
 function goToRent() {
 	localStorage.setItem("rent-from",startDateTime.value)
 	localStorage.setItem("rent-to",endDateTime.value)
-	window.location.href = "/rent"	
+	window.location.href = "/rent"
 }
 
 

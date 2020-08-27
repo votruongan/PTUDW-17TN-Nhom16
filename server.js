@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const urlencodedParser = bodyParser.urlencoded({ extended: false })
 const jsonParser = bodyParser.json();
 const rentingHandler = require('./server_handlers/renting_handler');
+const leasingHandler = require('./server_handlers/leasing_handler');
 const userHandler = require('./server_handlers/account_handler');
 
 const dbHelper = require('./server_handlers/database_helper');
@@ -76,17 +77,22 @@ app.post('/lease-item/:stageId/:itemId', jsonParser, async (req, res) => {
     let handlerStr = null;
     switch (stage) {
         case "1":
-            break;
+            handlerStr =  'handleRentRequest';            break;
         case "2":
-            break;
+            handlerStr = 'handleDeposit';            break;
         case "3":
-            break;
+            handlerStr = 'handleReceieve';            break;
         case "4":
-            break;
+            handlerStr = 'handleReturn';            break;
         default:
             return responseError(res)
     }
-    res.send(result);
+    console.log(handlerStr, leasingHandler[handlerStr])
+    if (handlerStr){
+        const result = await leasingHandler[handlerStr](itemId,clientId,body);
+        res.send(result);
+    } else
+    responseError(res)
 })
 
 app.post('/result-lease-item/:stageId/:itemId', jsonParser, async (req, res) => {

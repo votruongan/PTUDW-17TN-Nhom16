@@ -4,7 +4,7 @@ const maxStage = 4
 
 const itemId = 2810
 
-const fetchResultPrefix = 'result-rent-item'
+let fetchResultPrefix = 'result-rent-item'
 
 //check if redirected from item page -> get from and to datetime
 const rentDateTime = {from:localStorage.getItem("rent-from"),to:localStorage.getItem("rent-to")}
@@ -38,30 +38,40 @@ fetchRentDateTime();
 
 async function updateStatus(){
 	for (let i = 4; i > 0; i--) {
+		console.log("interating",i,fetchResultPrefix,rentData)
 		const obj = await makeRequest(`${fetchResultPrefix}/${i}/${itemId}`,rentData)
 		console.log("updateRentingStatus",obj);
-		
 		if (obj.status == null || obj.status == "failed"){
 			console.log("obj is null");
 			continue;
+		} else {;
 		}
 		fetchRentDateTime();
 		if (i < maxStage)
-			return openPanel(i+1);
+			return openPanel(i+1,obj.status);
 		else
-			return openPanel(i);
+			return openPanel(i,obj.status);
 	}
-	console.log(fetchResultPrefix);
 	return openPanel(1);
 }
 
-function openPanel(index){
+function openPanel(index,status="succeed"){
 	index--;
 	console.log("openning panel",index);
 	for (let i = 0; i < 4; i++) {
-		setObjectVisiblity(getEle("panel"+i),false);
+		try{
+			setObjectVisiblity(getEle("panel"+i),false);
+		} catch {}
+		try{
+			setObjectVisiblity(getEle("waitingPanel"+i),false);
+		} catch {}
 	}
-	setObjectVisiblity(getEle("panel"+index),true);
+	let panelPrefix = "panel"
+	if (status=="waiting"){
+		panelPrefix = "waitingPanel"
+	}
+	console.log("setting object visibility",panelPrefix+index)
+	setObjectVisiblity(getEle(panelPrefix+index),true);
 	const sn = document.getElementsByClassName("stepNav");
 	for (let i = 1; i < sn.length; i++) {
 		sn[i].classList.remove("active");
@@ -82,6 +92,10 @@ async function onSendBookingRequest(){
 
 
 async function onCompleteDeposit(){
+	rentData.method = "credit";
+	rentData.card = inputCardId.value;
+	rentData.ccv = inputCCV.value;
+	rentData.expireDate = inputExpire.value;
 	let r = await makeRequest("rent-item/2/"+itemId,rentData)
 	console.log(r);
 	updateStatus();
@@ -99,8 +113,8 @@ async function onReturnItem(){
 	updateStatus();
 }
 
-updateStatus();
 sendBookingRequest.onclick = onSendBookingRequest;
 completeDeposit.onclick = onCompleteDeposit;
 btnRecievedItem.onclick = onReceiveItem;
 btnReturnedItem.onclick = onReturnItem;
+updateStatus();

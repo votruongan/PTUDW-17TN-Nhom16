@@ -46,11 +46,12 @@ class rentingHandler{
         if (method == "credit"){
             payObj.cardNumber = body.card;
             payObj.ccv = body.ccv;
-            payObj.issueDate = body.issueDate;
+            payObj.expireDate = body.expireDate;
         }
         let r = await dbHelper.insertDocument("payment",payObj);
         //add payment id to document
-        r = await dbHelper.updateDocument("rent",queryObj,{depositId:r.id});
+        console.log("inserted payment result:",r._id);
+        r = await dbHelper.updateDocument("rent",queryObj,{depositId:r._id});
         return r;
     }
 

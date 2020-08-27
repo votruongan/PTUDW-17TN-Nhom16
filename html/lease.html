@@ -57,7 +57,7 @@
         <div class="content-box">
             <div class="col-lg-7 col-md-12 ml-lg-4 ml-xm-0 pr-lg-4 mt-4 p-xm-0">
                 <div class="flex-box mb-3">
-                    <div class="col-11">
+                    <div class="col-12">
                         <h1 style="font-size:2rem;">Macbook Pro 13" 2015 MF841 Core i5 2.9-Ram 8Gb-SSD 512GB</h1>
                     </div>
                 </div>
@@ -94,7 +94,7 @@
                     </div>
 					
                 </div>
-			<div class="d-none" id="panel0">
+			<div class="d-none" id="waitingPanel0">
                 <!-- Owner's info box -->
                 <div class="flex-box">
                     <div class="flex-2">
@@ -132,18 +132,18 @@
                     </div>
                     <div class="flex-8">
 		  <div class="form-control input-md" style="height:auto;padding:1px">
-			<textarea class="col-12" rows="8" cols="64" placeholder="Nhắn gửi từ người cho thuê" style="border:0px;" readonly="true" id="lease1-message"></textarea>
+			<textarea class="col-12" rows="8" cols="64" placeholder="Nhắn gửi từ người cho thuê" style="border:0px;" readonly="true" id="rentRequestmessage"></textarea>
 		  </div>
                     </div>
                 </div>
                 <div class="flex-box">
                     <div class="col-7">
-                    <button type="button" class="btn btn-primary w-100 shadow-sm" style="min-height: 60px;" id="btnAcceptLendingRequest">
+                    <button type="button" class="btn btn-primary w-100 shadow-sm" style="min-height: 60px;" onclick="onHandleRentRequest(true);">
                         Chấp nhận cho thuê
                     </button>						
                     </div>
                     <div class="col-5">
-                    <button type="button" class="btn btn-outline-secondary w-100" style="min-height: 60px;" id="btnRejectLendingRequest">
+                    <button type="button" class="btn btn-outline-secondary w-100" style="min-height: 60px;" onclick="onHandleRentRequest(false);">
                         Không chấp nhận
                     </button>		
                     </div>
@@ -165,12 +165,12 @@
 				</div>
 			</div>
             </div>
-			<div class="d-none" id="panel2">
+			<div class="d-none" id="waitingPanel2">
                 <div class="row mb-3">
                     <div class="col-12 col-md-3 px-0 mb-3" id="receiveReturnDescription">
                         Thông tin nhận đồ:
                     </div>
-                    <div class="detail-area col-xs-12 col-md-9 pl-2">
+                    <div class="detail-area col-12 col-md-9 pl-3">
                         <div class="d-flex flex-row mb-2">
 							<b class="col-4 p-0 m-0">Hình thức nhận:</b>
 							<p class="col-8 p-0 m-0"> Nhận tại địa điểm cố định</p>
@@ -185,18 +185,18 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex-box">
-                    <div class="flex-3 p-0 m-0">
+                <div class="row mb-3">
+                    <div class="col-12 col-md-3 px-0 mb-3">
                         Hiện trạng khi nhận:<br/>
 						<i style="font-size:0.8rem;color:gray;">(Tải lên ảnh hoặc video để lưu lại hình ảnh của đồ vật lúc nhận)</i>
                     </div>
-                    <div class="flex-7">					
+                    <div class="col-12 col-md-9 ">					
 		  <div id="images" type="file"  class="form-control" style="height:200px;width:100%;">
 			<input name="images" type="file"  accept="image/*"  placeholder="kéo ảnh vào để tải lên" class="form-control input-md">
 		  </div>
                     </div>
                 </div>				
-                <div class="flex-box">
+                <div class="row mb-3">
                     <div class="col-7">
                     <button type="button" class="btn btn-primary w-100 shadow-sm" style="min-height: 60px;">
                         Đã nhận món đồ
@@ -352,21 +352,21 @@
 			
 			
             <!-- Reciept info box -->
-            <div class="col-lg-4 flex-box mr-4 ml-4 mt-4 d-none d-lg-block" id="detailPanel">
+            <div class="col-lg-4 ml-lg-4 flex-box d-none d-lg-block" id="detailPanel">
                 <div class="d-flex flex-column bd-highlight w-100">
                     <div class="d-flex align-items-end justify-content-center align-items-between receiptImage" style="background: url(https://s4.nhattao.com/data/attachment-files/2020/05/15043954_1.jpg); height:200px; padding:0px">
 						<div class="focus white-text w-100 p-2" style="height:40%">
 							<div class="row">
 							<div class="col-4">
-								<h3>10:00</h3>
-								<p>11/05/2020</p>
+								<h3 id="fromTime">10:00</h3>
+								<p id="fromDate">11/05/2020</p>
+							</div>
+							<div class="col-4 justify-content-center pb-2 align-items-center d-flex">
+								<h3 class="text-center fas fa-angle-right"></h3>
 							</div>
 							<div class="col-4">
-								<h3 class="text-center">-></h3>
-							</div>
-							<div class="col-4">
-								<h3>10:00</h3>
-								<p>11/05/2020</p>
+								<h3 id="toTime">10:00</h3>
+								<p id="toDate">11/05/2020</p>
 							</div>
 							</div>
 						</div>
@@ -375,43 +375,38 @@
 					<p font-size: 1rem;">861/84/6 Trần Xuân Soạn, P. Tân Hưng, Quận 7, Hồ Chí Minh</p>
                     <hr class="mt-1 mb-3 w-100"/>
                     <div class="d-flex flex-row bd-highlight justify-content-between">
-                        <div class="d-flex flex-column ml-3">
+                        <div class="d-flex flex-column ">
                             <b>Tiền thuê:</b>	
                         </div>
                             <p style="font-size:1.1rem; " id="rentalFeeDisplay"> 200.000 VND/ngày</p>
                     </div>
                     <div class="d-flex flex-row bd-highlight justify-content-between">
-                        <div class="d-flex flex-column ml-3">
+                        <div class="d-flex flex-column ">
                             <b>Thời gian thuê :</b>	
                         </div>
                             <p style="font-size:1.1rem; " id="rentalTimeDisplay"> 9 ngày</p>
                     </div>
                     <hr class="mt-1 mb-3 w-100"/>
-                    <div class="d-flex flex-row bd-highlight justify-content-between">
-                            <b class="ml-3">Tổng tiền thuê:</b>
-                            <p style="font-size:1.2rem; "  id="totalFeeDisplay">1.800.000 VND</p>
-                    </div>			
-                    <hr class="mt-1 mb-3 w-100"/>
 					<div>
                     <div class="d-flex flex-row bd-highlight justify-content-left">
-                        <div class="d-flex flex-column ml-3">
+                        <div class="d-flex flex-column ">
                             <b>Tổng số tiền nhận được:</b>	
                         </div>
                     </div>							
-                    <p class="d-flex ml-3 justify-content-end text-primary" style="font-size:1.4rem; ">1.800.000 VND</p>
+                    <p class="d-flex  justify-content-end text-primary" style="font-size:1.4rem; ">1.800.000 VND</p>
 					</div>
 					<div>
                     <div class="d-flex flex-row bd-highlight justify-content-left">
-                        <div class="d-inline flex-column ml-3">
+                        <div class="d-inline flex-column ">
                             <b>Số tiền đặt cọc</b>
 							<i style="font-size:0.8rem;">(10%)</i>
                             <b>:</b>
                         </div>
                     </div>							
-                    <p class="d-flex ml-3 justify-content-end  text-primary" style="font-size:1.4rem; ">180.000 VND</p>
+                    <p class="d-flex  justify-content-end  text-primary" style="font-size:1.4rem; ">180.000 VND</p>
 					</div>
                     <hr class="mt-1 mb-3 w-100"/>
-                    <button type="button" class="btn btn-link w-100" style="color: #6E62F9;">Hướng dẫn thuê đồ</button>
+                    <button type="button" class="btn btn-link w-100" style="color: #6E62F9;">Hướng dẫn cho thuê đồ</button>
                 </div>
             </div>
         </div>
@@ -424,7 +419,7 @@
 </footer>
     <script defer src="js/tudo-base.js"></script>
     <script defer src="js/panel-control.js"></script>
-    <script defer src="js/rent.js"></script>
+    <!-- <script defer src="js/rent.js"></script> -->
     <script defer src="js/lease.js"></script>
 </body>
 
