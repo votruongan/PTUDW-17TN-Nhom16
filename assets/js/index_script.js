@@ -38,20 +38,20 @@ $(document).ready(function () {
             if (bodyWidth >= 1200) {
                 incno = itemsSplit[3];
                 itemWidth = sampwidth / incno;
-            }
-            else if (bodyWidth >= 992) {
+            } else if (bodyWidth >= 992) {
                 incno = itemsSplit[2];
                 itemWidth = sampwidth / incno;
-            }
-            else if (bodyWidth >= 768) {
+            } else if (bodyWidth >= 768) {
                 incno = itemsSplit[1];
                 itemWidth = sampwidth / incno;
-            }
-            else {
+            } else {
                 incno = itemsSplit[0];
                 itemWidth = sampwidth / incno;
             }
-            $(this).css({ 'transform': 'translateX(0px)', 'width': itemWidth * itemNumbers });
+            $(this).css({
+                'transform': 'translateX(0px)',
+                'width': itemWidth * itemNumbers
+            });
             $(this).find(itemClass).each(function () {
                 $(this).outerWidth(itemWidth);
             });
@@ -79,8 +79,7 @@ $(document).ready(function () {
                 translateXval = 0;
                 $(el + ' ' + leftBtn).addClass("over");
             }
-        }
-        else if (e == 1) {
+        } else if (e == 1) {
             var itemsCondition = $(el).find(itemsDiv).width() - $(el).width();
             translateXval = parseInt(xds) + parseInt(itemWidth * s);
             $(el + ' ' + leftBtn).removeClass("over");
@@ -104,20 +103,28 @@ $(document).ready(function () {
 
 async function autoLoginWithToken() {
     let urlParamms = new URLSearchParams(window.location.search);
-    const token = urlParamms.get('token');
-    const email = urlParamms.get('email');
+    let token = urlParamms.get('token');
+    let email = urlParamms.get('email');
 
-    if (token == "" || email == "") {
-        return;
+    console.log(token);
+
+    if (!token || !email) {
+        console.log("In here");
+        email = getCookie("tudo_email");
+        token = getCookie("tudo_token");
+
+        if (email == "" || token == "") {
+            return;
+        }
     }
 
     let user = {
-        "email" : email,
-        "token" : token
+        "email": email,
+        "token": token
     }
 
     const url = "http://localhost:3000" + "/auth_by_token/";
-    
+
     const response = await fetch(url, {
         method: 'POST',
         headers: {
@@ -136,6 +143,7 @@ async function autoLoginWithToken() {
 
         if (userInfo.length > 0) {
             navBtnLogIn.innerText = userInfo[0].name;
+            navBtnLogIn.href = "#"
             navBtnSignUp.style.display = 'none';
         }
     }
@@ -143,7 +151,7 @@ async function autoLoginWithToken() {
 
 async function getUserInfo(email) {
     let user = {
-        "email" : email
+        "email": email
     };
 
     const url = "http://localhost:3000" + "/get_user_info/";
