@@ -68,15 +68,28 @@ function openPanel(index,status="succeed"){
 	}
 	let panelPrefix = "panel"
 	if (status=="waiting"){
+		index--;
 		panelPrefix = "waitingPanel"
 	}
 	console.log("setting object visibility",panelPrefix+index)
 	setObjectVisiblity(getEle(panelPrefix+index),true);
+	processPanel(index);
 	const sn = document.getElementsByClassName("stepNav");
 	for (let i = 1; i < sn.length; i++) {
 		sn[i].classList.remove("active");
 		if (i == index+1)
 			sn[i].classList.add("active");
+	}
+}
+
+async function processPanel(index){
+	switch(index){
+		case 3:
+			if (new Date(rentDateTime.to).getTime() > Date.now()){
+				setObjectVisiblity(returnBlock,false);
+				btnReturnMain.innerText = "Yêu cầu thay đổi"
+			}
+			break;
 	}
 }
 
@@ -102,19 +115,30 @@ async function onCompleteDeposit(){
 }
 
 async function onReceiveItem(){
+	//convert each image file to base64
+	const base64Images = await prepareBase64ImageArray(fileReceiveItem.files);
+	rentData.images = base64Images.images;
+	rentData.extensions = base64Images.extensions;
 	let r = await makeRequest("rent-item/3/"+itemId,rentData)
 	console.log(r);
 	updateStatus();
 }
 
-async function onReturnItem(){
+async function makeRequestChange(){
 	let r = await makeRequest("rent-item/4/"+itemId,rentData)
 	console.log(r);
 	updateStatus();
+
+}
+
+async function onRequestChange(){
+	// display request change panel
+	setObjectVisiblity(requestChangeReturn,true)
+	// get data from request panel -> make request
 }
 
 sendBookingRequest.onclick = onSendBookingRequest;
 completeDeposit.onclick = onCompleteDeposit;
 btnRecievedItem.onclick = onReceiveItem;
-btnReturnedItem.onclick = onReturnItem;
+btnReturnMain.onclick = onRequestChange;
 updateStatus();

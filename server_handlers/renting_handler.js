@@ -1,8 +1,9 @@
 const dbHelper = require("./database_helper");
+const {writeAllBase64ImagesLog} = require("./misc_helper");
 
 // rent: itemId, clientId, isActive, fromDateTime, toDatetime, discount, 
-//      requestMessage, isAccepted, depositPaymentId, paymentId, clientRecieptionLogId,
-//      clientSendLogId, ownerRecieptionLogId, ownerSendLogId
+//      requestMessage, isAccepted, depositPaymentId, paymentId, clientReceptionLogId,
+//      clientSendLogId, ownerReceptionLogId, ownerSendLogId
 // rent-changelog: rentId, from, to, isAccepted
 
 const succeed = "succeed"
@@ -20,6 +21,7 @@ async function checkLinkCondition(r,fieldInRent, secondDb, fieldInDb, condition=
     if (d[fieldInDb]){
         if(!condition)
             return succeed;
+            console.log(condition(d[fieldInDb]));
         if(condition(d[fieldInDb])) return succeed;
     }
     return waiting;
@@ -45,7 +47,7 @@ class rentingHandler{
         const queryObj = {itemId,clientId,isActive:true}
         const method = body.method;
         //write to payment collection
-        const payObj = {method,receivedMoney:0};
+        const payObj = {method,receivedMoney:162000};
         if (method == "credit"){
             payObj.cardNumber = body.card;
             payObj.ccv = body.ccv;
@@ -58,10 +60,18 @@ class rentingHandler{
         return r;
     }
 
-    static handleRecieve = async function(itemId,clientId,body){
-        const qOb = {itemId,clientId,isActive:true}
-        let obj = {itemId,clientId,message:body.message};
-        const r = await dbHelper.insertDocument("rent",obj);
+    static handleReceieve = async function(itemId,clientId,body){
+        const queryObj = {itemId,clientId,isActive:true}
+        //write images to image-log collection and get id
+        const writeRes = writeAllBase64ImagesLog(itemId,clientId,body);
+        //write images to image-log collection
+        const logObj = {
+            logPath: writeRes.logPath,
+            extensions: writeRes.extensions
+        };
+        let r = await dbHelper.insertDocument("image-log",logObj);
+        //add log-image id to document
+        r = await dbHelper.updateDocument("rent",queryObj,{clientReceptionLogId:r._id});
         return r;
     }
 
@@ -103,16 +113,18 @@ class rentingHandler{
                 });
             case "3":
                 c1 = await checkLinkCondition(r,"ownerSendLogId","image-log","logPath");
-                c2 = await checkLinkCondition(r,"clientReceiptionLogId","image-log","logPath");
+                c2 = await checkLinkCondition(r,"clientReceptionLogId","image-log","logPath");
                 if (c1 != succeed){
-                    if (checkLinkCondition(r,"depositPaymentId","payment","receivedMoney",(v)=>v > 0) == "succeed"){
+                    if (await checkLinkCondition(r,"depositPaymentId","payment","receivedMoney",(v)=>v > 0) == succeed){
+                        console.log("waiting");
                         return waiting;
                     }
                 }
+                // owner has send item, check item on client side
                 if (c2 == succeed) return succeed;
                 return failed;
             case "4":
-                c1 = checkLinkCondition(r,"ownerReceiptionLogId","image-log","logPath");
+                c1 = checkLinkCondition(r,"ownerReceptionLogId","image-log","logPath");
                 c2 = checkLinkCondition(r,"clientSendLogId","image-log","logPath");
                 if (c2 != succeed) return failed;
                 if (c1 != succeed) return waiting;

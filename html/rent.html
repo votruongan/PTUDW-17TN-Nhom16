@@ -158,7 +158,8 @@
                 <div class="d-flex text-center justify-content-center p-0 mb-5">
                 <h1 class="fas fa-user-check text-secondary"></h1>
                 </div>
-			</div>
+            </div>
+            <!-- Payment block-->
 			<div class="d-none payment-panel" id="panel1">
 			<div id="paymentDescription">Thanh toán tiền đặt cọc:</div>
 			<ul class="nav nav-tabs justify-content-center p-0">
@@ -276,10 +277,10 @@
                     </div>
                 </div>
             </div>
-            
+        <!-- End Payment block -->
 			<div class="d-none" id="waitingPanel2">
                 <div class="d-flex text-center justify-content-center p-0 mt-5 mb-4">
-                    Chủ đồ vật đang bàn giao món đồ cho bạn
+                    Đang chờ chủ đồ vật bàn giao món đồ
                 </div>
                 <div class="d-flex text-center justify-content-center p-0 mb-5">
                 <h1 class="fas fa-shipping-fast text-secondary"></h1>
@@ -313,7 +314,7 @@
                     </div>
                     <div class="col-12 col-md-9 ">					
 		  <div id="images" type="file"  class="form-control" style="height:200px;width:100%;">
-			<input name="images" type="file"  accept="image/*"  placeholder="kéo ảnh vào để tải lên" class="form-control input-md" id="fileSendItem">
+			<input name="images" type="file"  accept="image/*"  placeholder="kéo ảnh vào để tải lên" class="form-control input-md" id="fileReceiveItem">
 		  </div>
                     </div>
                 </div>				
@@ -333,7 +334,7 @@
 
 			
 			<div class="overlay focus not-cover-receipt p-lg-5 p-xm-0 d-none" id="requestChangeReturn">
-				<div class="bg-white px-5 py-5" style="padding-top:20%;">
+				<div class="bg-white px-5 py-5" style="margin-top:20%;">
 					<div class="row w-100 pl-xm-0 pl-lg-5 mb-4">
 						<h4 class="w-100 text-center">Yêu cầu thay đổi thông tin trả đồ</h4>
 					</div>
@@ -342,14 +343,12 @@
 						Hình thức trả đồ:
 						</div>
 						<div class="col-8">
-						  <div name="requestMessage" class="form-control input-md" style="height:auto;padding:1px">
 		<!-- Select Way to Return -->
 						  <div class="col-12 p-0">
 							<select id="category" name="category" class="form-control">
 							  <option value="1">Trả đồ trực tiếp</option>
 							  <option value="2">Trả đồ qua bên thứ ba</option>
 							</select>
-						  </div>
 						  </div>
 						</div>
                     </div>
@@ -358,9 +357,7 @@
 						Thời gian trả đồ:
 						</div>
 						<div class="col-8">
-						  <div name="requestMessage" class="form-control input-md" style="height:auto;padding:1px">
                     <input id="endDateTime" type="datetime-local" class="form-control mt-2 w-100">
-						  </div>
 						</div>
                     </div>
 					<div class="row align-items-center pl-xm-0 pl-lg-5 mb-5">
@@ -368,9 +365,7 @@
 						Địa chỉ trả đồ:
 						</div>
 						<div class="col-8">
-						  <div name="requestMessage" class="form-control input-md" style="height:auto;padding:1px">
-							<input class="form-control col-12" id="inputAddress" placeholder="nhập vào địa chỉ trả đồ" style="border:0px;"></input>
-						  </div>
+							<input class="form-control col-12"  id="inputAddress" placeholder="nhập vào địa chỉ trả đồ"></input>
 						</div>
                     </div>
 						
@@ -381,7 +376,7 @@
                     </button>						
                     </div>
                     <div class="col-5">
-                    <button type="button" class="btn btn-outline-secondary w-100" style="min-height: 60px;">
+                    <button type="button" class="btn btn-outline-secondary w-100" style="min-height: 60px;" onclick="setObjectVisiblity(this.parentNode.parentNode.parentNode.parentNode,false);">
                         Hủy yêu cầu
                     </button>		
                     </div>
@@ -408,7 +403,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex-box">
+                <div class="flex-box" id="returnBlock">
                     <div class="flex-3 p-0 m-0">
                         Hiện trạng khi trả:<br/>
 						<i style="font-size:0.8rem;color:gray;">(Tải lên ảnh hoặc video để lưu lại hình ảnh của đồ vật lúc trả)</i>
@@ -419,25 +414,143 @@
 		  </div>
                     </div>
                 </div>				
-                <div class="flex-box">
-                    <div class="col-7">
-                    <button type="button" class="btn btn-primary w-100 shadow-sm" style="min-height: 60px;" id="btnReturnedItem">
+                <div class="flex-box justify-content-center">
+                    <div class="col-8">
+                    <button type="button" class="btn btn-primary w-100 shadow-sm" style="min-height: 60px;" id="btnReturnMain">
                         Đã trả lại món đồ
                     </button>						
                     </div>
-                    <div class="col-5">
+                    <!-- <div class="col-5">
                     <button type="button" class="btn btn-outline-secondary w-100" style="min-height: 60px;">
                         Thay đổi thông tin trả đồ
                     </button>		
-                    </div>
+                    </div> -->
                 </div>
 				
             </div>
 			
+            <!-- Payment block-->
+            <div class="d-none payment-panel" id="panel4">
+                <div id="paymentDescription">Thanh toán tiền thuê đồ:</div>
+                <ul class="nav nav-tabs justify-content-center p-0">
+                        <li class="col-6 nav-item text-center p-0">
+                        <a class="nav-link active" href="#" onclick="changeTab(this.id, changeTabbtn2,payment_credit,payment_bank)" id="changeTabbtn1">Thẻ tín dụng</a>
+                        </li>
+                        <li class="col-6 nav-item text-center p-0">
+                        <a class="nav-link" href="#" onclick="changeTab(this.id, changeTabbtn1,payment_bank,payment_credit)" id="changeTabbtn2">Ngân hàng</a>
+                        </li>
+                </ul>
+                    <!-- Credit card box -->
+                    <div class="mb-5 bg-white p-4 align-items-center" style="height:auto;" >
+                        <div  class="d-block" id="payment_credit">
+                        <div class="row align-items-center pl-xm-0 pl-lg-5 mb-3">
+                            <div class="col-4">
+                            Số thẻ tín dụng:
+                            </div>
+                            <div class="col-8">
+                                <div name="requestMessage" class="form-control input-md" style="height:auto;padding:1px">
+                                <input class="form-control col-12" id="inputCardId" placeholder="Nhập vào số thẻ tín dụng của bạn" style="border:0px;"></input>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row align-items-center pl-xm-0 pl-lg-5 mb-3">
+                            <div class="col-4">
+                            Số CCV:
+                            </div>
+                            <div class="col-8">
+                                <div name="requestMessage" class="form-control input-md" style="height:auto;padding:1px">
+                                <input class="form-control col-12" id="inputCCV" placeholder="Số CCV của thẻ" style="border:0px;"></input>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row align-items-center pl-xm-0 pl-lg-5 mb-3">
+                            <div class="col-4">
+                            Ngày hết hạn:
+                            </div>
+                            <div class="col-8">
+                                <div name="requestMessage" class="form-control input-md" style="height:auto;padding:1px">
+                                <input class="form-control col-12" id="inputExpire" placeholder="ví dụ: 05/10" style="border:0px;"></input>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row align-items-center pl-xm-0 pl-lg-5 mb-3">
+                            <div class="col-4">
+                            Số tiền thanh toán:
+                            </div>
+                            <div class="col-8">
+                                <p class="d-flex text-primary mb-0" style="font-size:1.5rem; ">1.620.000 VND</p>				
+                            </div>
+                        </div>
+                        </div>
+                        <div id="payment_bank" class="d-none">
+                        <div class="row align-items-center pl-xm-0 pl-lg-5 mb-3">
+                            <div class="col-4">
+                            Ngân hàng:
+                            </div>
+                            <div class="col-8">
+            <!-- Select Bank to Pay -->
+                                <div class="col-12 p-0">
+                                <select id="category" name="category" class="form-control">
+                                    <option value="1">VP Bank - Viet nam Thinh Vuong</option>
+                                    <option value="2">Vietcombank</option>
+                                    <option value="3">Viettinbank</option>
+                                    <option value="4">Agribank</option>
+                                </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row align-items-center pl-xm-0 pl-lg-5 mb-3">
+                            <div class="col-4">
+                            Số tài khoản:
+                            </div>
+                            <div class="col-8">
+                        <p class="d-flex text-primary mb-0" style="font-size:1.5rem; ">3240234234</p>								
+                            </div>
+                        </div>
+                        <div class="row align-items-center pl-xm-0 pl-lg-5 mb-3">
+                            <div class="col-4">
+                            Chủ tài khoản:
+                            </div>
+                            <div class="col-8">
+                        <p class="d-flex text-primary mb-0"style="font-size:1.5rem; ">Cong ty TUDO</p>								
+                            </div>
+                        </div>
+                        
+                        <div class="row align-items-center pl-xm-0 pl-lg-5 mb-3">
+                            <div class="col-4">
+                            Mã giao dịch:
+                            </div>
+                            <div class="col-8">
+                        <p class="d-flex text-primary mb-0"style="font-size:1.5rem; ">MACBOOK1</p>						
+                            </div>
+                        </div>
+                        <div class="row align-items-center pl-xm-0 pl-lg-5 mb-3">
+                            <div class="col-4">
+                            Số tiền cần chuyển:
+                            </div>
+                            <div class="col-8">
+                        <p class="d-flex text-primary mb-0" style="font-size:1.5rem; ">1.620.000 VND</p>						
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="flex-box">
+                        <div class="col-7">
+                        <button type="button" class="btn btn-primary w-100 shadow-sm" style="min-height: 60px;" id="completeDeposit">
+                            Hoàn tất đặt cọc
+                        </button>						
+                        </div>
+                        <div class="col-5">
+                        <button type="button" class="btn btn-outline-secondary w-100" style="min-height: 60px;">
+                            Khiếu nại
+                        </button>		
+                        </div>
+                    </div>
+                </div>
+            <!-- End Payment block -->
+			
 			</div>
-			
-			
-            <!-- Reciept info box -->
+            <!-- Receipt info box -->
             <div class="col-lg-4 ml-lg-4 flex-box d-none d-lg-block" id="detailPanel">
                 <div class="d-flex flex-column bd-highlight w-100">
                     <div class="d-flex align-items-end justify-content-center align-items-between receiptImage" style="background: url(https://s4.nhattao.com/data/attachment-files/2020/05/15043954_1.jpg); height:200px; padding:0px">

@@ -107,6 +107,7 @@ app.post('/rent-date-time/:itemId', jsonParser, async (req, res) => {
     res.send(await rentingHandler.fetchRentDateTime({itemId,clientId}));
 })
 
+const rentHandleArray = ['handleRentRequest','handleDeposit','handleReceieve','handleChangeRequest','handleReturn','handleFinish']
 app.post('/rent-item/:stageId/:itemId', jsonParser, async (req, res) => {
     const body = req.body;
     const stage = req.params.stageId;
@@ -114,17 +115,12 @@ app.post('/rent-item/:stageId/:itemId', jsonParser, async (req, res) => {
     const clientId = body.userId;
     if (!clientId || ! itemId || !stage) return responseError(res);
     let handlerStr = null;
-    switch (stage) {
-        case "1":
-            handlerStr =  'handleRentRequest';            break;
-        case "2":
-            handlerStr = 'handleDeposit';            break;
-        case "3":
-            handlerStr = 'handleReceieve';            break;
-        case "4":
-            handlerStr = 'handleReturn';            break;
-        default:
-            return responseError(res)
+    try{
+        handlerStr = rentHandleArray[parseInt(stage)-1];
+        if (handlerStr == null) throw null;
+    }
+    catch {
+        return responseError(res)
     }
     console.log(handlerStr, rentingHandler[handlerStr])
     if (handlerStr){
@@ -144,6 +140,7 @@ app.post('/result-rent-item/:stageId/:itemId', jsonParser, async (req, res) => {
     res.send({status:await rentingHandler.fetchRentStatus(allInfo)});
 })
 
+const leaseHandleArray = ['handleRentRequest','handleSendItem','handleChangeRequest','handleReceieve','handleFinish']
 app.post('/lease-item/:stageId/:itemId', jsonParser, async (req, res) => {
     const body = req.body;
     const stage = req.params.stageId;
@@ -152,17 +149,12 @@ app.post('/lease-item/:stageId/:itemId', jsonParser, async (req, res) => {
     const timeStamp = Date.now();
     if (!clientId || ! itemId || !stage) return responseError(res);
     let handlerStr = null;
-    switch (stage) {
-        case "1":
-            handlerStr =  'handleRentRequest';            break;
-        case "2":
-            handlerStr = 'handleSendItem';            break;
-        case "3":
-            handlerStr = 'handleReceieve';            break;
-        case "4":
-            handlerStr = 'handleReturn';            break;
-        default:
-            return responseError(res)
+    try{
+        handlerStr = leaseHandleArray[parseInt(stage)-1];
+        if (handlerStr == null) throw null;
+    }
+    catch {
+        return responseError(res)
     }
     console.log(handlerStr, leasingHandler[handlerStr])
     if (handlerStr){
@@ -172,15 +164,15 @@ app.post('/lease-item/:stageId/:itemId', jsonParser, async (req, res) => {
     responseError(res)
 })
 
-app.post('/result-lease-item/:stageId/:itemId', jsonParser, async (req, res) => {
-    const body = req.body;
-    const stage = req.params.stageId;
-    const itemId = req.params.itemId;
-    const uId = body.userId;
-    if (!uId || !itemId || !stage) return responseError(res);
-    const allInfo = {stage, itemId, clientId:uId}
-    res.send(await rentingHandler.fetchRentStatus(allInfo));
-})
+// app.post('/result-lease-item/:stageId/:itemId', jsonParser, async (req, res) => {
+//     const body = req.body;
+//     const stage = req.params.stageId;
+//     const itemId = req.params.itemId;
+//     const uId = body.userId;
+//     if (!uId || !itemId || !stage) return responseError(res);
+//     const allInfo = {stage, itemId, clientId:uId}
+//     res.send(await rentingHandler.fetchRentStatus(allInfo));
+// })
 
 // ACCOUNT HANDLER MODULES
 

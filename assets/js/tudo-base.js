@@ -172,6 +172,29 @@ function basePageInit(){
 	
 }
 
+
+//base64Images object: {images: array of string of all images, extensions: array of extension of images},
+// input: files value of <input type="file"> element
+async function prepareBase64ImageArray(files){
+	const file64 = [];
+	const ext = [];
+	console.log(files);
+	for (let i = 0; i < files.length; i++) {
+		const f = files[i];
+		const bytes = new Uint8Array(await f.arrayBuffer());
+		let binary = '';
+		for (let j = 0; j < bytes.byteLength; j++) {
+			binary += String.fromCharCode(bytes[j]);
+		}
+		file64.push(window.btoa(binary));
+		ext.push(f.type.split("/")[1]);
+	}
+	const res = {};
+	res.images = file64;
+	res.extensions = ext;
+	return res;
+}
+
 window.onbeforeunload = function() {
 	if (ReloadNeedsConfirm)
 		return 'Mốt số thay đổi vẫn chưa được lưu lại :/ bạn có chắc chắn muốn rời đi chứ';
