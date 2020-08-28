@@ -232,6 +232,19 @@ class UserHandler {
 		return null;
 	}
 
+	static updateUserInfo = async function(email, name, address, phone) {
+		let user = {
+			"email" : email,
+			"name" : name,
+			"address" : address,
+			"phone" : phone
+		}
+
+		let res = await dbHelper.updateDocument(userCollection, {"email": email}, user);
+
+		return res;
+	}
+
 	static logOut = async function(email) {
 		let user = {
 			"email" : email

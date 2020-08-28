@@ -39,6 +39,7 @@ const upload = multer({
         }
     }
 }).single('image')
+
 app.post('/images/upload',(req,res)=>{
     upload(req,res,(err)=>{
         if (err){
@@ -237,6 +238,35 @@ app.post('/get_user_info', jsonParser, async (req, res) => {
     res.send(result);
 });
 
+app.post('/update_info', jsonParser, async (req, res) => {
+    const body = req.body;
+
+    console.log(body);
+
+    let authRes = await userHandler.isValidToken(body.email, body.token);
+
+    if (authRes) {
+        let updateRes = await userHandler.updateUserInfo(body.email, body.name, body.address, body.phone);
+        if (updateRes) {
+            res.send({
+                "state" : true,
+                "mess" : "Cập nhật thông tin thành công!"
+            });
+        } else {
+            res.send({
+                "state" : false,
+                "mess" : "Cập nhật thông tin thất bại!"
+            });
+        }
+
+    } else {
+        res.send({
+            "state" : false,
+            "mess" : "Phiên của bạn đã hết. Vui lòng đăng nhập và thử lại!"
+        });
+    }
+})
+
 // STATIC FILE SERVING
 
 app.get('/', (req, res) => {
@@ -291,6 +321,10 @@ app.get('/login', (req, res) => {
 
 app.get('/manage', (req, res) => {
     res.sendFile(__dirname + '/html/manage.html');
+})
+
+app.get('/edit-profile', (req, res) => {
+    res.sendFile(__dirname + '/html/edit-profile.html')
 })
 
 app.listen(port, () => console.log(`TUDO app is listening at http://localhost:${port}`))
