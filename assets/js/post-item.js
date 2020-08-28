@@ -5,6 +5,10 @@ var currentPanel = 0
 var panels = document.getElementsByClassName("postObjectPanel");
 var formNames = ["basicInfo"];
 
+function toggleCheckbox(element){
+	if (element.checked==true) khac.classList.toggle("hidden");
+   if (element.checked==false) khac.classList.toggle("hidden");	
+};
 function basicInfoValidation(){
 	var formObj = document.forms[formNames[currentPanel]];
 	var res = true;
@@ -37,40 +41,65 @@ function basicInfoValidation(){
 var formValidators = [basicInfoValidation];
 
 async function nextPanel(){
-	if (currentPanel+1 === panels.length){
+	if (currentPanel == 1){
 		// post object 
 		if (stuffName.value!='' && category.value!=''&& money.value!=''&& phone.value!=''&& address!=''&& describe.value && files !=undefined){
-			let path='';
+			let path=[];
 			if (files){
 				const url1 = "http://localhost:3000" + "/images/upload";
-				let formData = new FormData();
-				formData.append('image', files[0]);
-				const response1 = await fetch(url1, {
-					method: 'POST',
-					body:formData  
-				});
-				let r1 = await response1.json();
-				if (r1['message'] == 'Uploaded image successfully'){
-					path = r1['image_path']
+				console.log(files);
+				for (var i = 0, f; f = files[i]; i++){
+					let formData = new FormData();
+					formData.append('image', files[i]);
+					const response1 = await fetch(url1, {
+						method: 'POST',
+						body:formData  
+					});
+					let r1 = await response1.json();
+					if (r1['message'] == 'Uploaded image successfully'){
+						path.push(r1['image_path']);
+					}
 				}
 			}
+			let services=[];
+			if (giaoDo.checked) services.push("Giao đồ tận nơi trong 5km đầu tiên");
+			if (huongDan.checked) services.push("Hướng dẫn sử dụng");
+			if (hoTro.checked) services.push("Hỗ trợ trong quá trình sử dụng");
+			if (traDo.checked) services.push("Trả đồ tận nơi");
+			if (khac.value!=null && khacCheck.checked) services.push(khac.value);
+			let cate;
+			if (category.value==1) cate = "Thể thao & dã ngoại";
+			if (category.value==2) cate = "Âm thanh & ánh sáng";
+			if (category.value==3) cate = "Sách & tài liệu";
+			if (category.value==4) cate = "Nội thất & trang trí";
+			if (category.value==5) cate = "Thiết bị gia dụng";
+			if (category.value==6) cate = "Thời trang";
+			if (category.value==7) cate = "Đồ điện tử";
+			if (category.value==8) cate = "Nhạc cụ";
+			if (category.value==9) cate = "Dụng cụ";
+			if (category.value==10) cate = "Dịch vụ";
+
 			let stuff ={
 				"name" : stuffName.value,
-				"category": category.value,
+				"category": cate,
 				"money" : money.value,
 				"phone" : phone.value,
 				"address" : address.value,	
 				"path" : path,
+				"services":services,
 				"describe" :describe.value
 			}
-			let token = "JoKv7W8lL2qA";//getCookie("tudo_token");
+			let token = localStorage.getItem("tudo_token");
+			let email = localStorage.getItem("tudo_email");
+			//console.log(token);
 			const url = "http://localhost:3000" + "/item/post";	
 
 			const response = await fetch(url, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
-					'token' : token
+					'token' : token,
+					'email' : email
 				},
 				body: JSON.stringify(stuff)
 			});
@@ -86,16 +115,18 @@ async function nextPanel(){
 			return;
 		}
 	}
-	if (formValidators[currentPanel] != undefined){
-		if (!formValidators[currentPanel]()){
-			return;
+	else {
+		if (formValidators[currentPanel] != undefined){
+			if (!formValidators[currentPanel]()){
+				return;
+			}
 		}
-	}
-	panels[currentPanel++].style.display = "none";
-	panels[currentPanel].style.display = "block";
-	backButton.style.visibility = "visible";
-	if (currentPanel+1 == panels.length){
-		continueButton.innerHTML = "Đăng bài";
+		panels[currentPanel++].style.display = "none";
+		panels[currentPanel].style.display = "block ";
+		backButton.style.visibility = "visible";
+		if (currentPanel+1 == panels.length){
+			continueButton.innerHTML = "Đăng bài";
+		}
 	}
 }
 

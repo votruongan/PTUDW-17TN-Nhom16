@@ -39,17 +39,20 @@ class StuffHandler{
                 "category": res[0]["category"],
                 "cost": res[0]["cost"],
                 "path": res[0]["path"],
-                // "services":services,
+                "services":res[0]["services"],
                 "describe": res[0]["describe"],
-                "userName": res1[0]["name"]
+                "userName": res1[0]["name"],
+                "create_date": res1[0]["create_date"],
+                "rating" : res1[0]["rating"],
             }
             return res2;
         }
         return false;
     }
-    static postItem = async function (token, body) {
+    static postItem = async function (token,email, body) {
         let token1={
-            "token":token,
+            "email":email,
+            "token":token
         }
         let res = await dbHelper.findDocument(sessionCollection, token1).catch((err) => {
 			console.log(err);
@@ -64,9 +67,9 @@ class StuffHandler{
                 "phone":body["phone"],
                 "address": body["address"],
                 "path": body["path"],
-                // "services":services,
+                "services":body["services"],
                 "describe": body["describe"]
-            }    
+            }
 
             let created = await createStuff(stuff);
 

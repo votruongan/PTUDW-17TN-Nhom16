@@ -126,7 +126,7 @@
 		<div class="form-group">
 		  <label class="col-md-4 control-label" >Địa chỉ nhận &amp; trả đồ:</label>  
 		  <div class="col-md-12 col-lg-7">
-			<div class="input-group  col-md-12">
+			<div class="input-group  col-md-12" style="padding: 0px; padding-right: 16px;">
 		  <input id="address" name="address" placeholder="vd: 227 Nguyễn Văn Cừ, P.4, Q.5, TP.HCM" class="form-control input-md" required="">
 		   <div class="input-group-append col-md-12 col-lg-1 p-0"> 
 			 <a href="#" id="openMapButton"><span class="input-group-text m-0" id="basic-addon2">Chọn trên bản đồ</span></a> 
@@ -155,6 +155,7 @@
 		</div>
 	</div>
 </div>
+<div class="container">
 
 <div class="col-12 postObjectPanel" id="detailPanel" style="display:none;">
 		<br/>
@@ -178,48 +179,51 @@
 		  </div>
 		</div>
 	</div>
+	<div class="row">
+		<div style="height:auto;">
+			<!-- Text input-->
+			<div class="form-group w-100">
+			  <label class="col-md-12 control-label" >Mô tả đồ vật:</label>  
+			  <div class="col-12">  
+				<textarea style="height: 200px;" id = "describe" name="description" for="description" class="col-12" rows="20" cols="64" placeholder="Hãy thêm các mô tả để món đồ trở nên rõ ràng và thu hút hơn" ></textarea>
+			  </div>
+			</div>
+		</div>
+	</div>	
 	
+</div>
 	<div class="row" style="height:auto;width:auto;">
 		<!-- Text input-->
 		<div class="form-group w-100">
-		  <label class="col-md-12 control-label" for="services">Các dịch vụ bạn cung cấp kèm món đồ:</label>  
+		  <label class="col-md-12 control-label">Các dịch vụ bạn cung cấp kèm món đồ:</label>  
 		  <div class="col-12">
-		  <div id="services" type="file"  class="form-control menu-scroll" style="height:220px;">
-			<ul class="list-group">
-			  <li class="list-group-item" id="s_deliver">
-			  <div class="row">
-				<input class="col-1" type="checkbox" for ="c1"/>
-				<p class="col-10" > Giao đồ tận nơi</p>
-				<div class="col-1 p-0 toggleInfoButton">
-						<button class="angleButton-button black h-100 w-100" ></button>
-					</div></li>
+		  <div style="height:240px;">
+			<div class="list-group checkbox-list-group col-12">
+				<div class="list-group-item" style="padding:0px" >
+					<label style="margin: 12px">&nbsp;<input id="giaoDo" type="checkbox">
+						<span class="list-group-item-text">
+							<i class="fa fa-fw"></i>
+							 Giao đồ tận nơi trong 5km đầu tiên
+						</span>
+					</label>
+					
 				</div>
-			  <li class="list-group-item"id="s_guide"><input for ="c2"type="checkbox"/> Hướng dẫn sử dụng</li>
-			  <li class="list-group-item"id="s_install"><input for ="c3"type="checkbox"/> Lắp đặt món đồ</li>
-			  <li class="list-group-item"id="s_fix"><input for ="c4"type="checkbox"/> Bao chi phí sửa chữa</li>
-			</ul>
+				<div class="list-group-item list-group-item-success" style="padding:0px"><label style="margin: 12px">&nbsp;<input id="huongDan" type="checkbox"><span class="list-group-item-text"><i class="fa fa-fw"></i> Hướng dẫn sử dụng</span></label></div>
+				<div class="list-group-item list-group-item-info" style="padding:0px"><label style="margin: 12px">&nbsp;<input id="hoTro"type="checkbox"><span class="list-group-item-text"><i class="fa fa-fw"></i> Hỗ trợ trong quá trình sử dụng</span></label></div>
+				<div class="list-group-item list-group-item-warning" style="padding:0px"><label style="margin: 12px">&nbsp;<input id="traDo" type="checkbox"><span class="list-group-item-text"><i class="fa fa-fw"></i> Trả đồ tận nơi </span></label></div>
+				<div class="list-group-item list-group-item-danger" style="text-align: -webkit-center; padding:0px"><label style="margin: 12px">&nbsp;<input id="khacCheck"  onchange="toggleCheckbox(this)" type="checkbox"><span class="list-group-item-text"><i class="fa fa-fw"></i> Khác</span></label>
+					<textarea id="khac" style="width:90%; display: none;"></textarea>
+				</div>
+			  </div>
+			  
 		  </div>
 		  </div>
 		</div>
 	</div>
 	
-	
-	<div class="col-sm-12 col-lg-6 float-md-right float-sm-none">
-	<div class="row" style="height:auto;">
-		<!-- Text input-->
-		<div class="form-group w-100">
-		  <label class="col-md-12 control-label" >Mô tả đồ vật:</label>  
-		  <div class="col-12">
-		  <div id="description" class="form-control input-md" style="height:auto;padding:1px">
-			<textarea style="height: 594px;" id = "describe" name="description" for="description" class="col-12" rows="20" cols="64" placeholder="Hãy thêm các mô tả để món đồ trở nên rõ ràng và thu hút hơn" style="border:0px;"></textarea>
-		  </div>
-		  </div>
-		</div>
-	</div>
-	</div>	
 </div>
 </div>
-
+</div>
 <footer>
 	<p>Một sản phẩm của PTUDW-17TN-Nhom16</p>
 </footer>

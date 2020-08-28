@@ -75,14 +75,17 @@ app.get('/images/:image_name',(req,res)=>{
 })
 
 //--------------HET UPLOAD ANH----------------
+app.get('/search/:itemName', jsonParser,async (req,res)=> {
+    
+})
 app.post('/item/post', jsonParser, async (req, res) => {
     const body = req.body;
     console.log(body);
     const token = req.headers['token'];
-    console.log(token);
+    const email = req.headers['email'];
 
     if (token == null || token == '') return responseError(res);
-    res.send({id:await stuffHandler.postItem(token,body)});
+    res.send({id:await stuffHandler.postItem(token,email,body)});
 })
 
 app.get('/item/:itemId',async (req, res) => {
