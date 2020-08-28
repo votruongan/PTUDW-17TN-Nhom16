@@ -16,9 +16,16 @@ async function initViewForUserData() {
         profileEmail.innerText = user[0].email;
         profilePhonenumber.innerText = user[0].phone;
         profileCMND.innerText = user[0].id_number;       
+        profileAddress.innerText = user[0].address;
     }
 }
 
 // Activate
 
 initViewForUserData();
+
+// Actions
+
+function updateProfileTapped() {
+    window.location.href = "http://localhost:3000/edit-profile";
+}
