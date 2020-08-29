@@ -50,9 +50,9 @@
         Đăng nhập
       </a>
       <div class="navbar-brand dropdown">
-        <img class="btn p-0 dropdown-toggle" id="navBtnAvatar" data-toggle="dropdown" aria-haspopup="true"
-          aria-expanded="false" src="img/no_user.png" width="36" height="36">
-        </img>
+        <img class="btn p-0 dropdown-toggle circle-img border" id="navBtnAvatar" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false" src="img/no_user.png" width="36" height="36">
+                </img>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="left: -400%;">
           <a class="dropdown-item" href="#" onclick="profileOnClick()">
             Thông tin cá nhân
@@ -84,10 +84,10 @@
       <div class="col-sm-3">
         <!--left col-->
         <div class="text-center">
-          <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail"
+          <img id="avatarImg" src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail"
             alt="avatar">
           <h6>Upload a different photo...</h6>
-          <input type="file" class="text-center center-block file-upload">
+          <input type="file" class="text-center center-block file-upload" name="file" form="registrationForm">
         </div>
         </hr><br>
 
@@ -97,14 +97,23 @@
         <div class="tab-content">
           <div class="tab-pane active" id="home">
             <hr>
-            <form class="form" action="##" method="post" id="registrationForm">
-              <div class="form-group">
+            <form class="form" action="/update_info" method="post" id="registrationForm" enctype="multipart/form-data">
 
+              <div class="form-group">
                 <div class="col-xs-6">
-                  <label for="first_name">
+                  <label for="email">
+                    <h4>Email</h4>
+                  </label>
+                  <input type="text" class="form-control" name="email" id="InputEmail" readonly>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-xs-6">
+                  <label for="name">
                     <h4>Họ và tên</h4>
                   </label>
-                  <input type="text" class="form-control" name="first_name" id="InputName"
+                  <input type="text" class="form-control" name="name" id="InputName"
                     placeholder="Nhập họ và tên của bạn" title="Nhập họ và tên của bạn">
                 </div>
               </div>
@@ -122,18 +131,20 @@
 
               <div class="form-group">
                 <div class="col-xs-6">
-                  <label for="text">
+                  <label for="address">
                     <h4>Địa chỉ</h4>
                   </label>
-                  <input type="text" class="form-control" id="InputLocation" placeholder="Nhập địa chi của bạn"
+                  <input type="text" class="form-control" name="address" id="InputLocation" placeholder="Nhập địa chi của bạn"
                     title="Nhập địa chỉ của bạn">
                 </div>
               </div>
               <div class="form-group">
                 <div class="col-xs-12">
                   <br>
-                  <button class="btn btn-lg btn-success" type="button" onclick="SaveButtonTapped()">
-                    Save</button>
+                  <!-- <button class="btn btn-lg btn-success" type="button" onclick="SaveButtonTapped()">
+                    Save</button> -->
+                    <button class="btn btn-lg btn-success" type="submit">
+                      Save</button>
                   <button class="btn btn-lg" type="reset">
                     Reset</button>
                 </div>

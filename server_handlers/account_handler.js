@@ -80,8 +80,7 @@ async function setSesstion(email, token) {
 		"token"	: token,
 		"ts"	: date.getTime()
 	}
-
-	if (UserHandler.isValidToken(email, token)) {
+	if (await UserHandler.isValidToken(email, token)) { //Quy fix: sua lai cho nay thi may t moi chay ok
 		let res = dbHelper.updateDocument(sessionCollection, session).catch((err) => {
 			console.log("Update session err = ", err);
 		});
@@ -117,6 +116,7 @@ class UserHandler {
 			"address"	: address,
 			"create_date" : date.getTime(),
 			"id_number" :  id_number,
+			"avatar" : "",
 			"rating" : [],
 			"item" : [],
 			"pending_item" : []
@@ -190,7 +190,7 @@ class UserHandler {
 		});
 
 		// If this session is found
-		if (res) {
+		if (res[0]) { //Quy fix: sua lai cho nay thi may t moi chay ok
 			let lastLogInTime = res.ts;
 
 			// Check if session is out of date: 3 days
@@ -232,13 +232,20 @@ class UserHandler {
 		return null;
 	}
 
-	static updateUserInfo = async function(email, name, address, phone) {
+	static updateUserInfo = async function(email, name, address, phone, avatarPath) {
+
 		let user = {
 			"email" : email,
 			"name" : name,
 			"address" : address,
 			"phone" : phone
 		}
+
+		if (avatarPath != "") {
+			user.avatar = avatarPath;
+		}
+
+		console.log("User to update: ", user);
 
 		let res = await dbHelper.updateDocument(userCollection, {"email": email}, user);
 
@@ -249,8 +256,6 @@ class UserHandler {
 		let user = {
 			"email" : email
 		};
-
-		console.log("TONHIEU: user to log out ", user);
 
 		let res = await dbHelper.findDocument(userCollection, user).catch((err) => {
 			console.log("Find user err = ", err);
