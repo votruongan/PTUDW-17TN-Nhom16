@@ -6,7 +6,8 @@ const { findDocument } = require("./database_helper");
 // rent: itemId, clientId, isActive, fromDateTime, toDatetime, discount, 
 //      requestMessage, isAccepted, depositPaymentId, depositPaymentId, clientReceptionLogId,
 //      clientSendLogId, ownerReceptionLogId, ownerSendLogId, currentChangeRequest
-//      deliverMethod, deliverAddress, returnMethod, returnAddress, finishPaymentId
+//      deliverMethod, deliverAddress, returnMethod, returnAddress, finishPaymentId,
+//      clientCommentId, ownerCommentId
 // rent-change-log: rentId, from, to, isAccepted
 
 const succeed = "succeed"
@@ -133,6 +134,30 @@ class rentingHandler{
         return r;
     }
 
+    //save comment of user and close the rent
+    static handleFinish = async function(itemId,clientId,body){
+        const queryObj = {itemId,clientId,isActive:true}
+        let r = await dbHelper.findDocument("rent",queryObj);
+        let a = await dbHelper.findDocument("Stuff",{itemId});
+        a = a[0];
+        if (!a) a={owner:321}
+        const writeObj = {
+            rentId : r[0]._id,
+            sender: clientId,
+            receiver: a.owner,
+            rating: body.rating,
+            comment: body.comment
+        }
+        r = await dbHelper.insertDocument("rent-lease-comment",writeObj)
+        r = await dbHelper.updateDocument("rent",queryObj,{clientCommentId:r._id});
+        r = await dbHelper.findDocument("rent",queryObj);
+        r = r[0];
+        if (r.clientCommentId && r.ownerCommentId){
+            //finish rent
+            r = await dbHelper.updateDocument("rent",queryObj,{isActive:false});
+        }
+        return r;
+    }
 
     static fetchChangeRequest = async function(itemId,clientId){
         const queryObj = {itemId,clientId,isActive:true}
@@ -157,6 +182,7 @@ class rentingHandler{
 
     static fetchRentStatus = async function(params){
         const qObj = rentQueryObject(params);
+        qObj.isActive = true;
         console.log(qObj);
         let r = await dbHelper.findDocument("rent",qObj);
         r = r[0];

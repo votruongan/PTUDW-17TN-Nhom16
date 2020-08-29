@@ -52,12 +52,20 @@ class rentingHandler{
         return r;
     }
 
-    static handleRecieve = async function(itemId,clientId,body){
-        const qOb = {itemId,clientId,isActive:true}
-        let obj = {itemId,clientId,message:body.message};
-        const r = await dbHelper.insertDocument("rent",obj);
+    static handleReceive = async function(itemId,clientId,body){
+        const queryObj = {itemId,clientId,isActive:true}
+        const writeRes = writeAllBase64ImagesLog(itemId,clientId,body);
+        //write images to image-log collection
+        const logObj = {
+            logPath: writeRes.logPath,
+            extensions: writeRes.extensions
+        };
+        let r = await dbHelper.insertDocument("image-log",logObj);
+        //add log-image id to document
+        r = await dbHelper.updateDocument("rent",queryObj,{ownerReceptionLogId:r._id});
         return r;
     }
+
 
     static handleChangeRequest = async function(itemId,clientId,body){
         let queryObj = {itemId,clientId,isActive:true};
@@ -88,6 +96,32 @@ class rentingHandler{
             returnMethod: r.changeReturnMethod,
             returnAddress: r.changeReturnAddress,
         });
+        return r;
+    }
+
+    
+    //save comment of user and close the rent
+    static handleFinish = async function(itemId,clientId,body){
+        const queryObj = {itemId,clientId,isActive:true}
+        let r = await dbHelper.findDocument("rent",queryObj);
+        let a = await dbHelper.findDocument("Stuff",{itemId});
+        a = a[0];
+        if (!a) a={owner:321}
+        const writeObj = {
+            rentId : r[0]._id,
+            sender: a.owner,
+            receiver: clientId,
+            rating: body.rating,
+            comment: body.comment
+        }
+        r = await dbHelper.insertDocument("rent-lease-comment",writeObj)
+        r = await dbHelper.updateDocument("rent",queryObj,{ownerCommentId:r._id});
+        r = await dbHelper.findDocument("rent",queryObj);
+        r = r[0];
+        if (r.clientCommentId && r.ownerCommentId){
+            //finish rent
+            r = await dbHelper.updateDocument("rent",queryObj,{isActive:false});
+        }
         return r;
     }
 

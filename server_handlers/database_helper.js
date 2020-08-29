@@ -128,11 +128,12 @@ function deleteManyDocument(collection,queryObject){
 
 
 async function start(){
-  // console.log(await deleteManyDocument("rent",{}));
-  // console.log(await deleteManyDocument("payment",{}));
-  // console.log(await deleteManyDocument("rent-change-log",{}));
-  console.log(await findDocument("rent",{}));
-  console.log(await findDocument("image-log",{}));
+  console.log(await deleteManyDocument("rent",{}));
+  console.log(await deleteManyDocument("payment",{}));
+  console.log(await deleteManyDocument("rent-change-log",{}));
+  console.log(await deleteManyDocument("rent-lease-comment",{}));
+  // console.log(await findDocument("rent",{}));
+  // console.log(await findDocument("rent-lease-comment",{}));
 }
 
 if (require.main === module)
