@@ -100,3 +100,11 @@ $(document).ready(function () {
     }
 
 });
+
+
+const urlParams = new URLSearchParams(window.location.search);
+const loginState = urlParams.get('loginState');
+
+if (loginState == 0) {
+    swal("Thất bại", "Vui lòng đăng nhập trước", "error");
+}

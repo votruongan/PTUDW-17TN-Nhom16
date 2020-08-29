@@ -2,232 +2,275 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TUDO - Đồ gì cũng có</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/fonts.css" rel="stylesheet">
-    <link href="css/styles.css" rel="stylesheet" >
-    <link href="css/all.css" rel="stylesheet" >
-    <link href="css/signup.css" rel="stylesheet" >
-    <link href="css/post-item.css" rel="stylesheet" >
-    <script defer src="js/jquery.min.js"></script>
-    <script defer src="js/tudo-base.js"></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>TUDO - Đồ gì cũng có</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/fonts.css" rel="stylesheet">
+	<link href="css/styles.css" rel="stylesheet">
+	<link href="css/all.css" rel="stylesheet">
+	<link href="css/signup.css" rel="stylesheet">
+	<link href="css/post-item.css" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+	</script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+		integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+	</script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+		integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
+	</script>
+	<script defer src="js/jquery.min.js"></script>
+	<script defer src="js/tudo-base.js"></script>
 	<script defer src="js/signup.js"></script>
 	<script defer src="js/map_script.js"></script>
 </head>
 
 <body>
-    <!-- Navigation bar -->
-<nav class="FixedBar navbar navbar-light bg-light">
-	<a class="navbar-brand" href=".">
-	  <img src="img/logo.png" width="140" height="36" alt="">
-	</a>
-  <a href="javascript:void(0);" class="d-xs-block d-xl-none " id="toggleNavBar" onclick="extendNavBar()">
-    <h4 class="fa fa-bars"></h4>
-  </a>
-  <div class="navbar-brand d-none d-xl-block" href="#" id="moreNav">
-	<div class="navbar-brand">
-	<div class="d-flex justify-content-center h-100">
-	  <div class="searchbar">
-		<input class="search_input" type="text" name="" placeholder="Tìm kiếm...">
-		<a href="search" class="search_icon"><i class="fas fa-search"></i></a>
-	  </div>
-	</div>
-  </div>
-	  <a class="navbar-brand" href="post-item">
-		Cho thuê đồ
-	  </a>
-	  <a class="navbar-brand" href="about">
-		Tìm hiểu thêm
-	  </a>
-	  <a class="navbar-brand" href="signup">
-		Đăng ký
-	  </a>
-	  <a class="navbar-brand" href="login">
-		Đăng nhập
-	  </a>
-	  <a class="navbar-brand" href="#" onclick="location.href='profile'">
-			<img src="img/no_user.png" width="36" height="36" alt="">
-	  </a>
-  </div>
-</nav>
-
-<div class="mt-5"><br/>
-	<div class="row d-flex justify-content-between mt-md-3 mt-xl-5 mb-2">
-		<div class="container col-md-12 col-lg-9 w-100 pl-md-5">
-			<h2 class="ml-lg-5 pl-md-5 text-xs-center text-sm-center text-md-center text-lg-left">
-				Đăng tin cho thuê đồ
-			</h2>
-		</div>
-		<div class="col-md-12 col-lg-3 justify-content-between">
-			<button type="button" class="btn btn-secondary mr-2" id="backButton">Quay lại</button>
-			<button type="button"  class="btn btn-primary ml-2" id="continueButton">Tiếp tục <i class="fas fa-angle-right"></i></button>
-		</div>
-	</div>
-	<div class="col-12 postObjectPanel" style="display:block;" id="panel1">
-		<br/>
-		<form class="form-horizontal" name="basicInfo">
-		
-		<div class="container">
-		<!-- Text input-->
-		<div class="form-group">
-		  <label class="col-md-4 control-label">Tên đồ vật:</label>  
-		  <div class="col-md-12">
-		  <input id="stuffName" for = "stuffName"name="stuffName" type="text" placeholder="nhập vào tên đồ vật, vd: Macbook pro 13 inch" class="form-control" required="">
-		  <span class="help-block">Bạn cần nhập vào tên đồ vật</span>  
-		  </div>
-		</div>
-
-		<!-- Select Basic -->
-		<div class="form-group">
-		  <label class="col-md-4 control-label" >Danh mục đồ vật:</label>
-		  <div class="col-md-8">
-			<select id="category" for = "category"name="category" class="form-control">
-			  <option value="1">Thể thao &amp; dã ngoại</option>
-			  <option value="2">Âm thanh &amp; ánh sáng</option>
-			  <option value="3">Sách &amp; tài liệu</option>
-			  <option value="4">Nội thất &amp; trang trí</option>
-			  <option value="5">Thiết bị gia dụng</option>
-			  <option value="6">Thời trang</option>
-			  <option value="7">Đồ điện tử</option>
-			  <option value="8">Nhạc cụ</option>
-			  <option value="9">Dụng cụ</option>
-			  <option value="10">Dịch vụ</option>
-			</select>
-		  </div>
-		</div>
-
-		<!-- Appended Input-->
-	
-		<div class="form-group">
-		<label class="col-md-4 control-label" >Tiền thuê theo ngày:</label>  
-		<div class=" col-md-12 col-lg-8">
-			<div class="input-group">
-		  <input type="number" name="rentalFee" id="money"class="form-control form-conrol input-md"  placeholder="vd: 200.000">
-		  <div class="input-group-append">
-			<span class="input-group-text" id="basic-addon2">VNĐ / ngày</span>
-		  </div>
-		  <span class="help-block col-12">Bạn cần nhập vào số tiền thuê đồ theo ngày.</span>  
-			</div>
-		</div>
-		</div>
-
-		<!-- Text input-->
-		<div class="form-group">
-		  <label class="col-md-4 control-label" >Số điện thoại liên hệ:</label>  
-		  <div class="col-md-8">
-		  <input id="phone" name="phone" for = "phone" type="phone" placeholder="vd: 0912345678" class="form-control input-md" required="">
-		  <span class="help-block col-12">Bạn cần nhập vào số điện thoại để người thuê liên hệ với bạn.</span>  
-		  </div>
-		</div>
-
-		<!-- Address input-->
-		<div class="form-group">
-		  <label class="col-md-4 control-label" >Địa chỉ nhận &amp; trả đồ:</label>  
-		  <div class="col-md-12 col-lg-7">
-			<div class="input-group  col-md-12" style="padding: 0px; padding-right: 16px;">
-		  <input id="address" name="address" placeholder="vd: 227 Nguyễn Văn Cừ, P.4, Q.5, TP.HCM" class="form-control input-md" required="">
-		   <div class="input-group-append col-md-12 col-lg-1 p-0"> 
-			 <a href="#" id="openMapButton"><span class="input-group-text m-0" id="basic-addon2">Chọn trên bản đồ</span></a> 
-		   </div> 
-		  <span class="help-block  col-12">Bạn cần nhập vào địa chỉ để người thuê nhận và trả đồ.</span>  
-			</div>
-		  </div>
-		</div>
-		</div>
-	</form>
-	
-		<div class="overlay text-white p-md-5 mt-3 p-2" id="chooseMapPanel">
-			<div class="form-control h-100 d-block">
-				<p class="text-center lead">Chọn địa điểm</p>
-				<div class="h-75 w-100 overflow-hidden justify-content-center d-flex">
-					<div class="col-12 d-block">
-						<div id='map' style="position:unset !important; display: contents"></div>
+	<nav class="FixedBar navbar navbar-light bg-light">
+		<a class="navbar-brand" href=".">
+			<img src="img/logo.png" width="140" height="36" alt="">
+		</a>
+		<a href="javascript:void(0);" class="d-xs-block d-xl-none " id="toggleNavBar" onclick="extendNavBar()">
+			<h4 class="fa fa-bars"></h4>
+		</a>
+		<div class="navbar-brand d-none d-xl-block" href="#" id="moreNav">
+			<div class="navbar-brand">
+				<div class="d-flex justify-content-center h-100">
+					<div class="searchbar">
+						<input class="search_input" type="text" name="" placeholder="Tìm kiếm...">
+						<a href="search" class="search_icon"><i class="fas fa-search"></i></a>
 					</div>
 				</div>
-				<div class="col-12 text-center" id="mapAddress">81/24/3 Đường số 2, P. Trường Thọ, Q.Thủ Đức</div>
-				<div class="row d-flex justify-content-center mt-2">
-					<button class="col-6 btn btn-primary mr-2" id="chooseMapButton">Xác nhận địa điểm</button>
-					<button class="col-4 btn btn-secondary ml-2" id="cancelMapButton">Hủy chọn địa điểm</button>
+			</div>
+			<a class="navbar-brand" href="post-item">
+				Cho thuê đồ
+			</a>
+			<a class="navbar-brand" href="about">
+				Tìm hiểu thêm
+			</a>
+			<a class="navbar-brand" href="signup" id="navBtnSignUp">
+				Đăng ký
+			</a>
+			<a class="navbar-brand" href="login" id="navBtnLogIn">
+				Đăng nhập
+			</a>
+			<div class="navbar-brand dropdown">
+				<img class="btn p-0 dropdown-toggle rounded-circle border" id="navBtnAvatar" data-toggle="dropdown"
+					aria-haspopup="true" aria-expanded="false" src="img/no_user.png" width="36" height="36">
+				</img>
+				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="left: -400%;">
+					<a class="dropdown-item" href="#" onclick="profileOnClick()">
+						Thông tin cá nhân
+					</a>
+					<a class="dropdown-item" href="#">
+						Danh sách đồ vật
+					</a>
+					<a class="dropdown-item" href="#">
+						Danh sách thuê
+					</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="#" onclick="logOutOnClick()">
+						Đăng xuất
+					</a>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<div class="mt-5"><br />
+		<div class="row d-flex justify-content-between mt-md-3 mt-xl-5 mb-2">
+			<div class="container col-md-12 col-lg-9 w-100 pl-md-5">
+				<h2 class="ml-lg-5 pl-md-5 text-xs-center text-sm-center text-md-center text-lg-left">
+					Đăng tin cho thuê đồ
+				</h2>
+			</div>
+			<div class="col-md-12 col-lg-3 justify-content-between">
+				<button type="button" class="btn btn-secondary mr-2" id="backButton">Quay lại</button>
+				<button type="button" class="btn btn-primary ml-2" id="continueButton">Tiếp tục <i
+						class="fas fa-angle-right"></i></button>
+			</div>
+		</div>
+		<div class="col-12 postObjectPanel" style="display:block;" id="panel1">
+			<br />
+			<form class="form-horizontal" name="basicInfo">
+
+				<div class="container">
+					<!-- Text input-->
+					<div class="form-group">
+						<label class="col-md-4 control-label">Tên đồ vật:</label>
+						<div class="col-md-12">
+							<input id="stuffName" for="stuffName" name="stuffName" type="text"
+								placeholder="nhập vào tên đồ vật, vd: Macbook pro 13 inch" class="form-control" required="">
+							<span class="help-block">Bạn cần nhập vào tên đồ vật</span>
+						</div>
+					</div>
+
+					<!-- Select Basic -->
+					<div class="form-group">
+						<label class="col-md-4 control-label">Danh mục đồ vật:</label>
+						<div class="col-md-8">
+							<select id="category" for="category" name="category" class="form-control">
+								<option value="1">Thể thao &amp; dã ngoại</option>
+								<option value="2">Âm thanh &amp; ánh sáng</option>
+								<option value="3">Sách &amp; tài liệu</option>
+								<option value="4">Nội thất &amp; trang trí</option>
+								<option value="5">Thiết bị gia dụng</option>
+								<option value="6">Thời trang</option>
+								<option value="7">Đồ điện tử</option>
+								<option value="8">Nhạc cụ</option>
+								<option value="9">Dụng cụ</option>
+								<option value="10">Dịch vụ</option>
+							</select>
+						</div>
+					</div>
+
+					<!-- Appended Input-->
+
+					<div class="form-group">
+						<label class="col-md-4 control-label">Tiền thuê theo ngày:</label>
+						<div class=" col-md-12 col-lg-8">
+							<div class="input-group">
+								<input type="number" name="rentalFee" id="money" class="form-control form-conrol input-md"
+									placeholder="vd: 200.000">
+								<div class="input-group-append">
+									<span class="input-group-text" id="basic-addon2">VNĐ / ngày</span>
+								</div>
+								<span class="help-block col-12">Bạn cần nhập vào số tiền thuê đồ theo ngày.</span>
+							</div>
+						</div>
+					</div>
+
+					<!-- Text input-->
+					<div class="form-group">
+						<label class="col-md-4 control-label">Số điện thoại liên hệ:</label>
+						<div class="col-md-8">
+							<input id="phone" name="phone" for="phone" type="phone" placeholder="vd: 0912345678"
+								class="form-control input-md" required="">
+							<span class="help-block col-12">Bạn cần nhập vào số điện thoại để người thuê liên hệ với bạn.</span>
+						</div>
+					</div>
+
+					<!-- Address input-->
+					<div class="form-group">
+						<label class="col-md-4 control-label">Địa chỉ nhận &amp; trả đồ:</label>
+						<div class="col-md-12 col-lg-7">
+							<div class="input-group  col-md-12" style="padding: 0px; padding-right: 16px;">
+								<input id="address" name="address" placeholder="vd: 227 Nguyễn Văn Cừ, P.4, Q.5, TP.HCM"
+									class="form-control input-md" required="">
+								<div class="input-group-append col-md-12 col-lg-1 p-0">
+									<a href="#" id="openMapButton"><span class="input-group-text m-0" id="basic-addon2">Chọn trên bản
+											đồ</span></a>
+								</div>
+								<span class="help-block  col-12">Bạn cần nhập vào địa chỉ để người thuê nhận và trả đồ.</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+
+			<div class="overlay text-white p-md-5 mt-3 p-2" id="chooseMapPanel">
+				<div class="form-control h-100 d-block">
+					<p class="text-center lead">Chọn địa điểm</p>
+					<div class="h-75 w-100 overflow-hidden justify-content-center d-flex">
+						<div class="col-12 d-block">
+							<div id='map' style="position:unset !important; display: contents"></div>
+						</div>
+					</div>
+					<div class="col-12 text-center" id="mapAddress">81/24/3 Đường số 2, P. Trường Thọ, Q.Thủ Đức</div>
+					<div class="row d-flex justify-content-center mt-2">
+						<button class="col-6 btn btn-primary mr-2" id="chooseMapButton">Xác nhận địa điểm</button>
+						<button class="col-4 btn btn-secondary ml-2" id="cancelMapButton">Hủy chọn địa điểm</button>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
-<div class="container">
+	<div class="container">
 
-<div class="col-12 postObjectPanel" id="detailPanel" style="display:none;">
-		<br/>
-	<div class="col-sm-12 col-lg-6 float-md-left float-sm-none">
-	<div class="row" style="height:auto;width:auto;">
-		<!-- Text input-->
-		<div class="form-group w-100">	
-		  <label class="col-md-12 control-label" for="images">Hình ảnh đồ vật:</label>  
-		  <div class="col-12">
-		<div class="containerUpfile">
-			<div class="groupUpFile">
-				<div class="hinh">+</div>
-				<div id="previewImg"> </div>
-				<input style="display: none" type=file id="files" name="image" multiple />
-			</div>
-			<div class="containerFile js-file-list"></div>
-		</div>
-		  <!-- <div id="images" type="file"  class="form-control" style="height:256px;width:100%;">
+		<div class="col-12 postObjectPanel" id="detailPanel" style="display:none;">
+			<br />
+			<div class="col-sm-12 col-lg-6 float-md-left float-sm-none">
+				<div class="row" style="height:auto;width:auto;">
+					<!-- Text input-->
+					<div class="form-group w-100">
+						<label class="col-md-12 control-label" for="images">Hình ảnh đồ vật:</label>
+						<div class="col-12">
+							<div class="containerUpfile">
+								<div class="groupUpFile">
+									<div class="hinh">+</div>
+									<div id="previewImg"> </div>
+									<input style="display: none" type=file id="files" name="image" multiple />
+								</div>
+								<div class="containerFile js-file-list"></div>
+							</div>
+							<!-- <div id="images" type="file"  class="form-control" style="height:256px;width:100%;">
 			<input name="images" type="file"  accept="image/*"  placeholder="kéo ảnh vào để tải lên" class="form-control input-md">
 		  </div> -->
-		  </div>
-		</div>
-	</div>
-	<div class="row">
-		<div style="height:auto;">
-			<!-- Text input-->
-			<div class="form-group w-100">
-			  <label class="col-md-12 control-label" >Mô tả đồ vật:</label>  
-			  <div class="col-12">  
-				<textarea style="height: 200px;" id = "describe" name="description" for="description" class="col-12" rows="20" cols="64" placeholder="Hãy thêm các mô tả để món đồ trở nên rõ ràng và thu hút hơn" ></textarea>
-			  </div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div style="height:auto;">
+						<!-- Text input-->
+						<div class="form-group w-100">
+							<label class="col-md-12 control-label">Mô tả đồ vật:</label>
+							<div class="col-12">
+								<textarea style="height: 200px;" id="describe" name="description" for="description" class="col-12"
+									rows="20" cols="64"
+									placeholder="Hãy thêm các mô tả để món đồ trở nên rõ ràng và thu hút hơn"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+
 			</div>
-		</div>
-	</div>	
-	
-</div>
-	<div class="row" style="height:auto;width:auto;">
-		<!-- Text input-->
-		<div class="form-group w-100">
-		  <label class="col-md-12 control-label">Các dịch vụ bạn cung cấp kèm món đồ:</label>  
-		  <div class="col-12">
-		  <div style="height:240px;">
-			<div class="list-group checkbox-list-group col-12">
-				<div class="list-group-item" style="padding:0px" >
-					<label style="margin: 12px">&nbsp;<input id="giaoDo" type="checkbox">
-						<span class="list-group-item-text">
-							<i class="fa fa-fw"></i>
-							 Giao đồ tận nơi trong 5km đầu tiên
-						</span>
-					</label>
-					
+			<div class="row" style="height:auto;width:auto;">
+				<!-- Text input-->
+				<div class="form-group w-100">
+					<label class="col-md-12 control-label">Các dịch vụ bạn cung cấp kèm món đồ:</label>
+					<div class="col-12">
+						<div style="height:240px;">
+							<div class="list-group checkbox-list-group col-12">
+								<div class="list-group-item" style="padding:0px">
+									<label style="margin: 12px">&nbsp;<input id="giaoDo" type="checkbox">
+										<span class="list-group-item-text">
+											<i class="fa fa-fw"></i>
+											Giao đồ tận nơi trong 5km đầu tiên
+										</span>
+									</label>
+
+								</div>
+								<div class="list-group-item list-group-item-success" style="padding:0px"><label
+										style="margin: 12px">&nbsp;<input id="huongDan" type="checkbox"><span
+											class="list-group-item-text"><i class="fa fa-fw"></i> Hướng dẫn sử dụng</span></label></div>
+								<div class="list-group-item list-group-item-info" style="padding:0px"><label
+										style="margin: 12px">&nbsp;<input id="hoTro" type="checkbox"><span class="list-group-item-text"><i
+												class="fa fa-fw"></i> Hỗ trợ trong quá trình sử dụng</span></label></div>
+								<div class="list-group-item list-group-item-warning" style="padding:0px"><label
+										style="margin: 12px">&nbsp;<input id="traDo" type="checkbox"><span class="list-group-item-text"><i
+												class="fa fa-fw"></i> Trả đồ tận nơi </span></label></div>
+								<div class="list-group-item list-group-item-danger" style="text-align: -webkit-center; padding:0px">
+									<label style="margin: 12px">&nbsp;<input id="khacCheck" onchange="toggleCheckbox(this)"
+											type="checkbox"><span class="list-group-item-text"><i class="fa fa-fw"></i> Khác</span></label>
+									<textarea id="khac" style="width:90%; display: none;"></textarea>
+								</div>
+							</div>
+
+						</div>
+					</div>
 				</div>
-				<div class="list-group-item list-group-item-success" style="padding:0px"><label style="margin: 12px">&nbsp;<input id="huongDan" type="checkbox"><span class="list-group-item-text"><i class="fa fa-fw"></i> Hướng dẫn sử dụng</span></label></div>
-				<div class="list-group-item list-group-item-info" style="padding:0px"><label style="margin: 12px">&nbsp;<input id="hoTro"type="checkbox"><span class="list-group-item-text"><i class="fa fa-fw"></i> Hỗ trợ trong quá trình sử dụng</span></label></div>
-				<div class="list-group-item list-group-item-warning" style="padding:0px"><label style="margin: 12px">&nbsp;<input id="traDo" type="checkbox"><span class="list-group-item-text"><i class="fa fa-fw"></i> Trả đồ tận nơi </span></label></div>
-				<div class="list-group-item list-group-item-danger" style="text-align: -webkit-center; padding:0px"><label style="margin: 12px">&nbsp;<input id="khacCheck"  onchange="toggleCheckbox(this)" type="checkbox"><span class="list-group-item-text"><i class="fa fa-fw"></i> Khác</span></label>
-					<textarea id="khac" style="width:90%; display: none;"></textarea>
-				</div>
-			  </div>
-			  
-		  </div>
-		  </div>
+			</div>
+
 		</div>
 	</div>
-	
-</div>
-</div>
-</div>
-<footer>
-	<p>Một sản phẩm của PTUDW-17TN-Nhom16</p>
-</footer>
-    <script defer src="js/post-item.js"></script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkKqNeJcs9YCNG8EfTfxi8ILGyLNYefsY&callback=initMap" async defer></script>
+	</div>
+	<footer>
+		<p>Một sản phẩm của PTUDW-17TN-Nhom16</p>
+	</footer>
+	<script defer src="js/post-item.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkKqNeJcs9YCNG8EfTfxi8ILGyLNYefsY&callback=initMap"
+		async defer></script>
 </body>
+
 </html>
