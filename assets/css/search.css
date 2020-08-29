@@ -479,7 +479,7 @@ div.stuff div.note img {
     right: 0px;
     bottom: 0px;
     padding: 0px;
-    z-index: 100;
+    z-index: 99;
 }
 .stuff1{
     display: none;

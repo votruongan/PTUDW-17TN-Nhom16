@@ -31,8 +31,8 @@
         <div class="logovamenu">
             <!-- Navigation bar -->
             <nav class="FixedBar navbar navbar-light bg-light">
-                <a class="navbar-brand" href=".">
-                    <img src="img/logo.png" width="140" height="36" alt="">
+                <a class="navbar-brand" href="/.">
+                    <img src="/img/logo.png" width="140" height="36" alt="">
                 </a>
                 <a href="javascript:void(0);" class="d-xs-block d-xl-none " id="toggleNavBar" onclick="extendNavBar()">
                     <h4 class="fa fa-bars"></h4>
@@ -41,26 +41,26 @@
                     <div class="navbar-brand">
                         <div class="d-flex justify-content-center h-100">
                             <div class="searchbar">
-                                <input class="search_input" type="text" name="" placeholder="Tìm kiếm...">
-                                <a href="search" class="search_icon"><i class="fas fa-search"></i></a>
+                                <input id = "search_input"class="search_input" type="text" name="" placeholder="Tìm kiếm...">
+                                <a onclick="searchStuff()" class="search_icon"><i class="fas fa-search"></i></a>
                             </div>
                         </div>
                     </div>
-                    <a class="navbar-brand" href="post-item">
+                    <a class="navbar-brand" href="/post-item">
                         Cho thuê đồ
                     </a>
-                    <a class="navbar-brand" href="about">
+                    <a class="navbar-brand" href="/about">
                         Tìm hiểu thêm
                     </a>
-                    <a class="navbar-brand" href="signup" id="navBtnSignUp">
+                    <a class="navbar-brand" href="/signup" id="navBtnSignUp">
                         Đăng ký
                     </a>
-                    <a class="navbar-brand" href="login" id="navBtnLogIn">
+                    <a class="navbar-brand" href="/login" id="navBtnLogIn">
                         Đăng nhập
                     </a>
                     <div class="navbar-brand dropdown">
                         <img class="btn p-0 dropdown-toggle rounded-circle border" id="navBtnAvatar" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false" src="img/no_user.png" width="36" height="36">
+                            aria-haspopup="true" aria-expanded="false" src="/img/no_user.png" width="36" height="36">
                         </img>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="left: -400%;">
                             <a class="dropdown-item" href="#" onclick="profileOnClick()">
@@ -131,8 +131,8 @@
         <div class="stuff col-xl-8 col-lg-8 col-md-10">
             <div class="note">
                 <div class="txt">
-                    <img src="/img/like1.png" alt=""> Đừng lo lắng, bạn có thể huỷ đồ mà bạn thuê miễn phí, lên đến 24 giờ trước khi bắt đầu</div>
-            </div>
+                    <img src="/img/like1.png" alt=""> Đừng lo lắng, bạn có thể huỷ đồ mà bạn thuê miễn phí, lên đến 24 giờ trước khi bắt đầu
+                </div>
             </div>
             <div id="chuaCoStuff" class = "stuff1"style="text-align: center">Opp. Xin lỗi. Hãy thử lại với từ khoá khác</div>
             <ul id = "stufflist" class="stufflist row">

@@ -16,6 +16,7 @@ $(document).ready(function () {
     $(window).resize(function () {
         ResCarouselSize();
     });
+    
 
     //this function define the size of the items
     function ResCarouselSize() {
@@ -101,6 +102,20 @@ $(document).ready(function () {
 
 });
 
+
+function searchStuff(){
+    var name = search_input.value;
+    if (name!=null && name!="" && name !=undefined)
+        window.location.href = '/search/'+name;
+}
+
+var keypress = document.getElementById("search_input");
+keypress.addEventListener("keydown", function(event) {
+    if (event.keyCode == 13) {
+      searchStuff()
+    }
+  });
+  
 
 const urlParams = new URLSearchParams(window.location.search);
 const loginState = urlParams.get('loginState');

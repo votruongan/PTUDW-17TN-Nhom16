@@ -39,8 +39,8 @@
 			<div class="navbar-brand">
 				<div class="d-flex justify-content-center h-100">
 					<div class="searchbar">
-						<input class="search_input" type="text" name="" placeholder="Tìm kiếm...">
-						<a href="search" class="search_icon"><i class="fas fa-search"></i></a>
+						<input id = "search_input"class="search_input" type="text" name="" placeholder="Tìm kiếm...">
+						<a onclick="searchStuff()" class="search_icon"><i class="fas fa-search"></i></a>
 					</div>
 				</div>
 			</div>
@@ -98,12 +98,12 @@
 								</div>
 								<!--end of col-->
 								<div class="col">
-									<input class="form-control form-control-lg form-control-borderless" type="search"
+									<input id="search_input1" type="text" class="form-control form-control-lg form-control-borderless"
 										placeholder="Tên đồ vật, danh mục đồ vật, ...">
 								</div>
 								<!--end of col-->
 								<div class="col-auto">
-									<button onclick="location.href = './search';" class="btn btn-lg theme-main"
+									<button onclick="searchStuff()" class="btn btn-lg theme-main"
 										type="button">Tìm kiếm</button>
 								</div>
 								<!--end of col-->
