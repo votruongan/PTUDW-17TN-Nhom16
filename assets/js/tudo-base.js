@@ -253,7 +253,7 @@ function takeGrandParentHeightPx(ele){
 }
 
 function changeTab(addActive, removeActive,enableEle, disableEle){
-	console.log(removeActive, removeActive.classList);
+	// console.log(removeActive, removeActive.classList);
 	removeActive.classList.remove("active");
 	getEle(addActive).classList.add("active");
 	setObjectVisiblity(disableEle,false)

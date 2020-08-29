@@ -4,9 +4,9 @@ const {writeAllBase64ImagesLog} = require("./misc_helper");
 const { findDocument } = require("./database_helper");
 
 // rent: itemId, clientId, isActive, fromDateTime, toDatetime, discount, 
-//      requestMessage, isAccepted, depositPaymentId, paymentId, clientReceptionLogId,
+//      requestMessage, isAccepted, depositPaymentId, depositPaymentId, clientReceptionLogId,
 //      clientSendLogId, ownerReceptionLogId, ownerSendLogId, currentChangeRequest
-//      deliverMethod, deliverAddress, returnMethod,  returnAddress
+//      deliverMethod, deliverAddress, returnMethod, returnAddress, finishPaymentId
 // rent-change-log: rentId, from, to, isAccepted
 
 const succeed = "succeed"
@@ -24,7 +24,7 @@ async function checkLinkCondition(r,fieldInRent, secondDb, fieldInDb, condition=
     if (d[fieldInDb]){
         if(!condition)
             return succeed;
-            console.log(condition(d[fieldInDb]));
+        console.log(condition(d[fieldInDb]));
         if(condition(d[fieldInDb])) return succeed;
     }
     return waiting;
@@ -101,10 +101,38 @@ class rentingHandler{
     }
 
     static handleReturn = async function(itemId,clientId,body){
-        let obj = {itemId,clientId,message:body.message};
-        const r = await dbHelper.insertDocument("rent",obj);
+        const queryObj = {itemId,clientId,isActive:true}
+        //write images to image-log collection and get id
+        const writeRes = writeAllBase64ImagesLog(itemId,clientId,body);
+        //write images to image-log collection
+        const logObj = {
+            logPath: writeRes.logPath,
+            extensions: writeRes.extensions
+        };
+        let r = await dbHelper.insertDocument("image-log",logObj);
+        //add log-image id to document
+        r = await dbHelper.updateDocument("rent",queryObj,{clientSendLogId:r._id});
         return r;
     }
+
+    
+    static handleFinishPayment = async function(itemId,clientId,body){
+        const queryObj = {itemId,clientId,isActive:true}
+        const method = body.method;
+        //write to payment collection
+        const payObj = {method,receivedMoney:162000};
+        if (method == "credit"){
+            payObj.cardNumber = body.card;
+            payObj.ccv = body.ccv;
+            payObj.expireDate = body.expireDate;
+        }
+        let r = await dbHelper.insertDocument("payment",payObj);
+        //add payment id to document
+        console.log("inserted payment result:",r._id);
+        r = await dbHelper.updateDocument("rent",queryObj,{finishPaymentId:r._id});
+        return r;
+    }
+
 
     static fetchChangeRequest = async function(itemId,clientId){
         const queryObj = {itemId,clientId,isActive:true}
@@ -162,10 +190,14 @@ class rentingHandler{
                 if (c2 == succeed) return succeed;
                 return failed;
             case "4":
-                c1 = checkLinkCondition(r,"ownerReceptionLogId","image-log","logPath");
-                c2 = checkLinkCondition(r,"clientSendLogId","image-log","logPath");
+                c1 = await checkLinkCondition(r,"ownerReceptionLogId","image-log","logPath");
+                c2 = await checkLinkCondition(r,"clientSendLogId","image-log","logPath");
                 if (c2 != succeed) return failed;
                 if (c1 != succeed) return waiting;
+                return succeed;
+            case "5":
+                c1 = await checkLinkCondition(r,"finishPaymentId","payment","receivedMoney",(v)=>v>0);
+                if (c1 != succeed) return failed;
                 return succeed;
         }
         return waiting;

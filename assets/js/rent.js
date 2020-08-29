@@ -1,6 +1,6 @@
 
 const rentData = {userId:123}
-const maxStage = 4
+const maxStage = 5
 
 const itemId = 2810
 
@@ -37,20 +37,20 @@ async function fetchRentDateTime(){
 fetchRentDateTime();
 
 async function updateStatus(){
-	for (let i = 4; i > 0; i--) {
+	for (let i = 5; i > 0; i--) {
 		console.log("interating",i,fetchResultPrefix,rentData)
 		const obj = await makeRequest(`${fetchResultPrefix}/${i}/${itemId}`,rentData)
-		console.log("updateRentingStatus",obj);
+		console.log("updateRentingStatus",i,obj);
 		if (obj.status == null || obj.status == "failed"){
 			console.log("obj is null");
 			continue;
 		} else {;
 		}
 		fetchRentDateTime();
-		if (i < maxStage)
+		if (i < 4)
 			return openPanel(i+1,obj.status);
 		else
-			return openPanel(i,obj.status);
+			return openPanel(i+1,"succeed");
 	}
 	return openPanel(1);
 }
@@ -97,7 +97,17 @@ async function processPanel(index){
 					btnReturnMain.innerText = "Xem lại yêu cầu"
 					setObjectVisiblity(notiRequestPanel,true);
 				}
+				return;
 			}
+			// renting time is up. Open return panel
+			btnReturnMain.onclick = onReturnItem;
+			break;
+		case 4:
+			setObjectVisiblity(panel1,true);
+			btnCompletePayment.innerHTML = "Hoàn tất tiền thuê"
+			btnCompletePayment.onclick = makeFinishPayment;
+			setObjectVisiblity(btnCancelPayment,false)
+			paymentDescription.innerHTML = "Thanh toán tiền thuê:"
 			break;
 	}
 }
@@ -113,11 +123,21 @@ async function onSendBookingRequest(){
 }
 
 
+const paymentObject = {method:"credit"}
+
+function changePaymentMethod(method){
+    paymentObject.method = method;
+}
+
 async function onCompleteDeposit(){
-	rentData.method = "credit";
-	rentData.card = inputCardId.value;
-	rentData.ccv = inputCCV.value;
-	rentData.expireDate = inputExpire.value;
+	const m =paymentObject.method
+	rentData.method = m;
+	if (m == "credit");
+	{
+		rentData.card = inputCardNumber.value;
+		rentData.ccv = inputCCV.value;
+		rentData.expireDate = inputExpire.value;
+	}
 	let r = await makeRequest("rent-item/2/"+itemId,rentData)
 	console.log(r);
 	updateStatus();
@@ -129,6 +149,16 @@ async function onReceiveItem(){
 	rentData.images = base64Images.images;
 	rentData.extensions = base64Images.extensions;
 	let r = await makeRequest("rent-item/3/"+itemId,rentData)
+	console.log(r);
+	updateStatus();
+}
+
+async function onReturnItem(){
+	//convert each image file to base64
+	const base64Images = await prepareBase64ImageArray(fileReturnItem.files);
+	rentData.images = base64Images.images;
+	rentData.extensions = base64Images.extensions;
+	let r = await makeRequest("rent-item/5/"+itemId,rentData)
 	console.log(r);
 	updateStatus();
 }
@@ -158,11 +188,42 @@ async function makeRequestChange(){
 	updateStatus();
 }
 
+function preparePaymentRentDataObject(){
+	rentData.method = undefined;
+	const n = inputCardNumber.value;
+	const c = inputCCV.value;
+	const e = inputExpire.value;
+	if (paymentObject.method == "credit"){
+		if (!n || !c || !e){
+			return;
+		}
+		rentData.card = n;
+		rentData.ccv = c;
+		rentData.expireDate = e;
+	}
+	rentData.method = paymentObject.method;
+
+}
+
+async function makeFinishPayment(){
+	preparePaymentRentDataObject();
+	// return console.log(rentData);
+	if (!rentData.method){
+		return;
+	}
+	let r = await makeRequest("rent-item/6/"+itemId,rentData);
+	console.log(r);
+	closeRequestChange();
+	updateStatus();
+}
+
+
 async function closeRequestChange(){
 	setObjectVisiblity(requestChangeReturn,false);
 	setObjectVisiblity(notiRequestCheck,false);
 	setObjectVisiblity(btnSendChangeRequest,true);	
 }
+
 async function onRequestChange(){
 	setObjectVisiblity(requestChangeReturn,true)
 	inputReturnDateTime.value = rentDateTime.to;
@@ -176,8 +237,21 @@ async function onRequestChange(){
 	}
 }
 
+function reformatCreditExpireDate(){
+	if (this.value.length > 3){
+		if (!isNaN(this.value))
+			this.value = this.value.substr(0,2) +"/"+this.value.substr(2,2)
+	}
+	if (this.value.length > 4){
+		this.value = this.value.substr(0,2) +"/"+this.value.substr(3,2)
+	}
+}
+
+
+inputExpire.oninput = reformatCreditExpireDate;
+inputExpire.maxLength = 5;
 sendBookingRequest.onclick = onSendBookingRequest;
-completeDeposit.onclick = onCompleteDeposit;
+btnCompletePayment.onclick = onCompleteDeposit;
 btnRecievedItem.onclick = onReceiveItem;
 btnReturnMain.onclick = onRequestChange;
 btnSendChangeRequest.onclick = makeRequestChange;

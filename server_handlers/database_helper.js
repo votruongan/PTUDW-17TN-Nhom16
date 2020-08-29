@@ -113,7 +113,7 @@ async function start(){
   // console.log(await deleteManyDocument("payment",{}));
   // console.log(await deleteManyDocument("rent-change-log",{}));
   console.log(await findDocument("rent",{}));
-  console.log(await findDocument("rent-change-log",{}));
+  console.log(await findDocument("image-log",{}));
 }
 
 if (require.main === module)

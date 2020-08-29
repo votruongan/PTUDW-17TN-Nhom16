@@ -162,12 +162,12 @@
             <!-- Payment block-->
 			<div class="d-none payment-panel" id="panel1">
 			<div id="paymentDescription">Thanh toán tiền đặt cọc:</div>
-			<ul class="nav nav-tabs justify-content-center p-0">
+			<ul class="mt-3 nav nav-tabs justify-content-center p-0">
 				  <li class="col-6 nav-item text-center p-0">
-					<a class="nav-link active" href="#" onclick="changeTab(this.id, changeTabbtn2,payment_credit,payment_bank)" id="changeTabbtn1">Thẻ tín dụng</a>
+					<a class="text-primary col-12 border-0 nav-link active" style="cursor: pointer;" onclick="changeTab(this.id, changeTabbtn2,payment_credit,payment_bank);changePaymentMethod('credit');" id="changeTabbtn1">Thẻ tín dụng</a>
 				  </li>
 				  <li class="col-6 nav-item text-center p-0">
-					<a class="nav-link" href="#" onclick="changeTab(this.id, changeTabbtn1,payment_bank,payment_credit)" id="changeTabbtn2">Ngân hàng</a>
+					<a class="text-primary col-12 border-0 nav-link" style="cursor: pointer;" onclick="changeTab(this.id, changeTabbtn1,payment_bank,payment_credit);changePaymentMethod('banking');" id="changeTabbtn2">Chuyển khoản ngân hàng</a>
 				  </li>
 			</ul>
                 <!-- Credit card box -->
@@ -179,7 +179,7 @@
 						</div>
 						<div class="col-8">
 						  <div name="requestMessage" class="form-control input-md" style="height:auto;padding:1px">
-							<input class="form-control col-12" id="inputCardId" placeholder="Nhập vào số thẻ tín dụng của bạn" style="border:0px;"></input>
+							<input class="form-control col-12" id="inputCardNumber" placeholder="Nhập vào số thẻ tín dụng của bạn" style="border:0px;"></input>
 						  </div>
 						</div>
                     </div>
@@ -208,7 +208,7 @@
 						Số tiền thanh toán:
 						</div>
 						<div class="col-8">
-                            <p class="d-flex text-primary m-0" style="font-size:1.5rem; ">162.000 VND</p>						
+                            <p class="d-flex text-primary m-0" style="font-size:1.5rem; " id="paymentMoney">162.000 VND</p>
 						</div>
                     </div>
                     </div>
@@ -264,13 +264,13 @@
                     </div>
                     </div>
                 </div>
-                <div class="flex-box">
+                <div class="row justify-content-center" >
                     <div class="col-7">
-                    <button type="button" class="btn btn-primary w-100 shadow-sm" style="min-height: 60px;" id="completeDeposit">
+                    <button type="button" class="btn btn-primary w-100 shadow-sm" style="min-height: 60px;" id="btnCompletePayment">
                         Hoàn tất đặt cọc
                     </button>						
                     </div>
-                    <div class="col-5">
+                    <div class="col-5"  id="btnCancelPayment">
                     <button type="button" class="btn btn-outline-secondary w-100" style="min-height: 60px;">
                         Hủy thuê đồ
                     </button>		
@@ -413,7 +413,7 @@
                     </div>
                     <div class="flex-7">					
 		  <div id="images" type="file"  class="form-control" style="height:200px;width:100%;">
-			<input name="images" type="file"  accept="image/*"  placeholder="kéo ảnh vào để tải lên" class="form-control input-md">
+			<input name="images" type="file"  accept="image/*"  placeholder="kéo ảnh vào để tải lên" class="form-control input-md" id="fileReturnItem">
 		  </div>
                     </div>
                 </div>				
@@ -436,19 +436,6 @@
 			
             <!-- Payment block-->
             <div class="d-none payment-panel" id="panel4">
-                <div id="paymentDescription">Thanh toán tiền thuê đồ:</div>
-                    <div class="flex-box">
-                        <div class="col-7">
-                        <button type="button" class="btn btn-primary w-100 shadow-sm" style="min-height: 60px;" id="completeDeposit">
-                            Hoàn tất đặt cọc
-                        </button>						
-                        </div>
-                        <div class="col-5">
-                        <button type="button" class="btn btn-outline-secondary w-100" style="min-height: 60px;">
-                            Khiếu nại
-                        </button>		
-                        </div>
-                    </div>
                 </div>
             <!-- End Payment block -->
 			
