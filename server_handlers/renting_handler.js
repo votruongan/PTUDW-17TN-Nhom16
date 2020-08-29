@@ -44,7 +44,7 @@ class rentingHandler{
         let obj = {itemId,clientId,requestMessage:body.message,isActive:true,
                     fromDateTime: body.fromDateTime,toDateTime: body.toDateTime};
         const itemInfo = await dbHelper.findDocument("test-item",{itemId});
-        obj.rentPrice =itemInfo.rentPrice;
+        obj.rentPrice =itemInfo.rentPrice || 200000;
         const r = await dbHelper.insertDocument("rent",obj);
         return r;
     }  
@@ -83,7 +83,8 @@ class rentingHandler{
 
     static handleChangeRequest = async function(itemId,clientId,body){
         const queryObj = {itemId,clientId,isActive:true}
-        const activeResult = await dbHelper.findDocument("rent",queryObj);
+        let activeResult = await dbHelper.findDocument("rent",queryObj);
+        activeResult = activeResult[0];
         let obj = {
             rentId: activeResult._id,
             originalEndTime: activeResult.toDateTime,
