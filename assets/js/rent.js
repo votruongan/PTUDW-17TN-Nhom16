@@ -82,12 +82,21 @@ function openPanel(index,status="succeed"){
 	}
 }
 
+let changeRequestObj = null
+
 async function processPanel(index){
 	switch(index){
 		case 3:
 			if (new Date(rentDateTime.to).getTime() > Date.now()){
-				setObjectVisiblity(returnBlock,false);
+				setObjectVisiblity(blockReturnItem,false);
 				btnReturnMain.innerText = "Yêu cầu thay đổi"
+				const res = await makeRequest("result-request-change-rent/"+itemId,rentData);
+				console.log("change request fetch",res);
+				if (res.isAccepted && res.isAccepted == "waiting"){
+					changeRequestObj = res;
+					btnReturnMain.innerText = "Xem lại yêu cầu"
+					setObjectVisiblity(notiRequestPanel,true);
+				}
 			}
 			break;
 	}
@@ -124,21 +133,52 @@ async function onReceiveItem(){
 	updateStatus();
 }
 
-async function makeRequestChange(){
-	let r = await makeRequest("rent-item/4/"+itemId,rentData)
-	console.log(r);
-	updateStatus();
-
+async function changeEndDateTime(){
+	const endDate = new Date(inputReturnDateTime.value);
+	const duration = (endDate - new Date(rentDateTime.from))/(60*60*1000);
+	const noDay = math.ceil(duration / 24);
+	
 }
 
+async function makeRequestChange(){
+	const dati = inputReturnDateTime.value;
+	const meto = inputReturnMethod.value;
+	const addr = inputReturnAddress.value;
+	if (!dati || !meto || !addr){
+		setObjectVisiblity(notiRequestCheck,true);
+		notiRequestCheck.innerHTML = "Không có gì thay đổi nên không thể gửi yêu cầu";
+	}
+	rentData.endDateTime = dati;
+	rentData.returnMethod = meto;
+	rentData.returnAddress = addr;
+	// return console.log(rentData);
+	let r = await makeRequest("rent-item/4/"+itemId,rentData);
+	console.log(r);
+	closeRequestChange();
+	updateStatus();
+}
+
+async function closeRequestChange(){
+	setObjectVisiblity(requestChangeReturn,false);
+	setObjectVisiblity(notiRequestCheck,false);
+	setObjectVisiblity(btnSendChangeRequest,true);	
+}
 async function onRequestChange(){
-	// display request change panel
 	setObjectVisiblity(requestChangeReturn,true)
-	// get data from request panel -> make request
+	inputReturnDateTime.value = rentDateTime.to;
+	btnSendChangeRequest.innerHTML = "Gửi yêu cầu thay đổi"
+	if (changeRequestObj){
+		inputReturnDateTime.value = changeRequestObj.changeEndTime;
+		inputReturnMethod.value = changeRequestObj.changeReturnMethod;
+		inputReturnAddress.value = changeRequestObj.changeReturnAddress;
+		btnCloseChangeRequest.innerHTML = "Đóng";
+		setObjectVisiblity(btnSendChangeRequest,false);
+	}
 }
 
 sendBookingRequest.onclick = onSendBookingRequest;
 completeDeposit.onclick = onCompleteDeposit;
 btnRecievedItem.onclick = onReceiveItem;
 btnReturnMain.onclick = onRequestChange;
+btnSendChangeRequest.onclick = makeRequestChange;
 updateStatus();

@@ -84,16 +84,30 @@ function openPanel(index,status="succeed"){
 	}
 }
 
+let changeRequestObj = null;
 async function processPanel(index){
 	switch(index){
 		case 0:
 			rentRequestmessage.value = allData.requestMessage;
 			break;
 		case 3:
-			setObjectVisiblity(receiveBlock,false)
+			if (new Date(rentDateTime.to).getTime() > Date.now()){
+				setObjectVisiblity(blockReceiveItem,false);
+				//check whether user send any change request
+				const res = await makeRequest("result-request-change-rent/"+itemId,rentData);
+				console.log("change request fetch",res);
+				if (res.isAccepted && res.isAccepted == "waiting"){
+					changeRequestObj = res;
+					setObjectVisiblity(notiRequestPanel,true);
+				} else {
+					setObjectVisiblity(btnReceiveMain,false);
+					setObjectVisiblity(notiRequestPanel,false);
+				}
+			}
 			break;
 	}
 }
+
 
 
 async function onHandleRentRequest(isAccepted){
@@ -112,11 +126,29 @@ async function onSendItem(){
 	console.log(r);
 	updateStatus();
 }
+async function onOpenChangeRequest(){
+	setObjectVisiblity(blockChangeRequest,true)
+	inputReturnDateTime.value = rentDateTime.to;
+	inputReturnDateTime.value = changeRequestObj.changeEndTime;
+	inputReturnMethod.value = changeRequestObj.changeReturnMethod;
+	inputReturnAddress.value = changeRequestObj.changeReturnAddress;
+}
 
-async function onReceiveItem(){
+async function handleChangeRequest(value){
+	rentData.isAccepted = value;
 	let r = await makeRequest("lease-item/3/"+itemId,rentData)
+	setObjectVisiblity(blockChangeRequest,false)
 	console.log(r);
 	updateStatus();
 }
+
+async function onReceiveItem(){
+	let r = await makeRequest("lease-item/4/"+itemId,rentData)
+	console.log(r);
+	updateStatus();
+}
+
+
+btnReceiveMain.onclick = onOpenChangeRequest;
 
 updateStatus();

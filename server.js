@@ -140,6 +140,13 @@ app.post('/result-rent-item/:stageId/:itemId', jsonParser, async (req, res) => {
     const allInfo = {stage, itemId, clientId:uId}
     res.send({status:await rentingHandler.fetchRentStatus(allInfo)});
 })
+app.post('/result-request-change-rent/:itemId', jsonParser, async (req, res) => {
+    const body = req.body;
+    const itemId = req.params.itemId;
+    const uId = body.userId;
+    if (!uId || !itemId) return responseError(res);
+    res.send(await rentingHandler.fetchChangeRequest(itemId,uId));
+})
 
 const leaseHandleArray = ['handleRentRequest','handleSendItem','handleChangeRequest','handleReceieve','handleFinish']
 app.post('/lease-item/:stageId/:itemId', jsonParser, async (req, res) => {

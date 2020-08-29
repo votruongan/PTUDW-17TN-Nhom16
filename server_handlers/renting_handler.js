@@ -1,10 +1,13 @@
 const dbHelper = require("./database_helper");
+const stuffHelper = require("./stuff_handler");
 const {writeAllBase64ImagesLog} = require("./misc_helper");
+const { findDocument } = require("./database_helper");
 
 // rent: itemId, clientId, isActive, fromDateTime, toDatetime, discount, 
 //      requestMessage, isAccepted, depositPaymentId, paymentId, clientReceptionLogId,
-//      clientSendLogId, ownerReceptionLogId, ownerSendLogId
-// rent-changelog: rentId, from, to, isAccepted
+//      clientSendLogId, ownerReceptionLogId, ownerSendLogId, currentChangeRequest
+//      deliverMethod, deliverAddress, returnMethod,  returnAddress
+// rent-change-log: rentId, from, to, isAccepted
 
 const succeed = "succeed"
 const failed = "failed"
@@ -39,9 +42,11 @@ class rentingHandler{
     static handleRentRequest = async function(itemId,clientId,body){
         let obj = {itemId,clientId,requestMessage:body.message,isActive:true,
                     fromDateTime: body.fromDateTime,toDateTime: body.toDateTime};
+        const itemInfo = await dbHelper.findDocument("test-item",{itemId});
+        obj.rentPrice =itemInfo.rentPrice;
         const r = await dbHelper.insertDocument("rent",obj);
         return r;
-    }
+    }  
 
     static handleDeposit = async function(itemId,clientId,body){
         const queryObj = {itemId,clientId,isActive:true}
@@ -75,10 +80,43 @@ class rentingHandler{
         return r;
     }
 
+    static handleChangeRequest = async function(itemId,clientId,body){
+        const queryObj = {itemId,clientId,isActive:true}
+        const activeResult = await dbHelper.findDocument("rent",queryObj);
+        let obj = {
+            rentId: activeResult._id,
+            originalEndTime: activeResult.toDateTime,
+            originalReturnMethod: activeResult.returnMethod,
+            originalReturnAddress: activeResult.returnAddress,
+            changeEndTime: body.endDateTime,
+            changeReturnMethod: body.returnMethod,
+            changeReturnAddress: body.returnAddress,
+            isAccepted: waiting
+        };
+        let r = await dbHelper.insertDocument("rent-change-log",obj);
+        r = await dbHelper.updateDocument("rent",queryObj,{
+            currentChangeRequest: r._id
+        });
+        return r;
+    }
+
     static handleReturn = async function(itemId,clientId,body){
         let obj = {itemId,clientId,message:body.message};
         const r = await dbHelper.insertDocument("rent",obj);
         return r;
+    }
+
+    static fetchChangeRequest = async function(itemId,clientId){
+        const queryObj = {itemId,clientId,isActive:true}
+        const res = await dbHelper.findDocument("rent",queryObj);
+        let dataObj = await dbHelper.findDocument("rent-change-log",{
+            _id:res[0].currentChangeRequest
+        })
+        dataObj = dataObj[0];
+        if (dataObj){
+            return dataObj;
+        }
+        return {};
     }
 
     static fetchRentDateTime = async function(params){

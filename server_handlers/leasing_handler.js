@@ -59,9 +59,35 @@ class rentingHandler{
         return r;
     }
 
-    static handleReturn = async function(itemId,clientId,body){
-        let obj = {itemId,clientId,message:body.message};
-        const r = await dbHelper.insertDocument("rent",obj);
+    static handleChangeRequest = async function(itemId,clientId,body){
+        let queryObj = {itemId,clientId,isActive:true};
+        let r = await dbHelper.findDocument("rent",queryObj);
+        r = r[0];
+        if (!body.isAccepted){
+            r = await dbHelper.updateDocument("rent-change-log",{
+                _id:r.currentChangeRequest
+            },{
+                isAccepted: failed
+            });
+            return r;
+        }
+        // modify the status of the change request
+        await dbHelper.updateDocument("rent-change-log",{
+            _id:r.currentChangeRequest
+        },{
+            isAccepted: succeed
+        });
+        // get info of the change request
+        r = await dbHelper.findDocument("rent-change-log",{_id:r.currentChangeRequest
+        });
+        console.log(r)
+        r = r[0];
+        // write change request info to rent collection
+        r = await dbHelper.updateDocument("rent",queryObj,{
+            toDateTime: r.changeEndTime,
+            returnMethod: r.changeReturnMethod,
+            returnAddress: r.changeReturnAddress,
+        });
         return r;
     }
 

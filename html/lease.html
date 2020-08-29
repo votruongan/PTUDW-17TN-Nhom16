@@ -221,81 +221,85 @@
                 </div>
             </div>
 			
-			<div class="overlay focus not-cover-receipt p-lg-5 p-xm-0 d-none" id="requestChangeReturn">
-				<div class="bg-white px-5 py-5" style="padding-top:20%;">
- <a class="boxclose" id="boxclose"></a>
+			<div class="overlay focus not-cover-receipt p-lg-5 p-xm-0 d-none" id="blockChangeRequest">
+				<div class="bg-white px-5 py-5" style="margin-top:20%;">
 					<div class="row w-100 pl-xm-0 pl-lg-5 mb-4">
 						<h4 class="w-100 text-center">Yêu cầu thay đổi thông tin trả đồ</h4>
 					</div>
 					<div class="row align-items-center pl-xm-0 pl-lg-5 mb-3">
-						<div class="col-4">
+						<div class="col-12 col-lg-4">
 						Hình thức trả đồ:
 						</div>
-						<div class="col-8">
-						  <div id="requestMessage" name="requestMessage" class="form-control input-md" style="height:auto;padding:1px">
+						<div class="col-12 col-lg-8">
 		<!-- Select Way to Return -->
 						  <div class="col-12 p-0">
-							<input class="form-control" readonly="true"></input>
-						  </div>
+							<select id="inputReturnMethod" name="category" class="form-control" disabled="true">
+							  <option value="1">Trả đồ trực tiếp</option>
+							  <option value="2">Trả đồ qua bên thứ ba</option>
+							</select>
 						  </div>
 						</div>
                     </div>
 					<div class="row align-items-center pl-xm-0 pl-lg-5 mb-3">
-						<div class="col-4">
+						<div class="col-12 col-lg-4">
 						Thời gian trả đồ:
 						</div>
-						<div class="col-8">
-						  <div id="requestMessage" name="requestMessage" class="form-control input-md" style="height:auto;padding:1px">
-                    <input id="endDateTime" type="datetime-local" readonly="true" class="form-control mt-2 w-100">
-						  </div>
+						<div class="col-12 col-lg-8">
+                    <input type="datetime-local" class="form-control w-100" id="inputReturnDateTime" disabled="true">
 						</div>
                     </div>
-					<div class="row align-items-center pl-xm-0 pl-lg-5 mb-5">
-						<div class="col-4">
+					<div class="row align-items-center pl-xm-0 pl-lg-5 mb-4">
+						<div class="col-12 col-lg-4">
 						Địa chỉ trả đồ:
 						</div>
-						<div class="col-8">
-						  <div id="requestMessage" name="requestMessage" class="form-control input-md" style="height:auto;padding:1px">
-							<input class="form-control col-12"  readonly="true" placeholder="nhập vào địa chỉ trả đồ" style="border:0px;"></input>
-						  </div>
+						<div class="col-12 col-lg-8">
+							<input class="form-control col-12"  id="inputReturnAddress" disabled="true" placeholder="nhập vào địa chỉ trả đồ" ></input>
 						</div>
                     </div>
-						
-                <div class="flex-box">
+                <h5 class="p-0 mb-4 text-center d-none" id="notiRequestCheck"></h5>
+                <div class="row">
                     <div class="col-7">
-                    <button type="button" class="btn btn-primary w-100 shadow-sm" style="min-height: 60px;">
+                    <button type="button" class="btn btn-primary w-100 shadow-sm" style="min-height: 60px;" onclick="handleChangeRequest(true);">
                         Chấp nhận yêu cầu
                     </button>						
                     </div>
-                    <div class="col-5">
-                    <button type="button" class="btn btn-outline-secondary w-100" style="min-height: 60px;">
+                    <div class="col-5 col-lg-5 p-0">
+                    <button type="button" class="btn btn-outline-secondary w-100" style="min-height: 60px;" onclick="handleChangeRequest(false);" id="btnCloseChangeRequest">
                         Từ chối yêu cầu
                     </button>		
                     </div>
                 </div>
             </div>
 			</div>
-			<div class="d-none" id="panel3">
-                <div class="flex-box">
-                    <div class="flex-4">
+
+
+
+
+            <div class="d-none" id="panel3">
+                
+                <div class="row mb-5">
+                    <div class="col-12 col-lg-3 p-0 mb-4">
                         Thông tin trả đồ:
                     </div>
-                    <div class="flex-7">
+                    <div class="col-12 col-lg-9">
                         <div class="d-flex flex-row mb-2">
-							<b class="col-4 p-0 m-0">Hình thức trả:</b>
-							<p class="col-8 p-0 m-0"> Trả tại địa điểm cố định</p>
+							<b class="col-3 p-0 m-0">Hình thức:</b>
+							<h5 class="">Trả tại địa điểm cố định</h5>
                         </div>
                         <div class="d-flex flex-row mb-2">
-							<b class="col-4 p-0 m-0">Thời gian trả:</b>
-							<p class="col-8 p-0 m-0"> 09:30, ngày 20, tháng 05, năm 2020</p>
+							<b class="col-3 p-0 m-0">Thời gian:</b>
+                            <h5 class="targetEndTime"> 09:30</h5>
+                            <h5>,&nbsp</h5>
+							<h5 class="targetEndDate"> 28/10/2020</h5>
                         </div>
                         <div class="d-flex flex-row mb-2">
-							<b class="col-4 p-0 m-0">Địa chỉ trả:</b>
-							<p class="col-8 p-0 m-0"> 861/84/6 Trần Xuân Soạn, P. Tân Hưng, Quận 7, TP. Hồ Chí Minh</p>
+							<b class="col-3 p-0 m-0">Địa chỉ:</b>
+							<h5 class="targetAddress"> 861/84/6 Trần Xuân Soạn, P. Tân Hưng, Quận 7, TP. Hồ Chí Minh</h5>
                         </div>
                     </div>
                 </div>
-                <div class="flex-box" id="receiveBlock">
+
+                <div class="flex-box" id="blockReceiveItem">
                     <div class="flex-3 p-0 m-0">
                         Hiện trạng khi trả:<br/>
 						<i style="font-size:0.8rem;color:gray;">(Tải lên ảnh hoặc video để lưu lại hình ảnh của đồ vật lúc trả)</i>
@@ -306,9 +310,11 @@
 		  </div>
                     </div>
                 </div>				
-                <div class="flex-box justify-content-center">
-                    <div class="col-8">
-                    <button type="button" class="btn btn-primary w-100 shadow-sm" style="min-height: 60px;">
+                <div class="row justify-content-center">
+                    <div  class="row mb-2">
+                    <i class="d-none" id="notiRequestPanel">Người thuê đồ có yêu cầu thay đổi với việc trả đồ</i></div>
+                    <div class="row col-8">
+                    <button type="button" class="btn btn-primary w-100 shadow-sm" style="min-height: 60px;" id="btnReceiveMain">
                         Xem yêu cầu thay đổi
                     </button>						
                     </div>
@@ -358,7 +364,7 @@
 			
 			
             <!-- Receiptt info box -->
-            <div class="col-lg-4 ml-lg-4 flex-box d-none d-lg-block" id="detailPanel">
+            <div class="col-lg-4 ml-lg-5 flex-box d-none d-lg-block" id="detailPanel">
                 <div class="d-flex flex-column bd-highlight w-100">
                     <div class="d-flex align-items-end justify-content-center align-items-between receiptImage" style="background: url(https://s4.nhattao.com/data/attachment-files/2020/05/15043954_1.jpg); height:200px; padding:0px">
 						<div class="focus white-text w-100 p-2" style="height:40%">

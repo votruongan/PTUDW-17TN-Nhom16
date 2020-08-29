@@ -102,6 +102,8 @@ function deleteManyDocument(collection,queryObject){
 // createCollection("rent");
 // createCollection("payment");
 // createCollection("image-log");
+// createCollection("rent-change-log");
+// createCollection("test-item");
 
 // createCollection("Users");
 // createCollection("Sessions");
@@ -109,9 +111,14 @@ function deleteManyDocument(collection,queryObject){
 async function start(){
   // console.log(await deleteManyDocument("rent",{}));
   // console.log(await deleteManyDocument("payment",{}));
-  // console.log(await deleteManyDocument("image-log",{}));
+  // console.log(await deleteManyDocument("rent-change-log",{}));
+  console.log(await findDocument("rent",{}));
+  console.log(await findDocument("rent-change-log",{}));
 }
-start()
+
+if (require.main === module)
+  start()
+
 module.exports = {
   initDatabase,
   createCollection,
