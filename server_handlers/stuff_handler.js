@@ -29,6 +29,7 @@ class StuffHandler{
         let res = await dbHelper.searchDocument(stuffCollection,name).catch((err)=>{
             console.log(err);
         })
+        console.log(res)
         return res;
     }
     static getItem = async function(itemId){
@@ -50,6 +51,8 @@ class StuffHandler{
                 "userName": res1[0]["name"],
                 "create_date": res1[0]["create_date"],
                 "rating" : res1[0]["rating"],
+                "star": res[0]["star"],
+                "hiring":res[0]["star"]
             }
             return res2;
         }
@@ -74,7 +77,9 @@ class StuffHandler{
                 "address": body["address"],
                 "path": body["path"],
                 "services":body["services"],
-                "describe": body["describe"]
+                "describe": body["describe"],
+                "star": 0,
+                "hiring":0
             }
 
             let created = await createStuff(stuff);

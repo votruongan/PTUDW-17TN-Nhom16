@@ -53,8 +53,8 @@ function searchDocument(collection,name){
           'name': 'text',
           'category': 'text'
         });
-        var query = {$text: {$search: name}};
-        dbo.collection(collection).find(query,{ score: { $meta: "textScore" } }).sort( { score: { $meta: "textScore" } } ).toArray(function(err, result)  {
+        var query = {$text: {$search: name}};//,$caseSensitive: false,$diacriticSensitive: false 
+        dbo.collection(collection).find(query).project({'name':1,'category':1,'id':1,'cost':1,'address':1,'path':1,'star':1,'hiring':1}).toArray(function(err, result)  {
             if (err) resolve(false);
             resolve(result);
             db.close();

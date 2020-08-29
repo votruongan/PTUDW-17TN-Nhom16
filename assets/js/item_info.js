@@ -15,17 +15,9 @@ async function init(){
 
 	if (r){
 		nameStuff.innerHTML = r.name;
-		if (r.star== undefined){
-			starStuff.innerHTML = "0/5"
-			starStuff.size=15;
-		}
-		else {
-			starStuff.innerHTML = r.star;
-		}
-		if (r.hiring == undefined){
-			hiring.innerHTML="(0 lượt cho thuê)";
-		}
-		else hiring.innerHTML = "(" + r.hiring+ "lượt cho thuê)";
+		starStuff.innerHTML = r.star + "/5";
+		starStuff.size = 25
+		hiring.innerHTML = "(" + r.hiring+ " lượt cho thuê)";
 		cost.innerHTML = r.cost;
 		if (r.path!=undefined&& r.path!=null&&r.path!=''){
 			console.log(r.path);

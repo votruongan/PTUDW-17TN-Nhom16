@@ -360,14 +360,14 @@ div.top img#star {
 
 .solanthue {
     position: absolute;
-    left: 85px;
+    left: 77px;
     width: max-content;
 }
 
 div.saovathue img#star {
     width: 30px;
     position: absolute;
-    left: 48px;
+    left: 40px;
 }
 
 .saosanpham {
@@ -387,6 +387,11 @@ div.saovathue img#star {
     left: 20px;
     font-weight: bold;
     font-size: 18px;
+    width: 215px; 
+    height: 27px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .phithue {
@@ -414,6 +419,7 @@ img#heart:hover {
 .imagestuff {
     text-align: -webkit-center;
     border-radius: 7px 7px 0px 0px;
+    overflow: hidden;
 }
 
 img#main {
@@ -421,6 +427,7 @@ img#main {
     height: 220px;
     object-fit: cover;
     border-radius: 7px 7px 0px 0px;
+    overflow: hidden;
 }
 
 ul.stufflist li.col-xl-6 {
@@ -473,4 +480,7 @@ div.stuff div.note img {
     bottom: 0px;
     padding: 0px;
     z-index: 100;
+}
+.stuff1{
+    display: none;
 }

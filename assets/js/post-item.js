@@ -66,7 +66,7 @@ async function nextPanel(){
 			if (huongDan.checked) services.push("Hướng dẫn sử dụng");
 			if (hoTro.checked) services.push("Hỗ trợ trong quá trình sử dụng");
 			if (traDo.checked) services.push("Trả đồ tận nơi");
-			if (khac.value!=null && khacCheck.checked) services.push(khac.value);
+			if (khac.value!="" && khacCheck.checked) services.push(khac.value);
 			let cate;
 			if (category.value==1) cate = "Thể thao & dã ngoại";
 			if (category.value==2) cate = "Âm thanh & ánh sáng";
