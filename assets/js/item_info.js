@@ -1,10 +1,11 @@
+var list_item = document.getElementsByClassName("list-group-item")
+
 var url = window.location.href;
 var i =url.search('/')
 while (i>=0){
 	url = url.substr(i+1,url.length-1);
 	i=url.search('/')
 }
-
 
 async function init(){
 const url1 = "http://localhost:3000" + "/item/id/"+url;	
@@ -15,8 +16,7 @@ const response = await fetch(url1, {
 let r = await response.json();
 
 if (r){
-	console.log(r.name)
-		nameStuff.innerHTML = r.name;
+	nameStuff.innerHTML = r.name;
 	if (r.star== undefined){
 		starStuff.innerHTML = "0/5"
 		starStuff.size=15;
@@ -31,11 +31,30 @@ if (r){
 	cost.innerHTML = r.cost;
 	if (r.path!=undefined&& r.path!=null&&r.path!=''){
 		console.log(r.path);
-		const url = "http://localhost:3000/" +r.path;	
-		imageStuff = document.getElementById("imageStuff");
-		console.log(imageStuff)
-		imageStuff.src = url; 
+		const url = "http://localhost:3000/" + r.path;	
+		for(var i=0;i<r.path.length;i++){
+			var li = document.createElement('li');
+			li.setAttribute("data-slide-to",i);
+			li.setAttribute("data-target","#imageCarousel");
+			if (i==0) li.className = "active";
+			document.getElementById("carousel-indicators").appendChild(li);
+			var div = document.createElement('div');
+			if (i==0) div.className = "carousel-item active";
+			else div.className = "carousel-item";
+			var div1 = document.createElement('div');
+			div1.className = "d-flex justify-content-center h-100"
+			var img = document.createElement('img');
+			img.id = "imageStuff";
+			img.src = '/'+r.path[i];
+			img.className = "d-block";
+			img.alt = "..."
+			div1.appendChild(img);
+			div.appendChild(div1);
+			document.getElementById("carousel-inner").appendChild(div);
+		}
 	}
+	console.log(r.category);
+	cate.innerHTML = r.category;
 	userName.innerHTML = r.userName;
 	if (r.userHiring!=undefined){
 		userHiring.innerHTML=r.userHiring+ "lượt thuê";
@@ -46,6 +65,18 @@ if (r){
 		describe.innerHTML = r.describe;
 	else describe.innerHTML=""
 	sale.innerHTML = r.cost*5/100 +'k';
+	var date = new Date(r.create_date);
+	atCreate.innerHTML = "Đăng ký " + (date.getMonth()+1) + "/" + date.getFullYear();
+	for (var i =0;i<r.services.length;i++){
+		if (i!=0) {
+			let hr= document.createElement('hr')
+			hr.className = "mt-2 mb-3 w-100";
+			services.appendChild(hr);
+		}
+		let b = document.createElement('b');
+		b.innerHTML = r.services[i];
+		services.appendChild(b);			
+	}
 }
 init();
 
@@ -63,7 +94,7 @@ function initPlaceAutocomplete() {
 function goToRent() {
 	localStorage.setItem("rent-from",startDateTime.value)
 	localStorage.setItem("rent-to",endDateTime.value)
-	window.location.href = "/rent"
+	window.location.href = "/rent"	
 }
 
 

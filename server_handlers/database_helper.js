@@ -107,7 +107,9 @@ function deleteManyDocument(collection,queryObject){
 // createCollection("Sessions");
 
 async function start(){
-  // console.log(await findDocument("payment",{}));
+  // console.log(await deleteManyDocument("rent",{}));
+  // console.log(await deleteManyDocument("payment",{}));
+  // console.log(await deleteManyDocument("image-log",{}));
 }
 start()
 module.exports = {

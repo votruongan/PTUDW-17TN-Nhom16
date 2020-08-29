@@ -10,7 +10,7 @@ let fetchResultPrefix = 'result-rent-item'
 const rentDateTime = {from:localStorage.getItem("rent-from"),to:localStorage.getItem("rent-to")}
 
 let allData = null;
-
+// const waitingPanelOffset = [-1,0,0,0,0];
 function setRentDateTime(timeEle, dateEle, data){
 	timeEle.innerText = data.substr(11,5);
 	dateEle.innerText = `${data.substr(8,2)}/${data.substr(5,2)}/${data.substr(0,4)}`;
@@ -42,13 +42,13 @@ fetchRentDateTime();
 async function updateStatus(){
 	for (let i = 4; i > 0; i--) {
 		const obj = await makeRequest(`${fetchResultPrefix}/${i}/${itemId}`,rentData)
-		console.log("updateRentingStatus",obj);
+		console.log("updateRentingStatus",i,obj);
 		if (obj.status == null || obj.status == "failed"){
 			console.log("obj is null");
 			continue;
 		} else {;
 		}
-		fetchRentDateTime();
+		await fetchRentDateTime();
 		if (i < maxStage)
 			return openPanel(i+1,obj.status);
 		else
@@ -70,6 +70,7 @@ function openPanel(index,status="succeed"){
 	}
 	let panelPrefix = "panel"
 	if (status=="waiting"){
+		index--;
 		panelPrefix = "waitingPanel"
 	}
 	console.log("setting object visibility",panelPrefix+index)
@@ -88,6 +89,9 @@ async function processPanel(index){
 		case 0:
 			rentRequestmessage.value = allData.requestMessage;
 			break;
+		case 3:
+			setObjectVisiblity(receiveBlock,false)
+			break;
 	}
 }
 
@@ -99,24 +103,11 @@ async function onHandleRentRequest(isAccepted){
 	updateStatus();
 }
 
-
 async function onSendItem(){
 	//convert each image file to base64
-	const file64 = [];
-	const ext = [];
-	console.log(fileSendItem.files);
-	for (let i = 0; i < fileSendItem.files.length; i++) {
-		const f = fileSendItem.files[i];
-		const bytes = new Uint8Array(await f.arrayBuffer());
-		let binary = '';
-		for (let j = 0; j < bytes.byteLength; j++) {
-			binary += String.fromCharCode(bytes[j]);
-		}
-		file64.push(window.btoa(binary));
-		ext.push(f.type.split("/")[1]);
-	}
-	rentData.images = file64;
-	rentData.extensions = ext;
+	const base64Images = await prepareBase64ImageArray(fileSendItem.files);
+	rentData.images = base64Images.images;
+	rentData.extensions = base64Images.extensions;
 	let r = await makeRequest("lease-item/2/"+itemId,rentData)
 	console.log(r);
 	updateStatus();

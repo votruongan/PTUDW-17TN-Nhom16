@@ -80,8 +80,7 @@ async function setSesstion(email, token) {
 		"token"	: token,
 		"ts"	: date.getTime()
 	}
-
-	if (UserHandler.isValidToken(email, token)) {
+	if (await UserHandler.isValidToken(email, token)) { //Quy fix: sua lai cho nay thi may t moi chay ok
 		let res = dbHelper.updateDocument(sessionCollection, session).catch((err) => {
 			console.log("Update session err = ", err);
 		});
@@ -191,7 +190,7 @@ class UserHandler {
 		});
 
 		// If this session is found
-		if (res) {
+		if (res[0]) { //Quy fix: sua lai cho nay thi may t moi chay ok
 			let lastLogInTime = res.ts;
 
 			// Check if session is out of date: 3 days

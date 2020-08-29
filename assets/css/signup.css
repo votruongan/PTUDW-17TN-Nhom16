@@ -289,4 +289,5 @@ div.groupUpFile .hinh:hover {
 
 .csshinhanh {
     position: relative;
+    z-index: 0;
 }

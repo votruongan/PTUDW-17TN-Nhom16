@@ -2,3 +2,8 @@
 	height:32px;
 	width:32px;
 }
+.hidden{
+	display: block !important;
+	height: 200px;
+	margin: 2px;
+}

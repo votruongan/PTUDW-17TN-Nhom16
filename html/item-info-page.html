@@ -65,20 +65,20 @@
   </ol> -->
         <!-- Image slideshow -->
         <div id="imageCarousel" class="carousel slide" style="height:28rem;" data-ride="carousel">
-		  <ol class="carousel-indicators">
-			<li data-target="#imageCarousel" data-slide-to="0" class="active"></li>
+		  <ol class="carousel-indicators" id = "carousel-indicators">
+			<!-- <li data-target="#imageCarousel" data-slide-to="0" class="active"></li>
 			<li data-target="#imageCarousel" data-slide-to="1"></li>
 			<li data-target="#imageCarousel" data-slide-to="2"></li>
-			<li data-target="#imageCarousel" data-slide-to="3"></li>
+			<li data-target="#imageCarousel" data-slide-to="3"></li> -->
 		  </ol>
             <!-- Carousel items -->
-            <div class="carousel-inner" role="listbox" style=" width:100%;">
-                <div class="carousel-item active">
+            <div class="carousel-inner" id = "carousel-inner" role="listbox" style=" width:100%;">
+                <!-- <div class="carousel-item active">
                 <div class="d-flex justify-content-center h-100">
                     <img id="imageStuff" src=""
                         class="d-block" alt="...">
                 </div>
-                </div>
+                </div> -->
                 <!-- <div class="carousel-item">
                 <div class="d-flex justify-content-center  h-100">
                     <img src="https://s4.nhattao.com/data/attachment-files/2020/05/15043961_8.jpg"
@@ -99,11 +99,11 @@
                 </div> -->
             </div>
             <!-- Carousel buttons -->
-            <a class="carousel-control-prev" href="/#imageCarousel" role="button" data-slide="prev">
+            <a class="carousel-control-prev" href="#imageCarousel" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="false"></span>
                 <span class="sr-only">Previous</span>
             </a>
-            <a class="carousel-control-next" href="/#imageCarousel" role="button" data-slide="next">
+            <a class="carousel-control-next" href="#imageCarousel" role="button" data-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="false"></span>
                 <span class="sr-only">Next</span>
             </a>
@@ -114,7 +114,8 @@
                 <!-- Item detail box -->
                 <div class="flex-box mb-0">
                     <div class="flex-xs-12 flex-md-8">
-                        <h1 id ="nameStuff" style="font-size:2rem;"></h1>
+                        <h1 id ="nameStuff" style="font-size:2rem;font-weight: bold;"></h1>
+                        <h2 id = "cate" style="font-size: 1.5rem;font-weight: 500;"></h2>
                         <span class="d-flex flex-row bd-highlight mb-3 align-items-middle">
                             <h3 id = "starStuff"></h3>
                             <div  class="bd-highlight" style="display: flex;">
@@ -213,7 +214,7 @@
                                 <div class="d-flex flex-row">
                                     <p id="userHiring" class="mr-2">459 lượt thuê</p>
                                     <p class="mr-2"> * </p>
-                                    <p id="atCreate" class="mr-2">Đăng ký T1/2020</p>
+                                    <p id="atCreate" class="mr-2"></p>
                                 </div>
                                 <p>Phản hồi trung bình sau 2 phút</p>
                             </div>
@@ -238,12 +239,8 @@
                     <div class="flex-2">DỊCH VỤ</div>
                     <!-- List services -->
                     <div class="flex-8">
-                        <div class="d-flex flex-column mb-3">
-                            <b>Giao đồ vật tận nơi</b>
-                            <p>Đồ vật này được chủ đồ vật hỗ trợ giao hàng tận nơi. Miễn phí giao hàng trong 5km đầu tiên, 10K/km tiếp theo.</p>
-                            <hr class="mt-2 mb-3 w-100" />
-                            <b>Miễn phí sửa chữa sau khi sử dụng</b>
-                            <p>Thiết bị sau khi sử dụng nếu có sự cố hỏng hóc. Nếu chi phí sửa chữa dưới 2000K sẽ được chủ đồ vật miễn phí sửa chữa. Nếu vượt quá 2000K, khách thuê cần chi trả phần chi phí còn lại.</p>
+                        <div id ="services" class="d-flex flex-column mb-3">
+                            
                         </div>
                     </div>
                 </div>
