@@ -2,7 +2,9 @@ const express = require('express');
 const favicon = require('serve-favicon');
 const bodyParser = require('body-parser');
 // create application/x-www-form-urlencoded parser
-const urlencodedParser = bodyParser.urlencoded({ extended: false })
+const urlencodedParser = bodyParser.urlencoded({
+    extended: false
+})
 const jsonParser = bodyParser.json();
 const rentingHandler = require('./server_handlers/renting_handler');
 const leasingHandler = require('./server_handlers/leasing_handler');
@@ -12,63 +14,79 @@ const path = require('path');
 const multer = require('multer'); //cài đặt  dependencie
 const fs = require('fs');
 
+const avatarCollection = "Avatars";
+
 const dbHelper = require('./server_handlers/database_helper');
-const { raw, json } = require('body-parser');
-const { request } = require('express');
- 
+const {
+    raw,
+    json
+} = require('body-parser');
+const {
+    request
+} = require('express');
+
 const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(favicon("assets/img/fav.png"));
 app.use(express.static(__dirname + '/assets/'));
-app.use(bodyParser.json({limit: '10mb'}));
+app.use("/images", express.static(path.join(__dirname, "images")));
+app.use(bodyParser.json({
+    limit: '10mb'
+}));
 
 // FUNCTIONS
-function responseError(res){
+function responseError(res) {
     res.sendStatus(500)
 }
 
 //--------------- UP load anh------------
 const upload = multer({
-    dest:'images/',
-    fileFilter: (req,file,callback)=>{
-        if (/\S+\.(jpg|bmp|gif|png)/gi.test(file.originalname)){
-            callback(null,true)
-        }else {
-            callback(Error('Invalid image file name'),false)
+    dest: 'images/',
+    fileFilter: (req, file, callback) => {
+        if (/\S+\.(jpg|bmp|gif|png)/gi.test(file.originalname)) {
+            callback(null, true)
+        } else {
+            callback(Error('Invalid image file name'), false)
         }
     }
 }).single('image')
 
-app.post('/images/upload',(req,res)=>{
-    upload(req,res,(err)=>{
-        if (err){
-            res.status(400).json({message:err.message})
-        }else {
+app.post('/images/upload', (req, res) => {
+    upload(req, res, (err) => {
+        if (err) {
+            res.status(400).json({
+                message: err.message
+            })
+        } else {
             res.status(200).json({
-                message:'Uploaded image successfully',
-                image_path: path.join('images',req.file.filename)
+                message: 'Uploaded image successfully',
+                image_path: path.join('images', req.file.filename)
             })
         }
     })
-
 })
 
-app.get('/images/:image_name',(req,res)=>{
-    const imagePath = path.join(__dirname,'images',req.params.image_name)
+app.get('/images/:image_name', (req, res) => {
+    const imagePath = path.join(__dirname, 'images', req.params.image_name)
     try {
-        
+
         const buffer = fs.readFileSync(imagePath)
-        let mime='image/jpeg';
-        res.writeHead(200,{'Content-Type':mime})
-        res.end(buffer,'binary')
-    }
-    catch(error){
+        let mime = 'image/jpeg';
+        res.writeHead(200, {
+            'Content-Type': mime
+        })
+        res.end(buffer, 'binary')
+    } catch (error) {
         console.log(error.code)
-        if(error.code === 'ENLENT'){
-            res.status(404).json({message:"No such image file"})
-        }else {
-            res.status(500).json({message:error.message})
+        if (error.code === 'ENLENT') {
+            res.status(404).json({
+                message: "No such image file"
+            })
+        } else {
+            res.status(500).json({
+                message: error.message
+            })
         }
         res.end()
     }
@@ -82,17 +100,19 @@ app.post('/item/post', jsonParser, async (req, res) => {
     console.log(token);
 
     if (token == null || token == '') return responseError(res);
-    res.send({id:await stuffHandler.postItem(token,body)});
+    res.send({
+        id: await stuffHandler.postItem(token, body)
+    });
 })
 
-app.get('/item/:itemId',async (req, res) => {
+app.get('/item/:itemId', async (req, res) => {
     const itemId = req.params.itemId;
     res.sendFile(__dirname + '/html/item-info-page.html');
 
     //res.send(stuff[0])
 })
 
-app.get('/item/id/:itemId',async (req, res) => {
+app.get('/item/id/:itemId', async (req, res) => {
     const itemId = req.params.itemId;
     const stuff = await stuffHandler.getItem(itemId);
     console.log(stuff)
@@ -104,8 +124,11 @@ app.post('/rent-date-time/:itemId', jsonParser, async (req, res) => {
     const body = req.body;
     const itemId = req.params.itemId;
     const clientId = body.userId;
-    if (!clientId || ! itemId) return responseError(res);
-    res.send(await rentingHandler.fetchRentDateTime({itemId,clientId}));
+    if (!clientId || !itemId) return responseError(res);
+    res.send(await rentingHandler.fetchRentDateTime({
+        itemId,
+        clientId
+    }));
 })
 
 app.post('/rent-item/:stageId/:itemId', jsonParser, async (req, res) => {
@@ -113,26 +136,30 @@ app.post('/rent-item/:stageId/:itemId', jsonParser, async (req, res) => {
     const stage = req.params.stageId;
     const itemId = req.params.itemId;
     const clientId = body.userId;
-    if (!clientId || ! itemId || !stage) return responseError(res);
+    if (!clientId || !itemId || !stage) return responseError(res);
     let handlerStr = null;
     switch (stage) {
         case "1":
-            handlerStr =  'handleRentRequest';            break;
+            handlerStr = 'handleRentRequest';
+            break;
         case "2":
-            handlerStr = 'handleDeposit';            break;
+            handlerStr = 'handleDeposit';
+            break;
         case "3":
-            handlerStr = 'handleReceieve';            break;
+            handlerStr = 'handleReceieve';
+            break;
         case "4":
-            handlerStr = 'handleReturn';            break;
+            handlerStr = 'handleReturn';
+            break;
         default:
             return responseError(res)
     }
     console.log(handlerStr, rentingHandler[handlerStr])
-    if (handlerStr){
-        const result = await rentingHandler[handlerStr](itemId,clientId,body);
+    if (handlerStr) {
+        const result = await rentingHandler[handlerStr](itemId, clientId, body);
         res.send(result);
     } else
-    responseError(res)
+        responseError(res)
 })
 
 app.post('/result-rent-item/:stageId/:itemId', jsonParser, async (req, res) => {
@@ -141,8 +168,14 @@ app.post('/result-rent-item/:stageId/:itemId', jsonParser, async (req, res) => {
     const itemId = req.params.itemId;
     const uId = body.userId;
     if (!uId || !itemId || !stage) return responseError(res);
-    const allInfo = {stage, itemId, clientId:uId}
-    res.send({status:await rentingHandler.fetchRentStatus(allInfo)});
+    const allInfo = {
+        stage,
+        itemId,
+        clientId: uId
+    }
+    res.send({
+        status: await rentingHandler.fetchRentStatus(allInfo)
+    });
 })
 
 app.post('/lease-item/:stageId/:itemId', jsonParser, async (req, res) => {
@@ -151,26 +184,30 @@ app.post('/lease-item/:stageId/:itemId', jsonParser, async (req, res) => {
     const itemId = req.params.itemId;
     const clientId = body.userId;
     const timeStamp = Date.now();
-    if (!clientId || ! itemId || !stage) return responseError(res);
+    if (!clientId || !itemId || !stage) return responseError(res);
     let handlerStr = null;
     switch (stage) {
         case "1":
-            handlerStr =  'handleRentRequest';            break;
+            handlerStr = 'handleRentRequest';
+            break;
         case "2":
-            handlerStr = 'handleSendItem';            break;
+            handlerStr = 'handleSendItem';
+            break;
         case "3":
-            handlerStr = 'handleReceieve';            break;
+            handlerStr = 'handleReceieve';
+            break;
         case "4":
-            handlerStr = 'handleReturn';            break;
+            handlerStr = 'handleReturn';
+            break;
         default:
             return responseError(res)
     }
     console.log(handlerStr, leasingHandler[handlerStr])
-    if (handlerStr){
-        const result = await leasingHandler[handlerStr](itemId,clientId,body);
+    if (handlerStr) {
+        const result = await leasingHandler[handlerStr](itemId, clientId, body);
         res.send(result);
     } else
-    responseError(res)
+        responseError(res)
 })
 
 app.post('/result-lease-item/:stageId/:itemId', jsonParser, async (req, res) => {
@@ -179,7 +216,11 @@ app.post('/result-lease-item/:stageId/:itemId', jsonParser, async (req, res) => 
     const itemId = req.params.itemId;
     const uId = body.userId;
     if (!uId || !itemId || !stage) return responseError(res);
-    const allInfo = {stage, itemId, clientId:uId}
+    const allInfo = {
+        stage,
+        itemId,
+        clientId: uId
+    }
     res.send(await rentingHandler.fetchRentStatus(allInfo));
 })
 
@@ -190,7 +231,9 @@ app.post('/sign_up', jsonParser, async (req, res) => {
 
     let result = await userHandler.signUpRequest(body.email, body.password, body.name, body.phone, body.address, body.personalID);
 
-    res.send({result});
+    res.send({
+        result
+    });
 })
 
 app.post('/verify_account', jsonParser, async (req, res) => {
@@ -228,7 +271,7 @@ app.post('/auth_by_token', jsonParser, async (req, res) => {
     res.send(result);
 });
 
-app.post('/get_user_info', jsonParser, async (req, res) => { 
+app.post('/get_user_info', jsonParser, async (req, res) => {
     const body = req.body;
 
     console.log(body);
@@ -238,32 +281,37 @@ app.post('/get_user_info', jsonParser, async (req, res) => {
     res.send(result);
 });
 
-app.post('/update_info', jsonParser, async (req, res) => {
+// Update Info ----------------------------------------------------
+
+// SET STORAGE
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'images')
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.fieldname + '-' + Date.now())
+    }
+})
+
+var multerUpload = multer({
+    storage
+});
+
+app.post('/update_info', multerUpload.single('file'), async (req, res) => {
     const body = req.body;
 
-    console.log(body);
+    console.log("TONHIEU: Req body = ", body);
 
-    let authRes = await userHandler.isValidToken(body.email, body.token);
+    let path = "";
+    if (req.file) {
+        path = req.file.path;
+    }
 
-    if (authRes) {
-        let updateRes = await userHandler.updateUserInfo(body.email, body.name, body.address, body.phone);
-        if (updateRes) {
-            res.send({
-                "state" : true,
-                "mess" : "Cập nhật thông tin thành công!"
-            });
-        } else {
-            res.send({
-                "state" : false,
-                "mess" : "Cập nhật thông tin thất bại!"
-            });
-        }
-
+    let updateRes = await userHandler.updateUserInfo(body.email, body.name, body.address, body.phone, path);
+    if (updateRes) {
+        res.redirect('/edit-profile?success=1')
     } else {
-        res.send({
-            "state" : false,
-            "mess" : "Phiên của bạn đã hết. Vui lòng đăng nhập và thử lại!"
-        });
+        res.redirect('/edit-profile?success=0')
     }
 })
 

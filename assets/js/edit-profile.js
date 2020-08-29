@@ -1,3 +1,4 @@
+
 async function readUserInfoAndFill() {
     let email = localStorage.getItem("tudo_email");
 
@@ -10,10 +11,36 @@ async function readUserInfoAndFill() {
     if (userInfo.length > 0) {
         console.log("Userinfo: ", userInfo[0]);
 
+        avatarImg.src = "http://localhost:3000/" + userInfo[0].avatar;
         emailTitle.innerText = userInfo[0].email;
+        InputEmail.value = userInfo[0].email;
         InputName.value = userInfo[0].name;
         InputPhone.value = userInfo[0].phone;
         InputLocation.value = userInfo[0].address;
+    }
+}
+
+function checkStateOfUpdate() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const success = urlParams.get('success');
+
+    console.log("Success = ", success);
+
+    if (success == 1) {
+        swal({
+            title: "Thành công",
+            text: "Cập nhật thông tin thành công",
+            icon: "success",
+        })
+        .then(confirm => {
+            if (confirm) {
+                // Navigate to profile page
+                window.location.href = "http://localhost:3000/profile";
+            }
+        })
+
+    } else if (success == 0) {
+        swal("Thất bại", "Cập nhật thông tin thất bại! Vui lòng thử lại!", "error");
     }
 }
 
@@ -35,56 +62,8 @@ $(document).ready(function() {
     });
 });
 
-async function SaveButtonTapped() {
-    let email = localStorage.getItem("tudo_email");
-    let token = localStorage.getItem("tudo_token");
-
-    let name = InputName.value;
-    let phone = InputPhone.value;
-    let address = InputLocation.value;
-
-    let params = {
-        "email" : email,
-        "token" : token,
-        "name" : name,
-        "phone" : phone,
-        "address" : address
-    }
-
-    console.log("Param = ", params);
-    
-    const url = "http://localhost:3000" + "/update_info/";
-
-    const response = await fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(params)
-    });
-
-    let r = await response.json();
-
-    console.log("Update Res = ", r);
-
-    if (r.state) {
-        swal({
-            title: "Thành công",
-            text: r.message,
-            icon: "success",
-        })
-        .then(confirm => {
-            if (confirm) {
-                // Navigate to profile page
-                window.location.href = "http://localhost:3000/profile";
-            }
-        })
-
-    } else {
-        swal("Thất bại", r.message, "error");
-    }
-}
-
 // Activate
 
 readUserInfoAndFill();
+
+checkStateOfUpdate();

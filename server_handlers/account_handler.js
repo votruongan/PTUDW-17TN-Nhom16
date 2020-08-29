@@ -117,6 +117,7 @@ class UserHandler {
 			"address"	: address,
 			"create_date" : date.getTime(),
 			"id_number" :  id_number,
+			"avatar" : "",
 			"rating" : [],
 			"item" : [],
 			"pending_item" : []
@@ -232,13 +233,20 @@ class UserHandler {
 		return null;
 	}
 
-	static updateUserInfo = async function(email, name, address, phone) {
+	static updateUserInfo = async function(email, name, address, phone, avatarPath) {
+
 		let user = {
 			"email" : email,
 			"name" : name,
 			"address" : address,
 			"phone" : phone
 		}
+
+		if (avatarPath != "") {
+			user.avatar = avatarPath;
+		}
+
+		console.log("User to update: ", user);
 
 		let res = await dbHelper.updateDocument(userCollection, {"email": email}, user);
 
@@ -249,8 +257,6 @@ class UserHandler {
 		let user = {
 			"email" : email
 		};
-
-		console.log("TONHIEU: user to log out ", user);
 
 		let res = await dbHelper.findDocument(userCollection, user).catch((err) => {
 			console.log("Find user err = ", err);

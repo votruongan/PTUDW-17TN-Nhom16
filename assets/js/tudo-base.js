@@ -301,6 +301,8 @@ async function autoLoginWithToken() {
             navBtnLogIn.innerText = userInfo[0].name;
             navBtnLogIn.href = "#"
             navBtnSignUp.style.display = 'none';
+            if (userInfo[0].avatar && userInfo[0].avatar != "")
+                navBtnAvatar.src = "http://localhost:3000/" + userInfo[0].avatar;
         }
     }
 }
