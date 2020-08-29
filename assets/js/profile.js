@@ -18,6 +18,8 @@ async function initViewForUserData() {
         profilePhonenumber.innerText = user[0].phone;
         profileCMND.innerText = user[0].id_number;       
         profileAddress.innerText = user[0].address;
+    } else {
+        window.location.href = "http://localhost:3000/?loginState=0"
     }
 }
 
