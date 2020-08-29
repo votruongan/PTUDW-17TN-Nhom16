@@ -1,3 +1,24 @@
+var url = window.location.href;
+var i =url.search('/')
+while (i>=0){
+	url = url.substr(i+1,url.length-1);
+	i=url.search('/')
+}
+async function init(){
+    console.log(url);
+
+    const url1 = "http://localhost:3000" + "/search/nameStuff/" + url;	
+    console.log(url1);
+    const response = await fetch(url1, {
+	    method: 'GET'
+    });
+    let r = await response.json();
+    console.log(r);
+
+}
+
+init()
+
 var startRentTime = document.getElementById("startDateTime");
 var endRentTime = document.getElementById("endDateTime");
 function convertFormat(input){
@@ -20,6 +41,8 @@ function initDateTimePicker() {
 
 
 initDateTimePicker();
+
+
 function initMap() {
     var position = { lat: 10.7624176, lng: 106.6820081 }
     var map = new google.maps.Map(document.getElementById("map"), {
@@ -33,7 +56,7 @@ function initMap() {
 }
 
 $('.1stuff').click(function(){
-    location.href="./info"
+    location.href="/info"
 })
 
 $(function(){

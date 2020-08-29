@@ -1,5 +1,3 @@
-var list_item = document.getElementsByClassName("list-group-item")
-
 var url = window.location.href;
 var i =url.search('/')
 while (i>=0){
@@ -8,58 +6,58 @@ while (i>=0){
 }
 
 async function init(){
-const url1 = "http://localhost:3000" + "/item/id/"+url;	
-const response = await fetch(url1, {
-	method: 'GET',
-});
+	const url1 = "http://localhost:3000" + "/item/id/"+url;	
+	const response = await fetch(url1, {
+		method: 'GET',
+	});
 
-let r = await response.json();
+	let r = await response.json();
 
-if (r){
-	nameStuff.innerHTML = r.name;
-	if (r.star== undefined){
-		starStuff.innerHTML = "0/5"
-		starStuff.size=15;
-	}
-	else {
-		starStuff.innerHTML = r.star;
-	}
-	if (r.hiring == undefined){
-		hiring.innerHTML="(0 lượt cho thuê)";
-	}
-	else hiring.innerHTML = "(" + r.hiring+ "lượt cho thuê)";
-	cost.innerHTML = r.cost;
-	if (r.path!=undefined&& r.path!=null&&r.path!=''){
-		console.log(r.path);
-		const url = "http://localhost:3000/" + r.path;	
-		for(var i=0;i<r.path.length;i++){
-			var li = document.createElement('li');
-			li.setAttribute("data-slide-to",i);
-			li.setAttribute("data-target","#imageCarousel");
-			if (i==0) li.className = "active";
-			document.getElementById("carousel-indicators").appendChild(li);
-			var div = document.createElement('div');
-			if (i==0) div.className = "carousel-item active";
-			else div.className = "carousel-item";
-			var div1 = document.createElement('div');
-			div1.className = "d-flex justify-content-center h-100"
-			var img = document.createElement('img');
-			img.id = "imageStuff";
-			img.src = '/'+r.path[i];
-			img.className = "d-block";
-			img.alt = "..."
-			div1.appendChild(img);
-			div.appendChild(div1);
-			document.getElementById("carousel-inner").appendChild(div);
+	if (r){
+		nameStuff.innerHTML = r.name;
+		if (r.star== undefined){
+			starStuff.innerHTML = "0/5"
+			starStuff.size=15;
 		}
-	}
-	console.log(r.category);
-	cate.innerHTML = r.category;
-	userName.innerHTML = r.userName;
-	if (r.userHiring!=undefined){
-		userHiring.innerHTML=r.userHiring+ "lượt thuê";
-	}
-	else userHiring.innerHTML= "0 lượt thuê"
+		else {
+			starStuff.innerHTML = r.star;
+		}
+		if (r.hiring == undefined){
+			hiring.innerHTML="(0 lượt cho thuê)";
+		}
+		else hiring.innerHTML = "(" + r.hiring+ "lượt cho thuê)";
+		cost.innerHTML = r.cost;
+		if (r.path!=undefined&& r.path!=null&&r.path!=''){
+			console.log(r.path);
+			const url = "http://localhost:3000/" + r.path;	
+			for(var i=0;i<r.path.length;i++){
+				var li = document.createElement('li');
+				li.setAttribute("data-slide-to",i);
+				li.setAttribute("data-target","#imageCarousel");
+				if (i==0) li.className = "active";
+				document.getElementById("carousel-indicators").appendChild(li);
+				var div = document.createElement('div');
+				if (i==0) div.className = "carousel-item active";
+				else div.className = "carousel-item";
+				var div1 = document.createElement('div');
+				div1.className = "d-flex justify-content-center h-100"
+				var img = document.createElement('img');
+				img.id = "imageStuff";
+				img.src = '/'+r.path[i];
+				img.className = "d-block";
+				img.alt = "..."
+				div1.appendChild(img);
+				div.appendChild(div1);
+				document.getElementById("carousel-inner").appendChild(div);
+			}
+		}
+		console.log(r.category);
+		cate.innerHTML = r.category;
+		userName.innerHTML = r.userName;
+		if (r.userHiring!=undefined){
+			userHiring.innerHTML=r.userHiring+ "lượt thuê";
+		}
+		else userHiring.innerHTML= "0 lượt thuê"
 	}
 	if(r.describe!=undefined&&r.describe!='')
 		describe.innerHTML = r.describe;

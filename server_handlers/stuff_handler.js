@@ -3,7 +3,7 @@ const dbHelper = require("./database_helper");
 const stuffCollection = "Stuff";
 const sessionCollection = "Sessions";
 const userCollection = "Users";
-//dbHelper.createCollection(stuffCollection);
+
 function makeid(length) {
 	var result           = '';
 	var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -25,6 +25,12 @@ async function createStuff(stuff) {
 	return false;
 }
 class StuffHandler{
+    static search = async function (name) {
+        let res = await dbHelper.searchDocument(stuffCollection,name).catch((err)=>{
+            console.log(err);
+        })
+        return res;
+    }
     static getItem = async function(itemId){
         let res = await dbHelper.findDocument(stuffCollection,{"id":itemId}).catch((err)=>{
             console.log(err);

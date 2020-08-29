@@ -93,8 +93,13 @@ app.get('/images/:image_name', (req, res) => {
 })
 
 //--------------HET UPLOAD ANH----------------
-app.get('/search/:itemName', jsonParser,async (req,res)=> {
-    
+app.get('/search/:name',async (req,res)=> {
+    res.sendFile(__dirname + '/html/search.html');
+})
+app.get('/search/nameStuff/:name',jsonParser,async(req,res)=>{
+    const name = req.params.name;
+    const stuffList = await stuffHandler.search(name);
+    res.send(stuffList);
 })
 app.post('/item/post', jsonParser, async (req, res) => {
     const body = req.body;
@@ -107,10 +112,7 @@ app.post('/item/post', jsonParser, async (req, res) => {
 })
 
 app.get('/item/:itemId', async (req, res) => {
-    const itemId = req.params.itemId;
     res.sendFile(__dirname + '/html/item-info-page.html');
-
-    //res.send(stuff[0])
 })
 
 app.get('/item/id/:itemId', async (req, res) => {
@@ -169,13 +171,6 @@ app.post('/result-rent-item/:stageId/:itemId', jsonParser, async (req, res) => {
     res.send({
         status: await rentingHandler.fetchRentStatus(allInfo)
     });
-})
-app.post('/result-request-change-rent/:itemId', jsonParser, async (req, res) => {
-    const body = req.body;
-    const itemId = req.params.itemId;
-    const uId = body.userId;
-    if (!uId || !itemId) return responseError(res);
-    res.send(await rentingHandler.fetchChangeRequest(itemId,uId));
 })
 
 const leaseHandleArray = ['handleRentRequest','handleSendItem','handleChangeRequest','handleReceieve','handleFinish']
@@ -313,9 +308,9 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/html/index.html');
 })
 
-app.get('/info', (req, res) => {
-    res.sendFile(__dirname + '/html/item-info-page.html');
-})
+// app.get('/info', (req, res) => {
+//     res.sendFile(__dirname + '/html/item-info-page.html');
+// })
 
 app.get('/item', (req, res) => {
     res.sendFile(__dirname + '/html/item-info-page.html');

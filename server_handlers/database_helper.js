@@ -44,7 +44,24 @@ function insertDocument(collection,doc){
     });
   });
 }
-
+function searchDocument(collection,name){
+  return new Promise((resolve,reject)=>{
+    MongoClient.connect(url, function(err, db) {
+        if (err) resolve(false);
+        var dbo = db.db("tudo");
+        dbo.collection(collection).createIndex({
+          'name': 'text',
+          'category': 'text'
+        });
+        var query = {$text: {$search: name}};
+        dbo.collection(collection).find(query,{ score: { $meta: "textScore" } }).sort( { score: { $meta: "textScore" } } ).toArray(function(err, result)  {
+            if (err) resolve(false);
+            resolve(result);
+            db.close();
+        });
+    });
+  });
+}
 function findDocument(collection,queryObject){
   return new Promise((resolve,reject)=>{
     MongoClient.connect(url, function(err, db) {
@@ -107,6 +124,8 @@ function deleteManyDocument(collection,queryObject){
 
 // createCollection("Users");
 // createCollection("Sessions");
+// createCollection("Stuff");
+
 
 async function start(){
   // console.log(await deleteManyDocument("rent",{}));
@@ -126,5 +145,6 @@ module.exports = {
   findDocument,
   deleteDocument,
   updateDocument,
-  deleteManyDocument
+  deleteManyDocument,
+  searchDocument
 };
