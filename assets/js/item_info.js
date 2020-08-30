@@ -56,6 +56,8 @@ async function init(){
 		cate.innerHTML = r.category;
 		userName.innerHTML = r.userName;
 		getEle("pac-input").value = r.address;
+		console.log(123)
+		console.log(r.avatar)
 		if (r.avatar!="" && r.avatar!=null) imgUser.src = "/"+r.avatar;
 		else imgUser.src = "https://downloadwap.com/thumbs2/wallpapers/p2/new/15/Y2fLYUjz.jpg"  
 		userHiring.innerHTML= "0 lượt thuê"
