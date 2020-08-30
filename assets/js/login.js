@@ -66,9 +66,9 @@ async function login() {
                 const redirect = localStorage.getItem("login_redirect");
                 if (redirect){
                     window.location.href = redirect;
+                    localStorage.removeItem("login_redirect");
                     return;
                 }
-
                 // Navigate to home page
                 window.location.href = "/";
             }
