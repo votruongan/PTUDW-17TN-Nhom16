@@ -11,7 +11,7 @@ async function readUserInfoAndFill() {
     if (userInfo.length > 0) {
         console.log("Userinfo: ", userInfo[0]);
 
-        avatarImg.src = location.host + userInfo[0].avatar;
+        avatarImg.src = "/"+ userInfo[0].avatar;
         emailTitle.innerText = userInfo[0].email;
         InputEmail.value = userInfo[0].email;
         InputName.value = userInfo[0].name;

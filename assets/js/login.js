@@ -65,7 +65,7 @@ async function login() {
                 localStorage.setItem("tudo_token", r.token);
 
                 // Navigate to home page
-                window.location.href = location.host;
+                window.location.href = "";
             }
         })
 

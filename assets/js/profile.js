@@ -12,7 +12,7 @@ async function initViewForUserData() {
     console.log("User: ", user);
 
     if (user[0]) {
-        avatarImg.src = location.host + user[0].avatar;
+        avatarImg.src = "/"+ user[0].avatar;
         profileName.innerText = user[0].name;
         profileEmail.innerText = user[0].email;
         profilePhonenumber.innerText = user[0].phone;

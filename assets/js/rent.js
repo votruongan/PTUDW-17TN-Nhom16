@@ -252,7 +252,7 @@ async function onSendComment(){
 	console.log(rentData);
 	let r = await makeRequest("rent-item/7/"+itemId,rentData);
 	console.log(r);
-	location.href = location.host + "/item"
+	location.href = "/item"
 }
 
 function reformatCreditExpireDate(){

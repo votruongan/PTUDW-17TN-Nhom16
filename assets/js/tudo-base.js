@@ -325,7 +325,7 @@ async function autoLoginWithToken() {
             navBtnLogIn.href = "#"
             navBtnSignUp.style.display = 'none';
             if (userInfo[0].avatar && userInfo[0].avatar != "")
-                navBtnAvatar.src = location.host + userInfo[0].avatar;
+                navBtnAvatar.src = '/' + userInfo[0].avatar;
         }
     }
 }
@@ -389,7 +389,7 @@ async function logOutOnClick() {
             localStorage.removeItem("tudo_token");
 
             // Navigate to home page
-            window.location.href = location.host;
+            window.location.href = "";
         }
     })
 }
