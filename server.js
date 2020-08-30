@@ -167,6 +167,12 @@ app.post('/rent-item/:stageId/:itemId', jsonParser, async (req, res) => {
         responseError(res)
 })
 
+app.get('/rent-coupon/:coupon', jsonParser, async (req, res) => {
+    const coupon = req.params.coupon;
+    if (!coupon) return responseError(res);
+    if (coupon == "TUDO10") res.send({discount:10})
+})
+
 app.post('/result-request-change-rent/:itemId', jsonParser, async (req, res) => {
     const body = req.body;
     const itemId = req.params.itemId;
@@ -213,6 +219,13 @@ app.post('/lease-item/:stageId/:itemId', jsonParser, async (req, res) => {
         res.send(result);
     } else
         responseError(res)
+})
+
+app.post('/current-rent-user/:itemId', jsonParser, async (req, res) => {
+    const body = req.body;
+    const itemId = req.params.itemId;
+    const uId = body.userId;
+    res.send(await dbHelper.findDocument("rent",{itemId, isActive:true}));
 })
 
 app.post('/result-lease-item/:stageId/:itemId', jsonParser, async (req, res) => {

@@ -49,6 +49,10 @@ class rentingHandler{
                     fromDateTime: body.fromDateTime,toDateTime: body.toDateTime};
         let itemInfo = await dbHelper.findDocument("Stuff",{id:itemId});
         obj.rentPrice =itemInfo.cost || 200000;
+        obj.deliverMethod = "Trực tiếp";
+        obj.deliverAddress = itemInfo.address;
+        obj.returnMethod = "Trực tiếp";
+        obj.returnAddress = itemInfo.address;
         let r = await dbHelper.insertDocument("rent",obj);
         r = await dbHelper.updateDocument("Stuff",{id:itemId},{
             nuRentTimes: itemInfo.nuRentTimes+1,

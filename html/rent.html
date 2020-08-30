@@ -125,18 +125,18 @@
                         <div class="d-flex flex-row">
                             <!-- Avatar -->
                             <div class="d-flex flex-column mr-2">
-                                <img src="https://downloadwap.com/thumbs2/wallpapers/p2/new/15/Y2fLYUjz.jpg" alt=""
+                                <img src="127.0.0.1:3000/images/file-1598759232768" alt=""
                                     style="width:100px; height:100px" class="rounded-circle">
                             </div>
                             <!-- Info -->
                             <div class="d-flex flex-column bd-highlight">
                                 <div class="d-flex flex-row mb-1">
-                                    <h4 class="mr-2">Trần Hiếu</h4>
+                                    <h4 class="mr-2">vta</h4>
                                     <img src="img/badge.png" alt="" style="width: 30px; height:30px" class="mr-2">
                                     <p class="mr-2 d-none d-md-block">Tài khoản cao cấp</p>
                                 </div>
                                 <div class="d-flex flex-row">
-                                    <p class="mr-2">459 lượt cho thuê từ Tháng 1, 2020</p>
+                                    <p class="mr-2">0 lượt cho thuê từ Tháng 1, 2020</p>
                                 </div>
                                 <p>Phản hồi trung bình sau 2 phút</p>
                             </div>
@@ -479,8 +479,8 @@
 					Nhận xét chi tiết
                     </div>
                     <div class="flex-7">
-		  <div id="requestMessage" name="requestMessage" class="form-control input-md" style="height:auto;padding:1px">
-			<textarea class="col-12" rows="8" cols="64" placeholder="Hãy cho TUDO biết cảm nhận của bạn về người thuê này" style="border:0px;"></textarea>
+		  <div id="commentMessage" name="requestMessage" class="form-control input-md" style="height:auto;padding:1px">
+			<textarea class="col-12" rows="8" cols="64" placeholder="Hãy cho TUDO biết cảm nhận của bạn về chủ món đồ" style="border:0px;"></textarea>
 		  </div>
                     </div>
                 </div>
@@ -515,24 +515,24 @@
 						</div>
                     </div>
                     <b class="mt-3">Địa điểm nhận & trả đồ vật:</b>
-					<p font-size: 1rem;">861/84/6 Trần Xuân Soạn, P. Tân Hưng, Quận 7, Hồ Chí Minh</p>
+					<p class="targetAddress" style="font-size: 1rem;" ></p>
                     <hr class="mt-1 mb-3 w-100"/>
                     <div class="d-flex flex-row bd-highlight justify-content-between">
                         <div class="d-flex flex-column ">
                             <b>Tiền thuê:</b>	
                         </div>
-                            <p style="font-size:1.1rem; " id="rentalFeeDisplay"> 200.000 VND/ngày</p>
+                            <p class="targetCost" style="font-size:1.1rem; " id="rentalFeeDisplay"> 200.000 VND/ngày</p>
                     </div>
                     <div class="d-flex flex-row bd-highlight justify-content-between">
                         <div class="d-flex flex-column ">
                             <b>Thời gian thuê :</b>	
                         </div>
-                            <p style="font-size:1.1rem; " id="rentalTimeDisplay"> 9 ngày</p>
+                            <p class="targetDuration" style="font-size:1.1rem; " id="rentalTimeDisplay"> 9 ngày</p>
                     </div>
                     <hr class="mt-1 mb-3 w-100"/>
                     <div class="d-flex flex-row bd-highlight justify-content-between">
                             <b class="">Tổng tiền thuê:</b>
-                            <p style="font-size:1.2rem; "  id="totalFeeDisplay">1.800.000 VND</p>
+                            <p class="targetTotalCost" style="font-size:1.2rem; "  id="totalFeeDisplay">1.800.000 VND</p>
                     </div>					
                     <div class="d-flex flex-row bd-highlight justify-content-between mb-4">
                         <div class="d-flex col-5 p-0">
@@ -541,7 +541,7 @@
 				  <div class="input-group">
 				  <input id="discountText" name="address" type="text" placeholder="" class="h-100 form-control input-md"/>
 				  <div class="input-group-append">
-					<button class="m-0 px-2 p-lg-1 btn btn-primary white" id="basic-addon2">Áp dụng</button>
+					<button class="m-0 px-2 p-lg-1 btn btn-primary white" id="basic-addon2" onclick="getCouponDiscount();">Áp dụng</button>
 				  </div>
 				</div>
                     </div>		
@@ -556,7 +556,7 @@
                             <b>Tổng số tiền cần thanh toán:</b>	
                         </div>
                     </div>							
-                    <p class="d-flex  justify-content-end text-primary" style="font-size:1.4rem; ">1.620.000 VND</p>
+                    <p class="d-flex targetSumUpCost justify-content-end text-primary" style="font-size:1.4rem; ">1.620.000 VND</p>
 					</div>
 					<div>
                     <div class="d-flex flex-row bd-highlight justify-content-left">
@@ -566,7 +566,7 @@
                             <b>:</b>
                         </div>
                     </div>							
-                    <p class="d-flex  justify-content-end  text-primary" style="font-size:1.4rem; ">162.000 VND</p>
+                    <p class="d-flex targetDepositCost justify-content-end  text-primary" style="font-size:1.4rem; ">162.000 VND</p>
 					</div>
                     <hr class="mt-1 mb-3 w-100"/>
                     <button type="button" class="btn btn-link w-100" style="color: #6E62F9;">Hướng dẫn thuê đồ</button>

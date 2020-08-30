@@ -2,10 +2,38 @@
 const rentData = {userId:123}
 const maxStage = 4
 
-const itemId = 2810
+let itemId = null;
+let itemObject = null;
 rentData.userId = localStorage.getItem("tudo_email");
 rentData.token = localStorage.getItem("tudo_token");
 itemId = localStorage.getItem("rent-item");
+
+// fetch item info
+function setTargetContent(className, data){
+	const arr = document.getElementsByClassName(className);
+	console.log(arr)
+	for (let i = 0; i < arr.length; i++){
+		try{
+			arr[i].innerHTML = data
+			arr[i].value = data;
+		} catch(e){}
+	}
+}
+async function getitemInfo(){
+	const url1 = "/item/id/"+itemId;	
+	const response = await fetch(url1, {
+		method: 'GET',
+	});
+	itemObject = await response.json();
+	setTargetContent("targetAddress",itemObject.address);
+	setTargetContent("targetCost",itemObject.cost +" VND/ngày");
+	const url2 = "/current-rent-user/" + itemId;
+	const r2 = await makeRequest(url2,rentData);
+	console.log(url2,r2)
+	rentData.userId = r2[0].clientId;
+} 
+
+getitemInfo()
 
 let fetchResultPrefix = 'result-rent-item'
 
@@ -19,8 +47,16 @@ function setRentDateTime(timeEle, dateEle, data){
 	dateEle.innerText = `${data.substr(8,2)}/${data.substr(5,2)}/${data.substr(0,4)}`;
 }
 
-function updateDateTime(){
+async function updateDateTime(){
 	console.log(rentDateTime);
+
+	const endDate = new Date(rentDateTime.to);
+	setTimeout(()=>{
+		itemObject.duration = Math.ceil((endDate - new Date(rentDateTime.from))/(24*60*60*1000));
+		setTargetContent("targetTotalCost",(itemObject.cost * itemObject.duration) +" VND");
+		setTargetContent("targetDepositCost",((itemObject.cost * itemObject.duration)/10)+" VND");	
+		setTargetContent("targetDuration",itemObject.duration+" ngày")
+	},1000)
 	setRentDateTime(fromTime,fromDate,rentDateTime.from)
 	setRentDateTime(toTime,toDate,rentDateTime.to)
 }
