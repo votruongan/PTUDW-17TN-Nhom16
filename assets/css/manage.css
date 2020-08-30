@@ -19,7 +19,9 @@ ul li.nav-item a.nav-link.btn img {
 .navbar-light .navbar-nav .nav-link {
     color: black;
 }
-
+.chuaCoStuff{
+    display: none;
+}
 a.nav-link.btn {
     padding: 0px 0px;
 }

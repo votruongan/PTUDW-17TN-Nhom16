@@ -63,6 +63,9 @@ async function init(){
         document.getElementById("container").appendChild(fragment);
       }
     }
+  }else {
+    document.getElementById("chuaCoStuff").classList.toggle("chuaCoStuff")
+        return;
   }
 }
 
