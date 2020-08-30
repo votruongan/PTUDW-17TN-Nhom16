@@ -46,7 +46,7 @@ async function nextPanel(){
 		if (stuffName.value!='' && category.value!=''&& money.value!=''&& phone.value!=''&& address!=''&& describe.value && files !=undefined){
 			let path=[];
 			if (files){
-				const url1 = "http://localhost:3000" + "/images/upload";
+				const url1 = "/images/upload";
 				console.log(files);
 				for (var i = 0, f; f = files[i]; i++){
 					let formData = new FormData();
@@ -92,7 +92,7 @@ async function nextPanel(){
 			let token = localStorage.getItem("tudo_token");
 			let email = localStorage.getItem("tudo_email");
 			//console.log(token);
-			const url = "http://localhost:3000" + "/item/post";	
+			const url = "/item/post";	
 
 			const response = await fetch(url, {
 				method: 'POST',

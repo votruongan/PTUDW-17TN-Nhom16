@@ -12,14 +12,14 @@ async function initViewForUserData() {
     console.log("User: ", user);
 
     if (user[0]) {
-        avatarImg.src = "http://localhost:3000/" + user[0].avatar;
+        avatarImg.src = location.host + user[0].avatar;
         profileName.innerText = user[0].name;
         profileEmail.innerText = user[0].email;
         profilePhonenumber.innerText = user[0].phone;
         profileCMND.innerText = user[0].id_number;       
         profileAddress.innerText = user[0].address;
     } else {
-        window.location.href = "http://localhost:3000/?loginState=0"
+        window.location.href = "/?loginState=0"
     }
 }
 
@@ -30,7 +30,7 @@ initViewForUserData();
 // Actions
 
 function updateProfileTapped() {
-    window.location.href = "http://localhost:3000/edit-profile";
+    window.location.href = "/edit-profile";
 }
 
 function searchStuff(){

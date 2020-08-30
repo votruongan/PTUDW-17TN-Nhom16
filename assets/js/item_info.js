@@ -6,7 +6,7 @@ while (i>=0){
 }
 
 async function init(){
-	const url1 = "http://localhost:3000" + "/item/id/"+url;	
+	const url1 = "/item/id/"+url;	
 	const response = await fetch(url1, {
 		method: 'GET',
 	});
@@ -21,7 +21,7 @@ async function init(){
 		cost.innerHTML = r.cost;
 		if (r.path!=undefined&& r.path!=null&&r.path!=''){
 			console.log(r.path);
-			const url = "http://localhost:3000/" + r.path;	
+			const url =  r.path;	
 			for(var i=0;i<r.path.length;i++){
 				var li = document.createElement('li');
 				li.setAttribute("data-slide-to",i);

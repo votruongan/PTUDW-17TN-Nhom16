@@ -11,7 +11,7 @@ async function readUserInfoAndFill() {
     if (userInfo.length > 0) {
         console.log("Userinfo: ", userInfo[0]);
 
-        avatarImg.src = "http://localhost:3000/" + userInfo[0].avatar;
+        avatarImg.src = location.host + userInfo[0].avatar;
         emailTitle.innerText = userInfo[0].email;
         InputEmail.value = userInfo[0].email;
         InputName.value = userInfo[0].name;
@@ -35,7 +35,7 @@ function checkStateOfUpdate() {
         .then(confirm => {
             if (confirm) {
                 // Navigate to profile page
-                window.location.href = "http://localhost:3000/profile";
+                window.location.href = "/profile";
             }
         })
 

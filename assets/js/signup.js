@@ -149,7 +149,7 @@ async function signUpButtonTapped() {
         "personalID" : personalID
     }
 
-    const url = "http://localhost:3000" + "/sign_up/"
+    const url = "/sign_up/"
 
     const response = await fetch(url, {
         method: 'POST',
@@ -188,7 +188,7 @@ async function verifyButtonTapped() {
         return;
     }
 
-    const url = "http://localhost:3000" + "/verify_account";
+    const url = "/verify_account";
 
     const response = await fetch(url, {
         method: 'POST',
@@ -211,7 +211,7 @@ async function verifyButtonTapped() {
         .then(confirm => {
             if (confirm) {
                 // Navigate to login page
-                window.location.href = "http://localhost:3000/login";
+                window.location.href = "/login";
             }
         })
     } else {

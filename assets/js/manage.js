@@ -20,7 +20,7 @@ function create(htmlStr) {
   return frag;
 }
 async function init(){
-  const url1 = "http://localhost:3000" + "/manage/info";	
+  const url1 = "/manage/info";	
   let token = localStorage.getItem("tudo_token");
 	let email = localStorage.getItem("tudo_email");
 	const response = await fetch(url1, {
@@ -44,7 +44,7 @@ async function init(){
         document.getElementById("container").appendChild(fragment);
       }
       else {
-        const url2 = "http://localhost:3000" + "/renter/info";	
+        const url2 = "/renter/info";	
         const response1 = await fetch(url2, {
           method: 'GET',
           headers: {

@@ -24,7 +24,7 @@ function BtnLogInTapped() {
 }
 
 function signUpTapped() {
-    window.location.href = "http://localhost:3000/signup";
+    window.location.href = "signup";
 }
 
 async function login() {
@@ -38,7 +38,7 @@ async function login() {
         "password"  : password
     };
 
-    const url = "http://localhost:3000" + "/log_in/"
+    const url = "/log_in/"
 
     const response = await fetch(url, {
         method: 'POST',
@@ -65,7 +65,7 @@ async function login() {
                 localStorage.setItem("tudo_token", r.token);
 
                 // Navigate to home page
-                window.location.href = "http://localhost:3000/";
+                window.location.href = location.host;
             }
         })
 

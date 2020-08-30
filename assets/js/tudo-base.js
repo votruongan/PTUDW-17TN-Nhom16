@@ -325,7 +325,7 @@ async function autoLoginWithToken() {
             navBtnLogIn.href = "#"
             navBtnSignUp.style.display = 'none';
             if (userInfo[0].avatar && userInfo[0].avatar != "")
-                navBtnAvatar.src = "http://localhost:3000/" + userInfo[0].avatar;
+                navBtnAvatar.src = location.host + userInfo[0].avatar;
         }
     }
 }
@@ -335,7 +335,7 @@ async function getUserInfo(email) {
         "email": email
     };
 
-    const url = "http://localhost:3000" + "/get_user_info/";
+    const url = "/get_user_info/";
 
     const response = await fetch(url, {
         method: 'POST',
@@ -366,7 +366,7 @@ async function logOutOnClick() {
         "email": email
     }
 
-    const url = "http://localhost:3000" + "/log_out/";
+    const url = "/log_out/";
 
     const response = await fetch(url, {
         method: 'POST',
@@ -389,7 +389,7 @@ async function logOutOnClick() {
             localStorage.removeItem("tudo_token");
 
             // Navigate to home page
-            window.location.href = "http://localhost:3000/";
+            window.location.href = location.host;
         }
     })
 }
@@ -405,7 +405,7 @@ async function profileOnClick() {
         "token": token
     }
 
-    const url = "http://localhost:3000" + "/auth_by_token/";
+    const url = "/auth_by_token/";
 
     const response = await fetch(url, {
         method: 'POST',

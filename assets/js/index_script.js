@@ -102,6 +102,11 @@ $(document).ready(function () {
 
 });
 
+function searchStuff1(){
+    var name = search_input1.value;
+    if (name!=null && name!="" && name !=undefined)
+        window.location.href = '/search/'+name;
+}
 
 function searchStuff(){
     var name = search_input.value;
