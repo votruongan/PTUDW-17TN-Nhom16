@@ -93,6 +93,17 @@ app.get('/images/:image_name', (req, res) => {
 })
 
 //--------------HET UPLOAD ANH----------------
+app.get('/renter/info',jsonParser,async(req,res)=>{
+    res.send(await stuffHandler.getRenterInfo(req.headers['email']));
+})
+app.get('/manage/info',jsonParser,async(req,res)=>{
+    const token = req.headers['token'];
+    const email = req.headers['email'];
+    if (token == null || token == '') return responseError(res);
+    var result =await stuffHandler.getUserItem(token,email)
+    res.send(result);
+})
+
 app.get('/search/:name',async (req,res)=> {
     res.sendFile(__dirname + '/html/search.html');
 })
@@ -103,7 +114,6 @@ app.get('/search/nameStuff/:name',jsonParser,async(req,res)=>{
 })
 app.post('/item/post', jsonParser, async (req, res) => {
     const body = req.body;
-    console.log(body);
     const token = req.headers['token'];
     const email = req.headers['email'];
 

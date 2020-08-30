@@ -25,6 +25,34 @@ async function createStuff(stuff) {
 	return false;
 }
 class StuffHandler{
+    static getRenterInfo = async function (email) {
+        let res = await dbHelper.findDocument(userCollection,{"email":email}).catch((err)=>{
+            console.log(err);
+        });
+        if (res[0]){
+            let res1={
+                "name": res[0]["name"],
+                "create_date": res[0]["create_date"],
+                "avatar": res[0]["avatar"]
+            }
+            return res1;
+        }
+    }
+    static getUserItem = async function (token,email) {
+        let token1={
+            "email":email,
+            "token":token
+        }
+        let res = await dbHelper.findDocument(sessionCollection, token1).catch((err) => {
+			console.log(err);
+        });
+        if (res) {
+            let res1 = await dbHelper.findDocument(stuffCollection,{"email": email}).catch((err)=>{
+                console.log(err);
+            })
+            return res1;
+        }
+    }
     static search = async function (name) {
         let res = await dbHelper.searchDocument(stuffCollection,name).catch((err)=>{
             console.log(err);
@@ -52,7 +80,7 @@ class StuffHandler{
                 "create_date": res1[0]["create_date"],
                 "rating" : res1[0]["rating"],
                 "star": res[0]["star"],
-                "hiring":res[0]["star"]
+                "nuRentTimes":res[0]["star"]
             }
             return res2;
         }
@@ -79,7 +107,11 @@ class StuffHandler{
                 "services":body["services"],
                 "describe": body["describe"],
                 "star": 0,
-                "hiring":0
+                "nuRentTimes":0,
+                "renter": "",
+                "status": 0,
+                "rentDateFrom":0,
+                "rentDateTo":0
             }
 
             let created = await createStuff(stuff);

@@ -17,7 +17,7 @@ async function init(){
 		nameStuff.innerHTML = r.name;
 		starStuff.innerHTML = r.star + "/5";
 		starStuff.size = 25
-		hiring.innerHTML = "(" + r.hiring+ " lượt cho thuê)";
+		nuRentTimes.innerHTML = "(" + r.nuRentTimes+ " lượt cho thuê)";
 		cost.innerHTML = r.cost;
 		if (r.path!=undefined&& r.path!=null&&r.path!=''){
 			console.log(r.path);
@@ -46,10 +46,7 @@ async function init(){
 		console.log(r.category);
 		cate.innerHTML = r.category;
 		userName.innerHTML = r.userName;
-		if (r.userHiring!=undefined){
-			userHiring.innerHTML=r.userHiring+ "lượt thuê";
-		}
-		else userHiring.innerHTML= "0 lượt thuê"
+		userHiring.innerHTML= "0 lượt thuê"
 	}
 	if(r.describe!=undefined&&r.describe!='')
 		describe.innerHTML = r.describe;

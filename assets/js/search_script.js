@@ -47,7 +47,7 @@ async function init(){
         imgStar.id="star"
         var div4 = document.createElement('div');
         div4.className="solanthue";
-        div4.innerHTML = '(' + r[i].hiring + " lượt cho thuê)";
+        div4.innerHTML = '(' + r[i].nuRentTimes + " lượt cho thuê)";
         div2.appendChild(div3);
         div2.appendChild(imgStar);
         div2.appendChild(div4);
