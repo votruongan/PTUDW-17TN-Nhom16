@@ -167,6 +167,14 @@ app.post('/rent-item/:stageId/:itemId', jsonParser, async (req, res) => {
         responseError(res)
 })
 
+app.post('/result-request-change-rent/:itemId', jsonParser, async (req, res) => {
+    const body = req.body;
+    const itemId = req.params.itemId;
+    const uId = body.userId;
+    if (!uId || !itemId) return responseError(res);
+    res.send( await rentingHandler.fetchChangeRequest(itemId, uId));
+})
+
 app.post('/result-rent-item/:stageId/:itemId', jsonParser, async (req, res) => {
     const body = req.body;
     const stage = req.params.stageId;
