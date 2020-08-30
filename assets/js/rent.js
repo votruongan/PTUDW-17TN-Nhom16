@@ -80,6 +80,8 @@ function openPanel(index,status="succeed"){
 		if (i == index+1)
 			sn[i].classList.add("active");
 	}
+	if (index > 4)
+	sn[index].classList.add("active");
 }
 
 let changeRequestObj = null
@@ -235,6 +237,22 @@ async function onRequestChange(){
 		btnCloseChangeRequest.innerHTML = "Đóng";
 		setObjectVisiblity(btnSendChangeRequest,false);
 	}
+}
+
+async function onSendComment(){
+	rentData.rating = 0;
+	for (let i = 4; i > -1; i--) {
+		const ele = getEle("starButton-"+i);
+		if (ele.classList.contains("pinned")){
+			rentData.rating = i+1;
+			break;
+		}
+	}
+	rentData.comment = inputComment.value
+	console.log(rentData);
+	let r = await makeRequest("rent-item/7/"+itemId,rentData);
+	console.log(r);
+	location.href = location.host + "/item"
 }
 
 function reformatCreditExpireDate(){
