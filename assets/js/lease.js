@@ -56,7 +56,7 @@ async function updateDateTime(){
 		setTargetContent("targetTotalCost",(itemObject.cost * itemObject.duration) +" VND");
 		setTargetContent("targetDepositCost",((itemObject.cost * itemObject.duration)/10)+" VND");	
 		setTargetContent("targetDuration",itemObject.duration+" ngày")
-	},1000)
+	},2000)
 	setRentDateTime(fromTime,fromDate,rentDateTime.from)
 	setRentDateTime(toTime,toDate,rentDateTime.to)
 }
@@ -80,6 +80,12 @@ fetchRentDateTime();
 
 async function updateStatus(){
 	for (let i = 5; i > 0; i--) {
+		if (rentData.userId == localStorage.getItem('tudo_email')){
+			const sleep = new Promise((res,rej)=>{
+				setTimeout(()=>res(true),1000)
+			});
+			await sleep;
+		}
 		const obj = await makeRequest(`${fetchResultPrefix}/${i}/${itemId}`,rentData)
 		console.log("updateRentingStatus",i,obj);
 		if (obj.status == null || obj.status == "failed"){

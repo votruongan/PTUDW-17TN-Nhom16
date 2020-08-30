@@ -43,7 +43,7 @@ class rentingHandler{
     }
 
     static handleSendItem = async function(itemId,clientId,body){
-        const queryObj = {itemId,clientId,isAcztive:true}
+        const queryObj = {itemId,clientId,isActive:true}
         const writeRes = writeAllBase64ImagesLog(itemId,clientId,body);
         //write images to image-log collection
         const logObj = {

@@ -166,6 +166,7 @@ async function processPanel(index){
 					btnReturnMain.innerText = "Xem lại yêu cầu"
 					setObjectVisiblity(notiRequestPanel,true);
 				}
+				fetchRentDateTime();
 				makeFetchChangeRequest();
 				return;
 			}
