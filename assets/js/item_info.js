@@ -94,7 +94,8 @@ let itemId = 0;
 function goToRent() {
 	localStorage.setItem("rent-from",startDateTime.value)
 	localStorage.setItem("rent-to",endDateTime.value)
-	window.location.href = "/rent" + rObject.id;
+	localStorage.setItem("rent-item",rObject.id)
+	window.location.href = "/rent";
 }
 
 

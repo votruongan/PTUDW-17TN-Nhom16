@@ -6,6 +6,7 @@ let itemId = window.location.href.split('/');
 itemId = itemId[itemId.length - 1];
 rentData.userId = localStorage.getItem("tudo_email");
 rentData.token = localStorage.getItem("tudo_token");
+itemId = localStorage.getItem("rent-item");
 
 let fetchResultPrefix = 'result-rent-item'
 

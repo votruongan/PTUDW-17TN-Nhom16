@@ -34,12 +34,16 @@ function rentQueryObject(params){
 class rentingHandler{
     static handleRentRequest = async function(itemId,clientId,body){
         let qObj =  rentQueryObject({itemId,clientId});
+        if (body.isAccepted === false){
+            await dbHelper.updateDocument("rent",qObj,{isAccepted:false, isActive: false});
+            return true;
+        }
         const r = await dbHelper.updateDocument("rent",qObj,{isAccepted:body.isAccepted});
         return r;
     }
 
     static handleSendItem = async function(itemId,clientId,body){
-        const queryObj = {itemId,clientId,isActive:true}
+        const queryObj = {itemId,clientId,isAcztive:true}
         const writeRes = writeAllBase64ImagesLog(itemId,clientId,body);
         //write images to image-log collection
         const logObj = {

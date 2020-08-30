@@ -3,6 +3,9 @@ const rentData = {userId:123}
 const maxStage = 4
 
 const itemId = 2810
+rentData.userId = localStorage.getItem("tudo_email");
+rentData.token = localStorage.getItem("tudo_token");
+itemId = localStorage.getItem("rent-item");
 
 let fetchResultPrefix = 'result-rent-item'
 
