@@ -81,7 +81,7 @@ class StuffHandler{
                 "rating" : res1[0]["rating"],
                 "avatar" : res1[0]["avatar"],
                 "star": res[0]["star"],
-                "nuRentTimes":res[0]["star"]
+                "nuRentTimes":res[0]["nuRentTimes"]
             }
             return res2;
         }
