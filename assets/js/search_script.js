@@ -131,10 +131,13 @@ function initMap() {
         center: position,
         zoom: 17
     });
-    var marker = new google.maps.Marker({
-        position: position,
-        map: map,
-    });
+    if (temp==1){
+        var marker = new google.maps.Marker({
+            position: position,
+            map: map,
+        });
+    }
+    temp=1;
 }
 
 $('.1stuff').click(function(){

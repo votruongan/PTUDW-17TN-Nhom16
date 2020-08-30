@@ -46,6 +46,8 @@ async function init(){
 		console.log(r.category);
 		cate.innerHTML = r.category;
 		userName.innerHTML = r.userName;
+		if (r.avatar!="" && r.avatar!=null) imgUser.src = "/"+r.avatar;
+		else imgUser.src = "https://downloadwap.com/thumbs2/wallpapers/p2/new/15/Y2fLYUjz.jpg"  
 		userHiring.innerHTML= "0 lượt thuê"
 	}
 	if(r.describe!=undefined&&r.describe!='')
