@@ -2,7 +2,10 @@
 const rentData = {userId:123}
 const maxStage = 5
 
-const itemId = 2810
+let itemId = window.location.href.split('/');
+itemId = itemId[itemId.length - 1];
+rentData.userId = localStorage.getItem("tudo_email");
+rentData.token = localStorage.getItem("tudo_token");
 
 let fetchResultPrefix = 'result-rent-item'
 
@@ -24,6 +27,8 @@ if (!rentDateTime.from || !rentDateTime.to){
 	console.log("not redirected from item page");
 } else {
 	updateDateTime();
+	localStorage.removeItem("rent-from");
+	localStorage.removeItem("rent-to");
 }
 
 async function fetchRentDateTime(){
@@ -86,6 +91,19 @@ function openPanel(index,status="succeed"){
 
 let changeRequestObj = null
 
+let pageFetchMessage = null;
+
+function makeFetchChangeRequest(){
+	if (!pageFetchMessage)
+		pageFetchMessage = setInterval(()=>processPanel(3),200)
+}
+function removeFetchChangeRequest(){
+	if (pageFetchMessage){
+		clearInterval(pageFetchMessage)
+		pageFetchMessage = null;
+	}
+}
+
 async function processPanel(index){
 	switch(index){
 		case 3:
@@ -99,9 +117,11 @@ async function processPanel(index){
 					btnReturnMain.innerText = "Xem lại yêu cầu"
 					setObjectVisiblity(notiRequestPanel,true);
 				}
+				makeFetchChangeRequest();
 				return;
 			}
 			// renting time is up. Open return panel
+			removeFetchChangeRequest()
 			btnReturnMain.onclick = onReturnItem;
 			break;
 		case 4:

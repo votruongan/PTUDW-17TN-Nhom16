@@ -302,7 +302,7 @@ async function autoLoginWithToken() {
         "token": token
     }
 
-    const url =  "auth_by_token/";
+    const url = "http://"+location.host+  "/auth_by_token/";
 
     const response = await fetch(url, {
         method: 'POST',

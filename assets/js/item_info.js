@@ -5,6 +5,8 @@ while (i>=0){
 	i=url.search('/')
 }
 
+let rObject = null;
+
 async function init(){
 	const url1 = "/item/id/"+url;	
 	const response = await fetch(url1, {
@@ -14,10 +16,17 @@ async function init(){
 	let r = await response.json();
 
 	if (r){
+		rObject = r;
 		nameStuff.innerHTML = r.name;
 		starStuff.innerHTML = r.star + "/5";
 		starStuff.size = 25
 		nuRentTimes.innerHTML = "(" + r.nuRentTimes+ " lượt cho thuê)";
+		const rcost = r.cost.split('').reverse();
+		if (rcost.length > 3)
+			rcost.splice(3,0,'.')
+		if (rcost.length > 7)
+			rcost.splice(7,0,'.')
+		r.cost = rcost.reverse().join('');	
 		cost.innerHTML = r.cost;
 		if (r.path!=undefined&& r.path!=null&&r.path!=''){
 			console.log(r.path);
@@ -46,6 +55,7 @@ async function init(){
 		console.log(r.category);
 		cate.innerHTML = r.category;
 		userName.innerHTML = r.userName;
+		getEle("pac-input").value = r.address;
 		if (r.avatar!="" && r.avatar!=null) imgUser.src = "/"+r.avatar;
 		else imgUser.src = "https://downloadwap.com/thumbs2/wallpapers/p2/new/15/Y2fLYUjz.jpg"  
 		userHiring.innerHTML= "0 lượt thuê"
@@ -79,11 +89,12 @@ function initPlaceAutocomplete() {
     var infoWindow = new google.maps.InfoWindow();
 }
 
+let itemId = 0;
 
 function goToRent() {
 	localStorage.setItem("rent-from",startDateTime.value)
 	localStorage.setItem("rent-to",endDateTime.value)
-	window.location.href = "/rent"	
+	window.location.href = "/rent" + rObject.id;
 }
 
 
