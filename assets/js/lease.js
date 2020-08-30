@@ -10,7 +10,7 @@ let fetchResultPrefix = 'result-rent-item'
 const rentDateTime = {from:localStorage.getItem("rent-from"),to:localStorage.getItem("rent-to")}
 
 let allData = null;
-// const waitingPanelOffset = [-1,0,0,0,0];
+const waitingPanelOffset = [-1,0,0,0,0,0];
 function setRentDateTime(timeEle, dateEle, data){
 	timeEle.innerText = data.substr(11,5);
 	dateEle.innerText = `${data.substr(8,2)}/${data.substr(5,2)}/${data.substr(0,4)}`;
@@ -40,7 +40,7 @@ async function fetchRentDateTime(){
 fetchRentDateTime();
 
 async function updateStatus(){
-	for (let i = 4; i > 0; i--) {
+	for (let i = 5; i > 0; i--) {
 		const obj = await makeRequest(`${fetchResultPrefix}/${i}/${itemId}`,rentData)
 		console.log("updateRentingStatus",i,obj);
 		if (obj.status == null || obj.status == "failed"){
@@ -49,6 +49,11 @@ async function updateStatus(){
 		} else {;
 		}
 		await fetchRentDateTime();
+		if (i == 4)
+			if (obj.status == "waiting")
+				return openPanel(4,"succceed");
+			else 
+				return openPanel(5,"succeed");
 		if (i < maxStage)
 			return openPanel(i+1,obj.status);
 		else
@@ -70,6 +75,7 @@ function openPanel(index,status="succeed"){
 	}
 	let panelPrefix = "panel"
 	if (status=="waiting"){
+		// index+=waitingPanelOffset[index-1];
 		index--;
 		panelPrefix = "waitingPanel"
 	}
@@ -99,11 +105,17 @@ async function processPanel(index){
 				if (res.isAccepted && res.isAccepted == "waiting"){
 					changeRequestObj = res;
 					setObjectVisiblity(notiRequestPanel,true);
+					setObjectVisiblity(btnReceiveMain,true);
+					console.log("setting btnReceiveMain to true");
 				} else {
 					setObjectVisiblity(btnReceiveMain,false);
 					setObjectVisiblity(notiRequestPanel,false);
 				}
+				return
 			}
+			// enough time has passed
+			btnReceiveMain.innerHTML = "Đã nhận lại đồ"
+			btnReceiveMain.onclick = onReceiveItem;
 			break;
 	}
 }
@@ -139,20 +151,38 @@ async function handleChangeRequest(value){
 	let r = await makeRequest("lease-item/3/"+itemId,rentData)
 	setObjectVisiblity(blockChangeRequest,false)
 	console.log(r);
-	updateStatus();
+	setTimeout(()=>updateStatus(),100);
 }
 
 async function onReceiveItem(){
+	//convert each image file to base64
+	const base64Images = await prepareBase64ImageArray(fileSendItem.files);
+	rentData.images = base64Images.images;
+	rentData.extensions = base64Images.extensions;
 	let r = await makeRequest("lease-item/4/"+itemId,rentData)
 	console.log(r);
 	updateStatus();
+}
+
+async function onSendComment(){
+	rentData.rating = 0;
+	for (let i = 4; i > -1; i--) {
+		const ele = getEle("starButton-"+i);
+		if (ele.classList.contains("pinned")){
+			rentData.rating = i+1;
+			break;
+		}
+	}
+	rentData.comment = inputComment.value
+	console.log(rentData);
+	let r = await makeRequest("lease-item/5/"+itemId,rentData);
+	console.log(r);
 }
 
 
 btnReceiveMain.onclick = onOpenChangeRequest;
 
 updateStatus();
-
 function searchStuff(){
     var name = search_input.value;
     if (name!=null && name!="" && name !=undefined)
