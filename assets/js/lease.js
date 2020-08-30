@@ -91,6 +91,20 @@ function openPanel(index,status="succeed"){
 }
 
 let changeRequestObj = null;
+let pageFetchMessage = null;
+
+function makeFetchChangeRequest(){
+	if (!pageFetchMessage)
+		pageFetchMessage = setInterval(()=>processPanel(3),200)
+}
+function removeFetchChangeRequest(){
+	if (pageFetchMessage){
+		clearInterval(pageFetchMessage)
+		pageFetchMessage = null;
+	}
+}
+
+
 async function processPanel(index){
 	switch(index){
 		case 0:
@@ -111,9 +125,11 @@ async function processPanel(index){
 					setObjectVisiblity(btnReceiveMain,false);
 					setObjectVisiblity(notiRequestPanel,false);
 				}
+				makeFetchChangeRequest();
 				return
 			}
 			// enough time has passed
+			removeFetchChangeRequest()
 			btnReceiveMain.innerHTML = "Đã nhận lại đồ"
 			btnReceiveMain.onclick = onReceiveItem;
 			break;

@@ -191,7 +191,7 @@ app.post('/result-rent-item/:stageId/:itemId', jsonParser, async (req, res) => {
     });
 })
 
-const leaseHandleArray = ['handleRentRequest','handleSendItem','handleChangeRequest','handleReceieve','handleFinish']
+const leaseHandleArray = ['handleRentRequest','handleSendItem','handleChangeRequest','handleReceive','handleFinish']
 app.post('/lease-item/:stageId/:itemId', jsonParser, async (req, res) => {
     const body = req.body;
     const stage = req.params.stageId;
