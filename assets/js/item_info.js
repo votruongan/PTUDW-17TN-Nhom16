@@ -92,9 +92,25 @@ function initPlaceAutocomplete() {
 let itemId = 0;
 
 function goToRent() {
+	if (!localStorage.getItem("tudo_email")){
+		swal({
+            title: "Đăng nhập để tiếp tục",
+            text: "Bạn cần đăng nhập để tiếp tục",
+            icon: "info",
+        })
+        .then(confirm => {
+			localStorage.setItem("login_redirect","/item/"+rObject.id);
+			location.href = "/login"
+        })
+		return;
+	}
 	localStorage.setItem("rent-from",startDateTime.value)
 	localStorage.setItem("rent-to",endDateTime.value)
 	localStorage.setItem("rent-item",rObject.id)
+	if (rObject.email == localStorage.getItem("tudo_email")){
+		window.location.href = "/lease";
+		return;
+	}
 	window.location.href = "/rent";
 }
 

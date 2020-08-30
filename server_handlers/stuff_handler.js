@@ -83,6 +83,7 @@ class StuffHandler{
                 "star": res[0]["star"],
                 "nuRentTimes":res[0]["nuRentTimes"],
                 "address": res[0]["address"],
+                "email": res[0]["email"],
             }
             return res2;
         }

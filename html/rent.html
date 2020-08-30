@@ -42,15 +42,33 @@
 	  <a class="navbar-brand" href="about">
 		Tìm hiểu thêm
 	  </a>
-	  <a class="navbar-brand" href="signup">
+	  <a class="navbar-brand" href="signup" id="navBtnSignUp">
 		Đăng ký
 	  </a>
-	  <a class="navbar-brand" href="login">
+	  <a class="navbar-brand" href="login" id="navBtnLogIn">
 		Đăng nhập
 	  </a>
-	  <a class="navbar-brand" href="#" onclick="location.href='profile'">
-			<img src="img/no_user.png" width="36" height="36" alt="">
-	  </a>
+      <div class="navbar-brand dropdown">
+        <img class=" rounded-circle btn p-0 dropdown-toggle" id="navBtnAvatar" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false" src="img/no_user.png" width="36" height="36">
+        </img>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="left: -400%;">
+            <a class="dropdown-item" href="profile">
+                Thông tin cá nhân
+            </a>
+            <a class="dropdown-item" href="/manage">
+                Danh sách đồ vật
+            </a>
+            <a class="dropdown-item" href="#">
+                Danh sách thuê
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#" onclick="logOutOnClick()">
+                Đăng xuất
+            </a>
+        </div>
+    </div>
+
   </div>
 </nav>
     <div class="container">

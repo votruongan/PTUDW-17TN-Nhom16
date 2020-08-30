@@ -63,6 +63,11 @@ async function login() {
 
                 localStorage.setItem("tudo_email", user.email);
                 localStorage.setItem("tudo_token", r.token);
+                const redirect = localStorage.getItem("login_redirect");
+                if (redirect){
+                    window.location.href = redirect;
+                    return;
+                }
 
                 // Navigate to home page
                 window.location.href = "";

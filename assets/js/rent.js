@@ -8,6 +8,14 @@ rentData.userId = localStorage.getItem("tudo_email");
 rentData.token = localStorage.getItem("tudo_token");
 itemId = localStorage.getItem("rent-item");
 
+// fetch item info
+const url1 = "/item/id/"+url;	
+const response = await fetch(url1, {
+	method: 'GET',
+});
+
+let itemObject = await response.json();
+
 let fetchResultPrefix = 'result-rent-item'
 
 //check if redirected from item page -> get from and to datetime

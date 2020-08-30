@@ -39,13 +39,24 @@ function rentQueryObject(params){
     };
 }
 
+function isoToEpoch(isoTimeString){
+    return new Date(isoTimeString).getTime();
+}
+
 class rentingHandler{
     static handleRentRequest = async function(itemId,clientId,body){
         let obj = {itemId,clientId,requestMessage:body.message,isActive:true,
                     fromDateTime: body.fromDateTime,toDateTime: body.toDateTime};
-        const itemInfo = await dbHelper.findDocument("test-item",{itemId});
-        obj.rentPrice =itemInfo.rentPrice || 200000;
-        const r = await dbHelper.insertDocument("rent",obj);
+        let itemInfo = await dbHelper.findDocument("Stuff",{id:itemId});
+        obj.rentPrice =itemInfo.cost || 200000;
+        let r = await dbHelper.insertDocument("rent",obj);
+        r = await dbHelper.updateDocument("Stuff",{id:itemId},{
+            nuRentTimes: itemInfo.nuRentTimes+1,
+            renter: clientId,
+            status: 1,
+            rentDateFrom: isoToEpoch(body.fromDateTime),
+            rentDateTo: isoToEpoch(body.toDateTime),
+        });
         return r;
     }  
 
